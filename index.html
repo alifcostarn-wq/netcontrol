@@ -998,11 +998,19 @@ async function ixcFetch(baseUrl, token, endpoint, params={}, user='') {
     },
     body: JSON.stringify({ params, rp }),
   });
+  const data = await res.json().catch(()=>({}));
   if (!res.ok) {
-    const err = await res.json().catch(()=>({}));
-    throw new Error(err.error || `HTTP ${res.status}`);
+    // Build detailed error message with diagnostics if available
+    let msg = data.error || `HTTP ${res.status}`;
+    if (data.diagnostics) {
+      const diag = data.diagnostics.map(d =>
+        `[${d.authFormat}] HTTP ${d.httpStatus||'?'} → ${d.isHtml?'HTML (rejeitado)':d.parseError||'OK'}`
+      ).join(' | ');
+      msg += ` | Diagnóstico: ${diag} | URL: ${data.urlTested}`;
+    }
+    throw new Error(msg);
   }
-  return res.json();
+  return data;
 }
 
 function updateIxcBtn() {
