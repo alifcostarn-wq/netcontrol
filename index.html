@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NetControl — ISP Manager</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0E1117;
+    color: #E2E8F0;
+    min-height: 100vh;
+    display: flex;
+  }
+  /* Sidebar */
+  aside {
+    width: 220px;
+    background: #161B27;
+    border-right: 1px solid #252D3D;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex-shrink: 0;
+  }
+  .logo-wrap { padding: 0 20px 28px; }
+  .logo-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: linear-gradient(135deg, #3B82F6, #A855F7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+  }
+  .logo-wrap > div { display: flex; align-items: center; gap: 10px; }
+  .logo-name { font-size: 13px; font-weight: 700; }
+  .logo-sub { font-size: 10px; color: #64748B; }
+  nav { flex: 1; }
+  nav button {
+    width: 100%; display: flex; align-items: center; gap: 10px;
+    padding: 10px 20px; border: none; cursor: pointer;
+    background: transparent;
+    border-left: 3px solid transparent;
+    color: #94A3B8;
+    font-size: 13px; font-weight: 400;
+    transition: all .15s;
+  }
+  nav button:hover { background: #3B82F614; color: #60A5FA; }
+  nav button.active {
+    background: #3B82F618;
+    border-left-color: #3B82F6;
+    color: #60A5FA;
+    font-weight: 600;
+  }
+  nav button .nav-icon { font-size: 16px; }
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #252D3D;
+  }
+  .sidebar-footer .sf-label { font-size: 11px; color: #64748B; }
+  .sidebar-footer .sf-value { font-size: 22px; font-weight: 700; }
+  .sidebar-footer .sf-active { font-size: 11px; color: #22C55E; }
+  /* Main */
+  main { flex: 1; padding: 32px 36px; overflow: auto; }
+  /* Tab panels */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  /* KPI Grid */
+  .kpi-grid { display: grid; gap: 16px; margin-bottom: 24px; }
+  .kpi-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  /* KPI Card */
+  .kpi-card {
+    background: #1C2333;
+    border: 1px solid #252D3D;
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .kpi-label { font-size: 11px; color: #64748B; text-transform: uppercase; letter-spacing: 1px; }
+  .kpi-value-row { display: flex; justify-content: space-between; align-items: flex-end; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: #E2E8F0; }
+  .kpi-bottom { display: flex; align-items: center; gap: 8px; }
+  .kpi-delta { font-size: 12px; font-weight: 600; padding: 2px 7px; border-radius: 20px; }
+  .kpi-sub { font-size: 12px; color: #64748B; }
+  /* Badge */
+  .badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+  .badge-ativo { background: #22C55E18; color: #22C55E; }
+  .badge-inadimplente { background: #EF444418; color: #EF4444; }
+  .badge-cancelado { background: #64748B22; color: #64748B; }
+  .badge-suspenso { background: #F59E0B18; color: #F59E0B; }
+  /* Cards */
+  .card {
+    background: #1C2333;
+    border: 1px solid #252D3D;
+    border-radius: 12px;
+  }
+  .card-body { padding: 24px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+  /* Two-col grid */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .col-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+  .col-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+  /* Bar chart */
+  .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; }
+  .bar-chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .bar-chart-bar { width: 100%; border-radius: 4px 4px 0 0; }
+  .bar-chart-label { font-size: 9px; color: #64748B; }
+  /* Progress bar */
+  .prog-wrap { background: #252D3D; border-radius: 4px; height: 6px; overflow: hidden; }
+  .prog-fill { height: 100%; border-radius: 4px; }
+  /* Table */
+  .table-wrap { background: #1C2333; border: 1px solid #252D3D; border-radius: 12px; overflow: hidden; }
+  .table-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #252D3D;
+    font-size: 14px; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { border-bottom: 1px solid #252D3D; }
+  th { padding: 12px 16px; text-align: left; font-size: 11px; color: #64748B; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+  td { padding: 11px 16px; }
+  tbody tr { border-bottom: 1px solid #252D3D22; }
+  tbody tr:nth-child(even) { background: #ffffff04; }
+  /* Search row */
+  .search-row { display: flex; gap: 12px; margin-bottom: 20px; }
+  .search-input {
+    flex: 1; background: #1C2333; border: 1px solid #252D3D;
+    border-radius: 8px; padding: 9px 14px; color: #E2E8F0; font-size: 13px; outline: none;
+  }
+  .filter-btn {
+    padding: 8px 16px; border-radius: 8px; border: 1px solid #252D3D;
+    background: #1C2333; color: #94A3B8; font-size: 12px; font-weight: 500; cursor: pointer;
+  }
+  .filter-btn.active { background: #3B82F6; color: #fff; border-color: #3B82F6; }
+  /* Page title */
+  .page-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .page-sub { color: #64748B; font-size: 13px; margin-bottom: 28px; }
+  /* Sparkline */
+  .sparkline { overflow: visible; }
+  /* Legend row */
+  .legend-row { display: flex; gap: 20px; margin-top: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
+  /* IXC form */
+  .ixc-label { font-size: 11px; color: #64748B; text-transform: uppercase; letter-spacing: .5px; display: block; margin-bottom: 6px; }
+  .ixc-input {
+    width: 100%; background: #0E1117; border: 1px solid #252D3D;
+    border-radius: 8px; padding: 10px 14px; color: #E2E8F0; font-size: 13px; outline: none;
+  }
+  .ixc-btn {
+    width: 100%; padding: 11px; border-radius: 8px; border: none;
+    background: linear-gradient(135deg, #3B82F6, #A855F7);
+    color: #fff; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .ixc-btn:disabled { background: #252D3D; cursor: not-allowed; }
+  .ixc-error {
+    background: #EF444414; border: 1px solid #EF444433; border-radius: 8px;
+    padding: 10px 14px; margin-bottom: 16px; font-size: 12px; color: #EF4444;
+  }
+  /* NPS score circle */
+  .nps-circle {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+  }
+  /* Rows summary */
+  .summary-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid #252D3D22;
+  }
+  /* Stat block */
+  .stat-block { padding: 14px 16px; border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<aside>
+  <div class="logo-wrap">
+    <div>
+      <div class="logo-icon">N</div>
+      <div>
+        <div class="logo-name">NetControl</div>
+        <div class="logo-sub">ISP Manager</div>
+      </div>
+    </div>
+  </div>
+  <nav id="nav"></nav>
+  <div class="sidebar-footer">
+    <div class="sf-label">Total de clientes</div>
+    <div class="sf-value" id="sf-total"></div>
+    <div class="sf-active" id="sf-active"></div>
+  </div>
+</aside>
+
+<main>
+  <div id="tab-dashboard" class="tab-panel active"></div>
+  <div id="tab-clients" class="tab-panel"></div>
+  <div id="tab-delinquency" class="tab-panel"></div>
+  <div id="tab-churn" class="tab-panel"></div>
+  <div id="tab-financials" class="tab-panel"></div>
+  <div id="tab-cac" class="tab-panel"></div>
+  <div id="tab-nps" class="tab-panel"></div>
+  <div id="tab-ixc" class="tab-panel"></div>
+</main>
+
+<script>
+// ── Seeded RNG (deterministic) ────────────────────────────────────────────────
+let seed_rng = 42;
+function seededRand(min, max) {
+  seed_rng = (seed_rng * 1664525 + 1013904223) & 0xffffffff;
+  const r = (seed_rng >>> 0) / 0xffffffff;
+  return Math.floor(r * (max - min + 1)) + min;
+}
+function randDate(daysAgo) {
+  const d = new Date('2025-06-01');
+  d.setDate(d.getDate() - seededRand(0, daysAgo));
+  return d.toISOString().split('T')[0];
+}
+
+// ── Data ──────────────────────────────────────────────────────────────────────
+const PLANS = [
+  { id:1, name:'Básico 50MB',  price:79.90,  speed:'50 Mbps' },
+  { id:2, name:'Turbo 100MB', price:109.90, speed:'100 Mbps' },
+  { id:3, name:'Ultra 300MB', price:159.90, speed:'300 Mbps' },
+  { id:4, name:'Fibra 500MB', price:199.90, speed:'500 Mbps' },
+  { id:5, name:'Fibra 1GB',   price:259.90, speed:'1 Gbps' },
+];
+const STATUS = ['Ativo','Inadimplente','Cancelado','Suspenso'];
+const NAMES = ['Ana Silva','Bruno Costa','Carla Mendes','Diego Souza','Elisa Ferreira',
+  'Felipe Alves','Gisele Nunes','Henrique Lima','Iris Pinto','João Rocha',
+  'Kátia Duarte','Lucas Vieira','Mariana Gomes','Nelson Barbosa','Olga Ribeiro',
+  'Paulo Martins','Queila Farias','Rafael Torres','Sandra Moura','Thiago Cunha',
+  'Ursula Dias','Vitor Campos','Wesley Santos','Ximena Leal','Yago Pereira',
+  'Zilda Melo','André Teixeira','Beatriz Leite','Caio Nascimento','Daniela Reis',
+  'Eduardo Correia','Fernanda Assis','Gilberto Pires','Hana Takahashi','Igor Ramos',
+  'Juliana Azevedo','Kaio Fonseca','Laura Batista','Marcos Andrade','Natália Coelho'];
+
+const CLIENTS = NAMES.map((name, i) => {
+  const plan = PLANS[i % PLANS.length];
+  const statusW = [0,0,0,0,0,0,0,1,1,2,3];
+  const status = STATUS[statusW[i % statusW.length]];
+  const startDate = randDate(720);
+  const daysOverdue = status === 'Inadimplente' ? seededRand(5, 90) : 0;
+  const churnDate = status === 'Cancelado' ? randDate(60) : null;
+  const cac = seededRand(85, 180);
+  const months = seededRand(3, 36);
+  return { id: i+1, name, plan, status, startDate, daysOverdue, churnDate, cac, months };
+});
+
+const mrrHistory = Array.from({length:12}, (_,i) => {
+  const d = new Date('2025-06-01');
+  d.setMonth(d.getMonth() - (11-i));
+  const base = 28000 + i*900 + seededRand(-400,400);
+  return {
+    month: d.toLocaleString('pt-BR',{month:'short'}),
+    mrr: base,
+    churn: seededRand(800,2200),
+    new: seededRand(1200,3000),
+  };
+});
+
+const NPS_COMMENTS = [
+  'Internet muito estável, raramente cai.','Atendimento rápido quando precisei.',
+  'Velocidade boa, mas poderia ser mais barata.','Instalação foi rápida e sem problemas.',
+  'Às vezes a velocidade cai no horário de pico.','Suporte técnico resolveu meu problema em menos de 1h.',
+  'Recomendo para todos os vizinhos!','Tive queda de sinal 3 vezes esse mês.',
+  'Melhor provedor que já tive.','O app de cliente poderia ser melhor.',
+  'Sinal fraco no quarto dos fundos.','Preço justo pela qualidade entregue.',
+  'Demora para resolver chamados.','Nunca tive problemas graves.',
+  'Técnico muito educado e resolveu tudo.','Aumentaram o preço sem avisar.',
+];
+const npsScores = [9,10,8,10,7,9,10,6,3,9,8,7,5,10,9,4,8,10,9,7,10,8,6,9,10,7,8,9,10,6,9,8,7,10,9,8,7,10,9,8];
+const npsMonths = ['Jan','Fev','Mar','Abr','Mai','Jun'];
+const npsResponses = CLIENTS.map((c,i) => {
+  const score = npsScores[i % npsScores.length];
+  const type = score >= 9 ? 'Promotor' : score >= 7 ? 'Neutro' : 'Detrator';
+  return { id:c.id, name:c.name, plan:c.plan.name, score, type,
+    comment: NPS_COMMENTS[i % NPS_COMMENTS.length],
+    date: randDate(90), month: npsMonths[i % npsMonths.length] };
+});
+const npsHistoryData = ['Jan','Fev','Mar','Abr','Mai','Jun'].map((month,i) => {
+  const base = [42,48,45,52,55,58][i];
+  return { month, nps: base + seededRand(-3,3) };
+});
+
+// ── Colors ────────────────────────────────────────────────────────────────────
+const C = {
+  bg:'#0E1117', surface:'#161B27', card:'#1C2333', border:'#252D3D',
+  accent:'#3B82F6', accentL:'#60A5FA', green:'#22C55E', red:'#EF4444',
+  yellow:'#F59E0B', purple:'#A855F7', text:'#E2E8F0', muted:'#64748B', subtle:'#94A3B8',
+};
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+const fmt = n => n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const pct = n => `${n.toFixed(1)}%`;
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function badge(status) {
+  const cls = {Ativo:'ativo',Inadimplente:'inadimplente',Cancelado:'cancelado',Suspenso:'suspenso'};
+  return `<span class="badge badge-${cls[status]||'cancelado'}">${esc(status)}</span>`;
+}
+
+function progBar(value, max, color) {
+  const w = Math.min(100, (value/(max||1))*100);
+  return `<div class="prog-wrap"><div class="prog-fill" style="width:${w}%;background:${color}"></div></div>`;
+}
+
+function sparklineSVG(data, color, w=80, h=32) {
+  if (!data || data.length < 2) return '';
+  const min = Math.min(...data), max = Math.max(...data);
+  const pts = data.map((v,i) => {
+    const x = (i/(data.length-1))*w;
+    const y = h - ((v-min)/(max-min||1))*h;
+    return `${x},${y}`;
+  }).join(' ');
+  return `<svg width="${w}" height="${h}" class="sparkline" style="overflow:visible"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/></svg>`;
+}
+
+function kpiCard(label, value, sub, color, sparkData, delta) {
+  const deltaHTML = delta !== undefined
+    ? `<span class="kpi-delta" style="color:${delta>=0?C.green:C.red};background:${delta>=0?'#22C55E18':'#EF444418'}">${delta>=0?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%</span>` : '';
+  const spark = sparkData ? sparklineSVG(sparkData, color) : '';
+  return `<div class="kpi-card">
+    <span class="kpi-label">${esc(label)}</span>
+    <div class="kpi-value-row">
+      <span class="kpi-value">${esc(String(value))}</span>
+      ${spark}
+    </div>
+    <div class="kpi-bottom">${deltaHTML}${sub?`<span class="kpi-sub">${esc(sub)}</span>`:''}
+    </div>
+  </div>`;
+}
+
+// ── Metrics ───────────────────────────────────────────────────────────────────
+function computeMetrics() {
+  const active    = CLIENTS.filter(c => c.status === 'Ativo');
+  const delinq    = CLIENTS.filter(c => c.status === 'Inadimplente');
+  const cancelled = CLIENTS.filter(c => c.status === 'Cancelado');
+  const suspended = CLIENTS.filter(c => c.status === 'Suspenso');
+  const mrr       = active.reduce((s,c) => s + c.plan.price, 0);
+  const arr       = mrr * 12;
+  const total     = CLIENTS.length;
+  const churnRate = cancelled.length / total * 100;
+  const delinqRate = delinq.length / total * 100;
+  const avgMrr    = mrr / (active.length || 1);
+  const avgCac    = CLIENTS.reduce((s,c) => s+c.cac, 0) / CLIENTS.length;
+  const avgLtv    = avgMrr / (churnRate/100 || 0.05);
+  const ltvCacRatio = avgLtv / avgCac;
+  const delinqMrr = delinq.reduce((s,c) => s+c.plan.price, 0);
+  return { active, delinq, cancelled, suspended, mrr, arr, total,
+    churnRate, delinqRate, avgMrr, avgCac, avgLtv, ltvCacRatio, delinqMrr };
+}
+const M = computeMetrics();
+
+const planDist = PLANS.map(p => ({
+  ...p, count: CLIENTS.filter(c => c.plan.id===p.id && c.status==='Ativo').length
+}));
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+const navItems = [
+  {id:'dashboard',  icon:'◈', label:'Dashboard'},
+  {id:'clients',    icon:'◉', label:'Clientes'},
+  {id:'delinquency',icon:'◍', label:'Inadimplência'},
+  {id:'churn',      icon:'◌', label:'Churn'},
+  {id:'financials', icon:'◆', label:'MRR / ARR'},
+  {id:'cac',        icon:'◇', label:'CAC / LTV'},
+  {id:'nps',        icon:'★', label:'NPS'},
+  {id:'ixc',        icon:'⬡', label:'Integração IXC'},
+];
+
+let currentTab = 'dashboard';
+
+function renderNav() {
+  document.getElementById('nav').innerHTML = navItems.map(n =>
+    `<button class="${n.id===currentTab?'active':''}" onclick="switchTab('${n.id}')">
+      <span class="nav-icon">${n.icon}</span> ${n.label}
+    </button>`).join('');
+}
+
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  currentTab = id;
+  renderNav();
+}
+
+// ── Sidebar footer ────────────────────────────────────────────────────────────
+document.getElementById('sf-total').textContent = M.total;
+document.getElementById('sf-active').textContent = `↑ ${M.active.length} ativos`;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: DASHBOARD
+// ══════════════════════════════════════════════════════════════════════════════
+function renderDashboard() {
+  const lastM = mrrHistory[mrrHistory.length-1];
+  const maxMrr = Math.max(...mrrHistory.map(x=>x.mrr));
+  const bars = mrrHistory.map((m,i) => {
+    const h = (m.mrr/maxMrr)*100;
+    const op = i === mrrHistory.length-1 ? 1 : 0.6;
+    return `<div class="bar-chart-col">
+      <div class="bar-chart-bar" style="height:${h}%;background:linear-gradient(to top,${C.accent},${C.accentL});opacity:${op}"></div>
+      <span class="bar-chart-label">${m.month}</span>
+    </div>`;
+  }).join('');
+
+  const planBars = planDist.map(p => `
+    <div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-size:12px;color:${C.subtle}">${esc(p.name)}</span>
+        <span style="font-size:12px;font-weight:600">${p.count} clientes</span>
+      </div>
+      ${progBar(p.count, Math.max(...planDist.map(x=>x.count)), C.accent)}
+    </div>`).join('');
+
+  document.getElementById('tab-dashboard').innerHTML = `
+    <h1 class="page-title">Visão Geral</h1>
+    <p class="page-sub">Junho 2025 · Todos os dados em tempo real</p>
+
+    <div class="kpi-grid kpi-grid-4">
+      ${kpiCard('MRR', fmt(M.mrr), 'receita recorrente mensal', C.accent, mrrHistory.map(m=>m.mrr), 3.2)}
+      ${kpiCard('Churn Rate', pct(M.churnRate), `${M.cancelled.length} cancelamentos`, C.red, [3.1,2.8,3.5,3.0,2.9,2.6,M.churnRate], -0.4)}
+      ${kpiCard('Inadimplência', pct(M.delinqRate), fmt(M.delinqMrr)+' em risco', C.yellow, [8,7.5,9,8.2,7.8,M.delinqRate,M.delinqRate], 1.1)}
+      ${kpiCard('LTV Médio', fmt(M.avgLtv), `razão LTV/CAC ${M.ltvCacRatio.toFixed(1)}x`, C.purple, [1800,2100,1950,2300,2200,M.avgLtv], 5.7)}
+    </div>
+    <div class="kpi-grid kpi-grid-4" style="margin-bottom:32px">
+      ${kpiCard('ARR', fmt(M.arr), 'receita anual projetada', C.green, null, 3.2)}
+      ${kpiCard('Ticket Médio', fmt(M.avgMrr), 'por cliente ativo', C.accent, null, 0.8)}
+      ${kpiCard('CAC Médio', fmt(M.avgCac), 'custo de aquisição', C.yellow, null, -2.1)}
+      ${kpiCard('Clientes Ativos', M.active.length, `de ${M.total} total`, C.green, [32,35,34,37,36,38,M.active.length], 2.9)}
+    </div>
+
+    <div class="col-2-1">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">Evolução do MRR — 12 meses</div>
+          <div class="bar-chart">${bars}</div>
+          <div class="legend-row">
+            <div class="legend-item"><div class="legend-dot" style="background:${C.green}"></div><span style="font-size:12px;color:${C.subtle}">Novo MRR: <b style="color:${C.green}">${fmt(lastM.new)}</b></span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:${C.red}88"></div><span style="font-size:12px;color:${C.subtle}">MRR Perdido: <b style="color:${C.red}">${fmt(lastM.churn)}</b></span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:${C.accent}"></div><span style="font-size:12px;color:${C.subtle}">MRR Líquido: <b style="color:${C.accent}">${fmt(lastM.mrr)}</b></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <div class="card-title">Mix de Planos</div>
+        ${planBars}
+      </div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: CLIENTS
+// ══════════════════════════════════════════════════════════════════════════════
+let clientSearch = '', clientFilter = 'Todos';
+
+function renderClients() {
+  const filtered = CLIENTS.filter(c => {
+    const ms = c.name.toLowerCase().includes(clientSearch.toLowerCase()) ||
+               c.plan.name.toLowerCase().includes(clientSearch.toLowerCase());
+    const mf = clientFilter === 'Todos' || c.status === clientFilter;
+    return ms && mf;
+  });
+  const rows = filtered.length
+    ? filtered.map(c => `<tr>
+        <td style="color:${C.muted};font-size:12px">${c.id}</td>
+        <td style="font-size:13px;font-weight:500">${esc(c.name)}</td>
+        <td style="font-size:12px;color:${C.subtle}">${esc(c.plan.name)}</td>
+        <td style="font-size:13px;font-weight:600;color:${C.green}">${fmt(c.plan.price)}</td>
+        <td style="font-size:12px;color:${C.subtle}">${c.startDate}</td>
+        <td>${badge(c.status)}</td>
+        <td style="font-size:12px;color:${C.subtle}">${c.months}m</td>
+      </tr>`).join('')
+    : `<tr><td colspan="7" style="padding:40px;text-align:center;color:${C.muted}">Nenhum cliente encontrado.</td></tr>`;
+
+  const filterBtns = ['Todos',...STATUS].map(s =>
+    `<button class="filter-btn ${clientFilter===s?'active':''}" onclick="setClientFilter('${s}')">${s}</button>`).join('');
+
+  document.getElementById('tab-clients').innerHTML = `
+    <h1 class="page-title">Clientes</h1>
+    <p class="page-sub">${CLIENTS.length} clientes cadastrados</p>
+    <div class="search-row">
+      <input class="search-input" placeholder="Buscar por nome ou plano…" value="${esc(clientSearch)}"
+        oninput="clientSearch=this.value;renderClients()" />
+      ${filterBtns}
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>${['#','Cliente','Plano','Mensalidade','Início','Status','Meses'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+function setClientFilter(s) { clientFilter = s; renderClients(); }
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: DELINQUENCY
+// ══════════════════════════════════════════════════════════════════════════════
+function renderDelinquency() {
+  const avgOverdue = Math.round(M.delinq.reduce((s,c)=>s+c.daysOverdue,0)/(M.delinq.length||1));
+  const buckets = [
+    {label:'1–15 dias',range:[1,15],color:C.yellow},
+    {label:'16–30 dias',range:[16,30],color:'#F97316'},
+    {label:'31–60 dias',range:[31,60],color:C.red},
+    {label:'60+ dias',range:[61,999],color:'#7F1D1D'},
+  ];
+  const agingBars = buckets.map(b => {
+    const list = M.delinq.filter(c=>c.daysOverdue>=b.range[0]&&c.daysOverdue<=b.range[1]);
+    return `<div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+        <span style="font-size:12px;color:${b.color};font-weight:600">${b.label}</span>
+        <span style="font-size:12px;color:${C.subtle}">${list.length} clientes · ${fmt(list.reduce((s,c)=>s+c.plan.price,0))}</span>
+      </div>
+      ${progBar(list.length, M.delinq.length||1, b.color)}
+    </div>`;
+  }).join('');
+
+  const sortedDelinq = [...M.delinq].sort((a,b)=>b.daysOverdue-a.daysOverdue);
+  const rows = sortedDelinq.map(c => `<tr>
+    <td style="font-size:13px">${esc(c.name)}</td>
+    <td style="font-size:12px;color:${C.subtle}">${esc(c.plan.name)}</td>
+    <td style="font-size:13px;color:${C.red};font-weight:600">${fmt(c.plan.price)}</td>
+    <td><span style="font-size:12px;color:${c.daysOverdue>30?C.red:C.yellow};font-weight:600">${c.daysOverdue}d</span></td>
+    <td><button style="font-size:11px;padding:4px 10px;border-radius:6px;background:${C.accent}22;color:${C.accentL};border:1px solid ${C.accent}44;cursor:pointer">Cobrar</button></td>
+  </tr>`).join('');
+
+  document.getElementById('tab-delinquency').innerHTML = `
+    <h1 class="page-title">Inadimplência</h1>
+    <p class="page-sub">Acompanhe clientes em atraso e o impacto no MRR</p>
+    <div class="kpi-grid kpi-grid-4">
+      ${kpiCard('Clientes em atraso', M.delinq.length, 'inadimplentes', C.red)}
+      ${kpiCard('MRR em risco', fmt(M.delinqMrr), 'receita comprometida', C.yellow)}
+      ${kpiCard('Taxa de inadimplência', pct(M.delinqRate), 'sobre base total', C.red, null, 1.1)}
+      ${kpiCard('Média de atraso', `${avgOverdue} dias`, 'tempo médio', C.yellow)}
+    </div>
+    <div class="col-1-2" style="margin-bottom:24px">
+      <div class="card card-body">
+        <div class="card-title">Aging de Cobrança</div>
+        ${agingBars}
+      </div>
+      <div class="table-wrap">
+        <div class="table-header">Lista de Inadimplentes</div>
+        <table>
+          <thead><tr>${['Cliente','Plano','Valor','Atraso','Ação'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: CHURN
+// ══════════════════════════════════════════════════════════════════════════════
+function renderChurn() {
+  const planBars = PLANS.map(p => {
+    const total = CLIENTS.filter(c=>c.plan.id===p.id).length;
+    const churned = CLIENTS.filter(c=>c.plan.id===p.id&&c.status==='Cancelado').length;
+    const rate = total ? (churned/total)*100 : 0;
+    return `<div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-size:12px;color:${C.subtle}">${esc(p.name)}</span>
+        <span style="font-size:12px;font-weight:600;color:${rate>10?C.red:C.green}">${churned}/${total} (${pct(rate)})</span>
+      </div>
+      ${progBar(churned, total||1, rate>10?C.red:C.yellow)}
+    </div>`;
+  }).join('');
+
+  const monthBars = mrrHistory.slice(-6).map(m => {
+    const rate = (m.churn/m.mrr)*100;
+    return `<div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-size:12px;color:${C.subtle};text-transform:capitalize">${m.month}</span>
+        <span style="font-size:12px;font-weight:600;color:${rate>7?C.red:C.yellow}">${fmt(m.churn)} · ${pct(rate)}</span>
+      </div>
+      ${progBar(m.churn, Math.max(...mrrHistory.map(x=>x.churn)), rate>7?C.red:C.yellow)}
+    </div>`;
+  }).join('');
+
+  document.getElementById('tab-churn').innerHTML = `
+    <h1 class="page-title">Churn</h1>
+    <p class="page-sub">Análise de cancelamentos e retenção</p>
+    <div class="kpi-grid kpi-grid-4">
+      ${kpiCard('Churn Rate', pct(M.churnRate), 'base total', C.red, null, -0.4)}
+      ${kpiCard('Cancelamentos', M.cancelled.length, 'clientes perdidos', C.red)}
+      ${kpiCard('MRR Perdido', fmt(M.cancelled.reduce((s,c)=>s+c.plan.price,0)), 'receita cancelada', C.yellow)}
+      ${kpiCard('Taxa de Retenção', pct(100-M.churnRate), 'clientes retidos', C.green, null, 0.4)}
+    </div>
+    <div class="two-col">
+      <div class="card card-body">
+        <div class="card-title">Churn por Plano</div>${planBars}
+      </div>
+      <div class="card card-body">
+        <div class="card-title">Churn Mensal (últimos 6m)</div>
+        ${monthBars}
+        <div style="margin-top:20px;padding:12px 16px;background:#22C55E10;border-radius:8px;border:1px solid ${C.green}22">
+          <div style="font-size:11px;color:${C.muted};margin-bottom:2px">Meta de Churn</div>
+          <div style="font-size:20px;font-weight:700;color:${C.green}">≤ 2,0% / mês</div>
+          <div style="font-size:11px;color:${C.muted}">atual: ${pct(M.churnRate/12)}/mês</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: FINANCIALS
+// ══════════════════════════════════════════════════════════════════════════════
+function renderFinancials() {
+  const lastM = mrrHistory[mrrHistory.length-1];
+  const maxMrr = Math.max(...mrrHistory.map(x=>x.mrr));
+
+  const barCols = mrrHistory.map((m,i) => {
+    return `<div class="bar-chart-col">
+      <div style="width:100%;display:flex;flex-direction:column;justify-content:flex-end;height:130px;gap:2px">
+        <div style="background:${C.red}88;height:${(m.churn/maxMrr)*130}px;border-radius:3px 3px 0 0"></div>
+        <div style="background:linear-gradient(to top,${C.accent},${C.accentL});height:${(m.new/maxMrr)*130}px;border-radius:3px 3px 0 0;opacity:${0.7+0.3*(i/11)}"></div>
+      </div>
+      <span class="bar-chart-label">${m.month}</span>
+    </div>`;
+  }).join('');
+
+  const planMrrBars = PLANS.map(p => {
+    const pm = CLIENTS.filter(c=>c.plan.id===p.id&&c.status==='Ativo').length * p.price;
+    return `<div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-size:12px;color:${C.subtle}">${esc(p.name)}</span>
+        <span style="font-size:13px;font-weight:700;color:${C.accent}">${fmt(pm)}</span>
+      </div>
+      ${progBar(pm, M.mrr||1, C.accent)}
+    </div>`;
+  }).join('');
+
+  const summaryRows = [
+    {label:'MRR Atual', value:fmt(M.mrr), color:C.accent},
+    {label:'MRR Médio 12m', value:fmt(mrrHistory.reduce((s,m)=>s+m.mrr,0)/12), color:C.subtle},
+    {label:'ARR Projetado', value:fmt(M.arr), color:C.green},
+    {label:'Ticket Médio', value:fmt(M.avgMrr), color:C.accentL},
+    {label:'MRR em risco', value:fmt(M.delinqMrr), color:C.red},
+    {label:'% MRR em risco', value:pct(M.delinqMrr/M.mrr*100), color:C.yellow},
+  ].map(r => `<div class="summary-row">
+    <span style="font-size:13px;color:${C.subtle}">${r.label}</span>
+    <span style="font-size:14px;font-weight:700;color:${r.color}">${r.value}</span>
+  </div>`).join('');
+
+  document.getElementById('tab-financials').innerHTML = `
+    <h1 class="page-title">MRR / ARR</h1>
+    <p class="page-sub">Receita recorrente mensal e anual</p>
+    <div class="kpi-grid kpi-grid-4">
+      ${kpiCard('MRR Atual', fmt(M.mrr), 'mês corrente', C.accent, null, 3.2)}
+      ${kpiCard('ARR Projetado', fmt(M.arr), 'anualizado', C.green, null, 3.2)}
+      ${kpiCard('Novo MRR', fmt(lastM.new), 'expansão este mês', C.green, null, 8.4)}
+      ${kpiCard('MRR Perdido', fmt(lastM.churn), 'churn este mês', C.red, null, -2.1)}
+    </div>
+    <div class="card card-body" style="margin-bottom:20px">
+      <div class="card-title">MRR Detalhado — 12 meses</div>
+      <div style="display:flex;gap:12px;align-items:flex-end;height:160px">${barCols}</div>
+      <div class="legend-row">
+        <div class="legend-item"><div class="legend-dot" style="background:${C.accent}"></div><span style="font-size:12px;color:${C.subtle}">Novo MRR</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:${C.red}88"></div><span style="font-size:12px;color:${C.subtle}">MRR Perdido</span></div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card card-body"><div class="card-title">MRR por Plano</div>${planMrrBars}</div>
+      <div class="card card-body"><div class="card-title">Resumo Financeiro</div>${summaryRows}</div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: CAC/LTV
+// ══════════════════════════════════════════════════════════════════════════════
+function renderCac() {
+  const planLtv = PLANS.map(p => {
+    const clients = CLIENTS.filter(c=>c.plan.id===p.id);
+    const cac = clients.length ? clients.reduce((s,c)=>s+c.cac,0)/clients.length : 0;
+    const ltv = p.price / (M.churnRate/100/12 || 0.04);
+    const ratio = ltv / cac;
+    return `<div style="margin-bottom:18px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+        <span style="font-size:12px;color:${C.subtle}">${esc(p.name)}</span>
+        <div style="display:flex;gap:12px">
+          <span style="font-size:11px;color:${C.yellow}">CAC ${fmt(cac)}</span>
+          <span style="font-size:11px;color:${C.purple}">LTV ${fmt(ltv)}</span>
+          <span style="font-size:12px;font-weight:700;color:${ratio>=3?C.green:C.yellow}">${ratio.toFixed(1)}x</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:4px">
+        <div style="height:8px;border-radius:4px;background:${C.yellow};width:${Math.min((cac/ltv)*100,30)}%"></div>
+        <div style="height:8px;border-radius:4px;background:${C.purple};flex:1"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const costRows = [
+    {label:'CAC amortizado/mês', value:fmt(M.avgCac/24), desc:'CAC ÷ 24 meses', color:C.yellow},
+    {label:'Infraestrutura', value:fmt(M.avgMrr*0.12), desc:'~12% do ticket', color:C.accent},
+    {label:'Suporte técnico', value:fmt(M.avgMrr*0.08), desc:'~8% do ticket', color:C.accentL},
+    {label:'Administrativo', value:fmt(M.avgMrr*0.05), desc:'~5% do ticket', color:C.subtle},
+  ].map(r => `<div class="summary-row">
+    <div><div style="font-size:13px">${r.label}</div><div style="font-size:11px;color:${C.muted}">${r.desc}</div></div>
+    <span style="font-size:14px;font-weight:700;color:${r.color}">${r.value}</span>
+  </div>`).join('');
+
+  const totalCost = M.avgCac/24 + M.avgMrr*0.25;
+  const margin = ((M.avgMrr - totalCost) / M.avgMrr) * 100;
+
+  // CAC histogram
+  const histBars = Array.from({length:20},(_,i) => {
+    const bucketMin = 80 + i*5;
+    const count = CLIENTS.filter(c=>c.cac>=bucketMin&&c.cac<bucketMin+5).length;
+    const h = (count/CLIENTS.length)*80*8;
+    return `<div style="flex:1;display:flex;align-items:flex-end">
+      <div style="width:100%;background:${C.purple};height:${h}px;min-height:${count?4:0}px;border-radius:2px 2px 0 0;opacity:${0.5+0.5*(count/CLIENTS.length*5)}"></div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('tab-cac').innerHTML = `
+    <h1 class="page-title">CAC & LTV</h1>
+    <p class="page-sub">Custo de aquisição e valor vitalício do cliente</p>
+    <div class="kpi-grid kpi-grid-4">
+      ${kpiCard('CAC Médio', fmt(M.avgCac), 'custo de aquisição', C.yellow, null, -2.1)}
+      ${kpiCard('LTV Médio', fmt(M.avgLtv), 'valor vitalício', C.purple, null, 5.7)}
+      ${kpiCard('Razão LTV/CAC', `${M.ltvCacRatio.toFixed(1)}x`, M.ltvCacRatio>=3?'✓ Saudável (≥3x)':'⚠ Atenção (<3x)', M.ltvCacRatio>=3?C.green:C.yellow)}
+      ${kpiCard('Payback', `${Math.round(M.avgCac/M.avgMrr)} meses`, 'tempo de recuperar CAC', C.accent)}
+    </div>
+    <div class="two-col" style="margin-bottom:20px">
+      <div class="card card-body">
+        <div class="card-title">LTV vs CAC — por Plano</div>${planLtv}
+      </div>
+      <div class="card card-body">
+        <div class="card-title">Custo do Cliente Hoje</div>
+        <p style="font-size:12px;color:${C.muted};margin-bottom:20px">Quanto custa um cliente considerando CAC amortizado + custos operacionais estimados</p>
+        ${costRows}
+        <div class="stat-block" style="margin-top:16px;background:${C.accent}14;border:1px solid ${C.accent}33">
+          <div style="font-size:11px;color:${C.muted};margin-bottom:4px">Custo Total / Cliente / Mês</div>
+          <div style="font-size:26px;font-weight:800;color:${C.accent}">${fmt(totalCost)}</div>
+          <div style="font-size:11px;color:${C.muted};margin-top:4px">Margem estimada: ${pct(margin)}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-body">
+      <div class="card-title">Distribuição de CAC por Cliente</div>
+      <div style="display:flex;align-items:flex-end;gap:3px;height:80px">${histBars}</div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px">
+        <span style="font-size:10px;color:${C.muted}">R$ 80</span>
+        <span style="font-size:10px;color:${C.muted}">R$ 180</span>
+      </div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: NPS
+// ══════════════════════════════════════════════════════════════════════════════
+function renderNps() {
+  const promoters  = npsResponses.filter(r=>r.type==='Promotor').length;
+  const neutrals   = npsResponses.filter(r=>r.type==='Neutro').length;
+  const detractors = npsResponses.filter(r=>r.type==='Detrator').length;
+  const total      = npsResponses.length;
+  const npsScore   = Math.round(((promoters-detractors)/total)*100);
+  const zone = npsScore>=75?{label:'Excelência',color:'#10B981'}
+             : npsScore>=50?{label:'Qualidade',color:C.green}
+             : npsScore>=0 ?{label:'Aperfeiçoamento',color:C.yellow}
+             :               {label:'Crítico',color:C.red};
+
+  const scoreBars = [0,1,2,3,4,5,6,7,8,9,10].map(s => {
+    const count = npsResponses.filter(r=>r.score===s).length;
+    const col = s>=9?C.green:s<=6?C.red:C.yellow;
+    const w = (count/total)*100;
+    return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <span style="font-size:12px;color:${C.muted};width:16px;text-align:right">${s}</span>
+      <div style="flex:1;background:${C.border};border-radius:4px;height:18px;overflow:hidden">
+        <div style="width:${w}%;height:100%;background:${col};border-radius:4px;display:flex;align-items:center;padding-left:6px">
+          ${count>0?`<span style="font-size:10px;color:#fff;font-weight:700">${count}</span>`:''}
+        </div>
+      </div>
+      <span style="font-size:11px;color:${C.muted};width:32px">${pct(count/total*100)}</span>
+    </div>`;
+  }).join('');
+
+  const histBars = npsHistoryData.map((m,i) => {
+    const maxNps = Math.max(...npsHistoryData.map(x=>x.nps));
+    const barH = (m.nps/maxNps)*100;
+    const col = m.nps>=50?C.green:C.yellow;
+    return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <span style="font-size:10px;font-weight:700;color:${col}">${m.nps}</span>
+      <div style="width:100%;background:${col};opacity:${0.7+0.3*(i/5)};height:${barH}%;border-radius:4px 4px 0 0"></div>
+      <span style="font-size:10px;color:${C.muted}">${m.month}</span>
+    </div>`;
+  }).join('');
+
+  const planNps = PLANS.map(p => {
+    const resp = npsResponses.filter(r=>r.plan===p.name);
+    if (!resp.length) return '';
+    const prom = resp.filter(r=>r.type==='Promotor').length;
+    const detr = resp.filter(r=>r.type==='Detrator').length;
+    const sc = Math.round(((prom-detr)/resp.length)*100);
+    const col = sc>=50?C.green:sc>=0?C.yellow:C.red;
+    return `<div style="background:${C.bg};border:1px solid ${C.border};border-radius:10px;padding:16px;text-align:center">
+      <div style="font-size:11px;color:${C.muted};margin-bottom:8px">${esc(p.name)}</div>
+      <div style="font-size:28px;font-weight:800;color:${col}">${sc}</div>
+      <div style="font-size:10px;color:${C.muted};margin-top:4px">${resp.length} respostas</div>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:8px">
+        <span style="font-size:10px;color:${C.green}">▲${prom}</span>
+        <span style="font-size:10px;color:${C.red}">▼${detr}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  const commentRows = npsResponses.slice(0,15).map((r,i) => {
+    const col = r.type==='Promotor'?C.green:r.type==='Neutro'?C.yellow:C.red;
+    return `<tr style="background:${i%2===0?'transparent':'#ffffff04'}">
+      <td style="font-size:13px;font-weight:500">${esc(r.name)}</td>
+      <td style="font-size:12px;color:${C.subtle}">${esc(r.plan)}</td>
+      <td><div class="nps-circle" style="background:${col}22;border:2px solid ${col};color:${col}">${r.score}</div></td>
+      <td><span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:${col}18;color:${col}">${r.type}</span></td>
+      <td style="font-size:12px;color:${C.subtle};max-width:240px">${esc(r.comment)}</td>
+      <td style="font-size:11px;color:${C.muted}">${r.date}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('tab-nps').innerHTML = `
+    <h1 class="page-title">NPS — Net Promoter Score</h1>
+    <p class="page-sub">Pesquisa de satisfação com ${total} respostas coletadas</p>
+    <div class="kpi-grid kpi-grid-4" style="margin-bottom:28px">
+      <div class="kpi-card" style="border-color:${zone.color}44">
+        <span class="kpi-label">NPS Score</span>
+        <span style="font-size:42px;font-weight:800;color:${zone.color};line-height:1">${npsScore}</span>
+        <span style="font-size:12px;font-weight:600;color:${zone.color};background:${zone.color}18;padding:3px 10px;border-radius:20px;align-self:flex-start">Zona de ${zone.label}</span>
+      </div>
+      ${kpiCard('Promotores (9–10)', promoters, pct(promoters/total*100), C.green, null, 4.2)}
+      ${kpiCard('Neutros (7–8)', neutrals, pct(neutrals/total*100), C.yellow)}
+      ${kpiCard('Detratores (0–6)', detractors, pct(detractors/total*100), C.red, null, -1.8)}
+    </div>
+    <div class="two-col" style="margin-bottom:20px">
+      <div class="card card-body">
+        <div class="card-title">Distribuição de Notas</div>
+        ${scoreBars}
+        <div style="display:flex;gap:16px;margin-top:16px">
+          ${[{label:'Detratores 0–6',color:C.red},{label:'Neutros 7–8',color:C.yellow},{label:'Promotores 9–10',color:C.green}].map(l=>`
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="width:10px;height:10px;background:${l.color};border-radius:2px"></div>
+            <span style="font-size:10px;color:${C.muted}">${l.label}</span>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="card card-body">
+        <div class="card-title">Evolução do NPS — 6 meses</div>
+        <div style="display:flex;align-items:flex-end;gap:10px;height:120px;margin-bottom:12px">${histBars}</div>
+        <div style="margin-top:12px">
+          ${[{range:'75–100',label:'Excelência',color:'#10B981'},{range:'50–74',label:'Qualidade',color:C.green},
+             {range:'0–49',label:'Aperfeiçoamento',color:C.yellow},{range:'-100–-1',label:'Crítico',color:C.red}].map(z=>`
+          <div class="summary-row">
+            <span style="font-size:11px;color:${z.color};font-weight:600">${z.label}</span>
+            <span style="font-size:11px;color:${C.muted}">${z.range}</span>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="card card-body" style="margin-bottom:20px">
+      <div class="card-title">NPS por Plano</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">${planNps}</div>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">Comentários Recentes</div>
+      <table>
+        <thead><tr>${['Cliente','Plano','Nota','Tipo','Comentário','Data'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${commentRows}</tbody>
+      </table>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TAB: IXC
+// ══════════════════════════════════════════════════════════════════════════════
+let ixcState = { url:'', token:'', connected:false, loading:false, error:'', data:null, lastSync:null, syncing:false };
+
+function renderIxc() {
+  const s = ixcState;
+  const ixcMetrics = s.data ? computeIxcMetrics(s.data) : null;
+
+  const stepsHTML = [
+    'Acesse seu IXC Soft como administrador',
+    'Vá em Configurações → Integrações → API REST',
+    'Clique em "Novo Token" e dê um nome (ex: NetControl)',
+    'Selecione permissões: Clientes, Contratos, Financeiro',
+    'Copie o token gerado e cole no campo ao lado',
+  ].map((text,i) => `<div style="display:flex;gap:14px;margin-bottom:16px;align-items:flex-start">
+    <div style="min-width:26px;height:26px;border-radius:50%;background:${C.accent}22;border:1px solid ${C.accent}44;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:${C.accentL}">${i+1}</div>
+    <span style="font-size:13px;color:${C.subtle};padding-top:3px">${esc(text)}</span>
+  </div>`).join('');
+
+  let syncPanel = '';
+  if (s.connected) {
+    if (!s.data) {
+      syncPanel = `<div class="card card-body" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">⟳</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:8px">Pronto para sincronizar</div>
+        <div style="font-size:13px;color:${C.muted};margin-bottom:20px">Clique em "Sincronizar Agora" para buscar seus dados reais do IXC</div>
+        <button onclick="ixcSync()" style="padding:10px 28px;border-radius:8px;border:none;background:linear-gradient(135deg,${C.accent},${C.purple});color:#fff;font-size:13px;font-weight:600;cursor:pointer">Sincronizar</button>
+      </div>`;
+    } else if (ixcMetrics) {
+      const clientRows = s.data.clients.slice(0,20).map((c,i)=>`<tr style="background:${i%2===0?'transparent':'#ffffff04'}">
+        <td style="font-size:12px;color:${C.muted}">${esc(c.id||'')}</td>
+        <td style="font-size:13px;font-weight:500">${esc(c.razao||c.nome||'—')}</td>
+        <td style="font-size:12px;color:${C.subtle}">${esc(c.cnpj_cpf||'—')}</td>
+        <td style="font-size:12px;color:${C.subtle}">${esc(c.cidade||'—')}</td>
+        <td>${badge(c.ativo==='S'?'Ativo':'Cancelado')}</td>
+        <td style="font-size:12px;color:${C.subtle}">${esc(c.fone_celular||c.fone||'—')}</td>
+      </tr>`).join('');
+      syncPanel = `
+        <div class="kpi-grid kpi-grid-4" style="margin-bottom:24px">
+          ${kpiCard('Total de Clientes', ixcMetrics.totalClients, 'base IXC real', C.accent)}
+          ${kpiCard('Clientes Ativos', ixcMetrics.activeClients, `de ${ixcMetrics.totalClients}`, C.green)}
+          ${kpiCard('Inadimplentes', ixcMetrics.overdueCount, fmt(ixcMetrics.overdueValue), C.red)}
+          ${kpiCard('MRR Real', fmt(ixcMetrics.mrr), 'contratos ativos', C.purple)}
+        </div>
+        <div class="table-wrap">
+          <div class="table-header"><span>Clientes — ${s.data.clients.length} registros</span><span style="font-size:12px;color:${C.green}">✓ Dados reais IXC</span></div>
+          <table>
+            <thead><tr>${['ID','Nome','CPF/CNPJ','Cidade','Status','Contato'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+            <tbody>${clientRows}</tbody>
+          </table>
+          ${s.data.clients.length>20?`<div style="padding:12px 20px;font-size:12px;color:${C.muted}">Exibindo 20 de ${s.data.clients.length} clientes</div>`:''}
+        </div>`;
+    }
+  }
+
+  document.getElementById('tab-ixc').innerHTML = `
+    <h1 class="page-title">Integração IXC Soft</h1>
+    <p class="page-sub">Conecte sua conta IXC para sincronizar dados reais</p>
+    <div class="two-col" style="margin-bottom:24px">
+      <div class="card card-body" style="border-color:${s.connected?C.green:C.border}">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px">
+          <div style="width:40px;height:40px;border-radius:10px;background:${s.connected?C.green+'22':C.accent+'22'};border:1px solid ${s.connected?C.green:C.accent}44;display:flex;align-items:center;justify-content:center;font-size:20px">⬡</div>
+          <div>
+            <div style="font-size:15px;font-weight:700">IXC Soft API</div>
+            <div style="font-size:12px;color:${s.connected?C.green:C.muted}">${s.connected?'✓ Conectado':'Não conectado'}</div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px">
+          <label class="ixc-label">URL do IXC</label>
+          <input class="ixc-input" value="${esc(s.url)}" placeholder="https://suaempresa.ixcsoft.com.br" oninput="ixcState.url=this.value" />
+        </div>
+        <div style="margin-bottom:20px">
+          <label class="ixc-label">Token de API</label>
+          <input class="ixc-input" type="password" value="${esc(s.token)}" placeholder="Seu token gerado no IXC" oninput="ixcState.token=this.value" />
+        </div>
+        ${s.error?`<div class="ixc-error">${esc(s.error)}</div>`:''}
+        <button class="ixc-btn" ${!s.url||!s.token||s.loading?'disabled':''} onclick="ixcTest()">
+          ${s.loading?'Testando conexão…':s.connected?'Reconectar':'Testar Conexão'}
+        </button>
+        ${s.connected?`<div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:15px;font-weight:600">Dados Sincronizados</div>
+            ${s.lastSync?`<div style="font-size:12px;color:${C.muted}">Última sync: ${esc(s.lastSync)}</div>`:''}
+          </div>
+          <button onclick="ixcSync()" ${s.syncing?'disabled':''} style="padding:9px 20px;border-radius:8px;border:1px solid ${C.accent};background:${C.accent}18;color:${C.accentL};font-size:13px;font-weight:600;cursor:${s.syncing?'not-allowed':'pointer'}">
+            ${s.syncing?'Sincronizando…':'⟳ Sincronizar Agora'}
+          </button>
+        </div>`:''}
+      </div>
+      <div class="card card-body">
+        <div style="font-size:14px;font-weight:600;margin-bottom:20px">Como gerar o Token no IXC</div>
+        ${stepsHTML}
+        <div style="margin-top:8px;padding:10px 14px;background:${C.yellow}10;border:1px solid ${C.yellow}33;border-radius:8px;font-size:12px;color:${C.yellow}">
+          ⚠ O token fica salvo localmente no navegador. Nunca compartilhe com terceiros.
+        </div>
+      </div>
+    </div>
+    ${syncPanel}`;
+}
+
+function computeIxcMetrics(data) {
+  const {clients, contracts, financials} = data;
+  const active = clients.filter(c=>c.ativo==='S'||c.status==='A');
+  const today = new Date().toISOString().split('T')[0];
+  const overdue = financials.filter(f=>f.status==='A'&&f.data_vencimento<today);
+  const overdueVal = overdue.reduce((s,f)=>s+parseFloat(f.valor||0),0);
+  const mrr = contracts.reduce((s,c)=>s+parseFloat(c.valor_plano||c.valor||0),0);
+  return {totalClients:clients.length, activeClients:active.length, overdueCount:overdue.length, overdueValue:overdueVal, mrr};
+}
+
+async function ixcFetch(baseUrl, token, endpoint, params={}) {
+  const rp = params.rp || '100';
+  const res = await fetch('/api/ixc-proxy', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-ixc-url': baseUrl,
+      'x-ixc-token': token,
+      'x-ixc-endpoint': endpoint,
+    },
+    body: JSON.stringify({ params, rp }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(()=>({}));
+    throw new Error(err.error || `HTTP ${res.status}`);
+  }
+  return res.json();
+}
+
+async function ixcTest() {
+  ixcState.loading = true; ixcState.error = ''; renderIxc();
+  try {
+    const data = await ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'1'});
+    if (data && (data.registros !== undefined || Array.isArray(data))) {
+      ixcState.connected = true;
+    } else throw new Error('Resposta inesperada da API');
+  } catch(e) {
+    ixcState.error = `Falha na conexão: ${e.message}. Verifique a URL e o token.`;
+    ixcState.connected = false;
+  }
+  ixcState.loading = false; renderIxc();
+}
+
+async function ixcSync() {
+  if (!ixcState.connected) return;
+  ixcState.syncing = true; ixcState.error = ''; renderIxc();
+  try {
+    const [cr, conr, fr] = await Promise.all([
+      ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}),
+      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}),
+    ]);
+    ixcState.data = {
+      clients: cr?.registros||cr||[],
+      contracts: conr?.registros||conr||[],
+      financials: fr?.registros||fr||[],
+    };
+    ixcState.lastSync = new Date().toLocaleString('pt-BR');
+  } catch(e) {
+    ixcState.error = `Erro ao sincronizar: ${e.message}`;
+  }
+  ixcState.syncing = false; renderIxc();
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+renderNav();
+renderDashboard();
+renderClients();
+renderDelinquency();
+renderChurn();
+renderFinancials();
+renderCac();
+renderNps();
+renderIxc();
+</script>
+</body>
+</html>
