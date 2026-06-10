@@ -26,14 +26,25 @@ export default async function handler(req, res) {
     sortname: 'id', sortorder: 'desc',
   });
 
-  // Build all auth formats to try in order:
-  // 1. user:token  (if user was provided)
-  // 2. token:      (token as username, empty password — formato padrão IXC)
-  // 3. :token      (empty username, token as password)
+  // 1. First: probe without any auth to see what server returns
+  let probePreview = '';
+  try {
+    const probe = await fetch(url.toString(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ixcsoft': 'listar' },
+      body,
+    });
+    const probeText = await probe.text();
+    probePreview = `[sem-auth] HTTP ${probe.status} → ${probeText.slice(0, 300)}`;
+  } catch(e) {
+    probePreview = `[sem-auth] fetch error: ${e.message}`;
+  }
+
+  // 2. Try auth formats
   const authCandidates = [];
   if (ixcUser) authCandidates.push(`${ixcUser}:${ixcToken}`);
   authCandidates.push(`${ixcToken}:`);
-  if (ixcUser) authCandidates.push(`${ixcToken}:${ixcUser}`); // some versions reversed
+  if (ixcUser) authCandidates.push(`${ixcToken}:${ixcUser}`);
   authCandidates.push(`:${ixcToken}`);
 
   const results = [];
@@ -55,34 +66,33 @@ export default async function handler(req, res) {
       const isHtml = text.trim().startsWith('<');
 
       results.push({
-        authFormat: authString.replace(ixcToken, '***TOKEN***'),
+        authFormat: authString.replace(ixcToken, '***'),
         httpStatus: response.status,
         isHtml,
-        preview: text.slice(0, 120),
+        // Show first 300 chars so we can identify what's blocking
+        responsePreview: text.slice(0, 300),
       });
 
       if (!isHtml) {
         try {
           const data = JSON.parse(text);
-          // Success — return data plus which format worked (for debugging)
-          return res.status(200).json({ ...data, _authFormat: authString.replace(ixcToken, '***TOKEN***') });
+          return res.status(200).json({ ...data, _authFormat: authString.replace(ixcToken, '***') });
         } catch {
-          // Not JSON either — continue trying
           results[results.length - 1].parseError = 'Não é JSON válido';
         }
       }
     } catch (err) {
       results.push({
-        authFormat: authString.replace(ixcToken, '***TOKEN***'),
+        authFormat: authString.replace(ixcToken, '***'),
         fetchError: err.message,
       });
     }
   }
 
-  // All formats failed — return full diagnostic
   return res.status(401).json({
-    error: 'Nenhum formato de autenticação funcionou. Verifique o token e a URL.',
+    error: 'Nenhum formato funcionou.',
     urlTested: url.toString(),
+    probeResult: probePreview,
     diagnostics: results,
   });
 }
