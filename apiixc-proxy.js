@@ -17,7 +17,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const url = new URL(`${ixcUrl.replace(/\/$/, '')}/webservice/v1/${endpoint}`);
+    const base = ixcUrl.replace(/\/$/, '').replace(/\/adm\.php$/, '');
+    const url = new URL(`${base}/adm.php/webservice/v1/${endpoint}`);
     Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
 
     const response = await fetch(url.toString(), {
