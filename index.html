@@ -943,8 +943,8 @@ function renderIxc() {
           <input id="ixc-url-input" class="ixc-input" value="${esc(s.url)}" placeholder="https://suaempresa.ixcsoft.com.br" oninput="ixcState.url=this.value.trim();updateIxcBtn()" />
         </div>
         <div style="margin-bottom:16px">
-          <label class="ixc-label">Usuário do IXC</label>
-          <input id="ixc-user-input" class="ixc-input" value="${esc(s.user)}" placeholder="Seu usuário de login do IXC" oninput="ixcState.user=this.value.trim()" />
+          <label class="ixc-label">Usuário de Login</label>
+          <input id="ixc-user-input" class="ixc-input" value="${esc(s.user)}" placeholder="Usuário administrador do IXC (ex: admin)" oninput="ixcState.user=this.value.trim();updateIxcBtn()" />
         </div>
         <div style="margin-bottom:20px">
           <label class="ixc-label">Token de API</label>
@@ -985,7 +985,7 @@ function computeIxcMetrics(data) {
   return {totalClients:clients.length, activeClients:active.length, overdueCount:overdue.length, overdueValue:overdueVal, mrr};
 }
 
-async function ixcFetch(baseUrl, token, endpoint, params={}) {
+async function ixcFetch(baseUrl, token, endpoint, params={}, user='') {
   const rp = params.rp || '100';
   const res = await fetch('/api/ixc-proxy', {
     method: 'POST',
@@ -993,7 +993,7 @@ async function ixcFetch(baseUrl, token, endpoint, params={}) {
       'Content-Type': 'application/json',
       'x-ixc-url': baseUrl,
       'x-ixc-token': token,
-      'x-ixc-user': ixcState.user || '',
+      'x-ixc-user': user,
       'x-ixc-endpoint': endpoint,
     },
     body: JSON.stringify({ params, rp }),
@@ -1008,20 +1008,21 @@ async function ixcFetch(baseUrl, token, endpoint, params={}) {
 function updateIxcBtn() {
   const btn = document.getElementById('ixc-test-btn');
   const url = document.getElementById('ixc-url-input');
+  const usr = document.getElementById('ixc-user-input');
   const tok = document.getElementById('ixc-token-input');
-  if (!btn || !url || !tok) return;
-  btn.disabled = !url.value.trim() || !tok.value.trim();
+  if (!btn || !url || !usr || !tok) return;
+  btn.disabled = !url.value.trim() || !usr.value.trim() || !tok.value.trim();
 }
 
 async function ixcTest() {
   ixcState.loading = true; ixcState.error = ''; renderIxc();
   try {
-    const data = await ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'1'});
+    const data = await ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'1'}, ixcState.user);
     if (data && (data.registros !== undefined || Array.isArray(data))) {
       ixcState.connected = true;
     } else throw new Error('Resposta inesperada da API');
   } catch(e) {
-    ixcState.error = `Falha na conexão: ${e.message}. Verifique a URL e o token.`;
+    ixcState.error = `Falha na conexão: ${e.message}. Verifique a URL, o usuário e o token.`;
     ixcState.connected = false;
   }
   ixcState.loading = false; renderIxc();
@@ -1032,9 +1033,9 @@ async function ixcSync() {
   ixcState.syncing = true; ixcState.error = ''; renderIxc();
   try {
     const [cr, conr, fr] = await Promise.all([
-      ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}),
-      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}),
-      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}, ixcState.user),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}, ixcState.user),
+      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}, ixcState.user),
     ]);
     ixcState.data = {
       clients: cr?.registros||cr||[],
