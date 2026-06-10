@@ -873,7 +873,7 @@ function renderNps() {
 // ══════════════════════════════════════════════════════════════════════════════
 // TAB: IXC
 // ══════════════════════════════════════════════════════════════════════════════
-let ixcState = { url:'', token:'', connected:false, loading:false, error:'', data:null, lastSync:null, syncing:false };
+let ixcState = { url:'', token:'', user:'', connected:false, loading:false, error:'', data:null, lastSync:null, syncing:false };
 
 function renderIxc() {
   const s = ixcState;
@@ -942,6 +942,10 @@ function renderIxc() {
           <label class="ixc-label">URL do IXC</label>
           <input id="ixc-url-input" class="ixc-input" value="${esc(s.url)}" placeholder="https://suaempresa.ixcsoft.com.br" oninput="ixcState.url=this.value.trim();updateIxcBtn()" />
         </div>
+        <div style="margin-bottom:16px">
+          <label class="ixc-label">Usuário do IXC</label>
+          <input id="ixc-user-input" class="ixc-input" value="${esc(s.user)}" placeholder="Seu usuário de login do IXC" oninput="ixcState.user=this.value.trim()" />
+        </div>
         <div style="margin-bottom:20px">
           <label class="ixc-label">Token de API</label>
           <input id="ixc-token-input" class="ixc-input" type="password" value="${esc(s.token)}" placeholder="Seu token gerado no IXC" oninput="ixcState.token=this.value.trim();updateIxcBtn()" />
@@ -989,6 +993,7 @@ async function ixcFetch(baseUrl, token, endpoint, params={}) {
       'Content-Type': 'application/json',
       'x-ixc-url': baseUrl,
       'x-ixc-token': token,
+      'x-ixc-user': ixcState.user || '',
       'x-ixc-endpoint': endpoint,
     },
     body: JSON.stringify({ params, rp }),
