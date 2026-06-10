@@ -940,14 +940,14 @@ function renderIxc() {
         </div>
         <div style="margin-bottom:16px">
           <label class="ixc-label">URL do IXC</label>
-          <input class="ixc-input" value="${esc(s.url)}" placeholder="https://suaempresa.ixcsoft.com.br" oninput="ixcState.url=this.value" />
+          <input id="ixc-url-input" class="ixc-input" value="${esc(s.url)}" placeholder="https://suaempresa.ixcsoft.com.br" oninput="ixcState.url=this.value.trim();updateIxcBtn()" />
         </div>
         <div style="margin-bottom:20px">
           <label class="ixc-label">Token de API</label>
-          <input class="ixc-input" type="password" value="${esc(s.token)}" placeholder="Seu token gerado no IXC" oninput="ixcState.token=this.value" />
+          <input id="ixc-token-input" class="ixc-input" type="password" value="${esc(s.token)}" placeholder="Seu token gerado no IXC" oninput="ixcState.token=this.value.trim();updateIxcBtn()" />
         </div>
         ${s.error?`<div class="ixc-error">${esc(s.error)}</div>`:''}
-        <button class="ixc-btn" ${!s.url||!s.token||s.loading?'disabled':''} onclick="ixcTest()">
+        <button id="ixc-test-btn" class="ixc-btn" onclick="ixcTest()">
           ${s.loading?'Testando conexão…':s.connected?'Reconectar':'Testar Conexão'}
         </button>
         ${s.connected?`<div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center">
@@ -1000,6 +1000,14 @@ async function ixcFetch(baseUrl, token, endpoint, params={}) {
   return res.json();
 }
 
+function updateIxcBtn() {
+  const btn = document.getElementById('ixc-test-btn');
+  const url = document.getElementById('ixc-url-input');
+  const tok = document.getElementById('ixc-token-input');
+  if (!btn || !url || !tok) return;
+  btn.disabled = !url.value.trim() || !tok.value.trim();
+}
+
 async function ixcTest() {
   ixcState.loading = true; ixcState.error = ''; renderIxc();
   try {
@@ -1032,7 +1040,7 @@ async function ixcSync() {
   } catch(e) {
     ixcState.error = `Erro ao sincronizar: ${e.message}`;
   }
-  ixcState.syncing = false; renderIxc();
+  ixcState.syncing = false; renderIxc(); setTimeout(updateIxcBtn,0);
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
@@ -1044,7 +1052,7 @@ renderChurn();
 renderFinancials();
 renderCac();
 renderNps();
-renderIxc();
+renderIxc(); setTimeout(updateIxcBtn, 0);
 </script>
 </body>
 </html>
