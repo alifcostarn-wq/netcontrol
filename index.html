@@ -873,7 +873,7 @@ function renderNps() {
 // ══════════════════════════════════════════════════════════════════════════════
 // TAB: IXC
 // ══════════════════════════════════════════════════════════════════════════════
-let ixcState = { url:'', token:'', user:'', connected:false, loading:false, error:'', data:null, lastSync:null, syncing:false };
+let ixcState = { url:'', token:'', user:'', secret:'', connected:false, loading:false, error:'', data:null, lastSync:null, syncing:false };
 
 function renderIxc() {
   const s = ixcState;
@@ -948,7 +948,11 @@ function renderIxc() {
         </div>
         <div style="margin-bottom:20px">
           <label class="ixc-label">Token de API</label>
-          <input id="ixc-token-input" class="ixc-input" type="password" value="${esc(s.token)}" placeholder="Seu token gerado no IXC" oninput="ixcState.token=this.value.trim();updateIxcBtn()" />
+          <input id="ixc-token-input" class="ixc-input" type="password" value="${esc(s.token)}" placeholder="Token ou Client ID gerado no IXC" oninput="ixcState.token=this.value.trim();updateIxcBtn()" />
+        </div>
+        <div style="margin-bottom:16px">
+          <label class="ixc-label">Client Secret <span style="font-size:10px;color:${C.muted}">(MoviOn/OAuth — opcional)</span></label>
+          <input id="ixc-secret-input" class="ixc-input" type="password" value="${esc(s.secret)}" placeholder="Client Secret do OAuth Server (se usar MoviOn)" oninput="ixcState.secret=this.value.trim()" />
         </div>
         ${s.error?`<div class="ixc-error">${esc(s.error)}</div>`:''}
         <button id="ixc-test-btn" class="ixc-btn" onclick="ixcTest()">
@@ -985,7 +989,7 @@ function computeIxcMetrics(data) {
   return {totalClients:clients.length, activeClients:active.length, overdueCount:overdue.length, overdueValue:overdueVal, mrr};
 }
 
-async function ixcFetch(baseUrl, token, endpoint, params={}, user='') {
+async function ixcFetch(baseUrl, token, endpoint, params={}, user='', secret='') {
   const rp = params.rp || '100';
   const res = await fetch('/api/ixc-proxy', {
     method: 'POST',
@@ -994,6 +998,7 @@ async function ixcFetch(baseUrl, token, endpoint, params={}, user='') {
       'x-ixc-url': baseUrl,
       'x-ixc-token': token,
       'x-ixc-user': user,
+      'x-ixc-secret': secret,
       'x-ixc-endpoint': endpoint,
     },
     body: JSON.stringify({ params, rp }),
@@ -1025,7 +1030,7 @@ function updateIxcBtn() {
 async function ixcTest() {
   ixcState.loading = true; ixcState.error = ''; renderIxc();
   try {
-    const data = await ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'1'}, ixcState.user);
+    const data = await ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'1'}, ixcState.user, ixcState.secret);
     if (data && (data.registros !== undefined || Array.isArray(data))) {
       ixcState.connected = true;
     } else throw new Error('Resposta inesperada da API');
@@ -1041,9 +1046,9 @@ async function ixcSync() {
   ixcState.syncing = true; ixcState.error = ''; renderIxc();
   try {
     const [cr, conr, fr] = await Promise.all([
-      ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}, ixcState.user),
-      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}, ixcState.user),
-      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}, ixcState.user),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}, ixcState.user, ixcState.secret),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}, ixcState.user, ixcState.secret),
+      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}, ixcState.user, ixcState.secret),
     ]);
     ixcState.data = {
       clients: cr?.registros||cr||[],
