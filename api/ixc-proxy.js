@@ -1,15 +1,16 @@
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-ixc-url, x-ixc-token, x-ixc-user, x-ixc-endpoint, x-ixc-auth-type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-ixc-url, x-ixc-token, x-ixc-user, x-ixc-endpoint, x-ixc-secret, x-ixc-password');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const ixcUrl      = req.headers['x-ixc-url'];
-  const ixcToken    = req.headers['x-ixc-token'];
+  const ixcToken    = req.headers['x-ixc-token'];   // client_id ou token básico
   const ixcUser     = req.headers['x-ixc-user'] || '';
   const ixcSecret   = req.headers['x-ixc-secret'] || '';
+  const ixcPassword = req.headers['x-ixc-password'] || '';
   const endpoint    = req.headers['x-ixc-endpoint'];
   const params      = req.body?.params || {};
 
@@ -19,37 +20,88 @@ export default async function handler(req, res) {
 
   const base = ixcUrl.replace(/\/$/, '').replace(/\/adm\.php$/, '');
 
-  const body = JSON.stringify({
+  const apiBody = JSON.stringify({
     qtype: '', query: '', oper: '=',
     page: '1', rp: req.body?.rp || '100',
     sortname: 'id', sortorder: 'desc',
   });
 
-  // ── Strategy 1: OAuth2 Client Credentials (MoviOn / IXC novo) ────────────────
-  // Try to get a Bearer token first if we have client_id + client_secret
+  // ── STEP 1: Try OAuth2 token endpoint (multiple paths + grant types) ─────────
+  const oauthLog = [];
   let bearerToken = null;
-  if (ixcUser && ixcSecret) {
-    try {
-      const oauthUrl = `${base}/adm.php/oauth/token`;
-      const oauthRes = await fetch(oauthUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          grant_type:    'client_credentials',
-          client_id:     ixcUser,
-          client_secret: ixcSecret,
-        }),
-      });
-      const oauthData = await oauthRes.json().catch(() => ({}));
-      if (oauthData.access_token) {
-        bearerToken = oauthData.access_token;
+
+  const oauthEndpoints = [
+    `${base}/adm.php/oauth/token`,
+    `${base}/oauth/token`,
+    `${base}/adm.php/index.php/oauth/token`,
+  ];
+
+  for (const oauthUrl of oauthEndpoints) {
+    if (bearerToken) break;
+
+    // client_credentials grant
+    if (ixcToken && ixcSecret) {
+      try {
+        const r = await fetch(oauthUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            grant_type: 'client_credentials',
+            client_id: ixcToken,
+            client_secret: ixcSecret,
+          }),
+        });
+        const text = await r.text();
+        oauthLog.push({ url: oauthUrl, grant: 'client_credentials', status: r.status, response: text.slice(0, 300) });
+        const data = JSON.parse(text);
+        if (data.access_token) { bearerToken = data.access_token; break; }
+      } catch (e) {
+        oauthLog.push({ url: oauthUrl, grant: 'client_credentials', error: e.message });
       }
-    } catch (_) {}
+    }
+
+    // password grant (user + token como senha, ou user + password)
+    if (ixcUser && (ixcSecret || ixcPassword || ixcToken)) {
+      const passwordToTry = ixcPassword || ixcSecret || ixcToken;
+      try {
+        const r = await fetch(oauthUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            grant_type: 'password',
+            client_id: ixcToken,
+            client_secret: ixcSecret,
+            username: ixcUser,
+            password: passwordToTry,
+          }),
+        });
+        const text = await r.text();
+        oauthLog.push({ url: oauthUrl, grant: 'password', status: r.status, response: text.slice(0, 300) });
+        const data = JSON.parse(text);
+        if (data.access_token) { bearerToken = data.access_token; break; }
+      } catch (e) {
+        oauthLog.push({ url: oauthUrl, grant: 'password', error: e.message });
+      }
+    }
   }
 
-  // ── Strategy 2: Bearer with provided token directly ──────────────────────────
-  if (!bearerToken) bearerToken = ixcToken;
+  // ── STEP 2: Build auth variants to try ───────────────────────────────────────
+  const authHeaders = [];
 
+  // OAuth Bearer (if we got a token)
+  if (bearerToken) {
+    authHeaders.push({ label: 'OAuth Bearer', Authorization: `Bearer ${bearerToken}` });
+  }
+
+  // Bearer with raw token (in case token IS already a bearer)
+  authHeaders.push({ label: 'Bearer (raw token)', Authorization: `Bearer ${ixcToken}` });
+
+  // Basic auth variants
+  if (ixcUser) authHeaders.push({ label: `Basic user:token`, Authorization: `Basic ${Buffer.from(`${ixcUser}:${ixcToken}`).toString('base64')}` });
+  authHeaders.push({ label: 'Basic token:', Authorization: `Basic ${Buffer.from(`${ixcToken}:`).toString('base64')}` });
+  if (ixcSecret) authHeaders.push({ label: 'Basic id:secret', Authorization: `Basic ${Buffer.from(`${ixcToken}:${ixcSecret}`).toString('base64')}` });
+
+  // ── STEP 3: Try API endpoints ────────────────────────────────────────────────
   const urlCandidates = [
     `${base}/adm.php/webservice/v1/${endpoint}`,
     `${base}/webservice/v1/${endpoint}`,
@@ -57,69 +109,42 @@ export default async function handler(req, res) {
     `${base}/api/v1/${endpoint}`,
   ];
 
-  // Auth variations to try for each URL
-  const makeHeaders = (auth) => ({
-    ...auth,
-    'Content-Type': 'application/json',
-    'ixcsoft': 'listar',
-    'Accept': 'application/json',
-  });
-
-  const authVariants = [
-    // Bearer token (MoviOn OAuth style)
-    makeHeaders({ 'Authorization': `Bearer ${bearerToken}` }),
-    // Basic with user:token
-    ...(ixcUser ? [makeHeaders({ 'Authorization': `Basic ${Buffer.from(`${ixcUser}:${ixcToken}`).toString('base64')}` })] : []),
-    // Basic token: (classic IXC)
-    makeHeaders({ 'Authorization': `Basic ${Buffer.from(`${ixcToken}:`).toString('base64')}` }),
-    // Token in header directly
-    makeHeaders({ 'token': ixcToken }),
-    makeHeaders({ 'Authorization': ixcToken }),
-  ];
-
-  const allResults = [];
+  const apiResults = [];
 
   for (const rawUrl of urlCandidates) {
     const url = new URL(rawUrl);
     Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
 
-    for (const headers of authVariants) {
+    for (const { label, ...hdrs } of authHeaders) {
       try {
-        const response = await fetch(url.toString(), { method: 'POST', headers, body });
-        const text     = await response.text();
-        const isHtml   = text.trim().startsWith('<');
-
-        allResults.push({
-          url: url.pathname,
-          authType: headers['Authorization']?.split(' ')[0] || 'custom',
-          httpStatus: response.status,
-          isHtml,
-          preview: text.slice(0, 150),
+        const response = await fetch(url.toString(), {
+          method: 'POST',
+          headers: { ...hdrs, 'Content-Type': 'application/json', 'ixcsoft': 'listar' },
+          body: apiBody,
         });
+        const text   = await response.text();
+        const isHtml = text.trim().startsWith('<');
+
+        apiResults.push({ url: url.pathname, auth: label, status: response.status, isHtml, preview: text.slice(0, 200) });
 
         if (!isHtml && response.status < 400) {
           try {
             const data = JSON.parse(text);
-            return res.status(200).json({
-              ...data,
-              _workingUrl: url.toString(),
-              _authType: headers['Authorization']?.split(' ')[0] || 'custom',
-            });
-          } catch { /* not JSON */ }
+            return res.status(200).json({ ...data, _workingUrl: url.toString(), _auth: label });
+          } catch { /* not valid JSON */ }
         }
-      } catch (err) {
-        allResults.push({ url: rawUrl, fetchError: err.message });
+      } catch (e) {
+        apiResults.push({ url: rawUrl, auth: label, error: e.message });
       }
     }
   }
 
-  const summary = [...new Set(allResults.map(r => `${r.url} → HTTP ${r.httpStatus ?? '?'} ${r.isHtml ? 'HTML' : r.fetchError ? 'ERR' : 'JSON?'}`))]
-    .slice(0, 10);
-
   return res.status(401).json({
-    error: 'Falha na autenticação. Veja o resumo abaixo.',
-    dica: 'Se você usa MoviOn/IXC novo, vá em OAuth Server no IXC e crie um Client ID + Client Secret.',
-    summary,
-    allResults: allResults.slice(0, 8),
+    error: 'Autenticação falhou em todas as tentativas.',
+    oauthAttempts: oauthLog,
+    apiAttempts: apiResults.slice(0, 10),
+    dica: oauthLog.length === 0
+      ? 'Headers x-ixc-secret não chegaram ao proxy.'
+      : 'Veja oauthAttempts para detalhes do erro OAuth.',
   });
 }
