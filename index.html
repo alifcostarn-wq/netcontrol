@@ -1100,7 +1100,7 @@ function computeIxcMetrics(data) {
   const today = new Date().toISOString().split('T')[0];
   const overdue = financials.filter(f=>f.status==='A'&&f.data_vencimento<today);
   const overdueVal = overdue.reduce((s,f)=>s+parseIxcFloat(f.valor),0);
-  const mrr = contracts.reduce((s,c)=>s+parseIxcFloat(c.valor||c.valor_plano),0);
+  const mrr = contracts.reduce((s,c)=>s+parseIxcFloat(c.ativacao_valor_parcela||c.valor_plano||c.valor),0);
   return {totalClients:clients.length, activeClients:active.length, overdueCount:overdue.length, overdueValue:overdueVal, mrr};
 }
 
@@ -1185,10 +1185,12 @@ function applyIxcData() {
   CLIENTS = raw.map((c, i) => {
     const cid      = String(c.id);
     const contract = contractByClient[cid];
-    const price    = contract ? parseIxcFloat(contract.valor_plano || contract.valor || contract.mensalidade) : 0;
-    // "tipo" no IXC cliente_contrato é o nome do plano de venda; usar como prioridade
-    const planName = contract?.tipo || contract?.descricao || contract?.nome_plano || contract?.descricao_plano || 'Plano';
-    const rawStatus = contract?.status_internet || c.status;
+    // Campos reais do IXC cliente_contrato (confirmado via API):
+    // valor = ativacao_valor_parcela | nome = contrato | descricao_aux_plano_venda
+    // "tipo" = tipo de pessoa (I/F), NÃO é o nome do plano!
+    const price    = contract ? parseIxcFloat(contract.ativacao_valor_parcela || contract.valor_plano || contract.valor || contract.mensalidade) : 0;
+    const planName = contract?.contrato || contract?.descricao_aux_plano_venda || contract?.nome_plano || contract?.descricao || 'Plano';
+    const rawStatus = contract?.status_internet || contract?.status || c.status;
     let status = mapIxcStatus(rawStatus);
 
     // If has overdue financial record, mark as inadimplente
@@ -1380,8 +1382,8 @@ async function fetchClientFromIxc(clientId) {
     // Pegar plano e valor do contrato ativo
     const activeContract = contracts.find(c => c.status === 'A') || contracts[0];
     if (activeContract) {
-      editState.fields.plano = activeContract.tipo || activeContract.descricao || activeContract.nome_plano || editState.fields.plano;
-      editState.fields.valor = parseIxcFloat(activeContract.valor || activeContract.valor_plano || activeContract.mensalidade).toFixed(2) || editState.fields.valor;
+      editState.fields.plano = activeContract.contrato || activeContract.descricao_aux_plano_venda || activeContract.nome_plano || activeContract.descricao || editState.fields.plano;
+      editState.fields.valor = parseIxcFloat(activeContract.ativacao_valor_parcela || activeContract.valor_plano || activeContract.valor || activeContract.mensalidade).toFixed(2) || editState.fields.valor;
     }
 
   } catch(e) {
