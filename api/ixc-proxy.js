@@ -12,6 +12,7 @@ export default async function handler(req, res) {
   const ixcSecret = req.headers['x-ixc-secret'] || '';
   const endpoint  = req.headers['x-ixc-endpoint'];
   const params    = req.body?.params || {};
+  const rp        = req.body?.rp || params.rp || '100';
 
   if (!ixcUrl || !ixcToken || !endpoint) {
     return res.status(400).json({ error: 'Missing required headers' });
@@ -19,38 +20,37 @@ export default async function handler(req, res) {
 
   const base = ixcUrl.replace(/\/$/, '').replace(/\/adm\.php$/, '');
 
+  // ✅ rp and all filter params go in the POST body — NOT in the URL
   const apiBody = JSON.stringify({
-    qtype: '', query: '', oper: '=',
-    page: '1', rp: req.body?.rp || '100',
-    sortname: 'id', sortorder: 'desc',
+    qtype:     params.qtype     || '',
+    query:     params.query     || '',
+    oper:      params.oper      || '=',
+    page:      params.page      || '1',
+    rp:        String(rp),
+    sortname:  params.sortname  || 'id',
+    sortorder: params.sortorder || 'desc',
   });
 
-  // URL candidates — /webservice/v1/ first (confirmed working via 401 diagnostic)
+  // URL candidates — /webservice/v1/ confirmed working
   const urlCandidates = [
-    `${base}/webservice/v1/${endpoint}`,           // ✅ confirmed: returns 401 (API active)
-    `${base}/adm.php/webservice/v1/${endpoint}`,   // fallback classic IXC
-    `${base}/api/v1/${endpoint}`,
+    `${base}/webservice/v1/${endpoint}`,
+    `${base}/adm.php/webservice/v1/${endpoint}`,
   ];
 
-  // Auth candidates ordered by most likely to work
-  const buildAuths = () => {
-    const auths = [];
-    if (ixcUser && ixcToken) auths.push({ label: 'Basic user:token',   value: `Basic ${Buffer.from(`${ixcUser}:${ixcToken}`).toString('base64')}` });
-    auths.push({                           label: 'Basic token:',       value: `Basic ${Buffer.from(`${ixcToken}:`).toString('base64')}` });
-    if (ixcUser && ixcSecret) auths.push({ label: 'Basic user:secret', value: `Basic ${Buffer.from(`${ixcUser}:${ixcSecret}`).toString('base64')}` });
-    auths.push({                           label: 'Bearer token',       value: `Bearer ${ixcToken}` });
-    return auths;
-  };
+  const authCandidates = [];
+  if (ixcUser) authCandidates.push({ label: 'Basic user:token',   value: `Basic ${Buffer.from(`${ixcUser}:${ixcToken}`).toString('base64')}` });
+  authCandidates.push({             label: 'Basic token:',        value: `Basic ${Buffer.from(`${ixcToken}:`).toString('base64')}` });
+  if (ixcUser && ixcSecret) authCandidates.push({ label: 'Basic user:secret', value: `Basic ${Buffer.from(`${ixcUser}:${ixcSecret}`).toString('base64')}` });
 
   const results = [];
 
   for (const rawUrl of urlCandidates) {
-    const url = new URL(rawUrl);
-    Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
+    // ✅ No query string params — clean URL only
+    const url = rawUrl;
 
-    for (const { label, value } of buildAuths()) {
+    for (const { label, value } of authCandidates) {
       try {
-        const response = await fetch(url.toString(), {
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Authorization': value,
@@ -63,26 +63,25 @@ export default async function handler(req, res) {
         const text   = await response.text();
         const isHtml = text.trim().startsWith('<');
 
-        results.push({ url: url.pathname, auth: label, status: response.status, isHtml, preview: text.slice(0, 200) });
+        results.push({ url, auth: label, status: response.status, isHtml, preview: text.slice(0, 200) });
 
-        // Success
         if (!isHtml && response.status >= 200 && response.status < 400) {
           try {
             const data = JSON.parse(text);
-            return res.status(200).json({ ...data, _workingUrl: url.toString(), _auth: label });
-          } catch { /* not JSON */ }
+            return res.status(200).json({ ...data, _workingUrl: url, _auth: label });
+          } catch { /* not valid JSON */ }
         }
+
       } catch (e) {
-        results.push({ url: rawUrl, auth: label, error: e.message });
+        results.push({ url, auth: label, error: e.message });
       }
     }
   }
 
-  // Find best clue from results
   const got401 = results.find(r => r.status === 401 && !r.isHtml);
   const hint = got401
-    ? `Endpoint correto (${got401.url}) mas credenciais inválidas. Gere um novo token em: IXC → Usuários → Gerar token API`
-    : 'Nenhum endpoint respondeu como API. Verifique se a URL está correta.';
+    ? `Endpoint correto (${got401.url}) mas credenciais inválidas. Verifique o token.`
+    : results.find(r => !r.isHtml)?.preview || 'Nenhum endpoint respondeu como API.';
 
   return res.status(401).json({ error: 'Autenticação falhou.', hint, results });
 }
