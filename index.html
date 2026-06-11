@@ -1092,13 +1092,15 @@ function renderIxc() {
     ${syncPanel}`;
 }
 
+function parseIxcFloat(v) { return v ? parseFloat(String(v).replace(',', '.')) || 0 : 0; }
+
 function computeIxcMetrics(data) {
   const {clients, contracts, financials} = data;
-  const active = clients.filter(c=>c.ativo==='S'||c.status==='A');
+  const active = clients.filter(c=>c.ativo==='S'||c.status==='A'||c.ativo==='1');
   const today = new Date().toISOString().split('T')[0];
   const overdue = financials.filter(f=>f.status==='A'&&f.data_vencimento<today);
-  const overdueVal = overdue.reduce((s,f)=>s+parseFloat(f.valor||0),0);
-  const mrr = contracts.reduce((s,c)=>s+parseFloat(c.valor_plano||c.valor||0),0);
+  const overdueVal = overdue.reduce((s,f)=>s+parseIxcFloat(f.valor),0);
+  const mrr = contracts.reduce((s,c)=>s+parseIxcFloat(c.valor||c.valor_plano),0);
   return {totalClients:clients.length, activeClients:active.length, overdueCount:overdue.length, overdueValue:overdueVal, mrr};
 }
 
@@ -1183,9 +1185,10 @@ function applyIxcData() {
   CLIENTS = raw.map((c, i) => {
     const cid      = String(c.id);
     const contract = contractByClient[cid];
-    const price    = contract ? parseFloat(contract.valor_plano || contract.valor || contract.mensalidade || 0) : 0;
-    const planName = contract?.nome_plano || contract?.descricao_plano || contract?.descricao || contract?.tipo || 'Plano';
-    const rawStatus = contract?.status || c.status;
+    const price    = contract ? parseIxcFloat(contract.valor_plano || contract.valor || contract.mensalidade) : 0;
+    // "tipo" no IXC cliente_contrato é o nome do plano de venda; usar como prioridade
+    const planName = contract?.tipo || contract?.descricao || contract?.nome_plano || contract?.descricao_plano || 'Plano';
+    const rawStatus = contract?.status_internet || c.status;
     let status = mapIxcStatus(rawStatus);
 
     // If has overdue financial record, mark as inadimplente
@@ -1377,8 +1380,8 @@ async function fetchClientFromIxc(clientId) {
     // Pegar plano e valor do contrato ativo
     const activeContract = contracts.find(c => c.status === 'A') || contracts[0];
     if (activeContract) {
-      editState.fields.plano = activeContract.nome_plano || activeContract.descricao_plano || activeContract.descricao || activeContract.tipo || editState.fields.plano;
-      editState.fields.valor = parseFloat(activeContract.valor_plano || activeContract.valor || activeContract.mensalidade || 0).toFixed(2) || editState.fields.valor;
+      editState.fields.plano = activeContract.tipo || activeContract.descricao || activeContract.nome_plano || editState.fields.plano;
+      editState.fields.valor = parseIxcFloat(activeContract.valor || activeContract.valor_plano || activeContract.mensalidade).toFixed(2) || editState.fields.valor;
     }
 
   } catch(e) {
