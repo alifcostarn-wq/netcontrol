@@ -1093,12 +1093,14 @@ function renderIxc() {
 }
 
 function parseIxcFloat(v) { return v ? parseFloat(String(v).replace(',', '.')) || 0 : 0; }
+function ixcIsPaid(status) { return ['R','RA','B','baixado','P','pago','recebido'].includes(String(status||'').toUpperCase().trim()) || ['R','RA','B','P'].includes(String(status||'')); }
+function ixcIsOpen(status) { return ['A','AT','aberto'].includes(String(status||'')); }
 
 function computeIxcMetrics(data) {
   const {clients, contracts, financials} = data;
   const active = clients.filter(c=>c.ativo==='S'||c.status==='A'||c.ativo==='1');
   const today = new Date().toISOString().split('T')[0];
-  const overdue = financials.filter(f=>f.status==='A'&&f.data_vencimento<today);
+  const overdue = financials.filter(f=>ixcIsOpen(f.status)&&f.data_vencimento<today);
   const overdueVal = overdue.reduce((s,f)=>s+parseIxcFloat(f.valor),0);
   const mrr = contracts.reduce((s,c)=>s+parseIxcFloat(c.ativacao_valor_parcela||c.valor_plano||c.valor),0);
   return {totalClients:clients.length, activeClients:active.length, overdueCount:overdue.length, overdueValue:overdueVal, mrr};
@@ -1178,7 +1180,7 @@ function applyIxcData() {
   const finsByClient = {};
   fins.forEach(f => {
     const cid = String(f.id_cliente || '');
-    if (!cid || !f.valor) return;
+    if (!cid || !f.valor || ixcIsPaid(f.status) === false && ixcIsOpen(f.status) === false) return;
     const val = parseIxcFloat(f.valor);
     if (val <= 0) return;
     if (!finsByClient[cid]) finsByClient[cid] = [];
@@ -1196,7 +1198,7 @@ function applyIxcData() {
   const overdueByClient = {};
   const today = new Date();
   fins.forEach(f => {
-    if (f.status === 'A' || f.status === 'aberto') {
+    if (ixcIsOpen(f.status)) {
       const due = new Date(f.data_vencimento);
       const days = Math.max(0, Math.floor((today - due) / 86400000));
       if (days > 0) {
@@ -1420,7 +1422,7 @@ async function fetchClientFromIxc(clientId) {
 
     // Valor mensal: usar a fatura mais recente paga ou em aberto
     const latestFin = fins
-      .filter(f => f.status === 'B' || f.status === 'baixado' || f.status === 'A' || f.status === 'aberto')
+      .filter(f => ixcIsPaid(f.status) || ixcIsOpen(f.status))
       .sort((a, b) => (b.data_vencimento || '').localeCompare(a.data_vencimento || ''))
       [0];
     if (latestFin) {
@@ -1509,16 +1511,16 @@ function renderModal() {
 
   // Financeiros: separar pagos, em aberto/vencidos e a vencer
   const today = new Date().toISOString().split('T')[0];
-  const paidFins   = s.ixcFinancials.filter(x => x.status === 'B' || x.status === 'baixado' || x.status === 'P' || x.status === 'pago')
+  const paidFins   = s.ixcFinancials.filter(x => ixcIsPaid(x.status))
                        .sort((a,b) => (b.data_vencimento||'').localeCompare(a.data_vencimento||''));
   const openFins   = s.ixcFinancials.filter(x => {
-    const isOpen = x.status === 'A' || x.status === 'aberto';
+    const isOpen = ixcIsOpen(x.status);
     if (!isOpen) return false;
     const overdue = x.data_vencimento && x.data_vencimento < today;
     return overdue; // só mostrar como "em aberto/vencido" se realmente vencido
   }).sort((a,b) => (a.data_vencimento||'').localeCompare(b.data_vencimento||''));
   const futureFins = s.ixcFinancials.filter(x => {
-    const isOpen = x.status === 'A' || x.status === 'aberto';
+    const isOpen = ixcIsOpen(x.status);
     if (!isOpen) return false;
     return !x.data_vencimento || x.data_vencimento >= today; // a vencer
   }).sort((a,b) => (a.data_vencimento||'').localeCompare(b.data_vencimento||''));
@@ -1526,7 +1528,7 @@ function renderModal() {
   const finRows = (list, maxItems=999, isPaid=false) => list.slice(0, maxItems).map(f => {
     const overdue = !isPaid && f.data_vencimento && f.data_vencimento < today;
     const col = isPaid ? C.green : (overdue ? C.red : C.yellow);
-    const label = isPaid ? 'Pago' : (overdue ? 'Vencido' : 'A vencer');
+    const label = isPaid ? (f.status === 'RA' ? 'Pago c/ atraso' : 'Pago') : (overdue ? 'Vencido' : 'A vencer');
     return `<div class="fin-row">
       <span style="color:${C.subtle}">${f.data_vencimento || '—'}</span>
       <span style="color:${C.subtle}">${esc(f.descricao||f.historico||f.tipo||'Fatura')}</span>
