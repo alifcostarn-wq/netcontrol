@@ -1164,11 +1164,25 @@ function applyIxcData() {
 
   // Build recorrente lookup by id_contrato: soma dos valores dos produtos recorrentes
   const recorrenteByContract = {};
-  recorrente.forEach(r => {
-    const cid = String(r.id_contrato || r.id_cliente_contrato || '');
-    if (!cid) return;
-    const val = parseIxcFloat(r.valor || r.valor_produto || r.preco);
-    recorrenteByContract[cid] = (recorrenteByContract[cid] || 0) + val;
+  if (Array.isArray(recorrente) && recorrente.length > 0) {
+    recorrente.forEach(r => {
+      const cid = String(r.id_contrato || r.id_cliente_contrato || '');
+      if (!cid) return;
+      const val = parseIxcFloat(r.valor || r.valor_produto || r.preco || r.valor_total);
+      recorrenteByContract[cid] = (recorrenteByContract[cid] || 0) + val;
+    });
+  }
+
+  // Fallback: usar fn_areceber para estimar valor mensal por contrato
+  // Pegar a mediana dos últimos valores pagos/abertos por cliente
+  const finsByClient = {};
+  fins.forEach(f => {
+    const cid = String(f.id_cliente || '');
+    if (!cid || !f.valor) return;
+    const val = parseIxcFloat(f.valor);
+    if (val <= 0) return;
+    if (!finsByClient[cid]) finsByClient[cid] = [];
+    finsByClient[cid].push(val);
   });
 
   // Build contract lookup by id_cliente (take first active contract per client)
@@ -1200,7 +1214,12 @@ function applyIxcData() {
     // "contrato" = nome do plano | "tipo" = tipo de pessoa (I/F), NÃO é nome do plano
     const contractId = contract ? String(contract.id) : '';
     const recPrice = recorrenteByContract[contractId] || 0;
-    const price    = recPrice || (contract ? parseIxcFloat(contract.ativacao_valor_parcela || contract.valor_plano || contract.valor) : 0);
+    // Fallback: mediana das faturas do cliente
+    const clientFins = finsByClient[cid] || [];
+    const finPrice = clientFins.length > 0
+      ? clientFins.sort((a,b)=>a-b)[Math.floor(clientFins.length/2)]
+      : 0;
+    const price = recPrice || finPrice || (contract ? parseIxcFloat(contract.ativacao_valor_parcela || contract.valor_plano || contract.valor) : 0);
     const planName = contract?.contrato || contract?.descricao_aux_plano_venda || contract?.nome_plano || contract?.descricao || 'Plano';
     const rawStatus = contract?.status_internet || contract?.status || c.status;
     let status = mapIxcStatus(rawStatus);
@@ -1298,17 +1317,16 @@ async function ixcSync() {
   if (!ixcState.connected) return;
   ixcState.syncing = true; ixcState.error = ''; renderIxc();
   try {
-    const [cr, conr, fr, recr] = await Promise.all([
+    const [cr, conr, fr] = await Promise.all([
       ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}, ixcState.user, ixcState.secret),
       ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}, ixcState.user, ixcState.secret),
-      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}, ixcState.user, ixcState.secret),
-      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato_financeiro_recorrente', {rp:'200'}, ixcState.user, ixcState.secret).catch(()=>null),
+      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'500'}, ixcState.user, ixcState.secret),
     ]);
     ixcState.data = {
       clients: cr?.registros||cr||[],
       contracts: conr?.registros||conr||[],
       financials: fr?.registros||fr||[],
-      recorrente: recr?.registros||recr||[],
+      recorrente: [],
     };
     ixcState.lastSync = new Date().toLocaleString('pt-BR');
     applyIxcData();
