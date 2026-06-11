@@ -1498,19 +1498,31 @@ function renderModal() {
   const hasIxc = ixcState.connected;
   const ixcLoaded = !s.loading && s.ixcClient;
 
-  // Financeiros: separar abertos vs pagos
+  // Financeiros: separar pagos, em aberto/vencidos e a vencer
   const today = new Date().toISOString().split('T')[0];
-  const openFins = s.ixcFinancials.filter(x => x.status === 'A' || x.status === 'aberto');
-  const paidFins = s.ixcFinancials.filter(x => x.status === 'B' || x.status === 'baixado');
+  const paidFins   = s.ixcFinancials.filter(x => x.status === 'B' || x.status === 'baixado' || x.status === 'P' || x.status === 'pago')
+                       .sort((a,b) => (b.data_vencimento||'').localeCompare(a.data_vencimento||''));
+  const openFins   = s.ixcFinancials.filter(x => {
+    const isOpen = x.status === 'A' || x.status === 'aberto';
+    if (!isOpen) return false;
+    const overdue = x.data_vencimento && x.data_vencimento < today;
+    return overdue; // só mostrar como "em aberto/vencido" se realmente vencido
+  }).sort((a,b) => (a.data_vencimento||'').localeCompare(b.data_vencimento||''));
+  const futureFins = s.ixcFinancials.filter(x => {
+    const isOpen = x.status === 'A' || x.status === 'aberto';
+    if (!isOpen) return false;
+    return !x.data_vencimento || x.data_vencimento >= today; // a vencer
+  }).sort((a,b) => (a.data_vencimento||'').localeCompare(b.data_vencimento||''));
 
-  const finRows = (list, maxItems=5) => list.slice(0, maxItems).map(f => {
-    const overdue = f.data_vencimento && f.data_vencimento < today;
-    const col = overdue ? C.red : C.green;
+  const finRows = (list, maxItems=5, isPaid=false) => list.slice(0, maxItems).map(f => {
+    const overdue = !isPaid && f.data_vencimento && f.data_vencimento < today;
+    const col = isPaid ? C.green : (overdue ? C.red : C.yellow);
+    const label = isPaid ? 'Pago' : (overdue ? 'Vencido' : 'A vencer');
     return `<div class="fin-row">
       <span style="color:${C.subtle}">${f.data_vencimento || '—'}</span>
-      <span style="color:${C.subtle}">${esc(f.descricao||f.tipo||'Fatura')}</span>
-      <span style="color:${col};font-weight:600">${fmt(parseFloat(f.valor||0))}</span>
-      <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:${col}18;color:${col}">${overdue?'Vencido':'A vencer'}</span>
+      <span style="color:${C.subtle}">${esc(f.descricao||f.historico||f.tipo||'Fatura')}</span>
+      <span style="color:${col};font-weight:600">${fmt(parseIxcFloat(f.valor))}</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:${col}18;color:${col}">${label}</span>
     </div>`;
   }).join('') || `<div style="font-size:12px;color:${C.muted};padding:8px 0">Nenhum registro</div>`;
 
@@ -1607,20 +1619,30 @@ function renderModal() {
 
         ${openFins.length > 0 ? `
           <div style="font-size:11px;color:${C.red};font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">
-            Em aberto / Vencidos (${openFins.length})
+            ⚠ Vencidos (${openFins.length})
           </div>
           <div class="modal-info-box" style="margin-bottom:16px">
-            ${finRows(openFins)}
+            ${finRows(openFins, 5, false)}
             ${openFins.length > 5 ? `<div style="font-size:11px;color:${C.muted};padding-top:6px">+${openFins.length-5} registros adicionais</div>` : ''}
           </div>` : `
-          <div class="modal-alert-ok" style="margin-bottom:8px">✓ Sem faturas em aberto</div>`}
+          <div class="modal-alert-ok" style="margin-bottom:8px">✓ Sem faturas vencidas</div>`}
+
+        ${futureFins.length > 0 ? `
+          <div style="font-size:11px;color:${C.yellow};font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">
+            A vencer (${futureFins.length})
+          </div>
+          <div class="modal-info-box" style="margin-bottom:16px">
+            ${finRows(futureFins, 3, false)}
+            ${futureFins.length > 3 ? `<div style="font-size:11px;color:${C.muted};padding-top:6px">+${futureFins.length-3} registros adicionais</div>` : ''}
+          </div>` : ''}
 
         ${paidFins.length > 0 ? `
-          <div style="font-size:11px;color:${C.muted};font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">
-            Pagos recentes (${paidFins.length})
+          <div style="font-size:11px;color:${C.green};font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">
+            ✓ Pagos recentes (${paidFins.length})
           </div>
           <div class="modal-info-box">
-            ${finRows(paidFins, 3)}
+            ${finRows(paidFins, 5, true)}
+            ${paidFins.length > 5 ? `<div style="font-size:11px;color:${C.muted};padding-top:6px">+${paidFins.length-5} registros adicionais</div>` : ''}
           </div>` : ''}
         ` : (ixcLoaded ? `
         <div class="modal-section-title">Financeiro</div>
