@@ -1387,10 +1387,11 @@ async function fetchClientFromIxc(clientId) {
   editState.loading = true; editState.error = ''; renderModal();
   try {
     // Busca dados do cliente, contratos e financeiro em paralelo
+    // IXC exige filtro via qtype/query/oper para busca por campo específico
     const [clientRes, contractRes, finRes] = await Promise.all([
-      ixcFetch(ixcState.url, ixcState.token, 'cliente', { id: String(clientId), rp: '1' }, ixcState.user, ixcState.secret),
-      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', { id_cliente: String(clientId), rp: '10' }, ixcState.user, ixcState.secret),
-      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', { id_cliente: String(clientId), rp: '20' }, ixcState.user, ixcState.secret),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente', { qtype: 'cliente.id', query: String(clientId), oper: '=', rp: '1' }, ixcState.user, ixcState.secret),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', { qtype: 'cliente_contrato.id_cliente', query: String(clientId), oper: '=', rp: '10' }, ixcState.user, ixcState.secret),
+      ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', { qtype: 'fn_areceber.id_cliente', query: String(clientId), oper: '=', rp: '50' }, ixcState.user, ixcState.secret),
     ]);
 
     const clients   = clientRes?.registros   || (Array.isArray(clientRes)   ? clientRes   : [clientRes].filter(Boolean));
@@ -1415,7 +1416,15 @@ async function fetchClientFromIxc(clientId) {
     const activeContract = contracts.find(c => c.status === 'A') || contracts[0];
     if (activeContract) {
       editState.fields.plano = activeContract.contrato || activeContract.descricao_aux_plano_venda || activeContract.nome_plano || activeContract.descricao || editState.fields.plano;
-      editState.fields.valor = parseIxcFloat(activeContract.ativacao_valor_parcela || activeContract.valor_plano || activeContract.valor || activeContract.mensalidade).toFixed(2) || editState.fields.valor;
+    }
+
+    // Valor mensal: usar a fatura mais recente paga ou em aberto
+    const latestFin = fins
+      .filter(f => f.status === 'B' || f.status === 'baixado' || f.status === 'A' || f.status === 'aberto')
+      .sort((a, b) => (b.data_vencimento || '').localeCompare(a.data_vencimento || ''))
+      [0];
+    if (latestFin) {
+      editState.fields.valor = parseIxcFloat(latestFin.valor).toFixed(2);
     }
 
   } catch(e) {
@@ -1514,7 +1523,7 @@ function renderModal() {
     return !x.data_vencimento || x.data_vencimento >= today; // a vencer
   }).sort((a,b) => (a.data_vencimento||'').localeCompare(b.data_vencimento||''));
 
-  const finRows = (list, maxItems=5, isPaid=false) => list.slice(0, maxItems).map(f => {
+  const finRows = (list, maxItems=999, isPaid=false) => list.slice(0, maxItems).map(f => {
     const overdue = !isPaid && f.data_vencimento && f.data_vencimento < today;
     const col = isPaid ? C.green : (overdue ? C.red : C.yellow);
     const label = isPaid ? 'Pago' : (overdue ? 'Vencido' : 'A vencer');
@@ -1622,8 +1631,7 @@ function renderModal() {
             ⚠ Vencidos (${openFins.length})
           </div>
           <div class="modal-info-box" style="margin-bottom:16px">
-            ${finRows(openFins, 5, false)}
-            ${openFins.length > 5 ? `<div style="font-size:11px;color:${C.muted};padding-top:6px">+${openFins.length-5} registros adicionais</div>` : ''}
+            ${finRows(openFins, 999, false)}
           </div>` : `
           <div class="modal-alert-ok" style="margin-bottom:8px">✓ Sem faturas vencidas</div>`}
 
@@ -1632,8 +1640,7 @@ function renderModal() {
             A vencer (${futureFins.length})
           </div>
           <div class="modal-info-box" style="margin-bottom:16px">
-            ${finRows(futureFins, 3, false)}
-            ${futureFins.length > 3 ? `<div style="font-size:11px;color:${C.muted};padding-top:6px">+${futureFins.length-3} registros adicionais</div>` : ''}
+            ${finRows(futureFins, 999, false)}
           </div>` : ''}
 
         ${paidFins.length > 0 ? `
@@ -1641,8 +1648,7 @@ function renderModal() {
             ✓ Pagos recentes (${paidFins.length})
           </div>
           <div class="modal-info-box">
-            ${finRows(paidFins, 5, true)}
-            ${paidFins.length > 5 ? `<div style="font-size:11px;color:${C.muted};padding-top:6px">+${paidFins.length-5} registros adicionais</div>` : ''}
+            ${finRows(paidFins, 999, true)}
           </div>` : ''}
         ` : (ixcLoaded ? `
         <div class="modal-section-title">Financeiro</div>
