@@ -1183,19 +1183,18 @@ function applyIxcData() {
   CLIENTS = raw.map((c, i) => {
     const cid      = String(c.id);
     const contract = contractByClient[cid];
-    const price    = contract ? parseFloat(contract.valor) || 0 : 0;
-    const planName = contract?.tipo || contract?.descricao || contract?.nome_plano || 'Plano';
+    const price    = contract ? parseFloat(contract.valor_plano || contract.valor || contract.mensalidade || 0) : 0;
+    const planName = contract?.nome_plano || contract?.descricao_plano || contract?.descricao || contract?.tipo || 'Plano';
     const rawStatus = contract?.status || c.status;
     let status = mapIxcStatus(rawStatus);
 
     // If has overdue financial record, mark as inadimplente
     if (overdueByClient[cid] && status === 'Ativo') status = 'Inadimplente';
 
-    // Find closest PLANS entry by price, or create a generic one
-    let plan = PLANS.reduce((best, p) =>
-      Math.abs(p.price - price) < Math.abs(best.price - price) ? p : best, PLANS[0]);
-    // Override with real price/name
-    plan = { ...plan, name: planName || plan.name, price: price || plan.price };
+    // Build a unique plan object from real IXC data.
+    // Use id_plano from contract so each distinct plan is treated separately.
+    const planId = contract ? (contract.id_plano || contract.id_contrato || contract.id || i + 100) : (i + 100);
+    let plan = { id: planId, name: planName, price: price || 0, speed: contract?.velocidade_descida ? `${contract.velocidade_descida} Mbps` : '' };
 
     const name = c.razao || c.nome || c.nome_fantasia || `Cliente ${c.id}`;
     const startDate = (contract?.data_ativacao || c.data_cadastro || '').slice(0, 10) || '—';
@@ -1378,8 +1377,8 @@ async function fetchClientFromIxc(clientId) {
     // Pegar plano e valor do contrato ativo
     const activeContract = contracts.find(c => c.status === 'A') || contracts[0];
     if (activeContract) {
-      editState.fields.plano = activeContract.tipo || activeContract.descricao || activeContract.nome_plano || editState.fields.plano;
-      editState.fields.valor = parseFloat(activeContract.valor || activeContract.valor_plano || 0).toFixed(2) || editState.fields.valor;
+      editState.fields.plano = activeContract.nome_plano || activeContract.descricao_plano || activeContract.descricao || activeContract.tipo || editState.fields.plano;
+      editState.fields.valor = parseFloat(activeContract.valor_plano || activeContract.valor || activeContract.mensalidade || 0).toFixed(2) || editState.fields.valor;
     }
 
   } catch(e) {
