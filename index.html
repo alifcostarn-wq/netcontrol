@@ -1160,6 +1160,16 @@ function applyIxcData() {
   const raw       = ixcState.data.clients;
   const contracts = ixcState.data.contracts || [];
   const fins      = ixcState.data.financials || [];
+  const recorrente = ixcState.data.recorrente || [];
+
+  // Build recorrente lookup by id_contrato: soma dos valores dos produtos recorrentes
+  const recorrenteByContract = {};
+  recorrente.forEach(r => {
+    const cid = String(r.id_contrato || r.id_cliente_contrato || '');
+    if (!cid) return;
+    const val = parseIxcFloat(r.valor || r.valor_produto || r.preco);
+    recorrenteByContract[cid] = (recorrenteByContract[cid] || 0) + val;
+  });
 
   // Build contract lookup by id_cliente (take first active contract per client)
   const contractByClient = {};
@@ -1186,9 +1196,11 @@ function applyIxcData() {
     const cid      = String(c.id);
     const contract = contractByClient[cid];
     // Campos reais do IXC cliente_contrato (confirmado via API):
-    // valor = ativacao_valor_parcela | nome = contrato | descricao_aux_plano_venda
-    // "tipo" = tipo de pessoa (I/F), NÃO é o nome do plano!
-    const price    = contract ? parseIxcFloat(contract.ativacao_valor_parcela || contract.valor_plano || contract.valor || contract.mensalidade) : 0;
+    // O valor mensal vem do financeiro recorrente (cliente_contrato_financeiro_recorrente)
+    // "contrato" = nome do plano | "tipo" = tipo de pessoa (I/F), NÃO é nome do plano
+    const contractId = contract ? String(contract.id) : '';
+    const recPrice = recorrenteByContract[contractId] || 0;
+    const price    = recPrice || (contract ? parseIxcFloat(contract.ativacao_valor_parcela || contract.valor_plano || contract.valor) : 0);
     const planName = contract?.contrato || contract?.descricao_aux_plano_venda || contract?.nome_plano || contract?.descricao || 'Plano';
     const rawStatus = contract?.status_internet || contract?.status || c.status;
     let status = mapIxcStatus(rawStatus);
@@ -1286,15 +1298,17 @@ async function ixcSync() {
   if (!ixcState.connected) return;
   ixcState.syncing = true; ixcState.error = ''; renderIxc();
   try {
-    const [cr, conr, fr] = await Promise.all([
+    const [cr, conr, fr, recr] = await Promise.all([
       ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'200'}, ixcState.user, ixcState.secret),
       ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato', {rp:'200'}, ixcState.user, ixcState.secret),
       ixcFetch(ixcState.url, ixcState.token, 'fn_areceber', {rp:'200'}, ixcState.user, ixcState.secret),
+      ixcFetch(ixcState.url, ixcState.token, 'cliente_contrato_financeiro_recorrente', {rp:'200'}, ixcState.user, ixcState.secret).catch(()=>null),
     ]);
     ixcState.data = {
       clients: cr?.registros||cr||[],
       contracts: conr?.registros||conr||[],
       financials: fr?.registros||fr||[],
+      recorrente: recr?.registros||recr||[],
     };
     ixcState.lastSync = new Date().toLocaleString('pt-BR');
     applyIxcData();
