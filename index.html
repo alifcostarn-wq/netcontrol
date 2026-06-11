@@ -239,7 +239,7 @@ const NAMES = ['Ana Silva','Bruno Costa','Carla Mendes','Diego Souza','Elisa Fer
   'Eduardo Correia','Fernanda Assis','Gilberto Pires','Hana Takahashi','Igor Ramos',
   'Juliana Azevedo','Kaio Fonseca','Laura Batista','Marcos Andrade','Natália Coelho'];
 
-const CLIENTS = NAMES.map((name, i) => {
+let CLIENTS = NAMES.map((name, i) => {
   const plan = PLANS[i % PLANS.length];
   const statusW = [0,0,0,0,0,0,0,1,1,2,3];
   const status = STATUS[statusW[i % statusW.length]];
@@ -354,11 +354,8 @@ function computeMetrics() {
   return { active, delinq, cancelled, suspended, mrr, arr, total,
     churnRate, delinqRate, avgMrr, avgCac, avgLtv, ltvCacRatio, delinqMrr };
 }
-const M = computeMetrics();
-
-const planDist = PLANS.map(p => ({
-  ...p, count: CLIENTS.filter(c => c.plan.id===p.id && c.status==='Ativo').length
-}));
+let M = computeMetrics();
+let planDist = PLANS.map(p => ({ ...p, count: CLIENTS.filter(c => c.plan.id===p.id && c.status==='Ativo').length }));
 
 // ── Navigation ────────────────────────────────────────────────────────────────
 const navItems = [
@@ -1027,12 +1024,136 @@ function updateIxcBtn() {
   btn.disabled = !url.value.trim() || !usr.value.trim() || !tok.value.trim();
 }
 
+
+// ── Map IXC data to CLIENTS format ───────────────────────────────────────────
+function mapIxcStatus(raw) {
+  if (!raw) return 'Ativo';
+  const s = String(raw).toUpperCase();
+  if (s === 'A')  return 'Ativo';
+  if (s === 'S')  return 'Suspenso';
+  if (s === 'CM' || s === 'CA' || s === 'C') return 'Cancelado';
+  if (s === 'I')  return 'Inadimplente';
+  return 'Ativo';
+}
+
+function applyIxcData() {
+  if (!ixcState.data || !ixcState.data.clients || !ixcState.data.clients.length) return;
+
+  const raw       = ixcState.data.clients;
+  const contracts = ixcState.data.contracts || [];
+  const fins      = ixcState.data.financials || [];
+
+  // Build contract lookup by id_cliente (take first active contract per client)
+  const contractByClient = {};
+  contracts.forEach(c => {
+    const cid = String(c.id_cliente);
+    if (!contractByClient[cid] || c.status === 'A') contractByClient[cid] = c;
+  });
+
+  // Build overdue days lookup by id_cliente
+  const overdueByClient = {};
+  const today = new Date();
+  fins.forEach(f => {
+    if (f.status === 'A' || f.status === 'aberto') {
+      const due = new Date(f.data_vencimento);
+      const days = Math.max(0, Math.floor((today - due) / 86400000));
+      if (days > 0) {
+        const cid = String(f.id_cliente);
+        overdueByClient[cid] = Math.max(overdueByClient[cid] || 0, days);
+      }
+    }
+  });
+
+  CLIENTS = raw.map((c, i) => {
+    const cid      = String(c.id);
+    const contract = contractByClient[cid];
+    const price    = contract ? parseFloat(contract.valor) || 0 : 0;
+    const planName = contract?.tipo || contract?.descricao || contract?.nome_plano || 'Plano';
+    const rawStatus = contract?.status || c.status;
+    let status = mapIxcStatus(rawStatus);
+
+    // If has overdue financial record, mark as inadimplente
+    if (overdueByClient[cid] && status === 'Ativo') status = 'Inadimplente';
+
+    // Find closest PLANS entry by price, or create a generic one
+    let plan = PLANS.reduce((best, p) =>
+      Math.abs(p.price - price) < Math.abs(best.price - price) ? p : best, PLANS[0]);
+    // Override with real price/name
+    plan = { ...plan, name: planName || plan.name, price: price || plan.price };
+
+    const name = c.razao || c.nome || c.nome_fantasia || `Cliente ${c.id}`;
+    const startDate = (contract?.data_ativacao || c.data_cadastro || '').slice(0, 10) || '—';
+    const daysOverdue = overdueByClient[cid] || 0;
+    const months = contract?.data_ativacao
+      ? Math.max(1, Math.floor((today - new Date(contract.data_ativacao)) / (86400000 * 30)))
+      : 1;
+
+    return { id: c.id, name, plan, status, startDate, daysOverdue, churnDate: null, cac: 120, months };
+  });
+
+  // Recompute metrics and plan distribution with new data
+  M = computeMetrics();
+  planDist = PLANS.map(p => ({ ...p, count: CLIENTS.filter(c => c.plan.id===p.id && c.status==='Ativo').length }));
+
+  // Re-render all tabs that use CLIENTS
+  renderDashboard();
+  renderClients();
+  renderDelinquency();
+  renderChurn();
+  renderFinancials();
+  renderCac();
+  updateSidebarTotal();
+}
+
+function updateSidebarTotal() {
+  const el = document.querySelector('.sf-value');
+  if (el) el.textContent = CLIENTS.length;
+  const el2 = document.querySelector('.sf-active');
+  if (el2) el2.textContent = `↑ ${CLIENTS.filter(c=>c.status==='Ativo').length} ativos`;
+}
+
+// ── localStorage persistence for IXC credentials ─────────────────────────────
+const IXC_STORAGE_KEY = 'netcontrol_ixc_config';
+
+function saveIxcConfig() {
+  try {
+    localStorage.setItem(IXC_STORAGE_KEY, JSON.stringify({
+      url:     ixcState.url,
+      token:   ixcState.token,
+      user:    ixcState.user,
+      secret:  ixcState.secret,
+      connected: ixcState.connected,
+      data:    ixcState.data,
+      lastSync: ixcState.lastSync,
+    }));
+  } catch(e) { /* storage unavailable */ }
+}
+
+function loadIxcConfig() {
+  try {
+    const raw = localStorage.getItem(IXC_STORAGE_KEY);
+    if (!raw) return;
+    const cfg = JSON.parse(raw);
+    ixcState.url      = cfg.url      || '';
+    ixcState.token    = cfg.token    || '';
+    ixcState.user     = cfg.user     || '';
+    ixcState.secret   = cfg.secret   || '';
+    ixcState.connected = cfg.connected || false;
+    ixcState.data     = cfg.data     || null;
+    ixcState.lastSync = cfg.lastSync || null;
+    // If we have saved data, apply it immediately
+    if (ixcState.data && ixcState.data.clients && ixcState.data.clients.length) {
+      applyIxcData();
+    }
+  } catch(e) { /* corrupted storage */ }
+}
 async function ixcTest() {
   ixcState.loading = true; ixcState.error = ''; renderIxc();
   try {
     const data = await ixcFetch(ixcState.url, ixcState.token, 'cliente', {rp:'1'}, ixcState.user, ixcState.secret);
     if (data && (data.registros !== undefined || Array.isArray(data))) {
       ixcState.connected = true;
+    saveIxcConfig();
     } else throw new Error('Resposta inesperada da API');
   } catch(e) {
     ixcState.error = `Falha na conexão: ${e.message}. Verifique a URL, o usuário e o token.`;
@@ -1056,6 +1177,8 @@ async function ixcSync() {
       financials: fr?.registros||fr||[],
     };
     ixcState.lastSync = new Date().toLocaleString('pt-BR');
+    applyIxcData();
+    saveIxcConfig();
   } catch(e) {
     ixcState.error = `Erro ao sincronizar: ${e.message}`;
   }
@@ -1063,6 +1186,7 @@ async function ixcSync() {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
+loadIxcConfig();
 renderNav();
 renderDashboard();
 renderClients();
