@@ -663,8 +663,11 @@ section.tab{display:grid;gap:16px}
 .filters.g6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
 .filters.g6 > .s2{grid-column:span 2}
 .filters.g6 > .s4{grid-column:span 4}
+.filters.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.row2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px}
 select,input[type=search]{height:44px;width:100%;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:0 12px;font-size:1rem;color:var(--ink)}
 .btn{height:40px;padding:0 16px;border-radius:9px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:.95rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+a.btn{text-decoration:none;color:var(--ink)}
 .btn:hover{border-color:var(--muted)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn.sm{height:34px;padding:0 12px;font-size:.88rem}
@@ -814,6 +817,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
 
 @media (max-width:900px){
   .data-grid,.cp-sides{grid-template-columns:1fr}
+  .filters.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:720px){
   .wrap{padding-inline:16px}
@@ -823,8 +827,8 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
   .tabs .lg{display:none}
   .tabs .sh{display:inline}
   .filters > label,.filters > label.wide{flex-basis:100%}
-  .filters.g6{grid-template-columns:1fr}
-  .filters.g6 > *{grid-column:auto!important}
+  .filters.g6,.filters.g4{grid-template-columns:1fr}
+  .filters.g6 > *,.filters.g4 > *{grid-column:auto!important}
   .table-tools .seg{width:100%}
   .cand{grid-template-columns:26px minmax(0,1fr) auto;grid-template-areas:"p w s" "p b v";gap:8px 12px}
   .cand .pos{grid-area:p;align-self:start;font-size:1.1rem}
@@ -866,19 +870,13 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
 <section class="tab" id="tab-aovivo">
   <div class="intro">
     <h1>Apuração ao vivo</h1>
-    <p>Resultado das eleições 2026 direto do TSE. Escolha o estado, a cidade e o cargo — os números se atualizam sozinhos enquanto os votos são contados.</p>
+    <p>Resultado oficial das eleições, direto do TSE. Escolha o estado, a cidade e o cargo. No dia da eleição, os números se atualizam sozinhos enquanto os votos são contados.</p>
   </div>
-  <div class="filters g6" role="group" aria-label="Escolha o que acompanhar">
-    <label class="s2">Resultado
-      <span class="seg" id="lv-amb">
-        <button type="button" data-amb="oficial">Oficial</button>
-        <button type="button" data-amb="simulado">Teste do TSE</button>
-      </span>
-    </label>
-    <label class="s4">Eleição <select id="lv-ele"></select></label>
-    <label class="s2">Estado <select id="lv-uf"></select></label>
-    <label class="s2">Cidade <select id="lv-mun"></select></label>
-    <label class="s2">Cargo <select id="lv-cargo"></select></label>
+  <div class="filters g4" role="group" aria-label="Escolha o que acompanhar">
+    <label>Eleição <select id="lv-ele"></select></label>
+    <label>Estado <select id="lv-uf"></select></label>
+    <label>Cidade <select id="lv-mun"></select></label>
+    <label>Cargo <select id="lv-cargo"></select></label>
   </div>
   <div id="lv-banner" class="banner" hidden></div>
   <div class="panel live-head">
@@ -931,10 +929,11 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
 <section class="tab" id="tab-bairros" hidden>
   <div class="intro">
     <h1>Votos por bairro</h1>
-    <p>Descubra em quais bairros e locais de votação cada candidato foi melhor ou pior. Escolha a cidade, o cargo e, se quiser, um candidato.</p>
+    <p>Descubra em quais bairros e locais de votação cada candidato foi melhor ou pior, com os votos oficiais de cada urna. Escolha a cidade, o ano, o cargo e, se quiser, um candidato.</p>
   </div>
   <div class="filters" role="group" aria-label="Escolha o que analisar">
-    <label>Cidade e ano <select id="hi-ds"></select></label>
+    <label>Cidade <select id="hi-mun"></select></label>
+    <label>Ano <select id="hi-ano"></select></label>
     <label>Cargo <select id="hi-contest"></select></label>
     <label class="wide">Candidato <select id="hi-cand"></select></label>
   </div>
@@ -965,13 +964,13 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
   <div class="cp-sides">
     <div class="panel side">
       <div class="side-head"><span class="tag a">A</span><h3 id="cp-a-title">Candidato A</h3></div>
-      <label class="field">Cidade e ano <select id="cp-a-ds"></select></label>
+      <div class="row2"><label class="field">Cidade <select id="cp-a-mun"></select></label><label class="field">Ano <select id="cp-a-ano"></select></label></div>
       <label class="field">Cargo <select id="cp-a-contest"></select></label>
       <label class="field">Candidato <select id="cp-a-cand"></select></label>
     </div>
     <div class="panel side">
       <div class="side-head"><span class="tag b">B</span><h3 id="cp-b-title">Candidato B</h3></div>
-      <label class="field">Cidade e ano <select id="cp-b-ds"></select></label>
+      <div class="row2"><label class="field">Cidade <select id="cp-b-mun"></select></label><label class="field">Ano <select id="cp-b-ano"></select></label></div>
       <label class="field">Cargo <select id="cp-b-contest"></select></label>
       <label class="field">Candidato <select id="cp-b-cand"></select></label>
     </div>
@@ -994,26 +993,37 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
 <section class="tab" id="tab-dados" hidden>
   <div class="intro">
     <h1>Ajuda</h1>
-    <p>Como usar o Radar de Votos, de onde vêm os números e como adicionar a sua cidade.</p>
+    <p>Como usar o Radar de Votos e de onde vêm os números. Todos os dados são oficiais do TSE.</p>
   </div>
   <div class="panel prose">
     <h3>Como usar</h3>
     <ol class="steps">
-      <li><b>Apuração ao vivo</b> — escolha o estado, a cidade e o cargo. A página busca os números no TSE e se atualiza sozinha. Antes do dia da eleição, toque em <b>Teste do TSE</b> para ver como a tela funciona.</li>
+      <li><b>Apuração ao vivo</b> — escolha o estado, a cidade e o cargo. A página busca os números no TSE e, no dia da eleição, se atualiza sozinha. Até o resultado de 2026 sair, ela mostra o resultado oficial de 2024.</li>
       <li><b>Votos por bairro</b> — escolha uma cidade e um candidato para ver onde ele foi mais e menos votado. Clique numa linha da tabela para ver os locais de votação daquele bairro.</li>
       <li><b>Comparar</b> — escolha dois candidatos, ou o mesmo candidato em anos diferentes, e veja a diferença bairro a bairro.</li>
       <li>Toque na estrela <b>★</b> ao lado de um candidato para marcá-lo como favorito e achá-lo mais rápido.</li>
     </ol>
     <p class="muted"><b>Votos válidos</b> são os votos dados a candidatos e partidos — brancos e nulos não entram na conta. <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas.</p>
   </div>
+  <div class="panel prose" id="loc-panel">
+    <h3>Locais de votação: nomes, bairros e mapa</h3>
+    <p>Os votos de cada urna vêm dos <b>boletins de urna oficiais</b> do TSE. Os nomes, bairros, endereços e a posição no mapa dos locais de votação estão em outro arquivo oficial do TSE, que <b>só pode ser baixado por conexões no Brasil</b>. Por isso quem carrega esse arquivo é o seu navegador — basta fazer uma vez por ano de eleição.</p>
+    <ol class="steps">
+      <li>Clique em <b>Carregar agora</b>. Se aparecer um aviso de erro, clique em <b>Baixar do TSE</b> e espere o download terminar.</li>
+      <li>Solte o arquivo baixado (<code>eleitorado_local_votacao_AAAA.zip</code>) no quadro abaixo.</li>
+      <li>Para que todos vejam os bairros, clique em <b>Baixar arquivo para publicar</b> e envie o arquivo gerado.</li>
+    </ol>
+    <div class="table-wrap"><table id="loc-table"></table></div>
+    <div class="drop" id="loc-drop" tabindex="0" role="button" aria-label="Enviar o arquivo de locais de votação do TSE">
+      Solte aqui o arquivo <code>eleitorado_local_votacao_AAAA.zip</code><br><small>ou clique para escolher</small>
+    </div>
+    <input type="file" id="loc-file" accept=".zip,application/zip" hidden>
+    <p id="loc-status" class="muted"></p>
+  </div>
   <div class="data-grid">
     <div class="panel prose">
-      <h3>Adicionar os dados de uma cidade</h3>
-      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Enviar arquivos JSON gerados pelo script">
-        Solte aqui os arquivos <code>.json</code> da sua cidade<br><small>ou clique para escolher</small>
-      </div>
-      <input type="file" id="file" accept=".json,application/json" multiple hidden>
-      <p class="muted">Os arquivos enviados ficam só neste navegador. Para deixá-los disponíveis a todos, publique-os na pasta <code>data/historico/</code> do site.</p>
+      <h3>Dados disponíveis</h3>
+      <div class="table-wrap"><table id="ds-table"></table></div>
     </div>
     <div class="panel prose">
       <h3>Preferências</h3>
@@ -1033,23 +1043,21 @@ footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);fo
       </details>
     </div>
   </div>
-  <div class="panel prose">
-    <h3>Dados disponíveis</h3>
-    <div class="table-wrap"><table id="ds-table"></table></div>
-  </div>
   <details class="panel prose">
-    <summary>Como gerar os dados por bairro (técnico)</summary>
-    <p>O script baixa do Portal de Dados Abertos do TSE a votação por seção, o cadastro de locais de votação (com bairro e coordenadas) e a lista de candidatos, e grava um arquivo por cidade e ano.</p>
-<pre>npm install
-node scripts/build-historico.mjs --uf RN --mun-nome "MOSSORO" --anos 2020,2022,2024
-node scripts/build-historico.mjs --uf RN --todos --anos 2024
-node scripts/build-historico.mjs --uf RN --mun-nome "MOSSORO" --anos 2026   # quando o TSE publicar</pre>
-    <p class="muted">O código do município é o do TSE (5 dígitos), diferente do código do IBGE. Com <code>--mun-nome</code> não é preciso saber o código.</p>
+    <summary>Como os dados são gerados (técnico)</summary>
+    <p>O script lê, urna por urna, os boletins de urna publicados pelo TSE em <code>resultados.tse.jus.br</code> e grava um arquivo por cidade e ano em <code>data/historico/</code>. Só precisa do Node (versão 18 ou mais nova).</p>
+<pre>node scripts/build-historico.mjs --uf RN --mun-nome "MOSSORO" --anos 2022,2024
+node scripts/build-historico.mjs --uf RN --todos --anos 2022,2024</pre>
+    <p class="muted">Arquivos gerados pelo script também podem ser abertos só neste navegador:</p>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Enviar arquivos JSON gerados pelo script">
+      Solte aqui os arquivos <code>.json</code> gerados pelo script<br><small>ou clique para escolher</small>
+    </div>
+    <input type="file" id="file" accept=".json,application/json" multiple hidden>
   </details>
 </section>
 
 </main>
-<footer><div class="wrap">Fonte dos dados: TSE — divulgação oficial de resultados e Portal de Dados Abertos. Ferramenta independente, sem vínculo com a Justiça Eleitoral. Confira os resultados oficiais em resultados.tse.jus.br.</div></footer>
+<footer><div class="wrap">Fonte dos dados: TSE — resultados oficiais, boletins de urna e cadastro de locais de votação. Ferramenta independente, sem vínculo com a Justiça Eleitoral. Confira os resultados oficiais em resultados.tse.jus.br.</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
@@ -1139,7 +1147,6 @@ function getMap(id) {
 /* ============================================================ acesso ao TSE */
 const BASES = {
   oficial: 'https://resultados.tse.jus.br/oficial/',
-  simulado: 'https://resultados-sim.tse.jus.br/simulado/simulado2026/',
 };
 const CONN = { via: store.get('rv.via', 'auto'), direto: {}, ultimo: '' };
 function httpErr(status, p) { const e = new Error(status === 404 ? 'Arquivo ainda não publicado pelo TSE' : 'TSE respondeu ' + status); e.status = status; e.p = p; return e; }
@@ -1187,16 +1194,12 @@ const P = {
 };
 // Códigos de produção 2026 publicados pelo TSE (usados enquanto o ele-c.json oficial ainda aponta para 2024)
 const CARGOS_EST = [{ cd: '3', ds: 'Governador' }, { cd: '5', ds: 'Senador' }, { cd: '6', ds: 'Deputado Federal' }, { cd: '7', ds: 'Deputado Estadual' }, { cd: '8', ds: 'Deputado Distrital' }];
-const PRESETS = {
-  oficial: [
-    { cd: '6257', nm: 'Eleições 2026 — Presidente · 1º turno', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
-    { cd: '6259', nm: 'Eleições 2026 — Governador, Senador e Deputados · 1º turno', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
-  ],
-  simulado: [
-    { cd: '21270', nm: 'Teste 2026 — Presidente', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
-    { cd: '21272', nm: 'Teste 2026 — Governador, Senador e Deputados', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
-  ],
-};
+const PRESETS = [
+  { cd: '6257', nm: 'Eleições 2026 — Presidente · 1º turno (04/10/2026)', t: '1', ciclo: 'ele2026', dt: '04/10/2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
+  { cd: '6259', nm: 'Eleições 2026 — Governador, Senador e Deputados · 1º turno (04/10/2026)', t: '1', ciclo: 'ele2026', dt: '04/10/2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
+];
+// Cidade mostrada primeiro quando a pessoa ainda não escolheu nenhuma (código do TSE de Mossoró/RN)
+const CIDADE_PADRAO = '17590', UF_PADRAO = 'rn';
 
 /* ============================================================ leitura do arquivo de resultado do TSE */
 function parseEA20(j) {
@@ -1223,7 +1226,7 @@ function parseEA20(j) {
   return {
     cargo: { cd: +cg.cd, nm: dec(cg.nmn || cg.nmm || ''), nv: int(cg.nv) || 1 },
     cands, grupos, s: j.s || {}, e: j.e || {}, v: j.v || {},
-    meta: { dg: j.dg, hg: j.hg, dt: j.dt, ht: j.ht, and: j.and, tf: j.tf, amostra: j._amostra },
+    meta: { dg: j.dg, hg: j.hg, dt: j.dt, ht: j.ht, and: j.and, tf: j.tf },
   };
 }
 
@@ -1231,16 +1234,14 @@ function parseEA20(j) {
 const LV = {
   amb: store.get('rv.amb', 'oficial'), cfg: null, eles: [], ele: null, munCfg: null,
   uf: '', mun: '', cargo: 0, data: null, prev: new Map(), prevKey: '', every: store.get('rv.every', 30),
-  paused: false, next: 0, busy: false, view: 'cand', showAll: false, amostra: false,
+  paused: false, next: 0, busy: false, view: 'cand', showAll: false,
   munRows: new Map(), munAb: new Map(), munLoaded: false, foco: '', colorMode: 'lider', geo: {},
   cacheMunCfg: new Map(),
 };
 
 async function lvInit() {
-  lvAmbButtons();
   $('#lv-every').value = String(LV.every);
-  $$('#lv-amb button').forEach(b => b.onclick = () => lvSetAmb(b.dataset.amb));
-  $('#lv-ele').onchange = e => { LV.ele = LV.eles.find(x => x.cd === e.target.value); store.set('rv.ele', LV.ele?.cd); lvSelectElection(); };
+  $('#lv-ele').onchange = e => lvEscolherEleicao(e.target.value);
   $('#lv-uf').onchange = e => { LV.uf = e.target.value; store.set('rv.uf', LV.uf); lvFillMun(); lvFillCargo(); lvReset(); };
   $('#lv-mun').onchange = e => { LV.mun = e.target.value; store.set('rv.mun', LV.mun); lvFillCargo(); lvReset(); };
   $('#lv-cargo').onchange = e => { LV.cargo = +e.target.value; store.set('rv.cargo', LV.cargo); lvReset(); };
@@ -1257,34 +1258,57 @@ async function lvInit() {
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && LV.next && Date.now() > LV.next) lvRefresh(); });
   await lvLoadConfig();
 }
-function lvAmbButtons() { $$('#lv-amb button').forEach(b => b.setAttribute('aria-pressed', b.dataset.amb === LV.amb)); }
-function lvSetAmb(a) {
-  if (!BASES[a] || (a === LV.amb && !LV.amostra)) return;
-  LV.amb = a; store.set('rv.amb', a); lvAmbButtons(); lvLoadConfig();
+function lvEscolherEleicao(cd) {
+  const ele = LV.eles.find(x => x.cd === cd);
+  if (!ele) return;
+  LV.ele = ele; $('#lv-ele').value = cd; store.set('rv.ele', cd);
+  lvSelectElection();
 }
 
 function lvBanner(html, kind) {
   const b = $('#lv-banner');
   b.hidden = !html; b.className = 'banner' + (kind ? ' ' + kind : ''); b.innerHTML = html || '';
 }
-const BOTAO_TESTE = '<button class="btn sm" type="button" data-amb-go="simulado">Ver o teste do TSE</button>';
+// "Eleição Ordinária Municipal - 2024 - 06/10/2024 1º Turno" -> "Eleições 2024 — 1º turno (06/10/2024)"
+function nomeEleicao(nm, t, dt) {
+  const ano = String(dt || '').slice(-4) || (String(nm).match(/20\d\d/) || [''])[0];
+  return `Eleições ${ano} — ${t || 1}º turno${dt ? ` (${dt})` : ''}`;
+}
+async function lvMunCfg(ele) {
+  if (!LV.cacheMunCfg.has(ele.cd)) {
+    let c = null;
+    try { c = await tse(LV.amb, P.mun(ele)); } catch { c = null; }
+    LV.cacheMunCfg.set(ele.cd, c);
+  }
+  return LV.cacheMunCfg.get(ele.cd);
+}
+function lvBotaoRecente() {
+  const e = LV.eles.find(x => !x.preset);
+  return e ? `<button class="btn sm" type="button" data-ele-go="${esc(e.cd)}">Ver o resultado de ${esc(String(e.dt || '').slice(-4))}</button>` : '';
+}
+const MSG_2026 = () => `<b>O resultado de 2026 ainda não foi publicado.</b> O TSE libera os números no dia da eleição, a partir das 17h (horário de Brasília), e esta página passa a mostrar a contagem ao vivo. Enquanto isso, veja o resultado oficial da eleição anterior. ${lvBotaoRecente()}`;
 
 async function lvLoadConfig() {
-  lvBanner('Buscando as eleições disponíveis no TSE…', 'info');
-  LV.amostra = false;
+  lvBanner('Buscando as eleições no TSE…', 'info');
   let cfg = null;
   try { cfg = await tse(LV.amb, P.cfg()); }
-  catch (e) { if (e.offline) return lvModoAmostra(e); }
+  catch (e) { if (e.offline) return lvSemAcesso(e); }
   const eles = [];
   if (cfg?.pl) for (const pl of cfg.pl) for (const e of pl.e || []) {
-    eles.push({ cd: String(e.cd), nm: dec(e.nm), t: e.t, tp: e.tp, abr: e.abr || [], dt: pl.dt, ciclo: cfg.c });
+    if (!['1', '2', '3'].includes(String(e.tp))) continue; // só eleições ordinárias (sem consultas populares e suplementares)
+    eles.push({ cd: String(e.cd), nm: nomeEleicao(dec(e.nm), e.t, pl.dt), t: e.t, tp: e.tp, abr: e.abr || [], dt: pl.dt, ciclo: cfg.c });
   }
-  if (!eles.some(e => e.ciclo === 'ele2026')) eles.unshift(...PRESETS[LV.amb].map(p => ({ ...p })));
+  if (!eles.some(e => e.ciclo === 'ele2026')) eles.unshift(...PRESETS.map(p => ({ ...p })));
   LV.eles = eles;
   $('#lv-ele').innerHTML = eles.map(e => `<option value="${esc(e.cd)}">${esc(e.nm)}</option>`).join('');
-  const salvo = store.get('rv.ele');
-  LV.ele = eles.find(e => e.cd === salvo) || eles[0];
-  $('#lv-ele').value = LV.ele?.cd || '';
+  // Eleição inicial: a última escolhida; senão 2026 (se o TSE já publicou); senão a mais recente com resultado
+  let ele = eles.find(e => e.cd === store.get('rv.ele'));
+  if (!ele) {
+    const e26 = eles.find(e => e.preset);
+    ele = e26 && await lvMunCfg(e26) ? e26 : (eles.find(e => !e.preset) || eles[0]);
+  }
+  LV.ele = ele;
+  $('#lv-ele').value = ele?.cd || '';
   lvBanner('');
   await lvSelectElection();
 }
@@ -1292,19 +1316,11 @@ async function lvLoadConfig() {
 async function lvSelectElection() {
   const ele = LV.ele;
   if (!ele) return;
-  LV.munCfg = null;
-  const k = LV.amb + ':' + ele.cd;
-  if (LV.cacheMunCfg.has(k)) LV.munCfg = LV.cacheMunCfg.get(k);
-  else {
-    try { LV.munCfg = await tse(LV.amb, P.mun(ele)); } catch (e) { LV.munCfg = null; }
-    LV.cacheMunCfg.set(k, LV.munCfg);
-  }
+  LV.munCfg = await lvMunCfg(ele);
   lvFillUF();
   lvFillMun();
   lvFillCargo();
-  if (!LV.munCfg && ele.preset) {
-    lvBanner(`<b>O TSE ainda não publicou este resultado.</b> Os números aparecem no dia da eleição, a partir das 17h (horário de Brasília). Enquanto isso, veja como a tela funciona com os dados de teste do TSE. ${LV.amb === 'oficial' ? BOTAO_TESTE : ''}`, '');
-  }
+  lvBanner(!LV.munCfg && ele.preset ? MSG_2026() : '', '');
   lvReset();
 }
 
@@ -1322,7 +1338,7 @@ function lvFillUF() {
   if (lvCargosAbr(ele, 'br').some(c => c.cd === 1)) opts.push(['br', 'Brasil (todo o país)']);
   opts.push(...ufs.sort((a, b) => a[1].localeCompare(b[1])));
   const salvo = store.get('rv.uf');
-  LV.uf = opts.find(o => o[0] === salvo)?.[0] || opts.find(o => o[0] !== 'br')?.[0] || opts[0]?.[0] || '';
+  LV.uf = opts.find(o => o[0] === salvo)?.[0] || opts.find(o => o[0] === UF_PADRAO)?.[0] || opts.find(o => o[0] !== 'br')?.[0] || opts[0]?.[0] || '';
   $('#lv-uf').innerHTML = opts.map(([cd, ds]) => `<option value="${cd}">${esc(ds)}</option>`).join('');
   $('#lv-uf').value = LV.uf;
 }
@@ -1340,7 +1356,7 @@ function lvFillMun() {
   const opts = (soMun ? [] : [['', 'Todas as cidades do estado']]).concat(mus.map(m => [m.cd, m.nm]));
   sel.innerHTML = opts.map(([cd, nm]) => `<option value="${cd}">${esc(nm)}</option>`).join('') || '<option value="">(lista indisponível)</option>';
   const salvo = store.get('rv.mun');
-  LV.mun = opts.find(o => o[0] === salvo)?.[0] ?? (soMun ? (mus.find(m => m.c === 's')?.cd || mus[0]?.cd || '') : '');
+  LV.mun = opts.find(o => o[0] === salvo)?.[0] ?? (soMun ? (mus.find(m => m.cd === CIDADE_PADRAO)?.cd || mus.find(m => m.c === 's')?.cd || mus[0]?.cd || '') : '');
   sel.value = LV.mun;
   LV.munList = mus;
 }
@@ -1365,7 +1381,7 @@ function lvReset() {
 }
 
 async function lvRefresh(manual) {
-  if (LV.amostra || !LV.ele || !LV.cargo || LV.busy) return;
+  if (!LV.ele || !LV.cargo || LV.busy) return;
   if (!LV.mun && LV.uf !== 'br' && [11, 13].includes(LV.cargo)) return;
   LV.busy = true;
   const p = P.res(LV.ele, LV.uf, LV.mun, LV.cargo);
@@ -1382,10 +1398,10 @@ async function lvRefresh(manual) {
     if (LV.munLoaded) lvLoadMunicipios(false);
   } catch (e) {
     LV.data = null;
-    if (e.offline) { LV.busy = false; return lvModoAmostra(e); }
+    if (e.offline) { LV.busy = false; return lvSemAcesso(e); }
     lvRender();
-    if (e.status === 404 && LV.ele.preset && !LV.munCfg) lvBanner(`<b>O TSE ainda não publicou este resultado.</b> Os números aparecem no dia da eleição, a partir das 17h (horário de Brasília). Enquanto isso, veja como a tela funciona com os dados de teste do TSE. ${LV.amb === 'oficial' ? BOTAO_TESTE : ''}`, '');
-    else if (e.status === 404) lvBanner(`<b>Ainda não há resultado para esta escolha.</b> O TSE publica os números a partir das 17h (horário de Brasília) do dia da eleição. Se já passou desse horário, este cargo pode não existir para o local escolhido. ${LV.amb === 'oficial' ? BOTAO_TESTE : ''}`, '');
+    if (e.status === 404 && LV.ele.preset) lvBanner(MSG_2026(), '');
+    else if (e.status === 404) lvBanner(`<b>Ainda não há resultado para esta escolha.</b> O TSE publica os números a partir das 17h (horário de Brasília) do dia da eleição. Se já passou desse horário, este cargo pode não existir para o local escolhido.`, '');
     else lvBanner('<b>Não foi possível atualizar agora.</b> ' + esc(e.message) + '. A página tenta de novo sozinha.', 'err');
   } finally {
     LV.busy = false;
@@ -1398,34 +1414,20 @@ async function lvRefresh(manual) {
 }
 
 function lvTick() {
-  if (!LV.next || LV.paused || LV.amostra) return;
+  if (!LV.next || LV.paused) return;
   if (document.visibilityState !== 'visible') return;
   if (Date.now() >= LV.next) lvRefresh();
   else { const el = $('#lv-countdown'); if (el) el.textContent = Math.ceil((LV.next - Date.now()) / 1000) + ' s'; }
 }
 
-async function lvModoAmostra(err) {
-  LV.amostra = true;
-  try {
-    const r = await fetch('data/demo/ao-vivo-amostra.json');
-    const j = await r.json();
-    LV.data = parseEA20(j);
-    LV.prev = new Map();
-    $('#lv-ele').innerHTML = '<option>Exemplo gravado do teste do TSE</option>';
-    $('#lv-uf').innerHTML = '<option>Acre</option>';
-    $('#lv-mun').innerHTML = '<option>Acrelândia</option>';
-    $('#lv-cargo').innerHTML = '<option>Senador</option>';
-    $('#lv-tab-mun').hidden = true;
-    lvBanner(`<b>Não foi possível buscar os dados no TSE agora.</b> Abaixo está um exemplo gravado do teste do TSE (nomes e números fictícios), só para você conhecer a tela. <button class="btn sm" type="button" id="lv-retry">Tentar de novo</button>`, 'err');
-    $('#lv-retry').onclick = () => { LV.amostra = false; lvLoadConfig(); };
-    lvRender();
-  } catch {
-    lvBanner('<b>Não foi possível buscar os dados no TSE.</b> ' + esc(err.message), 'err');
-  }
+function lvSemAcesso(err) {
+  LV.data = null;
+  lvRender();
+  lvBanner(`<b>Não foi possível buscar os dados no TSE agora.</b> ${esc(err.message)} <button class="btn sm" type="button" id="lv-retry">Tentar de novo</button>`, 'err');
+  $('#lv-retry').onclick = () => lvLoadConfig();
 }
 
 function lvScopeLabel() {
-  if (LV.amostra) return 'Acrelândia (AC) — exemplo';
   if (LV.uf === 'br') return 'Brasil';
   const uf = $('#lv-uf').selectedOptions[0]?.textContent || LV.uf.toUpperCase();
   const mun = LV.mun ? $('#lv-mun').selectedOptions[0]?.textContent : '';
@@ -1455,14 +1457,12 @@ function lvStatus() {
   const d = LV.data, fim = d?.meta.and === 'f';
   const partes = [];
   if (d?.meta.ht) partes.push(`Números do TSE de <b>${esc(d.meta.dt || '')} às ${esc(d.meta.ht)}</b>`);
-  if (LV.amostra) partes.push('Exemplo gravado: não se atualiza');
-  else if (fim) partes.push('Contagem encerrada');
+  if (fim) partes.push('Contagem encerrada');
   else if (LV.paused) partes.push('Atualização pausada');
   else if (LV.next) partes.push(`Próxima atualização em <b id="lv-countdown">${Math.max(0, Math.ceil((LV.next - Date.now()) / 1000))} s</b>`);
   $('#lv-status').innerHTML = partes.join(' · ');
-  $('#lv-pause').hidden = LV.amostra || fim || !LV.next || !d;
+  $('#lv-pause').hidden = fim || !LV.next || !d;
   $('#lv-pause').textContent = LV.paused ? 'Continuar atualizando' : 'Pausar';
-  $('#lv-now').hidden = LV.amostra;
 }
 
 function lvRender() {
@@ -1540,7 +1540,7 @@ function lvSetView(v) {
 }
 
 async function lvLoadMunicipios(manual) {
-  if (LV.amostra || !LV.ele || LV.mun || LV.uf === 'br') return;
+  if (!LV.ele || LV.mun || LV.uf === 'br') return;
   const mus = LV.munList || [];
   if (!mus.length) { $('#lv-mun-prog').textContent = 'A lista de cidades não está disponível.'; return; }
   const btn = $('#lv-mun-load');
@@ -1653,9 +1653,9 @@ async function carregarIndice() {
     if (r.ok && (r.headers.get('content-type') || '').includes('json')) {
       const j = await r.json();
       for (const d of j.datasets || []) addDs({ ...d, src: 'data/historico/' + d.arquivo, origem: 'publicado' });
+      LOC.publicados = j.locais || [];
     }
   } catch {}
-  for (const ano of [2020, 2024]) addDs({ ano, uf: '—', cd: '00000', nm: 'Cidade fictícia', src: `data/demo/demo-${ano}.json`, origem: 'demo' });
 }
 async function getDoc(key) {
   const d = HI.ds.get(key);
@@ -1664,6 +1664,7 @@ async function getDoc(key) {
     const r = await fetch(d.src);
     if (!r.ok) throw new Error('Não foi possível ler ' + d.src);
     d.doc = prepararDoc(await r.json());
+    await aplicarLocais(d.doc);
   }
   return d.doc;
 }
@@ -1673,15 +1674,64 @@ function prepararDoc(doc) {
     const n = E.cand.length, tot = new Float64Array(n);
     for (let i = 0; i < E.v.length; i += 3) tot[E.v[i + 1]] += E.v[i + 2];
     E._tot = tot;
-    E._val = E.cand.reduce((s, c, i) => s + (c.tipo === 'c' || c.tipo === 'l' ? tot[i] : 0), 0);
+    E._val = E.cand.reduce((s, c, i) => s + ((c.tipo === 'c' && !c.anulado) || c.tipo === 'l' ? tot[i] : 0), 0);
     E._rank = E.cand.map((c, i) => i).filter(i => E.cand[i].tipo === 'c').sort((a, b) => tot[b] - tot[a]);
   }
   return doc;
 }
-function dsOptions(sel, atual) {
-  const lista = [...HI.ds.values()].sort((a, b) => (a.origem === 'demo') - (b.origem === 'demo') || a.nm.localeCompare(b.nm) || b.ano - a.ano);
-  sel.innerHTML = lista.map(d => `<option value="${esc(d.key)}">${esc(dsLabel(d))}</option>`).join('');
-  if (atual && HI.ds.has(atual)) sel.value = atual;
+// Nomes, bairros, endereços e coordenadas dos locais (cadastro do TSE publicado no site ou carregado neste navegador)
+const CATALOGOS = new Map();
+async function catalogo(uf, ano) {
+  const k = uf + '|' + ano;
+  if (!CATALOGOS.has(k)) {
+    let cat = store.get('rv.locais.' + k, null);
+    const pub = LOC.publicados.find(x => x.uf === uf && +x.ano === +ano);
+    if (!cat && pub) { try { const r = await fetch('data/locais/' + pub.arquivo); if (r.ok) cat = await r.json(); } catch {} }
+    CATALOGOS.set(k, cat);
+  }
+  return CATALOGOS.get(k);
+}
+async function aplicarLocais(doc) {
+  const cat = await catalogo(doc.uf, doc.ano);
+  if (cat?.locais) for (const L of doc.locais) {
+    const x = cat.locais[`${doc.municipio.cd}|${L.z}|${L.n}`];
+    if (x) [L.nm, L.bairro, L.end, L.lat, L.lon] = x;
+  }
+  doc._temNomes = doc.locais.some(L => L.nm);
+  doc._temBairros = doc.locais.some(L => L.bairro);
+  doc._temCoords = doc.locais.some(L => L.lat != null && L.lon != null);
+}
+const nomeLocal = L => L.nm ? titulo(L.nm) : `Local de votação nº ${L.n} (zona ${L.z})`;
+// Seletores "Cidade" e "Ano"
+function cidadesDs() {
+  const m = new Map();
+  for (const d of HI.ds.values()) {
+    const k = d.uf + '|' + d.cd;
+    if (!m.has(k)) m.set(k, { k, nm: d.nm, uf: d.uf, ds: [] });
+    m.get(k).ds.push(d);
+  }
+  for (const c of m.values()) c.ds.sort((a, b) => b.ano - a.ano);
+  return [...m.values()].sort((a, b) => a.nm.localeCompare(b.nm));
+}
+function preencherCidadeAno(selMun, selAno, key) {
+  const cs = cidadesDs();
+  const atual = HI.ds.get(key) || cs[0]?.ds[0];
+  selMun.innerHTML = cs.map(c => `<option value="${esc(c.k)}">${esc(titulo(c.nm))}${/^[A-Z]{2}$/.test(c.uf) ? ' (' + c.uf + ')' : ''}</option>`).join('');
+  if (!atual) { selAno.innerHTML = ''; return ''; }
+  selMun.value = atual.uf + '|' + atual.cd;
+  const c = cs.find(x => x.k === selMun.value);
+  selAno.innerHTML = c.ds.map(d => `<option value="${esc(d.key)}">${d.ano}${d.origem === 'arquivo' ? ' (enviado)' : ''}</option>`).join('');
+  selAno.value = atual.key;
+  return atual.key;
+}
+function trocarCidade(selMun, keyAtual) {
+  const c = cidadesDs().find(x => x.k === selMun.value);
+  const ano = HI.ds.get(keyAtual)?.ano;
+  return (c.ds.find(d => d.ano === ano) || c.ds[0]).key;
+}
+function padraoDs() {
+  const l = [...HI.ds.values()].sort((a, b) => b.ano - a.ano);
+  return (l.find(d => d.cd === CIDADE_PADRAO) || l[0])?.key;
 }
 // Cargo e turno num só campo: "Prefeito — 1º turno"
 function contestOptions(doc, sel, turno, cargo) {
@@ -1703,24 +1753,30 @@ function candOptions(sel, E, geral) {
 HI.ensure = async function () {
   if (HI.pronto) return;
   HI.pronto = true;
-  $('#hi-ds').onchange = e => hiSelectDs(e.target.value);
+  if (!HI.ds.size) { const av = $('#hi-avisos'); av.hidden = false; av.className = 'banner'; av.textContent = 'Ainda não há dados de votação publicados.'; return; }
+  $('#hi-mun').onchange = () => hiSelectDs(trocarCidade($('#hi-mun'), HI.key));
+  $('#hi-ano').onchange = e => hiSelectDs(e.target.value);
   $('#hi-contest').onchange = e => { const { t, c } = contestSel(e.target); HI.turno = t; HI.cargo = c; hiContest(); };
   $('#hi-cand').onchange = e => hiPick(+e.target.value);
   $$('#hi-nivel button').forEach(b => b.onclick = () => { HI.nivel = b.dataset.n; HI.drill = []; HI.sort.k = null; hiRender(); });
-  const pref = [...HI.ds.values()].find(d => d.origem !== 'demo') || [...HI.ds.values()].find(d => d.origem === 'demo' && d.ano === 2024);
-  dsOptions($('#hi-ds'), store.get('rv.hids') || pref?.key);
-  await hiSelectDs($('#hi-ds').value);
+  await hiSelectDs(HI.ds.has(store.get('rv.hids')) ? store.get('rv.hids') : padraoDs());
 };
 async function hiSelectDs(key) {
-  HI.key = key; store.set('rv.hids', key);
+  HI.key = preencherCidadeAno($('#hi-mun'), $('#hi-ano'), key);
+  store.set('rv.hids', HI.key);
   const av = $('#hi-avisos');
-  try { HI.doc = await getDoc(key); }
+  try { HI.doc = await getDoc(HI.key); }
   catch (e) { av.hidden = false; av.className = 'banner err'; av.textContent = e.message; return; }
-  const avisos = (HI.doc.avisos || []).filter(a => !/fict/i.test(a));
-  const demo = HI.ds.get(key)?.origem === 'demo';
-  av.hidden = !avisos.length && !demo;
-  av.className = 'banner' + (demo ? ' info' : '');
-  av.innerHTML = (demo ? '<b>Esta é uma cidade de exemplo, com números inventados.</b> Para ver a sua cidade, adicione os dados dela na aba <a href="#dados">Ajuda</a>. ' : '') + avisos.map(esc).join(' ');
+  const doc = HI.doc;
+  const avisos = (doc.avisos || []).filter(a => !/fict|cadastro de locais/i.test(a));
+  const falta = !doc._temNomes
+    ? '<b>Os nomes, bairros e o mapa dos locais de votação ainda não foram carregados.</b> Os votos já são os oficiais, urna por urna — por enquanto cada local aparece pelo número. <a href="#dados">Veja como carregar em Ajuda</a>.'
+    : !doc._temCoords ? 'Os locais de votação desta cidade não têm localização no cadastro do TSE, por isso o mapa não aparece.' : '';
+  av.hidden = !avisos.length && !falta;
+  av.className = 'banner' + (falta ? ' info' : '');
+  av.innerHTML = [falta, avisos.map(esc).join(' ')].filter(Boolean).join('<br>');
+  $('#hi-nivel [data-n=bairro]').hidden = !doc._temBairros;
+  if (!doc._temBairros && HI.nivel === 'bairro') HI.nivel = 'local';
   HI.drill = [];
   hiContest();
 }
@@ -1744,11 +1800,11 @@ function hiPick(i) {
 // Agregação: soma votos por bairro / local / zona / seção
 function agregar(doc, E, nivel, drill) {
   const nC = E.cand.length, grupos = new Map();
-  const valido = E.cand.map(c => c.tipo === 'c' || c.tipo === 'l');
+  const valido = E.cand.map(c => (c.tipo === 'c' && !c.anulado) || c.tipo === 'l');
   const filtro = si => {
     for (const d of drill) {
       const [li] = doc.secoes[si];
-      if (d.nivel === 'bairro' && doc.locais[li].bairro !== d.key) return false;
+      if (d.nivel === 'bairro' && (doc.locais[li].bairro || '—') !== d.key) return false;
       if (d.nivel === 'local' && String(li) !== d.key) return false;
       if (d.nivel === 'zona' && String(doc.secoes[si][1]) !== d.key) return false;
     }
@@ -1756,10 +1812,10 @@ function agregar(doc, E, nivel, drill) {
   };
   const chave = si => {
     const [li, z, s] = doc.secoes[si], Lc = doc.locais[li];
-    if (nivel === 'bairro') return [Lc.bairro, titulo(Lc.bairro), ''];
-    if (nivel === 'local') return [String(li), titulo(Lc.nm), titulo(Lc.bairro) + (Lc.end ? ' · ' + titulo(Lc.end) : '')];
+    if (nivel === 'bairro') return [Lc.bairro || '—', Lc.bairro ? titulo(Lc.bairro) : 'Bairro não informado', ''];
+    if (nivel === 'local') return [String(li), nomeLocal(Lc), [Lc.bairro && titulo(Lc.bairro), Lc.end && titulo(Lc.end)].filter(Boolean).join(' · ')];
     if (nivel === 'zona') return [String(z), 'Zona ' + z, ''];
-    return [String(si), `Seção ${s} (zona ${z})`, titulo(Lc.nm) + ' · ' + titulo(Lc.bairro)];
+    return [String(si), `Seção ${s} (zona ${z})`, nomeLocal(Lc) + (Lc.bairro ? ' · ' + titulo(Lc.bairro) : '')];
   };
   const cacheSec = new Map();
   for (let i = 0; i < E.v.length; i += 3) {
@@ -1827,7 +1883,8 @@ function hiRender() {
   // resumo em linguagem simples
   const sm = $('#hi-summary');
   if (c) {
-    const bairros = agregar(doc, E, 'bairro', []);
+    const nivelRes = doc._temBairros ? 'bairro' : 'local';
+    const bairros = agregar(doc, E, nivelRes, []);
     const venceu = bairros.filter(g => g.w1 === ci && g.v[ci] > 0).length;
     const sh = g => g.v[ci] / g.val;
     const comVoto = bairros.filter(g => g.val >= 30);
@@ -1836,8 +1893,8 @@ function hiRender() {
     const pos = E._rank.indexOf(ci) + 1;
     const k = favKey(c.nm, c.nr);
     sm.innerHTML = `<div class="summary">
-      <div class="sum-head"><div><h2>${esc(c.nm)} ${situacao(c.sit)}</h2><span class="muted">${esc([c.sg, 'nº ' + c.nr, contexto].filter(Boolean).join(' · '))}</span></div>${starBtn(k, c.nm)}</div>
-      <p class="lead">Teve <b>${fmt(E._tot[ci])} votos</b> (${pct(E._tot[ci] / E._val * 100, 1)} dos votos válidos) e ficou em <b>${pos}º lugar</b> na cidade. Venceu em <b>${fmt(venceu)} de ${plural(bairros.length, 'bairro', 'bairros')}</b>.${melhor && pior && melhor !== pior ? ` Foi melhor em <b>${esc(melhor.label)}</b> (${pct(sh(melhor) * 100, 1)} dos votos do bairro) e pior em <b>${esc(pior.label)}</b> (${pct(sh(pior) * 100, 1)}).` : ''}</p>
+      <div class="sum-head"><div><h2>${esc(c.nm)} ${c.anulado ? '<span class="chip bd">Votos anulados</span>' : situacao(c.sit)}</h2><span class="muted">${esc([c.sg, 'nº ' + c.nr, contexto].filter(Boolean).join(' · '))}</span></div>${starBtn(k, c.nm)}</div>
+      <p class="lead">Teve <b>${fmt(E._tot[ci])} votos</b> (${pct(E._tot[ci] / E._val * 100, 1)} dos votos válidos) e ficou em <b>${pos}º lugar</b> na cidade. Venceu em <b>${fmt(venceu)} de ${plural(bairros.length, NIVEL_NOME[nivelRes].toLowerCase(), NIVEL_PLURAL[nivelRes])}</b>.${melhor && pior && melhor !== pior ? ` Foi melhor em <b>${esc(melhor.label)}</b> (${pct(sh(melhor) * 100, 1)} dos votos) e pior em <b>${esc(pior.label)}</b> (${pct(sh(pior) * 100, 1)}).` : ''}</p>
     </div>`;
   } else {
     const top = E._rank.slice(0, 3);
@@ -1911,6 +1968,10 @@ function hiMapa(doc, E, ci, corCand, outro) {
   const lg = $('#hi-legend');
   if (!M) { $('#hi-map').hidden = true; lg.textContent = 'O mapa não carregou nesta página.'; return; }
   M.layer.clearLayers();
+  const wrap = $('#hi-map').closest('.map-wrap');
+  wrap.hidden = !doc._temCoords;
+  if (!doc._temCoords) return;
+  setTimeout(() => M.map.invalidateSize(), 30);
   const locs = agregar(doc, E, 'local', HI.drill.filter(d => d.nivel !== 'secao'));
   const comCoord = locs.filter(g => { const Lc = doc.locais[+g.key]; return Lc.lat != null && Lc.lon != null; });
   if (!comCoord.length) { lg.textContent = 'Os locais de votação desta cidade não têm localização no cadastro do TSE.'; return; }
@@ -1925,7 +1986,7 @@ function hiMapa(doc, E, ci, corCand, outro) {
     const style = ci >= 0
       ? { radius: r, color: acc, weight: 1, fillColor: acc, fillOpacity: .12 + .78 * (sh / maxSh) }
       : { radius: r, color: cssVar('--surface'), weight: 1, fillColor: corCand.get(g.w1) || outro, fillOpacity: .85 };
-    const tip = `<b>${esc(titulo(Lc.nm))}</b><br>${esc(titulo(Lc.bairro))}<br>` + (ci >= 0 ? `${esc(E.cand[ci].nm)}: <b>${fmt(g.v[ci])} votos</b> (${pct(sh * 100, 1)})` : `Venceu: <b>${esc(E.cand[g.w1]?.nm || '—')}</b><br>${fmt(g.val)} votos válidos`);
+    const tip = `<b>${esc(nomeLocal(Lc))}</b><br>${esc(Lc.bairro ? titulo(Lc.bairro) : '')}<br>` + (ci >= 0 ? `${esc(E.cand[ci].nm)}: <b>${fmt(g.v[ci])} votos</b> (${pct(sh * 100, 1)})` : `Venceu: <b>${esc(E.cand[g.w1]?.nm || '—')}</b><br>${fmt(g.val)} votos válidos`);
     L.circleMarker([Lc.lat, Lc.lon], style).bindTooltip(tip).addTo(M.layer);
   }
   try { M.map.fitBounds(M.layer.getBounds(), { padding: [24, 24], maxZoom: 15 }); } catch {}
@@ -1942,25 +2003,23 @@ CP.ensure = async function () {
   if (!CP.pronto) {
     CP.pronto = true;
     for (const s of ['a', 'b']) {
-      $(`#cp-${s}-ds`).onchange = () => cpLoad(s, true);
+      $(`#cp-${s}-mun`).onchange = () => cpLoad(s, trocarCidade($(`#cp-${s}-mun`), CP[s].key), true);
+      $(`#cp-${s}-ano`).onchange = e => cpLoad(s, e.target.value, true);
       $(`#cp-${s}-contest`).onchange = () => cpContest(s, false);
       $(`#cp-${s}-cand`).onchange = () => { CP[s].cand = +$(`#cp-${s}-cand`).value; cpRender(); };
     }
-    $$('#cp-nivel button').forEach(b => b.onclick = () => { CP.nivel = b.dataset.n; $$('#cp-nivel button').forEach(x => x.setAttribute('aria-pressed', x === b)); cpRender(); });
+    $$('#cp-nivel button').forEach(b => b.onclick = () => { CP.nivel = b.dataset.n; cpRender(); });
   }
-  const lista = [...HI.ds.values()];
-  const reais = lista.filter(d => d.origem !== 'demo').sort((a, b) => a.ano - b.ano);
-  const demo = lista.filter(d => d.origem === 'demo').sort((a, b) => a.ano - b.ano);
-  const base = reais.length ? reais : demo;
-  dsOptions($('#cp-a-ds'), CP.a.key || base[0]?.key);
-  dsOptions($('#cp-b-ds'), CP.b.key || base[base.length - 1]?.key);
-  if (!CP.a.doc) await cpLoad('a', false);
-  if (!CP.b.doc) await cpLoad('b', true);
+  if (!HI.ds.size) return;
+  // começa com os dois mais votados da mesma eleição (quem ganhou onde)
+  const k = padraoDs();
+  if (!CP.a.doc) await cpLoad('a', CP.a.key || k, false);
+  if (!CP.b.doc) await cpLoad('b', CP.b.key || k, true);
   cpRender();
 };
-async function cpLoad(s, sugerir) {
+async function cpLoad(s, key, sugerir) {
   const S = CP[s];
-  S.key = $(`#cp-${s}-ds`).value;
+  S.key = preencherCidadeAno($(`#cp-${s}-mun`), $(`#cp-${s}-ano`), key);
   S.doc = await getDoc(S.key);
   cpContest(s, sugerir);
 }
@@ -1989,8 +2048,13 @@ function cpRender() {
   const nomeA = `${ca.nm} (${A.doc.ano})`, nomeB = `${cb.nm} (${B.doc.ano})`;
   $('#cp-a-title').textContent = nomeA;
   $('#cp-b-title').textContent = nomeB;
+  const temBairros = A.doc._temBairros && B.doc._temBairros;
+  if (!temBairros && CP.nivel === 'bairro') CP.nivel = 'local';
+  $('#cp-nivel [data-n=bairro]').hidden = !temBairros;
+  $$('#cp-nivel button').forEach(x => x.setAttribute('aria-pressed', x.dataset.n === CP.nivel));
   const gA = agregar(A.doc, A.E, CP.nivel, []), gB = agregar(B.doc, B.E, CP.nivel, []);
-  const chave = (doc, g) => CP.nivel === 'local' ? norm(doc.locais[+g.key].nm) : norm(g.label);
+  const porNome = A.doc._temNomes && B.doc._temNomes;
+  const chave = (doc, g) => { if (CP.nivel !== 'local') return norm(g.label); const L = doc.locais[+g.key]; return porNome ? norm(L.nm) : L.z + '|' + L.n; };
   const M = new Map();
   for (const g of gA) M.set(chave(A.doc, g), { label: g.label, a: g });
   for (const g of gB) { const k = chave(B.doc, g); const x = M.get(k) || { label: g.label }; x.b = g; M.set(k, x); }
@@ -2033,13 +2097,199 @@ const DADOS = {
   render() {
     $$('#conn-via input').forEach(r => { r.checked = r.value === CONN.via; r.onchange = () => { CONN.via = r.value; CONN.direto = {}; store.set('rv.via', r.value); DADOS.status(); }; });
     DADOS.status();
-    const lista = [...HI.ds.values()].sort((a, b) => a.nm.localeCompare(b.nm) || a.ano - b.ano);
-    $('#ds-table').innerHTML = `<thead><tr><th>Cidade</th><th class="n">Ano</th><th>Cargos</th><th>Origem</th></tr></thead><tbody>` +
-      lista.map(d => `<tr><td>${esc(titulo(d.nm))}${d.uf && d.uf !== '—' ? ' (' + esc(d.uf) + ')' : ''}</td><td class="n">${d.ano}</td><td>${esc((d.cargos || (d.doc ? [...new Set(d.doc.eleicoes.map(e => e.ds))].map(ds => ({ ds })) : [])).map(c => c.ds).join(', ') || '—')}</td><td>${{ publicado: 'Publicado no site', demo: 'Exemplo (números inventados)', arquivo: 'Enviado neste navegador' }[d.origem]}</td></tr>`).join('') + '</tbody>';
+    const grupos = new Map();
+    for (const d of HI.ds.values()) {
+      const k = d.uf + '|' + d.ano;
+      if (!grupos.has(k)) grupos.set(k, { uf: d.uf, ano: d.ano, cidades: 0, secoes: 0, arquivo: 0 });
+      const g = grupos.get(k); g.cidades++; g.secoes += d.secoes || d.doc?.secoes.length || 0; if (d.origem === 'arquivo') g.arquivo++;
+    }
+    const l = [...grupos.values()].sort((a, b) => b.ano - a.ano || a.uf.localeCompare(b.uf));
+    $('#ds-table').innerHTML = l.length ? `<thead><tr><th>Ano</th><th>Estado</th><th class="n">Cidades</th><th class="n">Urnas</th></tr></thead><tbody>` +
+      l.map(g => `<tr><td>${g.ano}</td><td>${esc(g.uf)}</td><td class="n">${fmt(g.cidades)}</td><td class="n">${fmt(g.secoes)}</td></tr>`).join('') + '</tbody>'
+      : '<tbody><tr><td class="empty">Nenhum dado publicado ainda.</td></tr></tbody>';
+    LOC.render();
   },
   status() {
     const s = { auto: 'Modo automático', direto: 'Leitura direta', proxy: 'Pelo servidor do site' }[CONN.via];
     $('#conn-status').textContent = s + (CONN.ultimo ? ` · última leitura foi ${CONN.ultimo === 'direto' ? 'direta' : 'pelo servidor do site'}` : '');
+  },
+};
+
+// Separa uma linha CSV do TSE (";" com campos entre aspas)
+function camposCsv(linha) {
+  const out = [];
+  let i = 0;
+  while (i <= linha.length) {
+    if (linha[i] === '"') {
+      let v = '', j = i + 1;
+      for (;;) {
+        const q = linha.indexOf('"', j);
+        if (q < 0) { v += linha.slice(j); i = linha.length + 1; break; }
+        v += linha.slice(j, q);
+        if (linha[q + 1] === '"') { v += '"'; j = q + 2; continue; }
+        i = q + 2; break;
+      }
+      out.push(v);
+    } else {
+      const f = linha.indexOf(';', i);
+      if (f < 0) { out.push(linha.slice(i)); break; }
+      out.push(linha.slice(i, f)); i = f + 1;
+    }
+  }
+  return out;
+}
+const coordCsv = s => { const n = parseFloat(String(s || '').replace(',', '.')); return isFinite(n) && n !== -1 && n !== 0 ? Math.round(n * 1e6) / 1e6 : null; };
+// Lê o ZIP "eleitorado_local_votacao_AAAA.zip" do TSE no navegador e separa os locais das UFs pedidas
+async function lerLocaisZip(blob, ufs, progresso) {
+  const u8 = async (a, b) => new Uint8Array(await blob.slice(a, b).arrayBuffer());
+  const dv = x => new DataView(x.buffer, x.byteOffset, x.byteLength);
+  const cauda = await u8(Math.max(0, blob.size - 65557), blob.size), c = dv(cauda);
+  let e = -1;
+  for (let i = cauda.length - 22; i >= 0; i--) if (c.getUint32(i, true) === 0x06054b50) { e = i; break; }
+  if (e < 0) throw new Error('o arquivo não é um ZIP.');
+  let total = c.getUint16(e + 10, true), cdTam = c.getUint32(e + 12, true), cdIni = c.getUint32(e + 16, true);
+  if ((cdIni === 0xffffffff || cdTam === 0xffffffff) && e >= 20 && c.getUint32(e - 20, true) === 0x07064b50) {
+    const off = Number(c.getBigUint64(e - 12, true));
+    const z = dv(await u8(off, off + 56));
+    total = Number(z.getBigUint64(32, true)); cdTam = Number(z.getBigUint64(40, true)); cdIni = Number(z.getBigUint64(48, true));
+  }
+  const cd = await u8(cdIni, cdIni + cdTam), d = dv(cd), ents = [];
+  for (let k = 0, p = 0; k < total && p + 46 <= cd.length; k++) {
+    if (d.getUint32(p, true) !== 0x02014b50) break;
+    const metodo = d.getUint16(p + 10, true);
+    let comp = d.getUint32(p + 20, true), orig = d.getUint32(p + 24, true), local = d.getUint32(p + 42, true);
+    const nL = d.getUint16(p + 28, true), xL = d.getUint16(p + 30, true), cL = d.getUint16(p + 32, true);
+    const nome = new TextDecoder('iso-8859-1').decode(cd.subarray(p + 46, p + 46 + nL));
+    let x = p + 46 + nL;
+    const fx = x + xL;
+    while (x + 4 <= fx) {
+      const id = d.getUint16(x, true), sz = d.getUint16(x + 2, true);
+      if (id === 1) { let q = x + 4; if (orig === 0xffffffff) { orig = Number(d.getBigUint64(q, true)); q += 8; } if (comp === 0xffffffff) { comp = Number(d.getBigUint64(q, true)); q += 8; } if (local === 0xffffffff) local = Number(d.getBigUint64(q, true)); }
+      x += 4 + sz;
+    }
+    ents.push({ nome, metodo, comp, orig, local });
+    p = fx + cL;
+  }
+  const csvs = ents.filter(x => /\.csv$/i.test(x.nome));
+  const porUf = csvs.filter(x => [...ufs].some(u => x.nome.toUpperCase().endsWith('_' + u + '.CSV')));
+  const alvo = porUf.length ? porUf : csvs.filter(x => !/_[A-Z]{2}\.csv$/i.test(x.nome)).slice(0, 1);
+  if (!alvo.length) throw new Error('o ZIP não tem o arquivo esperado do TSE.');
+  const res = new Map();
+  const totalBytes = alvo.reduce((s, x) => s + x.orig, 0) || 1;
+  let lidos = 0, ultimo = -1;
+  for (const ent of alvo) {
+    const lh = dv(await u8(ent.local, ent.local + 30));
+    const ini = ent.local + 30 + lh.getUint16(26, true) + lh.getUint16(28, true);
+    let fluxo = blob.slice(ini, ini + ent.comp).stream();
+    if (ent.metodo === 8) fluxo = fluxo.pipeThrough(new DecompressionStream('deflate-raw'));
+    const leitor = fluxo.pipeThrough(new TextDecoderStream('iso-8859-1')).getReader();
+    let resto = '', cab = null;
+    const ix = {};
+    const linha = l => {
+      if (!l) return;
+      const f = camposCsv(l.replace(/\r$/, ''));
+      if (!cab) {
+        cab = f; f.forEach((h, i) => { ix[h] = i; });
+        for (const k of ['SG_UF', 'CD_MUNICIPIO', 'NR_ZONA', 'NR_LOCAL_VOTACAO']) if (ix[k] == null) throw new Error('o arquivo não tem as colunas esperadas.');
+        return;
+      }
+      const uf = f[ix.SG_UF];
+      if (!ufs.has(uf)) return;
+      if (ix.NR_TURNO != null && f[ix.NR_TURNO] && f[ix.NR_TURNO] !== '1') return;
+      const k = `${f[ix.CD_MUNICIPIO]}|${+f[ix.NR_ZONA]}|${+f[ix.NR_LOCAL_VOTACAO]}`;
+      let m = res.get(uf);
+      if (!m) res.set(uf, m = {});
+      if (!m[k]) m[k] = [f[ix.NM_LOCAL_VOTACAO] || null, f[ix.NM_BAIRRO] || null, f[ix.DS_ENDERECO] || null, coordCsv(f[ix.NR_LATITUDE]), coordCsv(f[ix.NR_LONGITUDE])];
+    };
+    for (;;) {
+      const { value, done } = await leitor.read();
+      if (done) break;
+      lidos += value.length;
+      const t = (resto + value).split('\n');
+      resto = t.pop();
+      for (const l of t) linha(l);
+      const pc = Math.min(99, Math.floor(lidos / totalBytes * 100));
+      if (pc !== ultimo) { ultimo = pc; progresso(pc); }
+    }
+    linha(resto);
+  }
+  return res;
+}
+
+const LOC = {
+  publicados: [],
+  url: ano => `https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_${ano}.zip`,
+  pares() {
+    const m = new Map();
+    for (const d of HI.ds.values()) if (/^[A-Z]{2}$/.test(d.uf)) m.set(d.uf + '|' + d.ano, { uf: d.uf, ano: +d.ano });
+    return [...m.values()].sort((a, b) => b.ano - a.ano || a.uf.localeCompare(b.uf));
+  },
+  render() {
+    const pares = LOC.pares();
+    $('#loc-panel').hidden = !pares.length;
+    $('#loc-table').innerHTML = `<thead><tr><th>Ano</th><th>Estado</th><th>Situação</th><th></th></tr></thead><tbody>` + pares.map(({ uf, ano }) => {
+      const pub = LOC.publicados.some(x => x.uf === uf && +x.ano === ano);
+      const loc = store.get('rv.locais.' + uf + '|' + ano, null) || CATALOGOS.get(uf + '|' + ano);
+      const sit = pub ? '<span class="chip ok">Publicado no site</span>'
+        : loc ? `<span class="chip ok">Carregado neste navegador</span> <small>${fmt(loc.n || Object.keys(loc.locais || {}).length)} locais</small>`
+        : '<span class="chip wn">Falta carregar</span>';
+      const acoes = pub ? '' : `<button class="btn sm" type="button" data-loc-auto="${ano}">Carregar agora</button> <a class="btn sm" href="${LOC.url(ano)}" target="_blank" rel="noopener">Baixar do TSE</a>` +
+        (loc ? ` <button class="btn sm" type="button" data-loc-export="${uf}|${ano}">Baixar arquivo para publicar</button>` : '');
+      return `<tr><td>${ano}</td><td>${esc(uf)}</td><td>${sit}</td><td class="n">${acoes}</td></tr>`;
+    }).join('') + '</tbody>';
+  },
+  status(msg, kind) { const p = $('#loc-status'); p.innerHTML = msg; p.className = kind === 'err' ? 'banner err' : kind === 'ok' ? 'banner info' : 'muted'; },
+  async auto(ano) {
+    LOC.status(`Baixando o cadastro de locais de ${ano} do TSE… Pode levar alguns minutos.`);
+    let blob;
+    try {
+      const r = await fetch(LOC.url(ano));
+      if (!r.ok) throw new Error('TSE respondeu ' + r.status);
+      blob = await r.blob();
+    } catch {
+      return LOC.status(`O navegador não conseguiu baixar direto do TSE. Clique em <b>Baixar do TSE</b> (${ano}), espere o download terminar e solte o arquivo <code>eleitorado_local_votacao_${ano}.zip</code> no quadro abaixo.`, 'err');
+    }
+    await LOC.importar(blob, ano);
+  },
+  async importar(blob, ano) {
+    const ufs = new Set(LOC.pares().filter(x => x.ano === +ano).map(x => x.uf));
+    if (!ufs.size) return LOC.status(`Não há votos publicados de ${esc(ano)} para usar esses locais.`, 'err');
+    try {
+      const porUf = await lerLocaisZip(blob, ufs, pc => LOC.status(`Lendo o arquivo do TSE… ${pc}%`));
+      let total = 0;
+      for (const [uf, locais] of porUf) {
+        const n = Object.keys(locais).length;
+        total += n;
+        const cat = { versao: 1, ano: +ano, uf, fonte: LOC.url(ano), gerado_em: new Date().toISOString(), n, locais };
+        store.set('rv.locais.' + uf + '|' + ano, cat);
+        CATALOGOS.set(uf + '|' + ano, cat);
+      }
+      if (!total) return LOC.status('O arquivo não tem locais dos estados usados aqui. Confira se é o arquivo certo.', 'err');
+      for (const d of HI.ds.values()) if (d.doc && +d.ano === +ano) await aplicarLocais(d.doc);
+      LOC.status(`Pronto: ${fmt(total)} locais de votação de ${ano} carregados neste navegador. Para todos verem, clique em <b>Baixar arquivo para publicar</b> e envie o arquivo.`, 'ok');
+      LOC.render();
+      if (HI.pronto && HI.key) await hiSelectDs(HI.key);
+      if (CP.a.doc && CP.b.doc) cpRender();
+    } catch (e) { LOC.status('Não foi possível ler o arquivo: ' + esc(e.message), 'err'); }
+  },
+  exportar(k) {
+    const cat = store.get('rv.locais.' + k, null) || CATALOGOS.get(k);
+    if (cat) baixar(new Blob([JSON.stringify(cat)], { type: 'application/json' }), `${cat.uf.toLowerCase()}-${cat.ano}.json`);
+  },
+  init() {
+    const drop = $('#loc-drop'), file = $('#loc-file');
+    const ler = f => {
+      if (!f) return;
+      const ano = (f.name.match(/(20\d\d)/) || [])[1];
+      if (!ano) return LOC.status('Não reconheci o ano pelo nome do arquivo. Use o arquivo <code>eleitorado_local_votacao_AAAA.zip</code> do TSE, sem renomear.', 'err');
+      LOC.importar(f, ano);
+    };
+    drop.onclick = () => file.click();
+    drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); file.click(); } };
+    file.onchange = () => ler(file.files[0]);
+    drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+    drop.ondragleave = () => drop.classList.remove('over');
+    drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); ler(e.dataTransfer.files[0]); };
   },
 };
 function initUpload() {
@@ -2055,6 +2305,7 @@ function initUpload() {
       } catch (e) { msgs.push('✖ ' + f.name + ': ' + e.message); }
     }
     drop.innerHTML = msgs.map(esc).join('<br>') + '<br><small>Abra a aba Votos por bairro para ver.</small>';
+    for (const d of HI.ds.values()) if (d.doc && d.origem === 'arquivo') await aplicarLocais(d.doc);
     HI.pronto = false; CP.pronto = false; CP.a = {}; CP.b = {};
     DADOS.render();
   };
@@ -2075,8 +2326,12 @@ const EXPORTS = {};
 document.addEventListener('click', async e => {
   const star = e.target.closest('[data-fav]');
   if (star) { toggleFav(star.dataset.fav); onFavChange(); return; }
-  const go = e.target.closest('[data-amb-go]');
-  if (go) { lvSetAmb(go.dataset.ambGo); return; }
+  const go = e.target.closest('[data-ele-go]');
+  if (go) { lvEscolherEleicao(go.dataset.eleGo); return; }
+  const la = e.target.closest('[data-loc-auto]');
+  if (la) { LOC.auto(la.dataset.locAuto); return; }
+  const lx = e.target.closest('[data-loc-export]');
+  if (lx) { LOC.exportar(lx.dataset.locExport); return; }
   const b = e.target.closest('[data-exp]');
   if (!b) return;
   const fn = EXPORTS[b.dataset.exp];
@@ -2109,6 +2364,7 @@ function baixar(blob, nome) {
 /* ============================================================ início */
 (async function main() {
   initUpload();
+  LOC.init();
   await carregarIndice();
   showTab(location.hash.slice(1) || store.get('rv.tab', 'aovivo'));
   lvInit();

@@ -1,1 +1,8356 @@
-{"versao":1,"datasets":[]}
+{
+ "versao": 1,
+ "datasets": [
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16012",
+   "nm": "ACARI",
+   "arquivo": "rn-16012-acari-2022.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16012",
+   "nm": "ACARI",
+   "arquivo": "rn-16012-acari-2024.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16055",
+   "nm": "AFONSO BEZERRA",
+   "arquivo": "rn-16055-afonso-bezerra-2022.json",
+   "secoes": 33,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16055",
+   "nm": "AFONSO BEZERRA",
+   "arquivo": "rn-16055-afonso-bezerra-2024.json",
+   "secoes": 33,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16071",
+   "nm": "ÁGUA NOVA",
+   "arquivo": "rn-16071-agua-nova-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16071",
+   "nm": "ÁGUA NOVA",
+   "arquivo": "rn-16071-agua-nova-2024.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16098",
+   "nm": "ALEXANDRIA",
+   "arquivo": "rn-16098-alexandria-2022.json",
+   "secoes": 43,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16098",
+   "nm": "ALEXANDRIA",
+   "arquivo": "rn-16098-alexandria-2024.json",
+   "secoes": 43,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16110",
+   "nm": "ALMINO AFONSO",
+   "arquivo": "rn-16110-almino-afonso-2022.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16110",
+   "nm": "ALMINO AFONSO",
+   "arquivo": "rn-16110-almino-afonso-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16136",
+   "nm": "ALTO DO RODRIGUES",
+   "arquivo": "rn-16136-alto-do-rodrigues-2022.json",
+   "secoes": 36,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16136",
+   "nm": "ALTO DO RODRIGUES",
+   "arquivo": "rn-16136-alto-do-rodrigues-2024.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16152",
+   "nm": "ANGICOS",
+   "arquivo": "rn-16152-angicos-2022.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16152",
+   "nm": "ANGICOS",
+   "arquivo": "rn-16152-angicos-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.045Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16179",
+   "nm": "ANTÔNIO MARTINS",
+   "arquivo": "rn-16179-antonio-martins-2022.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16179",
+   "nm": "ANTÔNIO MARTINS",
+   "arquivo": "rn-16179-antonio-martins-2024.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16195",
+   "nm": "APODI",
+   "arquivo": "rn-16195-apodi-2022.json",
+   "secoes": 89,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16195",
+   "nm": "APODI",
+   "arquivo": "rn-16195-apodi-2024.json",
+   "secoes": 90,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16217",
+   "nm": "AREIA BRANCA",
+   "arquivo": "rn-16217-areia-branca-2022.json",
+   "secoes": 69,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16217",
+   "nm": "AREIA BRANCA",
+   "arquivo": "rn-16217-areia-branca-2024.json",
+   "secoes": 74,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16233",
+   "nm": "AREZ",
+   "arquivo": "rn-16233-arez-2022.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16233",
+   "nm": "AREZ",
+   "arquivo": "rn-16233-arez-2024.json",
+   "secoes": 35,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16039",
+   "nm": "ASSÚ",
+   "arquivo": "rn-16039-assu-2022.json",
+   "secoes": 127,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16039",
+   "nm": "ASSÚ",
+   "arquivo": "rn-16039-assu-2024.json",
+   "secoes": 127,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16276",
+   "nm": "BAÍA FORMOSA",
+   "arquivo": "rn-16276-baia-formosa-2022.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16276",
+   "nm": "BAÍA FORMOSA",
+   "arquivo": "rn-16276-baia-formosa-2024.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "30031",
+   "nm": "BARAÚNA",
+   "arquivo": "rn-30031-barauna-2022.json",
+   "secoes": 61,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "30031",
+   "nm": "BARAÚNA",
+   "arquivo": "rn-30031-barauna-2024.json",
+   "secoes": 62,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16292",
+   "nm": "BARCELONA",
+   "arquivo": "rn-16292-barcelona-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16292",
+   "nm": "BARCELONA",
+   "arquivo": "rn-16292-barcelona-2024.json",
+   "secoes": 14,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16314",
+   "nm": "BENTO FERNANDES",
+   "arquivo": "rn-16314-bento-fernandes-2022.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16314",
+   "nm": "BENTO FERNANDES",
+   "arquivo": "rn-16314-bento-fernandes-2024.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17035",
+   "nm": "BOA SAÚDE",
+   "arquivo": "rn-17035-boa-saude-2022.json",
+   "secoes": 25,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17035",
+   "nm": "BOA SAÚDE",
+   "arquivo": "rn-17035-boa-saude-2024.json",
+   "secoes": 25,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16101",
+   "nm": "BODÓ",
+   "arquivo": "rn-16101-bodo-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16101",
+   "nm": "BODÓ",
+   "arquivo": "rn-16101-bodo-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16330",
+   "nm": "BOM JESUS",
+   "arquivo": "rn-16330-bom-jesus-2022.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16330",
+   "nm": "BOM JESUS",
+   "arquivo": "rn-16330-bom-jesus-2024.json",
+   "secoes": 30,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16357",
+   "nm": "BREJINHO",
+   "arquivo": "rn-16357-brejinho-2022.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16357",
+   "nm": "BREJINHO",
+   "arquivo": "rn-16357-brejinho-2024.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16047",
+   "nm": "CAIÇARA DO NORTE",
+   "arquivo": "rn-16047-caicara-do-norte-2022.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16047",
+   "nm": "CAIÇARA DO NORTE",
+   "arquivo": "rn-16047-caicara-do-norte-2024.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16373",
+   "nm": "CAIÇARA DO RIO DO VENTO",
+   "arquivo": "rn-16373-caicara-do-rio-do-vento-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16373",
+   "nm": "CAIÇARA DO RIO DO VENTO",
+   "arquivo": "rn-16373-caicara-do-rio-do-vento-2024.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16390",
+   "nm": "CAICÓ",
+   "arquivo": "rn-16390-caico-2022.json",
+   "secoes": 132,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16390",
+   "nm": "CAICÓ",
+   "arquivo": "rn-16390-caico-2024.json",
+   "secoes": 133,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16250",
+   "nm": "CAMPO GRANDE",
+   "arquivo": "rn-16250-campo-grande-2022.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16250",
+   "nm": "CAMPO GRANDE",
+   "arquivo": "rn-16250-campo-grande-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16411",
+   "nm": "CAMPO REDONDO",
+   "arquivo": "rn-16411-campo-redondo-2022.json",
+   "secoes": 26,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16411",
+   "nm": "CAMPO REDONDO",
+   "arquivo": "rn-16411-campo-redondo-2024.json",
+   "secoes": 26,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16438",
+   "nm": "CANGUARETAMA",
+   "arquivo": "rn-16438-canguaretama-2022.json",
+   "secoes": 79,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16438",
+   "nm": "CANGUARETAMA",
+   "arquivo": "rn-16438-canguaretama-2024.json",
+   "secoes": 79,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16454",
+   "nm": "CARAÚBAS",
+   "arquivo": "rn-16454-caraubas-2022.json",
+   "secoes": 59,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16454",
+   "nm": "CARAÚBAS",
+   "arquivo": "rn-16454-caraubas-2024.json",
+   "secoes": 61,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16470",
+   "nm": "CARNAÚBA DOS DANTAS",
+   "arquivo": "rn-16470-carnauba-dos-dantas-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16470",
+   "nm": "CARNAÚBA DOS DANTAS",
+   "arquivo": "rn-16470-carnauba-dos-dantas-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16497",
+   "nm": "CARNAUBAIS",
+   "arquivo": "rn-16497-carnaubais-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16497",
+   "nm": "CARNAUBAIS",
+   "arquivo": "rn-16497-carnaubais-2024.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16519",
+   "nm": "CEARÁ-MIRIM",
+   "arquivo": "rn-16519-ceara-mirim-2022.json",
+   "secoes": 178,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16519",
+   "nm": "CEARÁ-MIRIM",
+   "arquivo": "rn-16519-ceara-mirim-2024.json",
+   "secoes": 188,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16535",
+   "nm": "CERRO CORÁ",
+   "arquivo": "rn-16535-cerro-cora-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16535",
+   "nm": "CERRO CORÁ",
+   "arquivo": "rn-16535-cerro-cora-2024.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16551",
+   "nm": "CORONEL EZEQUIEL",
+   "arquivo": "rn-16551-coronel-ezequiel-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16551",
+   "nm": "CORONEL EZEQUIEL",
+   "arquivo": "rn-16551-coronel-ezequiel-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16578",
+   "nm": "CORONEL JOÃO PESSOA",
+   "arquivo": "rn-16578-coronel-joao-pessoa-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16578",
+   "nm": "CORONEL JOÃO PESSOA",
+   "arquivo": "rn-16578-coronel-joao-pessoa-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16594",
+   "nm": "CRUZETA",
+   "arquivo": "rn-16594-cruzeta-2022.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16594",
+   "nm": "CRUZETA",
+   "arquivo": "rn-16594-cruzeta-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16616",
+   "nm": "CURRAIS NOVOS",
+   "arquivo": "rn-16616-currais-novos-2022.json",
+   "secoes": 102,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16616",
+   "nm": "CURRAIS NOVOS",
+   "arquivo": "rn-16616-currais-novos-2024.json",
+   "secoes": 102,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.045Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16632",
+   "nm": "DOUTOR SEVERIANO",
+   "arquivo": "rn-16632-doutor-severiano-2022.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16632",
+   "nm": "DOUTOR SEVERIANO",
+   "arquivo": "rn-16632-doutor-severiano-2024.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16659",
+   "nm": "ENCANTO",
+   "arquivo": "rn-16659-encanto-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16659",
+   "nm": "ENCANTO",
+   "arquivo": "rn-16659-encanto-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16675",
+   "nm": "EQUADOR",
+   "arquivo": "rn-16675-equador-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16675",
+   "nm": "EQUADOR",
+   "arquivo": "rn-16675-equador-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.045Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16691",
+   "nm": "ESPÍRITO SANTO",
+   "arquivo": "rn-16691-espirito-santo-2022.json",
+   "secoes": 25,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16691",
+   "nm": "ESPÍRITO SANTO",
+   "arquivo": "rn-16691-espirito-santo-2024.json",
+   "secoes": 25,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16713",
+   "nm": "EXTREMOZ",
+   "arquivo": "rn-16713-extremoz-2022.json",
+   "secoes": 91,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16713",
+   "nm": "EXTREMOZ",
+   "arquivo": "rn-16713-extremoz-2024.json",
+   "secoes": 104,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16730",
+   "nm": "FELIPE GUERRA",
+   "arquivo": "rn-16730-felipe-guerra-2022.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16730",
+   "nm": "FELIPE GUERRA",
+   "arquivo": "rn-16730-felipe-guerra-2024.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16144",
+   "nm": "FERNANDO PEDROZA",
+   "arquivo": "rn-16144-fernando-pedroza-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16144",
+   "nm": "FERNANDO PEDROZA",
+   "arquivo": "rn-16144-fernando-pedroza-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.044Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16756",
+   "nm": "FLORÂNIA",
+   "arquivo": "rn-16756-florania-2022.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16756",
+   "nm": "FLORÂNIA",
+   "arquivo": "rn-16756-florania-2024.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.045Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16772",
+   "nm": "FRANCISCO DANTAS",
+   "arquivo": "rn-16772-francisco-dantas-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16772",
+   "nm": "FRANCISCO DANTAS",
+   "arquivo": "rn-16772-francisco-dantas-2024.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17515",
+   "nm": "FRUTUOSO GOMES",
+   "arquivo": "rn-17515-frutuoso-gomes-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17515",
+   "nm": "FRUTUOSO GOMES",
+   "arquivo": "rn-17515-frutuoso-gomes-2024.json",
+   "secoes": 14,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16799",
+   "nm": "GALINHOS",
+   "arquivo": "rn-16799-galinhos-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16799",
+   "nm": "GALINHOS",
+   "arquivo": "rn-16799-galinhos-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16810",
+   "nm": "GOIANINHA",
+   "arquivo": "rn-16810-goianinha-2022.json",
+   "secoes": 67,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16810",
+   "nm": "GOIANINHA",
+   "arquivo": "rn-16810-goianinha-2024.json",
+   "secoes": 67,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16837",
+   "nm": "GOVERNADOR DIX-SEPT ROSADO",
+   "arquivo": "rn-16837-governador-dix-sept-rosado-2022.json",
+   "secoes": 39,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16837",
+   "nm": "GOVERNADOR DIX-SEPT ROSADO",
+   "arquivo": "rn-16837-governador-dix-sept-rosado-2024.json",
+   "secoes": 39,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16853",
+   "nm": "GROSSOS",
+   "arquivo": "rn-16853-grossos-2022.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16853",
+   "nm": "GROSSOS",
+   "arquivo": "rn-16853-grossos-2024.json",
+   "secoes": 30,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16870",
+   "nm": "GUAMARÉ",
+   "arquivo": "rn-16870-guamare-2022.json",
+   "secoes": 41,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16870",
+   "nm": "GUAMARÉ",
+   "arquivo": "rn-16870-guamare-2024.json",
+   "secoes": 44,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16896",
+   "nm": "IELMO MARINHO",
+   "arquivo": "rn-16896-ielmo-marinho-2022.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16896",
+   "nm": "IELMO MARINHO",
+   "arquivo": "rn-16896-ielmo-marinho-2024.json",
+   "secoes": 36,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16918",
+   "nm": "IPANGUAÇU",
+   "arquivo": "rn-16918-ipanguacu-2022.json",
+   "secoes": 37,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16918",
+   "nm": "IPANGUAÇU",
+   "arquivo": "rn-16918-ipanguacu-2024.json",
+   "secoes": 39,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16934",
+   "nm": "IPUEIRA",
+   "arquivo": "rn-16934-ipueira-2022.json",
+   "secoes": 6,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16934",
+   "nm": "IPUEIRA",
+   "arquivo": "rn-16934-ipueira-2024.json",
+   "secoes": 6,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16080",
+   "nm": "ITAJÁ",
+   "arquivo": "rn-16080-itaja-2022.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16080",
+   "nm": "ITAJÁ",
+   "arquivo": "rn-16080-itaja-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16950",
+   "nm": "ITAÚ",
+   "arquivo": "rn-16950-itau-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16950",
+   "nm": "ITAÚ",
+   "arquivo": "rn-16950-itau-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16977",
+   "nm": "JAÇANÃ",
+   "arquivo": "rn-16977-jacana-2022.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16977",
+   "nm": "JAÇANÃ",
+   "arquivo": "rn-16977-jacana-2024.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16993",
+   "nm": "JANDAÍRA",
+   "arquivo": "rn-16993-jandaira-2022.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16993",
+   "nm": "JANDAÍRA",
+   "arquivo": "rn-16993-jandaira-2024.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17019",
+   "nm": "JANDUÍS",
+   "arquivo": "rn-17019-janduis-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.674Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17019",
+   "nm": "JANDUÍS",
+   "arquivo": "rn-17019-janduis-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17051",
+   "nm": "JAPI",
+   "arquivo": "rn-17051-japi-2022.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17051",
+   "nm": "JAPI",
+   "arquivo": "rn-17051-japi-2024.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17078",
+   "nm": "JARDIM DE ANGICOS",
+   "arquivo": "rn-17078-jardim-de-angicos-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17078",
+   "nm": "JARDIM DE ANGICOS",
+   "arquivo": "rn-17078-jardim-de-angicos-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17094",
+   "nm": "JARDIM DE PIRANHAS",
+   "arquivo": "rn-17094-jardim-de-piranhas-2022.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17094",
+   "nm": "JARDIM DE PIRANHAS",
+   "arquivo": "rn-17094-jardim-de-piranhas-2024.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17116",
+   "nm": "JARDIM DO SERIDÓ",
+   "arquivo": "rn-17116-jardim-do-serido-2022.json",
+   "secoes": 32,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17116",
+   "nm": "JARDIM DO SERIDÓ",
+   "arquivo": "rn-17116-jardim-do-serido-2024.json",
+   "secoes": 33,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17132",
+   "nm": "JOÃO CÂMARA",
+   "arquivo": "rn-17132-joao-camara-2022.json",
+   "secoes": 88,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17132",
+   "nm": "JOÃO CÂMARA",
+   "arquivo": "rn-17132-joao-camara-2024.json",
+   "secoes": 89,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17159",
+   "nm": "JOÃO DIAS",
+   "arquivo": "rn-17159-joao-dias-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17159",
+   "nm": "JOÃO DIAS",
+   "arquivo": "rn-17159-joao-dias-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17175",
+   "nm": "JOSÉ DA PENHA",
+   "arquivo": "rn-17175-jose-da-penha-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17175",
+   "nm": "JOSÉ DA PENHA",
+   "arquivo": "rn-17175-jose-da-penha-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17191",
+   "nm": "JUCURUTU",
+   "arquivo": "rn-17191-jucurutu-2022.json",
+   "secoes": 59,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17191",
+   "nm": "JUCURUTU",
+   "arquivo": "rn-17191-jucurutu-2024.json",
+   "secoes": 59,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16306",
+   "nm": "JUNDIÁ",
+   "arquivo": "rn-16306-jundia-2022.json",
+   "secoes": 14,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16306",
+   "nm": "JUNDIÁ",
+   "arquivo": "rn-16306-jundia-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17230",
+   "nm": "LAGOA D'ANTA",
+   "arquivo": "rn-17230-lagoa-d-anta-2022.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17230",
+   "nm": "LAGOA D'ANTA",
+   "arquivo": "rn-17230-lagoa-d-anta-2024.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17256",
+   "nm": "LAGOA DE PEDRAS",
+   "arquivo": "rn-17256-lagoa-de-pedras-2022.json",
+   "secoes": 22,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17256",
+   "nm": "LAGOA DE PEDRAS",
+   "arquivo": "rn-17256-lagoa-de-pedras-2024.json",
+   "secoes": 22,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17272",
+   "nm": "LAGOA DE VELHOS",
+   "arquivo": "rn-17272-lagoa-de-velhos-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17272",
+   "nm": "LAGOA DE VELHOS",
+   "arquivo": "rn-17272-lagoa-de-velhos-2024.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17299",
+   "nm": "LAGOA NOVA",
+   "arquivo": "rn-17299-lagoa-nova-2022.json",
+   "secoes": 46,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17299",
+   "nm": "LAGOA NOVA",
+   "arquivo": "rn-17299-lagoa-nova-2024.json",
+   "secoes": 44,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17310",
+   "nm": "LAGOA SALGADA",
+   "arquivo": "rn-17310-lagoa-salgada-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17310",
+   "nm": "LAGOA SALGADA",
+   "arquivo": "rn-17310-lagoa-salgada-2024.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17337",
+   "nm": "LAJES",
+   "arquivo": "rn-17337-lajes-2022.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17337",
+   "nm": "LAJES",
+   "arquivo": "rn-17337-lajes-2024.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17353",
+   "nm": "LAJES PINTADAS",
+   "arquivo": "rn-17353-lajes-pintadas-2022.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17353",
+   "nm": "LAJES PINTADAS",
+   "arquivo": "rn-17353-lajes-pintadas-2024.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17370",
+   "nm": "LUCRÉCIA",
+   "arquivo": "rn-17370-lucrecia-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17370",
+   "nm": "LUCRÉCIA",
+   "arquivo": "rn-17370-lucrecia-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17396",
+   "nm": "LUÍS GOMES",
+   "arquivo": "rn-17396-luis-gomes-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17396",
+   "nm": "LUÍS GOMES",
+   "arquivo": "rn-17396-luis-gomes-2024.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17418",
+   "nm": "MACAÍBA",
+   "arquivo": "rn-17418-macaiba-2022.json",
+   "secoes": 167,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17418",
+   "nm": "MACAÍBA",
+   "arquivo": "rn-17418-macaiba-2024.json",
+   "secoes": 167,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17434",
+   "nm": "MACAU",
+   "arquivo": "rn-17434-macau-2022.json",
+   "secoes": 78,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17434",
+   "nm": "MACAU",
+   "arquivo": "rn-17434-macau-2024.json",
+   "secoes": 77,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16160",
+   "nm": "MAJOR SALES",
+   "arquivo": "rn-16160-major-sales-2022.json",
+   "secoes": 8,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16160",
+   "nm": "MAJOR SALES",
+   "arquivo": "rn-16160-major-sales-2024.json",
+   "secoes": 9,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17450",
+   "nm": "MARCELINO VIEIRA",
+   "arquivo": "rn-17450-marcelino-vieira-2022.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17450",
+   "nm": "MARCELINO VIEIRA",
+   "arquivo": "rn-17450-marcelino-vieira-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17477",
+   "nm": "MARTINS",
+   "arquivo": "rn-17477-martins-2022.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17477",
+   "nm": "MARTINS",
+   "arquivo": "rn-17477-martins-2024.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17493",
+   "nm": "MAXARANGUAPE",
+   "arquivo": "rn-17493-maxaranguape-2022.json",
+   "secoes": 30,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17493",
+   "nm": "MAXARANGUAPE",
+   "arquivo": "rn-17493-maxaranguape-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17213",
+   "nm": "MESSIAS TARGINO",
+   "arquivo": "rn-17213-messias-targino-2022.json",
+   "secoes": 14,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17213",
+   "nm": "MESSIAS TARGINO",
+   "arquivo": "rn-17213-messias-targino-2024.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17531",
+   "nm": "MONTANHAS",
+   "arquivo": "rn-17531-montanhas-2022.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17531",
+   "nm": "MONTANHAS",
+   "arquivo": "rn-17531-montanhas-2024.json",
+   "secoes": 35,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17558",
+   "nm": "MONTE ALEGRE",
+   "arquivo": "rn-17558-monte-alegre-2022.json",
+   "secoes": 51,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17558",
+   "nm": "MONTE ALEGRE",
+   "arquivo": "rn-17558-monte-alegre-2024.json",
+   "secoes": 51,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17574",
+   "nm": "MONTE DAS GAMELEIRAS",
+   "arquivo": "rn-17574-monte-das-gameleiras-2022.json",
+   "secoes": 9,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17574",
+   "nm": "MONTE DAS GAMELEIRAS",
+   "arquivo": "rn-17574-monte-das-gameleiras-2024.json",
+   "secoes": 9,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17590",
+   "nm": "MOSSORÓ",
+   "arquivo": "rn-17590-mossoro-2022.json",
+   "secoes": 540,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17590",
+   "nm": "MOSSORÓ",
+   "arquivo": "rn-17590-mossoro-2024.json",
+   "secoes": 543,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17612",
+   "nm": "NATAL",
+   "arquivo": "rn-17612-natal-2022.json",
+   "secoes": 1414,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17612",
+   "nm": "NATAL",
+   "arquivo": "rn-17612-natal-2024.json",
+   "secoes": 1407,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17639",
+   "nm": "NÍSIA FLORESTA",
+   "arquivo": "rn-17639-nisia-floresta-2022.json",
+   "secoes": 64,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17639",
+   "nm": "NÍSIA FLORESTA",
+   "arquivo": "rn-17639-nisia-floresta-2024.json",
+   "secoes": 67,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17655",
+   "nm": "NOVA CRUZ",
+   "arquivo": "rn-17655-nova-cruz-2022.json",
+   "secoes": 90,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17655",
+   "nm": "NOVA CRUZ",
+   "arquivo": "rn-17655-nova-cruz-2024.json",
+   "secoes": 94,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17671",
+   "nm": "OLHO D'ÁGUA DO BORGES",
+   "arquivo": "rn-17671-olho-d-agua-do-borges-2022.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17671",
+   "nm": "OLHO D'ÁGUA DO BORGES",
+   "arquivo": "rn-17671-olho-d-agua-do-borges-2024.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17698",
+   "nm": "OURO BRANCO",
+   "arquivo": "rn-17698-ouro-branco-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17698",
+   "nm": "OURO BRANCO",
+   "arquivo": "rn-17698-ouro-branco-2024.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17710",
+   "nm": "PARANÁ",
+   "arquivo": "rn-17710-parana-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17710",
+   "nm": "PARANÁ",
+   "arquivo": "rn-17710-parana-2024.json",
+   "secoes": 14,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17736",
+   "nm": "PARAÚ",
+   "arquivo": "rn-17736-parau-2022.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17736",
+   "nm": "PARAÚ",
+   "arquivo": "rn-17736-parau-2024.json",
+   "secoes": 19,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17752",
+   "nm": "PARAZINHO",
+   "arquivo": "rn-17752-parazinho-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17752",
+   "nm": "PARAZINHO",
+   "arquivo": "rn-17752-parazinho-2024.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17779",
+   "nm": "PARELHAS",
+   "arquivo": "rn-17779-parelhas-2022.json",
+   "secoes": 57,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17779",
+   "nm": "PARELHAS",
+   "arquivo": "rn-17779-parelhas-2024.json",
+   "secoes": 57,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17795",
+   "nm": "PARNAMIRIM",
+   "arquivo": "rn-17795-parnamirim-2022.json",
+   "secoes": 396,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17795",
+   "nm": "PARNAMIRIM",
+   "arquivo": "rn-17795-parnamirim-2024.json",
+   "secoes": 404,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17817",
+   "nm": "PASSA E FICA",
+   "arquivo": "rn-17817-passa-e-fica-2022.json",
+   "secoes": 30,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17817",
+   "nm": "PASSA E FICA",
+   "arquivo": "rn-17817-passa-e-fica-2024.json",
+   "secoes": 30,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17833",
+   "nm": "PASSAGEM",
+   "arquivo": "rn-17833-passagem-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17833",
+   "nm": "PASSAGEM",
+   "arquivo": "rn-17833-passagem-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17850",
+   "nm": "PATU",
+   "arquivo": "rn-17850-patu-2022.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17850",
+   "nm": "PATU",
+   "arquivo": "rn-17850-patu-2024.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17876",
+   "nm": "PAU DOS FERROS",
+   "arquivo": "rn-17876-pau-dos-ferros-2022.json",
+   "secoes": 63,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17876",
+   "nm": "PAU DOS FERROS",
+   "arquivo": "rn-17876-pau-dos-ferros-2024.json",
+   "secoes": 63,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17892",
+   "nm": "PEDRA GRANDE",
+   "arquivo": "rn-17892-pedra-grande-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17892",
+   "nm": "PEDRA GRANDE",
+   "arquivo": "rn-17892-pedra-grande-2024.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17914",
+   "nm": "PEDRA PRETA",
+   "arquivo": "rn-17914-pedra-preta-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17914",
+   "nm": "PEDRA PRETA",
+   "arquivo": "rn-17914-pedra-preta-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17930",
+   "nm": "PEDRO AVELINO",
+   "arquivo": "rn-17930-pedro-avelino-2022.json",
+   "secoes": 22,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17930",
+   "nm": "PEDRO AVELINO",
+   "arquivo": "rn-17930-pedro-avelino-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17957",
+   "nm": "PEDRO VELHO",
+   "arquivo": "rn-17957-pedro-velho-2022.json",
+   "secoes": 42,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17957",
+   "nm": "PEDRO VELHO",
+   "arquivo": "rn-17957-pedro-velho-2024.json",
+   "secoes": 41,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17973",
+   "nm": "PENDÊNCIAS",
+   "arquivo": "rn-17973-pendencias-2022.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17973",
+   "nm": "PENDÊNCIAS",
+   "arquivo": "rn-17973-pendencias-2024.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "17990",
+   "nm": "PILÕES",
+   "arquivo": "rn-17990-piloes-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "17990",
+   "nm": "PILÕES",
+   "arquivo": "rn-17990-piloes-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18015",
+   "nm": "POÇO BRANCO",
+   "arquivo": "rn-18015-poco-branco-2022.json",
+   "secoes": 41,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18015",
+   "nm": "POÇO BRANCO",
+   "arquivo": "rn-18015-poco-branco-2024.json",
+   "secoes": 41,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18031",
+   "nm": "PORTALEGRE",
+   "arquivo": "rn-18031-portalegre-2022.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18031",
+   "nm": "PORTALEGRE",
+   "arquivo": "rn-18031-portalegre-2024.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16284",
+   "nm": "PORTO DO MANGUE",
+   "arquivo": "rn-16284-porto-do-mangue-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16284",
+   "nm": "PORTO DO MANGUE",
+   "arquivo": "rn-16284-porto-do-mangue-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18074",
+   "nm": "PUREZA",
+   "arquivo": "rn-18074-pureza-2022.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18074",
+   "nm": "PUREZA",
+   "arquivo": "rn-18074-pureza-2024.json",
+   "secoes": 28,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18090",
+   "nm": "RAFAEL FERNANDES",
+   "arquivo": "rn-18090-rafael-fernandes-2022.json",
+   "secoes": 14,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18090",
+   "nm": "RAFAEL FERNANDES",
+   "arquivo": "rn-18090-rafael-fernandes-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18937",
+   "nm": "RAFAEL GODEIRO",
+   "arquivo": "rn-18937-rafael-godeiro-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18937",
+   "nm": "RAFAEL GODEIRO",
+   "arquivo": "rn-18937-rafael-godeiro-2024.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18112",
+   "nm": "RIACHO DA CRUZ",
+   "arquivo": "rn-18112-riacho-da-cruz-2022.json",
+   "secoes": 8,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18112",
+   "nm": "RIACHO DA CRUZ",
+   "arquivo": "rn-18112-riacho-da-cruz-2024.json",
+   "secoes": 8,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18139",
+   "nm": "RIACHO DE SANTANA",
+   "arquivo": "rn-18139-riacho-de-santana-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18139",
+   "nm": "RIACHO DE SANTANA",
+   "arquivo": "rn-18139-riacho-de-santana-2024.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18155",
+   "nm": "RIACHUELO",
+   "arquivo": "rn-18155-riachuelo-2022.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18155",
+   "nm": "RIACHUELO",
+   "arquivo": "rn-18155-riachuelo-2024.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16268",
+   "nm": "RIO DO FOGO",
+   "arquivo": "rn-16268-rio-do-fogo-2022.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16268",
+   "nm": "RIO DO FOGO",
+   "arquivo": "rn-16268-rio-do-fogo-2024.json",
+   "secoes": 37,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18171",
+   "nm": "RODOLFO FERNANDES",
+   "arquivo": "rn-18171-rodolfo-fernandes-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18171",
+   "nm": "RODOLFO FERNANDES",
+   "arquivo": "rn-18171-rodolfo-fernandes-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18198",
+   "nm": "RUY BARBOSA",
+   "arquivo": "rn-18198-ruy-barbosa-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18198",
+   "nm": "RUY BARBOSA",
+   "arquivo": "rn-18198-ruy-barbosa-2024.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18236",
+   "nm": "SANTA CRUZ",
+   "arquivo": "rn-18236-santa-cruz-2022.json",
+   "secoes": 87,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18236",
+   "nm": "SANTA CRUZ",
+   "arquivo": "rn-18236-santa-cruz-2024.json",
+   "secoes": 87,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16241",
+   "nm": "SANTA MARIA",
+   "arquivo": "rn-16241-santa-maria-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16241",
+   "nm": "SANTA MARIA",
+   "arquivo": "rn-16241-santa-maria-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18279",
+   "nm": "SANTANA DO MATOS",
+   "arquivo": "rn-18279-santana-do-matos-2022.json",
+   "secoes": 40,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18279",
+   "nm": "SANTANA DO MATOS",
+   "arquivo": "rn-18279-santana-do-matos-2024.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18252",
+   "nm": "SANTANA DO SERIDÓ",
+   "arquivo": "rn-18252-santana-do-serido-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18252",
+   "nm": "SANTANA DO SERIDÓ",
+   "arquivo": "rn-18252-santana-do-serido-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18295",
+   "nm": "SANTO ANTÔNIO",
+   "arquivo": "rn-18295-santo-antonio-2022.json",
+   "secoes": 57,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18295",
+   "nm": "SANTO ANTÔNIO",
+   "arquivo": "rn-18295-santo-antonio-2024.json",
+   "secoes": 57,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18317",
+   "nm": "SÃO BENTO DO NORTE",
+   "arquivo": "rn-18317-sao-bento-do-norte-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18317",
+   "nm": "SÃO BENTO DO NORTE",
+   "arquivo": "rn-18317-sao-bento-do-norte-2024.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18333",
+   "nm": "SÃO BENTO DO TRAIRÍ",
+   "arquivo": "rn-18333-sao-bento-do-trairi-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18333",
+   "nm": "SÃO BENTO DO TRAIRÍ",
+   "arquivo": "rn-18333-sao-bento-do-trairi-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18350",
+   "nm": "SÃO FERNANDO",
+   "arquivo": "rn-18350-sao-fernando-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18350",
+   "nm": "SÃO FERNANDO",
+   "arquivo": "rn-18350-sao-fernando-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18210",
+   "nm": "SÃO FRANCISCO DO OESTE",
+   "arquivo": "rn-18210-sao-francisco-do-oeste-2022.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18210",
+   "nm": "SÃO FRANCISCO DO OESTE",
+   "arquivo": "rn-18210-sao-francisco-do-oeste-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18376",
+   "nm": "SÃO GONÇALO DO AMARANTE",
+   "arquivo": "rn-18376-sao-goncalo-do-amarante-2022.json",
+   "secoes": 217,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18376",
+   "nm": "SÃO GONÇALO DO AMARANTE",
+   "arquivo": "rn-18376-sao-goncalo-do-amarante-2024.json",
+   "secoes": 223,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18392",
+   "nm": "SÃO JOÃO DO SABUGI",
+   "arquivo": "rn-18392-sao-joao-do-sabugi-2022.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18392",
+   "nm": "SÃO JOÃO DO SABUGI",
+   "arquivo": "rn-18392-sao-joao-do-sabugi-2024.json",
+   "secoes": 18,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18414",
+   "nm": "SÃO JOSÉ DE MIPIBU",
+   "arquivo": "rn-18414-sao-jose-de-mipibu-2022.json",
+   "secoes": 102,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18414",
+   "nm": "SÃO JOSÉ DE MIPIBU",
+   "arquivo": "rn-18414-sao-jose-de-mipibu-2024.json",
+   "secoes": 106,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18430",
+   "nm": "SÃO JOSÉ DO CAMPESTRE",
+   "arquivo": "rn-18430-sao-jose-do-campestre-2022.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18430",
+   "nm": "SÃO JOSÉ DO CAMPESTRE",
+   "arquivo": "rn-18430-sao-jose-do-campestre-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18457",
+   "nm": "SÃO JOSÉ DO SERIDÓ",
+   "arquivo": "rn-18457-sao-jose-do-serido-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18457",
+   "nm": "SÃO JOSÉ DO SERIDÓ",
+   "arquivo": "rn-18457-sao-jose-do-serido-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18473",
+   "nm": "SÃO MIGUEL",
+   "arquivo": "rn-18473-sao-miguel-2022.json",
+   "secoes": 59,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18473",
+   "nm": "SÃO MIGUEL",
+   "arquivo": "rn-18473-sao-miguel-2024.json",
+   "secoes": 60,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16063",
+   "nm": "SÃO MIGUEL DO GOSTOSO",
+   "arquivo": "rn-16063-sao-miguel-do-gostoso-2022.json",
+   "secoes": 29,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16063",
+   "nm": "SÃO MIGUEL DO GOSTOSO",
+   "arquivo": "rn-16063-sao-miguel-do-gostoso-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18490",
+   "nm": "SÃO PAULO DO POTENGI",
+   "arquivo": "rn-18490-sao-paulo-do-potengi-2022.json",
+   "secoes": 43,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18490",
+   "nm": "SÃO PAULO DO POTENGI",
+   "arquivo": "rn-18490-sao-paulo-do-potengi-2024.json",
+   "secoes": 44,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18511",
+   "nm": "SÃO PEDRO",
+   "arquivo": "rn-18511-sao-pedro-2022.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18511",
+   "nm": "SÃO PEDRO",
+   "arquivo": "rn-18511-sao-pedro-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18538",
+   "nm": "SÃO RAFAEL",
+   "arquivo": "rn-18538-sao-rafael-2022.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18538",
+   "nm": "SÃO RAFAEL",
+   "arquivo": "rn-18538-sao-rafael-2024.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18554",
+   "nm": "SÃO TOMÉ",
+   "arquivo": "rn-18554-sao-tome-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18554",
+   "nm": "SÃO TOMÉ",
+   "arquivo": "rn-18554-sao-tome-2024.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18570",
+   "nm": "SÃO VICENTE",
+   "arquivo": "rn-18570-sao-vicente-2022.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18570",
+   "nm": "SÃO VICENTE",
+   "arquivo": "rn-18570-sao-vicente-2024.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18597",
+   "nm": "SENADOR ELÓI DE SOUZA",
+   "arquivo": "rn-18597-senador-eloi-de-souza-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18597",
+   "nm": "SENADOR ELÓI DE SOUZA",
+   "arquivo": "rn-18597-senador-eloi-de-souza-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18619",
+   "nm": "SENADOR GEORGINO AVELINO",
+   "arquivo": "rn-18619-senador-georgino-avelino-2022.json",
+   "secoes": 13,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18619",
+   "nm": "SENADOR GEORGINO AVELINO",
+   "arquivo": "rn-18619-senador-georgino-avelino-2024.json",
+   "secoes": 11,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18058",
+   "nm": "SERRA CAIADA",
+   "arquivo": "rn-18058-serra-caiada-2022.json",
+   "secoes": 23,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18058",
+   "nm": "SERRA CAIADA",
+   "arquivo": "rn-18058-serra-caiada-2024.json",
+   "secoes": 24,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18635",
+   "nm": "SERRA DE SÃO BENTO",
+   "arquivo": "rn-18635-serra-de-sao-bento-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18635",
+   "nm": "SERRA DE SÃO BENTO",
+   "arquivo": "rn-18635-serra-de-sao-bento-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16020",
+   "nm": "SERRA DO MEL",
+   "arquivo": "rn-16020-serra-do-mel-2022.json",
+   "secoes": 42,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16020",
+   "nm": "SERRA DO MEL",
+   "arquivo": "rn-16020-serra-do-mel-2024.json",
+   "secoes": 42,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18651",
+   "nm": "SERRA NEGRA DO NORTE",
+   "arquivo": "rn-18651-serra-negra-do-norte-2022.json",
+   "secoes": 22,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18651",
+   "nm": "SERRA NEGRA DO NORTE",
+   "arquivo": "rn-18651-serra-negra-do-norte-2024.json",
+   "secoes": 22,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18678",
+   "nm": "SERRINHA",
+   "arquivo": "rn-18678-serrinha-2022.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18678",
+   "nm": "SERRINHA",
+   "arquivo": "rn-18678-serrinha-2024.json",
+   "secoes": 21,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16209",
+   "nm": "SERRINHA DOS PINTOS",
+   "arquivo": "rn-16209-serrinha-dos-pintos-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16209",
+   "nm": "SERRINHA DOS PINTOS",
+   "arquivo": "rn-16209-serrinha-dos-pintos-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18694",
+   "nm": "SEVERIANO MELO",
+   "arquivo": "rn-18694-severiano-melo-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18694",
+   "nm": "SEVERIANO MELO",
+   "arquivo": "rn-18694-severiano-melo-2024.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18716",
+   "nm": "SÍTIO NOVO",
+   "arquivo": "rn-18716-sitio-novo-2022.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18716",
+   "nm": "SÍTIO NOVO",
+   "arquivo": "rn-18716-sitio-novo-2024.json",
+   "secoes": 16,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18732",
+   "nm": "TABOLEIRO GRANDE",
+   "arquivo": "rn-18732-taboleiro-grande-2022.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.678Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18732",
+   "nm": "TABOLEIRO GRANDE",
+   "arquivo": "rn-18732-taboleiro-grande-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.050Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18759",
+   "nm": "TAIPU",
+   "arquivo": "rn-18759-taipu-2022.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18759",
+   "nm": "TAIPU",
+   "arquivo": "rn-18759-taipu-2024.json",
+   "secoes": 34,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18775",
+   "nm": "TANGARÁ",
+   "arquivo": "rn-18775-tangara-2022.json",
+   "secoes": 36,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18775",
+   "nm": "TANGARÁ",
+   "arquivo": "rn-18775-tangara-2024.json",
+   "secoes": 36,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18791",
+   "nm": "TENENTE ANANIAS",
+   "arquivo": "rn-18791-tenente-ananias-2022.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18791",
+   "nm": "TENENTE ANANIAS",
+   "arquivo": "rn-18791-tenente-ananias-2024.json",
+   "secoes": 27,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16004",
+   "nm": "TENENTE LAURENTINO CRUZ",
+   "arquivo": "rn-16004-tenente-laurentino-cruz-2022.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16004",
+   "nm": "TENENTE LAURENTINO CRUZ",
+   "arquivo": "rn-16004-tenente-laurentino-cruz-2024.json",
+   "secoes": 15,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16225",
+   "nm": "TIBAU",
+   "arquivo": "rn-16225-tibau-2022.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16225",
+   "nm": "TIBAU",
+   "arquivo": "rn-16225-tibau-2024.json",
+   "secoes": 26,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.045Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18813",
+   "nm": "TIBAU DO SUL",
+   "arquivo": "rn-18813-tibau-do-sul-2022.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18813",
+   "nm": "TIBAU DO SUL",
+   "arquivo": "rn-18813-tibau-do-sul-2024.json",
+   "secoes": 40,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18830",
+   "nm": "TIMBAÚBA DOS BATISTAS",
+   "arquivo": "rn-18830-timbauba-dos-batistas-2022.json",
+   "secoes": 7,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18830",
+   "nm": "TIMBAÚBA DOS BATISTAS",
+   "arquivo": "rn-18830-timbauba-dos-batistas-2024.json",
+   "secoes": 8,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18856",
+   "nm": "TOUROS",
+   "arquivo": "rn-18856-touros-2022.json",
+   "secoes": 83,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18856",
+   "nm": "TOUROS",
+   "arquivo": "rn-18856-touros-2024.json",
+   "secoes": 86,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16128",
+   "nm": "TRIUNFO POTIGUAR",
+   "arquivo": "rn-16128-triunfo-potiguar-2022.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16128",
+   "nm": "TRIUNFO POTIGUAR",
+   "arquivo": "rn-16128-triunfo-potiguar-2024.json",
+   "secoes": 17,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18872",
+   "nm": "UMARIZAL",
+   "arquivo": "rn-18872-umarizal-2022.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18872",
+   "nm": "UMARIZAL",
+   "arquivo": "rn-18872-umarizal-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.047Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18899",
+   "nm": "UPANEMA",
+   "arquivo": "rn-18899-upanema-2022.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18899",
+   "nm": "UPANEMA",
+   "arquivo": "rn-18899-upanema-2024.json",
+   "secoes": 38,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.048Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18910",
+   "nm": "VÁRZEA",
+   "arquivo": "rn-18910-varzea-2022.json",
+   "secoes": 20,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18910",
+   "nm": "VÁRZEA",
+   "arquivo": "rn-18910-varzea-2024.json",
+   "secoes": 26,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "16187",
+   "nm": "VENHA-VER",
+   "arquivo": "rn-16187-venha-ver-2022.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "16187",
+   "nm": "VENHA-VER",
+   "arquivo": "rn-16187-venha-ver-2024.json",
+   "secoes": 12,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18953",
+   "nm": "VERA CRUZ",
+   "arquivo": "rn-18953-vera-cruz-2022.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.677Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18953",
+   "nm": "VERA CRUZ",
+   "arquivo": "rn-18953-vera-cruz-2024.json",
+   "secoes": 31,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.049Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18970",
+   "nm": "VIÇOSA",
+   "arquivo": "rn-18970-vicosa-2022.json",
+   "secoes": 6,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18970",
+   "nm": "VIÇOSA",
+   "arquivo": "rn-18970-vicosa-2024.json",
+   "secoes": 6,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  },
+  {
+   "ano": 2022,
+   "uf": "RN",
+   "cd": "18996",
+   "nm": "VILA FLOR",
+   "arquivo": "rn-18996-vila-flor-2022.json",
+   "secoes": 9,
+   "cargos": [
+    {
+     "cd": 1,
+     "ds": "Presidente"
+    },
+    {
+     "cd": 3,
+     "ds": "Governador"
+    },
+    {
+     "cd": 5,
+     "ds": "Senador"
+    },
+    {
+     "cd": 6,
+     "ds": "Deputado Federal"
+    },
+    {
+     "cd": 7,
+     "ds": "Deputado Estadual"
+    }
+   ],
+   "gerado_em": "2026-09-24T21:57:12.675Z"
+  },
+  {
+   "ano": 2024,
+   "uf": "RN",
+   "cd": "18996",
+   "nm": "VILA FLOR",
+   "arquivo": "rn-18996-vila-flor-2024.json",
+   "secoes": 10,
+   "cargos": [
+    {
+     "cd": 11,
+     "ds": "Prefeito"
+    },
+    {
+     "cd": 13,
+     "ds": "Vereador"
+    }
+   ],
+   "gerado_em": "2026-09-24T22:05:47.046Z"
+  }
+ ],
+ "gerado_em": "2026-09-24T22:11:38.137Z"
+}
