@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.2.1] — 2026-09-24
+
+### Adicionado
+- **Nomes, bairros, endereços e mapa dos locais de votação do RN (2022 e 2024)** publicados em `data/locais/`,
+  a partir do cadastro oficial do TSE (`eleitorado_local_votacao`) importado pelo navegador:
+  1.505 locais em 2022 e 1.528 em 2024, cobrindo 97% dos locais das urnas.
+  A aba **Votos por bairro** passa a agrupar por bairro (ex.: 29 bairros em Mossoró) e a mostrar o mapa.
+
+### Melhorado
+- **Importação dos locais** agora guarda também a seção → local. Isso corrige as seções que mudaram de escola
+  (ex.: em Mossoró 2024, seções da E.E. Eliseu Viana, em reforma, que votaram na E.E. Lavoisier Maia):
+  o boletim registra o local antigo e o cadastro o novo. Os ~3% restantes aparecem após uma nova importação.
+- Botão "Carregar de novo" disponível mesmo com os locais já publicados (para atualizar o cadastro).
+- Aviso sobre seções agregadas passa a ser informativo (não de alerta).
+
 ## [2.2.0] — 2026-09-24
 
 ### Alterado — só dados reais em todo o sistema
