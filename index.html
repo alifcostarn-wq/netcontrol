@@ -1693,9 +1693,25 @@ async function catalogo(uf, ano) {
 }
 async function aplicarLocais(doc) {
   const cat = await catalogo(doc.uf, doc.ano);
-  if (cat?.locais) for (const L of doc.locais) {
-    const x = cat.locais[`${doc.municipio.cd}|${L.z}|${L.n}`];
-    if (x) [L.nm, L.bairro, L.end, L.lat, L.lon] = x;
+  const cd = doc.municipio.cd;
+  if (cat?.locais) {
+    // seções que o boletim registra num local e o cadastro em outro (ex.: escola em reforma)
+    if (cat.secoes) {
+      const idx = new Map(doc.locais.map((L, i) => [L.z + '|' + L.n, i]));
+      for (const s of doc.secoes) {
+        const L = doc.locais[s[0]];
+        if (cat.locais[`${cd}|${L.z}|${L.n}`]) continue;
+        const n2 = cat.secoes[`${cd}|${s[1]}|${s[2]}`];
+        if (n2 == null) continue;
+        let i = idx.get(L.z + '|' + n2);
+        if (i == null) { i = doc.locais.length; doc.locais.push({ z: L.z, n: n2, nm: null, bairro: null, end: null, lat: null, lon: null }); idx.set(L.z + '|' + n2, i); }
+        s[0] = i;
+      }
+    }
+    for (const L of doc.locais) {
+      const x = cat.locais[`${cd}|${L.z}|${L.n}`];
+      if (x) [L.nm, L.bairro, L.end, L.lat, L.lon] = x;
+    }
   }
   doc._temNomes = doc.locais.some(L => L.nm);
   doc._temBairros = doc.locais.some(L => L.bairro);
@@ -1773,7 +1789,7 @@ async function hiSelectDs(key) {
     ? '<b>Os nomes, bairros e o mapa dos locais de votação ainda não foram carregados.</b> Os votos já são os oficiais, urna por urna — por enquanto cada local aparece pelo número. <a href="#dados">Veja como carregar em Ajuda</a>.'
     : !doc._temCoords ? 'Os locais de votação desta cidade não têm localização no cadastro do TSE, por isso o mapa não aparece.' : '';
   av.hidden = !avisos.length && !falta;
-  av.className = 'banner' + (falta ? ' info' : '');
+  av.className = 'banner info';
   av.innerHTML = [falta, avisos.map(esc).join(' ')].filter(Boolean).join('<br>');
   $('#hi-nivel [data-n=bairro]').hidden = !doc._temBairros;
   if (!doc._temBairros && HI.nivel === 'bairro') HI.nivel = 'local';
@@ -2198,7 +2214,9 @@ async function lerLocaisZip(blob, ufs, progresso) {
       if (ix.NR_TURNO != null && f[ix.NR_TURNO] && f[ix.NR_TURNO] !== '1') return;
       const k = `${f[ix.CD_MUNICIPIO]}|${+f[ix.NR_ZONA]}|${+f[ix.NR_LOCAL_VOTACAO]}`;
       let m = res.get(uf);
-      if (!m) res.set(uf, m = {});
+      if (!m) res.set(uf, m = { locais: {}, secoes: {} });
+      if (ix.NR_SECAO != null && f[ix.NR_SECAO]) m.secoes[`${f[ix.CD_MUNICIPIO]}|${+f[ix.NR_ZONA]}|${+f[ix.NR_SECAO]}`] = +f[ix.NR_LOCAL_VOTACAO];
+      m = m.locais;
       if (!m[k]) m[k] = [f[ix.NM_LOCAL_VOTACAO] || null, f[ix.NM_BAIRRO] || null, f[ix.DS_ENDERECO] || null, coordCsv(f[ix.NR_LATITUDE]), coordCsv(f[ix.NR_LONGITUDE])];
     };
     for (;;) {
@@ -2229,11 +2247,11 @@ const LOC = {
     $('#loc-panel').hidden = !pares.length;
     $('#loc-table').innerHTML = `<thead><tr><th>Ano</th><th>Estado</th><th>Situação</th><th></th></tr></thead><tbody>` + pares.map(({ uf, ano }) => {
       const pub = LOC.publicados.some(x => x.uf === uf && +x.ano === ano);
-      const loc = store.get('rv.locais.' + uf + '|' + ano, null) || CATALOGOS.get(uf + '|' + ano);
+      const loc = store.get('rv.locais.' + uf + '|' + ano, null);
       const sit = pub ? '<span class="chip ok">Publicado no site</span>'
         : loc ? `<span class="chip ok">Carregado neste navegador</span> <small>${fmt(loc.n || Object.keys(loc.locais || {}).length)} locais</small>`
         : '<span class="chip wn">Falta carregar</span>';
-      const acoes = pub ? '' : `<button class="btn sm" type="button" data-loc-auto="${ano}">Carregar agora</button> <a class="btn sm" href="${LOC.url(ano)}" target="_blank" rel="noopener">Baixar do TSE</a>` +
+      const acoes = `<button class="btn sm" type="button" data-loc-auto="${ano}">${pub ? 'Carregar de novo' : 'Carregar agora'}</button> <a class="btn sm" href="${LOC.url(ano)}" target="_blank" rel="noopener">Baixar do TSE</a>` +
         (loc ? ` <button class="btn sm" type="button" data-loc-export="${uf}|${ano}">Baixar arquivo para publicar</button>` : '');
       return `<tr><td>${ano}</td><td>${esc(uf)}</td><td>${sit}</td><td class="n">${acoes}</td></tr>`;
     }).join('') + '</tbody>';
@@ -2257,10 +2275,10 @@ const LOC = {
     try {
       const porUf = await lerLocaisZip(blob, ufs, pc => LOC.status(`Lendo o arquivo do TSE… ${pc}%`));
       let total = 0;
-      for (const [uf, locais] of porUf) {
+      for (const [uf, { locais, secoes }] of porUf) {
         const n = Object.keys(locais).length;
         total += n;
-        const cat = { versao: 1, ano: +ano, uf, fonte: LOC.url(ano), gerado_em: new Date().toISOString(), n, locais };
+        const cat = { versao: 2, ano: +ano, uf, fonte: LOC.url(ano), gerado_em: new Date().toISOString(), n, locais, secoes };
         store.set('rv.locais.' + uf + '|' + ano, cat);
         CATALOGOS.set(uf + '|' + ano, cat);
       }
