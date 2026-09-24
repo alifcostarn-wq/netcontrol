@@ -593,11 +593,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --warn:#B85C12; --warn-soft:#FBE6D2; --bad:#AE3444; --bad-soft:#F6DCE0;
   --urna-box:#FFFFFF; --urna-edge:#15201A;
   --c1:#1E7F4F; --c2:#D46B12; --c3:#2F5DA8; --c4:#AE3444; --c5:#7447B0; --c6:#15838F; --c7:#8A6A12; --c8:#56682A;
-  --shadow:0 1px 2px rgba(21,32,26,.06), 0 4px 16px rgba(21,32,26,.05);
   --font-display:"Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --font-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --r:10px;
+  --r:12px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark){
@@ -607,7 +606,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
     --warn:#E8914A; --warn-soft:#3A2715; --bad:#E27A87; --bad-soft:#3B1D22;
     --urna-box:#0D1310; --urna-edge:#93A39A;
     --c1:#3DB47A; --c2:#EE9448; --c3:#76A0EA; --c4:#E27A87; --c5:#AD8BE6; --c6:#4CC3D1; --c7:#D2AE52; --c8:#A2B865;
-    --shadow:0 1px 2px rgba(0,0,0,.4);
     color-scheme: dark;
   }
 }
@@ -617,25 +615,26 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --warn:#E8914A; --warn-soft:#3A2715; --bad:#E27A87; --bad-soft:#3B1D22;
   --urna-box:#0D1310; --urna-edge:#93A39A;
   --c1:#3DB47A; --c2:#EE9448; --c3:#76A0EA; --c4:#E27A87; --c5:#AD8BE6; --c6:#4CC3D1; --c7:#D2AE52; --c8:#A2B865;
-  --shadow:0 1px 2px rgba(0,0,0,.4);
   color-scheme: dark;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{background:var(--bg)}
-body{margin:0;color:var(--ink);font:15px/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
-.wrap{max-width:1320px;margin:0 auto;padding-inline:20px}
+body{margin:0;color:var(--ink);font:16px/1.55 var(--font-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
 h1,h2,h3{font-family:var(--font-display);font-stretch:88%;letter-spacing:-.01em;text-wrap:balance;margin:0}
-h2{font-size:1.45rem;font-weight:750}
-h3{font-size:1.05rem;font-weight:700}
+h1{font-size:1.8rem;font-weight:800;line-height:1.15}
+h2{font-size:1.4rem;font-weight:750;line-height:1.2}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0}
 small,.muted{color:var(--muted)}
 button,select,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
-.num,td.n,th.n{font-variant-numeric:tabular-nums}
+td.n,th.n{font-variant-numeric:tabular-nums}
 
 /* topo */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:20px;min-height:60px;flex-wrap:wrap;padding-block:6px}
+.top .wrap{display:flex;align-items:center;gap:8px 20px;min-height:62px;flex-wrap:wrap;padding-block:8px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand b{font-family:var(--font-display);font-weight:800;font-stretch:72%;font-size:1.35rem;letter-spacing:.02em;text-transform:uppercase}
 .keypad{display:grid;grid-template-columns:repeat(3,10px);gap:3px}
@@ -643,98 +642,117 @@ button,select,input{font:inherit;color:inherit}
 .keypad i:nth-child(1){background:var(--urna-box)}
 .keypad i:nth-child(2){background:#E8841F;border-color:#B8620D}
 .keypad i:nth-child(3){background:#23915A;border-color:#17683F}
-.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
-.tabs a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem}
+.tabs{display:flex;gap:4px;margin-left:auto}
+.tabs a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.95rem;white-space:nowrap}
 .tabs a:hover{color:var(--ink);background:var(--surface-2)}
 .tabs a[aria-current="page"]{background:var(--ink);color:var(--surface)}
-.tabs a .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--bad);margin-right:6px;vertical-align:1px}
-main{padding-block:22px 48px}
-section.tab{display:grid;gap:18px}
+.tabs .sh{display:none}
+.tabs a .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--bad);margin-right:7px;vertical-align:2px}
+main{padding-block:28px 56px}
+section.tab{display:grid;gap:16px}
 
-/* controles */
-.controls{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
-.controls label,.field{display:grid;gap:4px;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:0}
-select,input[type=search],input[type=text]{height:38px;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:0 10px;font-size:.93rem;letter-spacing:0;text-transform:none;color:var(--ink);max-width:100%}
-select{padding-right:28px}
-.controls select{min-width:130px}
-#lv-ele{min-width:220px}
-#lv-mun,#hi-ds{min-width:200px}
-.btn{height:38px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+/* título e explicação de cada aba */
+.intro{display:grid;gap:6px;margin-bottom:4px}
+.intro p{color:var(--muted);max-width:70ch;font-size:1.02rem}
+
+/* filtros */
+.filters{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.filters > label,.field{display:grid;gap:6px;font-size:.88rem;font-weight:600;color:var(--muted);min-width:0}
+.filters > label{flex:1 1 170px}
+.filters > label.wide{flex:2 1 300px}
+.filters.g6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.filters.g6 > .s2{grid-column:span 2}
+.filters.g6 > .s4{grid-column:span 4}
+select,input[type=search]{height:44px;width:100%;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:0 12px;font-size:1rem;color:var(--ink)}
+.btn{height:40px;padding:0 16px;border-radius:9px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:.95rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .btn:hover{border-color:var(--muted)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn.sm{height:30px;padding:0 10px;font-size:.82rem}
+.btn.sm{height:34px;padding:0 12px;font-size:.88rem}
 .btn[disabled]{opacity:.5;cursor:not-allowed}
-.ctl-actions{display:flex;gap:8px;margin-left:auto;align-items:center}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg)}
-.seg button{border:0;background:transparent;padding:0 12px;height:36px;font-weight:600;font-size:.86rem;color:var(--muted);cursor:pointer}
+.linkbtn{border:0;background:none;color:var(--accent);font-weight:600;cursor:pointer;padding:4px 2px}
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--bg);height:44px}
+.seg button{flex:1;border:0;background:transparent;padding:0 12px;font-weight:600;font-size:.93rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+.seg button + button{border-left:1px solid var(--line)}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
-.chk{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500}
+.chk{display:flex;align-items:center;gap:8px;font-size:.93rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.chk input{width:18px;height:18px;accent-color:var(--accent)}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
-.banner{border-radius:var(--r);padding:12px 14px;background:var(--warn-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);font-size:.92rem}
+.banner{border-radius:var(--r);padding:14px 16px;background:var(--warn-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);font-size:.97rem;line-height:1.6}
 .banner.info{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
 .banner.err{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 35%,transparent)}
 .banner b{font-weight:600}
+.banner .btn{margin-left:6px;vertical-align:middle}
 
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
 
-/* cabeçalho ao vivo */
-.lv-head{display:grid;gap:10px}
-.lv-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+/* apuração: cabeçalho */
+.live-head{display:grid;gap:12px}
+.lv-title{display:flex;align-items:baseline;gap:6px 12px;flex-wrap:wrap}
 .lv-title h2{font-size:1.7rem}
-.pill{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.where{color:var(--muted);font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:.85rem;font-weight:600;padding:3px 11px;border-radius:999px;background:var(--surface-2);color:var(--muted);align-self:center}
 .pill.live{background:var(--warn-soft);color:var(--warn)}
-.pill.live::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.4s infinite}
+.pill.live::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.4s infinite}
 .pill.final{background:var(--accent-soft);color:var(--accent)}
 @keyframes pulse{50%{opacity:.25}}
-.progress{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.progress{height:14px;border-radius:999px;background:var(--surface-2);overflow:hidden;margin-top:4px}
 .progress i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .6s ease}
-.meta{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:.84rem;color:var(--muted)}
-.meta b{color:var(--ink);font-weight:600}
+.progress-label b{font-family:var(--font-display);font-stretch:80%;font-size:1.3rem;font-weight:700}
+.livebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:.9rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.livebar .sp{flex:1;min-width:200px}
+.livebar b{color:var(--ink);font-weight:600}
 
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:2px}
-.stat span{font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.stat b{font-family:var(--font-display);font-stretch:80%;font-size:1.55rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15}
-.stat small{font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:3px;align-content:start;text-align:left}
+.stat span{font-size:.9rem;color:var(--muted);font-weight:600}
+.stat b{font-family:var(--font-display);font-stretch:80%;font-size:1.7rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15}
+.stat b.nm{font-size:1.2rem;overflow-wrap:anywhere}
+.stat small{font-size:.87rem;line-height:1.4}
+button.stat{cursor:pointer;font:inherit;color:inherit}
+button.stat:hover{border-color:var(--muted)}
 
 .subtabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto}
-.subtabs button{border:0;background:transparent;padding:10px 14px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.subtabs button{border:0;background:transparent;padding:11px 16px;font-weight:600;font-size:.98rem;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
 .subtabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 
-.listbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.listbar input[type=search]{flex:1;min-width:180px}
+.listbar{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap}
+.listbar input[type=search]{flex:1;min-width:220px}
+.hint{font-size:.93rem}
 
 /* lista de candidatos */
-.clist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.cand{display:grid;grid-template-columns:34px auto minmax(0,1fr) minmax(90px,1.1fr) 104px 150px 32px;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
-.cand.is-fav{border-color:color-mix(in srgb,var(--c2) 55%,var(--line))}
-.cand.is-out{opacity:.72}
-.pos{font-family:var(--font-display);font-stretch:75%;font-weight:700;font-size:1.1rem;color:var(--muted);text-align:right}
-.urna{display:inline-flex;gap:2px}
-.urna i{font-style:normal;font-family:var(--font-mono);font-weight:600;font-size:.86rem;width:19px;height:25px;display:grid;place-items:center;background:var(--urna-box);border:1.5px solid var(--urna-edge);border-radius:2px}
+.clist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.cand{display:grid;grid-template-columns:38px minmax(0,1.3fr) minmax(90px,1fr) 128px 36px;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.cand.is-fav{border-color:color-mix(in srgb,var(--c2) 60%,var(--line))}
+.cand.is-out{opacity:.7}
+.pos{font-family:var(--font-display);font-stretch:75%;font-weight:700;font-size:1.25rem;color:var(--muted);text-align:right}
 .who{min-width:0}
-.who b{display:block;font-weight:600;line-height:1.25;overflow-wrap:anywhere}
-.who small{display:block;font-size:.8rem;overflow-wrap:anywhere}
-.bar{height:10px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.who b{font-weight:600;font-size:1.02rem;line-height:1.3;overflow-wrap:anywhere}
+.who small{display:block;font-size:.86rem;overflow-wrap:anywhere;margin-top:1px}
+.who .chip{margin-left:4px;vertical-align:2px}
+.bar{height:12px;background:var(--surface-2);border-radius:999px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .6s ease}
-.cand:first-child .bar i{background:var(--ink)}
-.vv{text-align:right;line-height:1.2}
-.vv b{font-family:var(--font-display);font-stretch:80%;font-size:1.2rem;font-weight:700;font-variant-numeric:tabular-nums}
-.vv small{display:block;font-variant-numeric:tabular-nums}
-.delta{color:var(--accent);font-weight:600;font-size:.76rem}
-.chip{font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap;justify-self:start}
+.cand.is-lead .bar i{background:var(--ink)}
+.vv{text-align:right;line-height:1.25}
+.vv b{font-family:var(--font-display);font-stretch:80%;font-size:1.35rem;font-weight:700;font-variant-numeric:tabular-nums}
+.vv small{display:block;font-size:.86rem;font-variant-numeric:tabular-nums}
+.delta{color:var(--accent);font-weight:600}
+.chip{display:inline-block;font-size:.76rem;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap;line-height:1.5;font-family:var(--font-body);letter-spacing:0}
 .chip.ok{background:var(--accent-soft);color:var(--accent)}
 .chip.wn{background:var(--warn-soft);color:var(--warn)}
 .chip.bd{background:var(--bad-soft);color:var(--bad)}
-.star{border:0;background:transparent;cursor:pointer;font-size:1.1rem;line-height:1;color:var(--line);padding:4px}
+.star{border:0;background:transparent;cursor:pointer;font-size:1.3rem;line-height:1;color:var(--line);padding:4px}
+.star:hover{color:var(--muted)}
 .star[aria-pressed="true"]{color:var(--c2)}
-.more{justify-self:center}
+.more{display:grid;justify-items:center;padding-top:6px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
 
 /* tabelas */
 .table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
-table{border-collapse:collapse;width:100%;font-size:.88rem}
-th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface);position:sticky;top:0;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+th{font-size:.85rem;color:var(--muted);font-weight:600;background:var(--surface);position:sticky;top:0;white-space:nowrap}
 th.sort{cursor:pointer}
 th.sort::after{content:" ↕";opacity:.35}
 th[aria-sort="ascending"]::after{content:" ↑";opacity:1}
@@ -742,84 +760,84 @@ th[aria-sort="descending"]::after{content:" ↓";opacity:1}
 td.n,th.n{text-align:right;white-space:nowrap}
 tbody tr:hover{background:var(--surface-2)}
 tr.click{cursor:pointer}
-td .sub{display:block;font-size:.78rem;color:var(--muted)}
-.mini{display:flex;align-items:center;gap:8px;min-width:120px}
-.mini .bar{flex:1;height:7px}
-.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+td.go{width:28px;color:var(--muted);font-size:1.2rem;text-align:center}
+td .sub{display:block;font-size:.84rem;color:var(--muted)}
+.mini{display:flex;align-items:center;gap:10px;min-width:150px;justify-content:flex-end}
+.mini .bar{flex:1;height:8px;max-width:120px}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:7px;vertical-align:-1px}
 .table-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.table-tools .grow{flex:1}
-.diverge{position:relative;height:8px;min-width:110px;background:var(--surface-2);border-radius:999px}
+.table-tools .grow{flex:1;min-width:0}
+.table-tools .seg{height:38px}
+.tt-label{font-size:.9rem;font-weight:600;color:var(--muted)}
+.diverge{position:relative;height:9px;min-width:120px;background:var(--surface-2);border-radius:999px}
 .diverge i{position:absolute;top:0;bottom:0;border-radius:999px}
 .diverge::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted)}
 
-/* histórico */
-.hi-grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:18px;align-items:start}
-.hi-side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);display:grid;gap:10px;max-height:calc(100vh - 100px);overflow:hidden;grid-template-rows:auto auto auto minmax(0,1fr)}
-.hi-side ol{list-style:none;margin:0;padding:0;overflow:auto;display:grid;gap:2px;align-content:start}
-.hi-side li button{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;text-align:left;background:transparent;border:0;border-radius:8px;padding:7px 8px;cursor:pointer}
-.hi-side li button:hover{background:var(--surface-2)}
-.hi-side li button[aria-pressed="true"]{background:var(--accent-soft)}
-.hi-side li b{font-weight:600;font-size:.88rem;display:block;overflow-wrap:anywhere;line-height:1.25}
-.hi-side li small{font-size:.76rem}
-.hi-side .urna i{width:15px;height:20px;font-size:.72rem}
-.hi-main{display:grid;gap:14px;min-width:0}
-.crumbs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:.9rem}
-.crumbs button{border:0;background:transparent;color:var(--accent);font-weight:600;cursor:pointer;padding:2px 0}
-.crumbs span{color:var(--muted)}
-.focus-head{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.focus-head .urna i{width:26px;height:34px;font-size:1.1rem}
-.focus-head h2{font-size:1.6rem}
+/* votos por bairro */
+.crumbs{display:flex;gap:6px 8px;flex-wrap:wrap;align-items:center;font-size:.97rem}
+.crumbs > span{color:var(--muted)}
+.summary{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:14px}
+.sum-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.sum-head h2 .chip{vertical-align:5px}
+.lead{font-size:1.05rem;line-height:1.65;max-width:80ch}
 .map-wrap{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.map{height:380px;width:100%;background:var(--surface-2)}
-.legend{display:flex;gap:6px 14px;flex-wrap:wrap;padding:8px 12px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line)}
+.map{height:400px;width:100%;background:var(--surface-2)}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;padding:10px 14px;font-size:.88rem;color:var(--muted);border-top:1px solid var(--line)}
 .leaflet-container{font:inherit}
-.leaflet-tooltip{font:13px/1.35 var(--font-body)}
+.leaflet-tooltip{font:13px/1.4 var(--font-body)}
 
 /* comparar */
 .cp-sides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.side{display:grid;gap:10px}
-.side .tag{font-family:var(--font-display);font-weight:800;font-stretch:75%;font-size:1.1rem;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--accent-ink)}
-.side.a .tag{background:var(--c3)}
-.side.b .tag{background:var(--c2)}
-.side .row{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr) minmax(0,1.2fr);gap:8px}
-.side select{width:100%}
+.side{display:grid;gap:12px;align-content:start}
+.side-head{display:flex;gap:12px;align-items:center}
+.tag{font-family:var(--font-display);font-weight:800;font-stretch:75%;font-size:1.1rem;width:32px;height:32px;border-radius:8px;display:inline-grid;place-items:center;color:#fff;flex:none}
+.tag.sm{width:22px;height:22px;font-size:.85rem;border-radius:6px;margin-right:6px;vertical-align:-5px}
+.stat .tag.sm{color:#fff;font-size:.85rem;font-weight:800}
+.tag.a{background:var(--c3)}
+.tag.b{background:var(--c2)}
 
-/* dados */
+/* ajuda e dados */
 .data-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
-.drop{border:2px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+.drop{border:2px dashed var(--line);border-radius:var(--r);padding:24px;text-align:center;color:var(--muted);cursor:pointer}
 .drop.over{border-color:var(--accent);background:var(--accent-soft)}
 pre{background:var(--surface-2);border-radius:8px;padding:12px;overflow-x:auto;font:13px/1.55 var(--font-mono);margin:0}
 code{font-family:var(--font-mono);font-size:.88em}
-.prose{max-width:70ch;display:grid;gap:10px}
-.prose p{margin:0}
-.radios{display:grid;gap:6px}
-.radios label{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;text-transform:none;letter-spacing:0;font-weight:500;color:var(--ink)}
-.empty{padding:28px;text-align:center;color:var(--muted)}
-footer{border-top:1px solid var(--line);padding-block:18px;color:var(--muted);font-size:.82rem}
+.prose{display:grid;gap:12px;align-content:start}
+.prose p,.prose li{max-width:75ch}
+.steps{margin:0;padding-left:1.3em;display:grid;gap:8px}
+.radios{display:grid;gap:8px}
+.radios label{display:flex;gap:8px;align-items:flex-start;font-size:.93rem;color:var(--ink)}
+details > summary{cursor:pointer;font-weight:600}
+details[open] > summary{margin-bottom:12px}
+details.panel > summary{font-family:var(--font-display);font-stretch:88%;font-size:1.1rem;font-weight:700}
+footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);font-size:.86rem}
 
-@media (max-width:980px){
-  .hi-grid{grid-template-columns:1fr}
-  .hi-side{position:static;max-height:none}
-  .hi-side ol{max-height:320px}
+@media (max-width:900px){
   .data-grid,.cp-sides{grid-template-columns:1fr}
 }
 @media (max-width:720px){
   .wrap{padding-inline:16px}
-  .tabs{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto}
-  .tabs a{white-space:nowrap}
-  #lv-ele,#lv-mun,#hi-ds{min-width:0}
-  .cand{grid-template-columns:28px minmax(0,1fr) auto;grid-template-areas:"p w v" "p n v" "p b b" "p c s";row-gap:6px}
-  .cand .pos{grid-area:p;align-self:start}
-  .cand .urna{grid-area:n}
+  h1{font-size:1.5rem}
+  .tabs{margin-left:0;width:100%;display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:2px}
+  .tabs a{padding:7px 10px;font-size:.9rem}
+  .tabs .lg{display:none}
+  .tabs .sh{display:inline}
+  .filters > label,.filters > label.wide{flex-basis:100%}
+  .filters.g6{grid-template-columns:1fr}
+  .filters.g6 > *{grid-column:auto!important}
+  .table-tools .seg{width:100%}
+  .cand{grid-template-columns:26px minmax(0,1fr) auto;grid-template-areas:"p w s" "p b v";gap:8px 12px}
+  .cand .pos{grid-area:p;align-self:start;font-size:1.1rem}
   .cand .who{grid-area:w}
+  .cand .star{grid-area:s;align-self:start}
   .cand .bar{grid-area:b}
-  .cand .vv{grid-area:v;align-self:start}
-  .cand .chip{grid-area:c}
-  .cand .star{grid-area:s;justify-self:end}
-  .controls select{min-width:0;width:100%}
-  .controls label{flex:1 1 140px}
-  .side .row{grid-template-columns:1fr}
-  .map{height:300px}
+  .cand .vv{grid-area:v}
+  .map{height:320px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat{padding:12px}
+  .stat b{font-size:1.4rem}
+  .summary .stats{grid-template-columns:1fr}
+  .lv-title h2{font-size:1.45rem}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -834,187 +852,204 @@ footer{border-top:1px solid var(--line);padding-block:18px;color:var(--muted);fo
       <b>Radar de Votos</b>
     </a>
     <nav class="tabs" aria-label="Seções">
-      <a href="#aovivo" data-tab="aovivo"><span class="dot" aria-hidden="true"></span>Ao vivo 2026</a>
-      <a href="#bairros" data-tab="bairros">Bairros</a>
+      <a href="#aovivo" data-tab="aovivo"><span class="dot" aria-hidden="true"></span><span class="lg">Apuração ao vivo</span><span class="sh">Ao vivo</span></a>
+      <a href="#bairros" data-tab="bairros"><span class="lg">Votos por bairro</span><span class="sh">Bairros</span></a>
       <a href="#comparar" data-tab="comparar">Comparar</a>
-      <a href="#dados" data-tab="dados">Dados</a>
+      <a href="#dados" data-tab="dados">Ajuda</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
 
-<!-- ======================= AO VIVO ======================= -->
+<!-- ======================= APURAÇÃO AO VIVO ======================= -->
 <section class="tab" id="tab-aovivo">
-  <div class="controls" role="group" aria-label="Filtros da apuração">
-    <label>Ambiente
-      <select id="lv-amb">
-        <option value="oficial">Oficial (TSE)</option>
-        <option value="simulado">Simulado 2026 (testes)</option>
-      </select>
+  <div class="intro">
+    <h1>Apuração ao vivo</h1>
+    <p>Resultado das eleições 2026 direto do TSE. Escolha o estado, a cidade e o cargo — os números se atualizam sozinhos enquanto os votos são contados.</p>
+  </div>
+  <div class="filters g6" role="group" aria-label="Escolha o que acompanhar">
+    <label class="s2">Resultado
+      <span class="seg" id="lv-amb">
+        <button type="button" data-amb="oficial">Oficial</button>
+        <button type="button" data-amb="simulado">Teste do TSE</button>
+      </span>
     </label>
-    <label>Eleição <select id="lv-ele"></select></label>
-    <label>Abrangência <select id="lv-uf"></select></label>
-    <label>Município <select id="lv-mun"></select></label>
-    <label>Cargo <select id="lv-cargo"></select></label>
-    <label>Atualizar a cada
-      <select id="lv-every">
-        <option value="15">15 s</option><option value="30">30 s</option><option value="60">1 min</option><option value="120">2 min</option>
-      </select>
-    </label>
-    <div class="ctl-actions">
-      <button class="btn" id="lv-pause" type="button">Pausar</button>
-      <button class="btn primary" id="lv-now" type="button">Atualizar agora</button>
-    </div>
+    <label class="s4">Eleição <select id="lv-ele"></select></label>
+    <label class="s2">Estado <select id="lv-uf"></select></label>
+    <label class="s2">Cidade <select id="lv-mun"></select></label>
+    <label class="s2">Cargo <select id="lv-cargo"></select></label>
   </div>
   <div id="lv-banner" class="banner" hidden></div>
-  <div id="lv-head" class="lv-head"></div>
+  <div class="panel live-head">
+    <div id="lv-head" class="live-head"></div>
+    <div class="livebar">
+      <span id="lv-status" class="sp"></span>
+      <button class="linkbtn" id="lv-pause" type="button">Pausar</button>
+      <button class="btn sm" id="lv-now" type="button">Atualizar agora</button>
+    </div>
+  </div>
   <div id="lv-stats" class="stats"></div>
-  <nav class="subtabs" role="tablist" aria-label="Visões da apuração">
+  <div id="lv-body" class="tab">
+  <nav class="subtabs" role="tablist" aria-label="Como ver o resultado">
     <button role="tab" data-v="cand" aria-selected="true">Candidatos</button>
-    <button role="tab" data-v="part" aria-selected="false">Partidos e federações</button>
-    <button role="tab" data-v="mun" aria-selected="false" id="lv-tab-mun">Por município</button>
+    <button role="tab" data-v="part" aria-selected="false">Partidos</button>
+    <button role="tab" data-v="mun" aria-selected="false" id="lv-tab-mun">Mapa das cidades</button>
   </nav>
   <div id="lv-view-cand" class="tab">
     <div class="listbar">
-      <input type="search" id="lv-q" placeholder="Buscar por nome, número ou partido" aria-label="Buscar candidato">
-      <label class="chk"><input type="checkbox" id="lv-favonly"> Só favoritos</label>
+      <input type="search" id="lv-q" placeholder="Procurar candidato por nome, número ou partido" aria-label="Procurar candidato">
+      <label class="chk"><input type="checkbox" id="lv-favonly"> Só meus favoritos (★)</label>
     </div>
     <ol class="clist" id="lv-list"></ol>
   </div>
-  <div id="lv-view-part" hidden><div class="table-wrap"><table id="lv-part"></table></div></div>
+  <div id="lv-view-part" class="tab" hidden>
+    <p class="muted hint">Votos de cada partido ou federação, somando todos os seus candidatos.</p>
+    <div class="table-wrap"><table id="lv-part"></table></div>
+  </div>
   <div id="lv-view-mun" class="tab" hidden>
-    <div class="controls">
-      <label>Candidato em foco <select id="lv-foco"></select></label>
-      <label>Colorir mapa por
+    <div class="filters">
+      <label class="wide">Pintar o mapa por
         <span class="seg" id="lv-colormode">
-          <button type="button" data-m="lider" aria-pressed="true">Líder</button>
-          <button type="button" data-m="foco" aria-pressed="false">% do foco</button>
+          <button type="button" data-m="lider" aria-pressed="true">Quem está na frente</button>
+          <button type="button" data-m="foco" aria-pressed="false">Um candidato</button>
         </span>
       </label>
-      <div class="ctl-actions"><span class="muted" id="lv-mun-prog"></span><button class="btn primary" id="lv-mun-load" type="button">Carregar municípios</button></div>
+      <label id="lv-foco-wrap" hidden>Candidato <select id="lv-foco"></select></label>
+      <div class="actions"><button class="btn primary" id="lv-mun-load" type="button">Carregar as cidades</button><span class="muted" id="lv-mun-prog"></span></div>
     </div>
-    <div class="map-wrap"><div id="lv-map" class="map" role="img" aria-label="Mapa dos municípios"></div><div class="legend" id="lv-legend"></div></div>
+    <div class="map-wrap"><div id="lv-map" class="map" role="img" aria-label="Mapa das cidades"></div><div class="legend" id="lv-legend"></div></div>
     <div class="table-tools"><span class="grow muted" id="lv-mun-count"></span>
-      <button class="btn sm" type="button" data-exp="lv-mun" data-kind="csv">CSV</button>
-      <button class="btn sm" type="button" data-exp="lv-mun" data-kind="xlsx">Excel</button></div>
+      <button class="btn sm" type="button" data-exp="lv-mun" data-kind="xlsx">Baixar Excel</button>
+      <button class="btn sm" type="button" data-exp="lv-mun" data-kind="csv">Baixar CSV</button></div>
     <div class="table-wrap"><table id="lv-mun-table"></table></div>
+  </div>
   </div>
 </section>
 
-<!-- ======================= BAIRROS ======================= -->
+<!-- ======================= VOTOS POR BAIRRO ======================= -->
 <section class="tab" id="tab-bairros" hidden>
-  <div class="controls" role="group" aria-label="Filtros da análise">
-    <label>Município e ano <select id="hi-ds"></select></label>
-    <label>Turno <select id="hi-turno"></select></label>
-    <label>Cargo <select id="hi-cargo"></select></label>
-    <label>Agrupar por
-      <span class="seg" id="hi-nivel">
-        <button type="button" data-n="bairro" aria-pressed="true">Bairro</button>
-        <button type="button" data-n="local" aria-pressed="false">Local</button>
-        <button type="button" data-n="zona" aria-pressed="false">Zona</button>
-        <button type="button" data-n="secao" aria-pressed="false">Seção</button>
-      </span>
-    </label>
+  <div class="intro">
+    <h1>Votos por bairro</h1>
+    <p>Descubra em quais bairros e locais de votação cada candidato foi melhor ou pior. Escolha a cidade, o cargo e, se quiser, um candidato.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Escolha o que analisar">
+    <label>Cidade e ano <select id="hi-ds"></select></label>
+    <label>Cargo <select id="hi-contest"></select></label>
+    <label class="wide">Candidato <select id="hi-cand"></select></label>
   </div>
   <div id="hi-avisos" class="banner" hidden></div>
-  <div class="hi-grid">
-    <aside class="panel hi-side" aria-label="Candidatos">
-      <h3>Candidatos</h3>
-      <input type="search" id="hi-q" placeholder="Nome, número ou partido" aria-label="Buscar candidato">
-      <label class="chk"><input type="checkbox" id="hi-favonly"> Só favoritos</label>
-      <ol id="hi-cands"></ol>
-    </aside>
-    <div class="hi-main">
-      <div class="crumbs" id="hi-crumbs"></div>
-      <div id="hi-summary"></div>
-      <div class="map-wrap"><div id="hi-map" class="map" role="img" aria-label="Mapa dos locais de votação"></div><div class="legend" id="hi-legend"></div></div>
-      <div class="table-tools"><span class="grow muted" id="hi-count"></span>
-        <button class="btn sm" type="button" data-exp="hi" data-kind="csv">CSV</button>
-        <button class="btn sm" type="button" data-exp="hi" data-kind="xlsx">Excel</button></div>
-      <div class="table-wrap"><table id="hi-table"></table></div>
-    </div>
-  </div>
+  <div class="crumbs" id="hi-crumbs" hidden></div>
+  <div id="hi-summary"></div>
+  <div class="map-wrap"><div id="hi-map" class="map" role="img" aria-label="Mapa dos locais de votação"></div><div class="legend" id="hi-legend"></div></div>
+  <div class="table-tools">
+    <span class="tt-label">Mostrar a tabela por</span>
+    <span class="seg" id="hi-nivel">
+      <button type="button" data-n="bairro" aria-pressed="true">Bairro</button>
+      <button type="button" data-n="local" aria-pressed="false">Local de votação</button>
+      <button type="button" data-n="secao" aria-pressed="false">Seção</button>
+    </span>
+    <span class="grow"></span>
+    <button class="btn sm" type="button" data-exp="hi" data-kind="xlsx">Baixar Excel</button>
+    <button class="btn sm" type="button" data-exp="hi" data-kind="csv">Baixar CSV</button></div>
+  <p class="muted hint" id="hi-count"></p>
+  <div class="table-wrap"><table id="hi-table"></table></div>
 </section>
 
 <!-- ======================= COMPARAR ======================= -->
 <section class="tab" id="tab-comparar" hidden>
-  <div class="prose"><p class="muted">Compare dois candidatos na mesma eleição (quem ganhou onde) ou o mesmo candidato em anos diferentes (onde cresceu e onde perdeu voto). A comparação casa bairros e locais pelo nome.</p></div>
+  <div class="intro">
+    <h1>Comparar</h1>
+    <p>Coloque dois candidatos lado a lado — da mesma eleição ou o mesmo candidato em anos diferentes — e veja, bairro a bairro, quem teve mais votos.</p>
+  </div>
   <div class="cp-sides">
-    <div class="panel side a">
-      <div class="focus-head"><span class="tag">A</span><h3 id="cp-a-title">Candidato A</h3></div>
-      <label class="field">Município e ano <select id="cp-a-ds"></select></label>
-      <div class="row">
-        <label class="field">Candidato <select id="cp-a-cand"></select></label>
-        <label class="field">Turno <select id="cp-a-turno"></select></label>
-        <label class="field">Cargo <select id="cp-a-cargo"></select></label>
-      </div>
+    <div class="panel side">
+      <div class="side-head"><span class="tag a">A</span><h3 id="cp-a-title">Candidato A</h3></div>
+      <label class="field">Cidade e ano <select id="cp-a-ds"></select></label>
+      <label class="field">Cargo <select id="cp-a-contest"></select></label>
+      <label class="field">Candidato <select id="cp-a-cand"></select></label>
     </div>
-    <div class="panel side b">
-      <div class="focus-head"><span class="tag">B</span><h3 id="cp-b-title">Candidato B</h3></div>
-      <label class="field">Município e ano <select id="cp-b-ds"></select></label>
-      <div class="row">
-        <label class="field">Candidato <select id="cp-b-cand"></select></label>
-        <label class="field">Turno <select id="cp-b-turno"></select></label>
-        <label class="field">Cargo <select id="cp-b-cargo"></select></label>
-      </div>
+    <div class="panel side">
+      <div class="side-head"><span class="tag b">B</span><h3 id="cp-b-title">Candidato B</h3></div>
+      <label class="field">Cidade e ano <select id="cp-b-ds"></select></label>
+      <label class="field">Cargo <select id="cp-b-contest"></select></label>
+      <label class="field">Candidato <select id="cp-b-cand"></select></label>
     </div>
   </div>
-  <div class="controls">
-    <label>Agrupar por
-      <span class="seg" id="cp-nivel">
-        <button type="button" data-n="bairro" aria-pressed="true">Bairro</button>
-        <button type="button" data-n="local" aria-pressed="false">Local</button>
-        <button type="button" data-n="zona" aria-pressed="false">Zona</button>
-      </span>
-    </label>
-    <div class="ctl-actions">
-      <button class="btn sm" type="button" data-exp="cp" data-kind="csv">CSV</button>
-      <button class="btn sm" type="button" data-exp="cp" data-kind="xlsx">Excel</button>
-    </div>
-  </div>
-  <div id="cp-summary" class="stats"></div>
+  <div id="cp-summary"></div>
+  <div class="table-tools">
+    <span class="tt-label">Comparar por</span>
+    <span class="seg" id="cp-nivel">
+      <button type="button" data-n="bairro" aria-pressed="true">Bairro</button>
+      <button type="button" data-n="local" aria-pressed="false">Local de votação</button>
+    </span>
+    <span class="grow"></span>
+    <button class="btn sm" type="button" data-exp="cp" data-kind="xlsx">Baixar Excel</button>
+    <button class="btn sm" type="button" data-exp="cp" data-kind="csv">Baixar CSV</button></div>
+  <p class="muted hint" id="cp-count"></p>
   <div class="table-wrap"><table id="cp-table"></table></div>
 </section>
 
-<!-- ======================= DADOS ======================= -->
+<!-- ======================= AJUDA ======================= -->
 <section class="tab" id="tab-dados" hidden>
-  <div class="data-grid">
-    <div class="panel prose">
-      <h3>Conexão com o TSE</h3>
-      <div class="radios" id="conn-via">
-        <label><input type="radio" name="via" value="auto"> <span><b>Automático</b> — tenta ler direto do TSE e usa o proxy da Vercel se o navegador bloquear.</span></label>
-        <label><input type="radio" name="via" value="direto"> <span><b>Direto</b> — cada navegador lê do TSE (melhor para o limite de 100 requisições por segundo por IP).</span></label>
-        <label><input type="radio" name="via" value="proxy"> <span><b>Via proxy</b> — tudo passa por <code>/api/tse</code>, com cache compartilhado de 15 s.</span></label>
-      </div>
-      <p class="muted" id="conn-status"></p>
-    </div>
-    <div class="panel prose">
-      <h3>Adicionar dados de um município</h3>
-      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Enviar arquivos JSON gerados pelo script">
-        Solte aqui os arquivos <code>.json</code> gerados pelo script<br><small>ou clique para escolher</small>
-      </div>
-      <input type="file" id="file" accept=".json,application/json" multiple hidden>
-      <p class="muted">Os arquivos enviados ficam só nesta aba do navegador. Para deixar disponível a todos, publique em <code>data/historico/</code>.</p>
-    </div>
-  </div>
-  <div class="panel">
-    <h3>Conjuntos de dados</h3>
-    <div class="table-wrap" style="margin-top:10px"><table id="ds-table"></table></div>
+  <div class="intro">
+    <h1>Ajuda</h1>
+    <p>Como usar o Radar de Votos, de onde vêm os números e como adicionar a sua cidade.</p>
   </div>
   <div class="panel prose">
-    <h3>Como gerar os dados por bairro</h3>
-    <p>O script baixa do Portal de Dados Abertos do TSE a votação por seção, o cadastro de locais de votação (com bairro e coordenadas) e a lista de candidatos, e grava um arquivo por município e ano.</p>
+    <h3>Como usar</h3>
+    <ol class="steps">
+      <li><b>Apuração ao vivo</b> — escolha o estado, a cidade e o cargo. A página busca os números no TSE e se atualiza sozinha. Antes do dia da eleição, toque em <b>Teste do TSE</b> para ver como a tela funciona.</li>
+      <li><b>Votos por bairro</b> — escolha uma cidade e um candidato para ver onde ele foi mais e menos votado. Clique numa linha da tabela para ver os locais de votação daquele bairro.</li>
+      <li><b>Comparar</b> — escolha dois candidatos, ou o mesmo candidato em anos diferentes, e veja a diferença bairro a bairro.</li>
+      <li>Toque na estrela <b>★</b> ao lado de um candidato para marcá-lo como favorito e achá-lo mais rápido.</li>
+    </ol>
+    <p class="muted"><b>Votos válidos</b> são os votos dados a candidatos e partidos — brancos e nulos não entram na conta. <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas.</p>
+  </div>
+  <div class="data-grid">
+    <div class="panel prose">
+      <h3>Adicionar os dados de uma cidade</h3>
+      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Enviar arquivos JSON gerados pelo script">
+        Solte aqui os arquivos <code>.json</code> da sua cidade<br><small>ou clique para escolher</small>
+      </div>
+      <input type="file" id="file" accept=".json,application/json" multiple hidden>
+      <p class="muted">Os arquivos enviados ficam só neste navegador. Para deixá-los disponíveis a todos, publique-os na pasta <code>data/historico/</code> do site.</p>
+    </div>
+    <div class="panel prose">
+      <h3>Preferências</h3>
+      <label class="field">Atualizar a apuração a cada
+        <select id="lv-every">
+          <option value="15">15 segundos</option><option value="30">30 segundos</option><option value="60">1 minuto</option><option value="120">2 minutos</option>
+        </select>
+      </label>
+      <details>
+        <summary>Conexão com o TSE (avançado)</summary>
+        <div class="radios" id="conn-via">
+          <label><input type="radio" name="via" value="auto"> <span><b>Automático</b> (recomendado) — tenta ler direto do TSE e usa o servidor do site se o navegador bloquear.</span></label>
+          <label><input type="radio" name="via" value="direto"> <span><b>Direto</b> — cada navegador lê do TSE.</span></label>
+          <label><input type="radio" name="via" value="proxy"> <span><b>Pelo servidor do site</b> — tudo passa por <code>/api/tse</code>, com cache de 15 segundos.</span></label>
+        </div>
+        <p class="muted" id="conn-status" style="margin-top:8px"></p>
+      </details>
+    </div>
+  </div>
+  <div class="panel prose">
+    <h3>Dados disponíveis</h3>
+    <div class="table-wrap"><table id="ds-table"></table></div>
+  </div>
+  <details class="panel prose">
+    <summary>Como gerar os dados por bairro (técnico)</summary>
+    <p>O script baixa do Portal de Dados Abertos do TSE a votação por seção, o cadastro de locais de votação (com bairro e coordenadas) e a lista de candidatos, e grava um arquivo por cidade e ano.</p>
 <pre>npm install
 node scripts/build-historico.mjs --uf RN --mun-nome "MOSSORO" --anos 2020,2022,2024
 node scripts/build-historico.mjs --uf RN --todos --anos 2024
 node scripts/build-historico.mjs --uf RN --mun-nome "MOSSORO" --anos 2026   # quando o TSE publicar</pre>
     <p class="muted">O código do município é o do TSE (5 dígitos), diferente do código do IBGE. Com <code>--mun-nome</code> não é preciso saber o código.</p>
-  </div>
+  </details>
 </section>
 
 </main>
-<footer><div class="wrap">Fontes: TSE — arquivos oficiais de divulgação de resultados e Portal de Dados Abertos. Ferramenta independente, sem vínculo com a Justiça Eleitoral. Confira resultados oficiais em resultados.tse.jus.br.</div></footer>
+<footer><div class="wrap">Fonte dos dados: TSE — divulgação oficial de resultados e Portal de Dados Abertos. Ferramenta independente, sem vínculo com a Justiça Eleitoral. Confira os resultados oficiais em resultados.tse.jus.br.</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
@@ -1025,30 +1060,42 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const NF = new Intl.NumberFormat('pt-BR');
 const fmt = n => (n == null || !isFinite(n)) ? '—' : NF.format(Math.round(n));
 const pct = (n, d = 2) => (n == null || !isFinite(n)) ? '—' : n.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d }) + '%';
-const pp = n => (n > 0 ? '+' : '') + n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' p.p.';
+const pp = n => (n > 0 ? '+' : '') + n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' pontos';
 const sgn = n => (n > 0 ? '+' : '') + fmt(n);
+const plural = (n, um, varios) => fmt(n) + ' ' + (n === 1 ? um : varios);
 const int = s => { const n = parseInt(String(s ?? '').replace(/\D/g, ''), 10); return isNaN(n) ? 0 : n; };
 const num = s => { const n = parseFloat(String(s ?? '').replace(',', '.')); return isNaN(n) ? 0 : n; };
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const dec = s => String(s ?? '').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&apos;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
 const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+// "ALTO DA CONCEIÇÃO" -> "Alto da Conceição" (nomes de lugares ficam mais fáceis de ler)
+const ROMANO = /^(i{1,3}|iv|vi{0,3}|ix|x{1,3})$/;
+function titulo(s) {
+  return String(s || '').toLowerCase().split(' ').map((w, i) => {
+    if (i && /^(de|da|do|das|dos|e)$/.test(w)) return w;
+    if (ROMANO.test(w)) return w.toUpperCase();
+    return w.replace(/(^|[-'(/.])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
+  }).join(' ');
+}
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-const urna = nr => '<span class="urna" aria-label="número ' + esc(nr) + '">' + [...String(nr)].map(d => '<i>' + esc(d) + '</i>').join('') + '</span>';
 const FAV = new Set(store.get('rv.fav', []));
 const favKey = (nm, nr) => norm(nm) + '|' + nr;
 function toggleFav(k) { FAV.has(k) ? FAV.delete(k) : FAV.add(k); store.set('rv.fav', [...FAV]); }
-function chipFor(st, e) {
+function starBtn(k, nm) {
+  const on = FAV.has(k);
+  return `<button class="star" type="button" data-fav="${esc(k)}" aria-pressed="${on}" aria-label="${on ? 'Tirar dos favoritos' : 'Marcar como favorito'}: ${esc(nm)}" title="${on ? 'Tirar dos favoritos' : 'Marcar como favorito'}">★</button>`;
+}
+// Situação do candidato em linguagem simples (só mostra quando ajuda)
+function situacao(st, e) {
   const s = String(st || '');
-  if (!s) return '';
-  let c = '';
-  if (/n[aã]o eleito/i.test(s)) c = '';
-  else if (/eleit/i.test(s) || e) c = 'ok';
-  else if (/2.? turno/i.test(s)) c = 'wn';
-  else if (/suplente/i.test(s)) c = '';
-  return '<span class="chip ' + c + '">' + esc(s) + '</span>';
+  if (/n[aã]o eleit/i.test(s)) return '';
+  if (/2.? ?turno/i.test(s)) return '<span class="chip wn">Vai ao 2º turno</span>';
+  if (/suplente/i.test(s)) return '<span class="chip">Suplente</span>';
+  if (/eleit/i.test(s) || e) return '<span class="chip ok">Eleito</span>';
+  return '';
 }
 function palette() {
   const cs = getComputedStyle(document.documentElement);
@@ -1126,8 +1173,8 @@ async function tse(amb, p) {
     try { return await f(); } catch (e) { if (e.status) throw e; }
   }
   const x = new Error(CONN.via === 'direto'
-    ? 'O navegador bloqueou a leitura direta do TSE. Use o modo automático ou via proxy (aba Dados).'
-    : 'Não foi possível acessar o TSE a partir desta página. Publique o projeto na Vercel (o proxy /api/tse contorna o bloqueio do navegador).');
+    ? 'O navegador bloqueou a leitura direta do TSE. Em Ajuda › Conexão com o TSE, escolha "Automático".'
+    : 'Não foi possível acessar o TSE a partir desta página.');
   x.offline = true;
   throw x;
 }
@@ -1142,16 +1189,16 @@ const P = {
 const CARGOS_EST = [{ cd: '3', ds: 'Governador' }, { cd: '5', ds: 'Senador' }, { cd: '6', ds: 'Deputado Federal' }, { cd: '7', ds: 'Deputado Estadual' }, { cd: '8', ds: 'Deputado Distrital' }];
 const PRESETS = {
   oficial: [
-    { cd: '6257', nm: 'Eleições Gerais 2026 — Federal (Presidente) · 1º turno', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
-    { cd: '6259', nm: 'Eleições Gerais 2026 — Estaduais · 1º turno', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
+    { cd: '6257', nm: 'Eleições 2026 — Presidente · 1º turno', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
+    { cd: '6259', nm: 'Eleições 2026 — Governador, Senador e Deputados · 1º turno', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
   ],
   simulado: [
-    { cd: '21270', nm: 'Simulado 2026 — Federal (Presidente)', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
-    { cd: '21272', nm: 'Simulado 2026 — Estaduais', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
+    { cd: '21270', nm: 'Teste 2026 — Presidente', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: [{ cd: '1', ds: 'Presidente' }] }], preset: true },
+    { cd: '21272', nm: 'Teste 2026 — Governador, Senador e Deputados', t: '1', ciclo: 'ele2026', abr: [{ cd: 'br', cp: CARGOS_EST }], preset: true },
   ],
 };
 
-/* ============================================================ parser EA20 */
+/* ============================================================ leitura do arquivo de resultado do TSE */
 function parseEA20(j) {
   const cg = (j.carg || [])[0] || {};
   const cands = [], grupos = [];
@@ -1162,9 +1209,9 @@ function parseEA20(j) {
       for (const c of p.cand || []) {
         const vap = int(c.vap);
         cands.push({
-          n: String(c.n), sq: String(c.sqcand), nm: dec(c.nmu || c.nm), nmc: dec(c.nm), sg: dec(p.sg), agr: g.nm, fed: a.tp === 'f',
+          n: String(c.n), sq: String(c.sqcand), nm: dec(c.nmu || c.nm), nmc: dec(c.nm), sg: dec(p.sg), agr: g.nm, agrTp: a.tp,
           vap, pvap: num(c.pvapn ?? c.pvap), seq: int(c.seq) || 9999, e: c.e === 's', st: dec(c.st), dvt: dec(c.dvt),
-          vice: (c.vs || []).map(v => dec(v.nmu || v.nm)).filter(Boolean),
+          vice: (c.vs || []).map(v => ({ tp: String(v.tp || ''), nm: dec(v.nmu || v.nm) })).filter(v => v.nm),
         });
         g.votos += vap; g.qt++;
       }
@@ -1180,7 +1227,7 @@ function parseEA20(j) {
   };
 }
 
-/* ============================================================ AO VIVO */
+/* ============================================================ APURAÇÃO AO VIVO */
 const LV = {
   amb: store.get('rv.amb', 'oficial'), cfg: null, eles: [], ele: null, munCfg: null,
   uf: '', mun: '', cargo: 0, data: null, prev: new Map(), prevKey: '', every: store.get('rv.every', 30),
@@ -1190,16 +1237,16 @@ const LV = {
 };
 
 async function lvInit() {
-  $('#lv-amb').value = LV.amb;
+  lvAmbButtons();
   $('#lv-every').value = String(LV.every);
-  $('#lv-amb').onchange = e => { LV.amb = e.target.value; store.set('rv.amb', LV.amb); lvLoadConfig(); };
+  $$('#lv-amb button').forEach(b => b.onclick = () => lvSetAmb(b.dataset.amb));
   $('#lv-ele').onchange = e => { LV.ele = LV.eles.find(x => x.cd === e.target.value); store.set('rv.ele', LV.ele?.cd); lvSelectElection(); };
   $('#lv-uf').onchange = e => { LV.uf = e.target.value; store.set('rv.uf', LV.uf); lvFillMun(); lvFillCargo(); lvReset(); };
   $('#lv-mun').onchange = e => { LV.mun = e.target.value; store.set('rv.mun', LV.mun); lvFillCargo(); lvReset(); };
   $('#lv-cargo').onchange = e => { LV.cargo = +e.target.value; store.set('rv.cargo', LV.cargo); lvReset(); };
-  $('#lv-every').onchange = e => { LV.every = +e.target.value; store.set('rv.every', LV.every); LV.next = Date.now() + LV.every * 1000; };
+  $('#lv-every').onchange = e => { LV.every = +e.target.value; store.set('rv.every', LV.every); if (LV.next) LV.next = Date.now() + LV.every * 1000; };
   $('#lv-now').onclick = () => lvRefresh(true);
-  $('#lv-pause').onclick = () => { LV.paused = !LV.paused; $('#lv-pause').textContent = LV.paused ? 'Retomar' : 'Pausar'; lvHead(); };
+  $('#lv-pause').onclick = () => { LV.paused = !LV.paused; lvStatus(); };
   $('#lv-q').oninput = () => lvRenderList();
   $('#lv-favonly').onchange = () => lvRenderList();
   $$('#tab-aovivo .subtabs button').forEach(b => b.onclick = () => lvSetView(b.dataset.v));
@@ -1210,14 +1257,20 @@ async function lvInit() {
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && LV.next && Date.now() > LV.next) lvRefresh(); });
   await lvLoadConfig();
 }
+function lvAmbButtons() { $$('#lv-amb button').forEach(b => b.setAttribute('aria-pressed', b.dataset.amb === LV.amb)); }
+function lvSetAmb(a) {
+  if (!BASES[a] || (a === LV.amb && !LV.amostra)) return;
+  LV.amb = a; store.set('rv.amb', a); lvAmbButtons(); lvLoadConfig();
+}
 
 function lvBanner(html, kind) {
   const b = $('#lv-banner');
   b.hidden = !html; b.className = 'banner' + (kind ? ' ' + kind : ''); b.innerHTML = html || '';
 }
+const BOTAO_TESTE = '<button class="btn sm" type="button" data-amb-go="simulado">Ver o teste do TSE</button>';
 
 async function lvLoadConfig() {
-  lvBanner('Lendo a configuração das eleições no TSE…', 'info');
+  lvBanner('Buscando as eleições disponíveis no TSE…', 'info');
   LV.amostra = false;
   let cfg = null;
   try { cfg = await tse(LV.amb, P.cfg()); }
@@ -1228,11 +1281,10 @@ async function lvLoadConfig() {
   }
   if (!eles.some(e => e.ciclo === 'ele2026')) eles.unshift(...PRESETS[LV.amb].map(p => ({ ...p })));
   LV.eles = eles;
-  const sel = $('#lv-ele');
-  sel.innerHTML = eles.map(e => `<option value="${esc(e.cd)}">${esc(e.nm)}${e.preset ? '' : ''}</option>`).join('');
+  $('#lv-ele').innerHTML = eles.map(e => `<option value="${esc(e.cd)}">${esc(e.nm)}</option>`).join('');
   const salvo = store.get('rv.ele');
   LV.ele = eles.find(e => e.cd === salvo) || eles[0];
-  sel.value = LV.ele?.cd || '';
+  $('#lv-ele').value = LV.ele?.cd || '';
   lvBanner('');
   await lvSelectElection();
 }
@@ -1251,7 +1303,7 @@ async function lvSelectElection() {
   lvFillMun();
   lvFillCargo();
   if (!LV.munCfg && ele.preset) {
-    lvBanner(`<b>Aguardando publicação do TSE.</b> Os arquivos da eleição ${esc(ele.cd)} entram no ar no dia da votação; a divulgação começa às 17h (Brasília). Enquanto isso, escolha <b>Simulado 2026</b> para testar com os dados de teste do TSE.`, '');
+    lvBanner(`<b>O TSE ainda não publicou este resultado.</b> Os números aparecem no dia da eleição, a partir das 17h (horário de Brasília). Enquanto isso, veja como a tela funciona com os dados de teste do TSE. ${LV.amb === 'oficial' ? BOTAO_TESTE : ''}`, '');
   }
   lvReset();
 }
@@ -1265,9 +1317,9 @@ function lvFillUF() {
   const ele = LV.ele;
   const cfgUfs = LV.munCfg?.abr?.map(a => [a.cd, dec(a.ds)]) || Object.entries(UFS).map(([k, v]) => [k, v[0]]);
   const temBr = ele.abr.some(a => a.cd === 'br');
-  let ufs = cfgUfs.filter(([cd]) => cd !== 'zz' && (temBr || ele.abr.some(a => a.cd === cd)));
+  const ufs = cfgUfs.filter(([cd]) => cd !== 'zz' && (temBr || ele.abr.some(a => a.cd === cd))).map(([cd, ds]) => [cd, titulo(ds)]);
   const opts = [];
-  if (lvCargosAbr(ele, 'br').some(c => c.cd === 1)) opts.push(['br', 'BRASIL']);
+  if (lvCargosAbr(ele, 'br').some(c => c.cd === 1)) opts.push(['br', 'Brasil (todo o país)']);
   opts.push(...ufs.sort((a, b) => a[1].localeCompare(b[1])));
   const salvo = store.get('rv.uf');
   LV.uf = opts.find(o => o[0] === salvo)?.[0] || opts.find(o => o[0] !== 'br')?.[0] || opts[0]?.[0] || '';
@@ -1277,16 +1329,15 @@ function lvFillUF() {
 function lvMunicipais(cargos) { return cargos.length && cargos.every(c => c.cd === 11 || c.cd === 13); }
 function lvFillMun() {
   const sel = $('#lv-mun');
-  if (LV.uf === 'br') { sel.innerHTML = '<option value="">—</option>'; sel.disabled = true; LV.mun = ''; return; }
+  if (LV.uf === 'br') { sel.innerHTML = '<option value="">Todas</option>'; sel.disabled = true; LV.mun = ''; return; }
   sel.disabled = false;
   const abr = LV.munCfg?.abr?.find(a => a.cd === LV.uf);
   const restr = LV.ele.abr.find(a => a.cd === LV.uf)?.mu;
-  let mus = (abr?.mu || []).map(m => ({ cd: m.cd, nm: dec(m.nm), c: m.c, cdi: m.cdi }));
+  let mus = (abr?.mu || []).map(m => ({ cd: m.cd, nm: titulo(dec(m.nm)), c: m.c, cdi: m.cdi }));
   if (restr?.length) { const ok = new Set(restr.map(m => m.cd)); mus = mus.filter(m => ok.has(m.cd)); }
   mus.sort((a, b) => a.nm.localeCompare(b.nm));
-  const cargos = lvCargosAbr(LV.ele, LV.uf);
-  const soMun = lvMunicipais(cargos);
-  const opts = (soMun ? [] : [['', 'Estado inteiro']]).concat(mus.map(m => [m.cd, m.nm]));
+  const soMun = lvMunicipais(lvCargosAbr(LV.ele, LV.uf));
+  const opts = (soMun ? [] : [['', 'Todas as cidades do estado']]).concat(mus.map(m => [m.cd, m.nm]));
   sel.innerHTML = opts.map(([cd, nm]) => `<option value="${cd}">${esc(nm)}</option>`).join('') || '<option value="">(lista indisponível)</option>';
   const salvo = store.get('rv.mun');
   LV.mun = opts.find(o => o[0] === salvo)?.[0] ?? (soMun ? (mus.find(m => m.c === 's')?.cd || mus[0]?.cd || '') : '');
@@ -1308,6 +1359,7 @@ function lvFillCargo() {
 }
 function lvReset() {
   LV.data = null; LV.showAll = false; LV.prev = new Map(); LV.munRows = new Map(); LV.munAb = new Map(); LV.munLoaded = false; LV.foco = '';
+  $('#lv-mun-load').textContent = 'Carregar as cidades'; $('#lv-mun-prog').textContent = '';
   if (MAPS['lv-map']) MAPS['lv-map'].layer.clearLayers();
   lvRefresh(true);
 }
@@ -1332,15 +1384,16 @@ async function lvRefresh(manual) {
     LV.data = null;
     if (e.offline) { LV.busy = false; return lvModoAmostra(e); }
     lvRender();
-    if (e.status === 404) lvBanner(`<b>Resultado ainda não publicado para esta combinação.</b> O TSE libera os arquivos a partir das 17h (Brasília) do dia da eleição. Se já passou desse horário, a abrangência escolhida pode não ter este cargo.`, '');
-    else lvBanner('<b>Falha ao atualizar:</b> ' + esc(e.message) + '. Nova tentativa no próximo ciclo.', 'err');
+    if (e.status === 404 && LV.ele.preset && !LV.munCfg) lvBanner(`<b>O TSE ainda não publicou este resultado.</b> Os números aparecem no dia da eleição, a partir das 17h (horário de Brasília). Enquanto isso, veja como a tela funciona com os dados de teste do TSE. ${LV.amb === 'oficial' ? BOTAO_TESTE : ''}`, '');
+    else if (e.status === 404) lvBanner(`<b>Ainda não há resultado para esta escolha.</b> O TSE publica os números a partir das 17h (horário de Brasília) do dia da eleição. Se já passou desse horário, este cargo pode não existir para o local escolhido. ${LV.amb === 'oficial' ? BOTAO_TESTE : ''}`, '');
+    else lvBanner('<b>Não foi possível atualizar agora.</b> ' + esc(e.message) + '. A página tenta de novo sozinha.', 'err');
   } finally {
     LV.busy = false;
     const fim = LV.data?.meta.and === 'f';
     // arquivo inexistente: espaça as tentativas (o TSE bloqueia IPs que geram muitos 404)
     const espera = LV.data ? LV.every : Math.max(LV.every, 180);
     LV.next = fim ? 0 : Date.now() + espera * 1000;
-    lvHead();
+    lvStatus();
   }
 }
 
@@ -1358,21 +1411,21 @@ async function lvModoAmostra(err) {
     const j = await r.json();
     LV.data = parseEA20(j);
     LV.prev = new Map();
-    $('#lv-ele').innerHTML = '<option>Amostra gravada do simulado TSE</option>';
-    $('#lv-uf').innerHTML = '<option>ACRE</option>';
-    $('#lv-mun').innerHTML = '<option>ACRELÂNDIA</option>';
+    $('#lv-ele').innerHTML = '<option>Exemplo gravado do teste do TSE</option>';
+    $('#lv-uf').innerHTML = '<option>Acre</option>';
+    $('#lv-mun').innerHTML = '<option>Acrelândia</option>';
     $('#lv-cargo').innerHTML = '<option>Senador</option>';
     $('#lv-tab-mun').hidden = true;
-    lvBanner(`<b>Sem acesso ao TSE a partir desta página.</b> Publique o projeto na Vercel (o proxy <code>/api/tse</code> contorna o bloqueio do navegador) ou abra pelo endereço publicado.<br>Abaixo, uma <b>amostra gravada do simulado oficial do TSE</b> (dados de teste, nomes fictícios) para você conhecer a tela. <button class="btn sm" type="button" id="lv-retry">Tentar de novo</button>`, 'err');
+    lvBanner(`<b>Não foi possível buscar os dados no TSE agora.</b> Abaixo está um exemplo gravado do teste do TSE (nomes e números fictícios), só para você conhecer a tela. <button class="btn sm" type="button" id="lv-retry">Tentar de novo</button>`, 'err');
     $('#lv-retry').onclick = () => { LV.amostra = false; lvLoadConfig(); };
     lvRender();
   } catch {
-    lvBanner('<b>Sem acesso ao TSE.</b> ' + esc(err.message), 'err');
+    lvBanner('<b>Não foi possível buscar os dados no TSE.</b> ' + esc(err.message), 'err');
   }
 }
 
 function lvScopeLabel() {
-  if (LV.amostra) return 'Acrelândia (AC) — amostra do simulado';
+  if (LV.amostra) return 'Acrelândia (AC) — exemplo';
   if (LV.uf === 'br') return 'Brasil';
   const uf = $('#lv-uf').selectedOptions[0]?.textContent || LV.uf.toUpperCase();
   const mun = LV.mun ? $('#lv-mun').selectedOptions[0]?.textContent : '';
@@ -1380,42 +1433,51 @@ function lvScopeLabel() {
 }
 
 function lvHead() {
-  const d = LV.data;
-  const head = $('#lv-head');
+  const d = LV.data, head = $('#lv-head');
+  const cargoNm = d?.cargo.nm || $('#lv-cargo').selectedOptions[0]?.textContent || 'Apuração';
   if (!d) {
-    head.innerHTML = `<div class="lv-title"><h2>${esc($('#lv-cargo').selectedOptions[0]?.textContent || 'Apuração')}</h2><span class="muted">${esc(lvScopeLabel())}</span></div>`;
+    head.innerHTML = `<div class="lv-title"><h2>${esc(cargoNm)}</h2><span class="where">${esc(lvScopeLabel())}</span></div><p class="muted">Sem resultado para mostrar por enquanto.</p>`;
+    lvStatus();
     return;
   }
   const pst = num(d.s.pstn ?? d.s.pst);
   const fim = d.meta.and === 'f';
   const zero = int(d.s.st) === 0;
-  const pill = fim ? '<span class="pill final">Totalização final</span>' : zero ? '<span class="pill">Aguardando totalização</span>' : '<span class="pill live">Em apuração</span>';
-  const nv = d.cargo.nv > 1 ? ` · ${d.cargo.nv} vagas por eleitor` : '';
-  const prox = LV.amostra ? 'amostra estática' : fim ? 'sem novas atualizações' : LV.paused ? 'pausado' : `próxima em <b id="lv-countdown">${Math.max(0, Math.ceil((LV.next - Date.now()) / 1000))} s</b>`;
+  const pill = fim ? '<span class="pill final">Resultado final</span>' : zero ? '<span class="pill">Contagem ainda não começou</span>' : '<span class="pill live">Contagem em andamento</span>';
+  const nv = d.cargo.nv > 1 ? ` · cada eleitor escolheu ${d.cargo.nv}` : '';
   head.innerHTML = `
-    <div class="lv-title"><h2>${esc(d.cargo.nm || $('#lv-cargo').selectedOptions[0]?.textContent)}</h2><span class="muted">${esc(lvScopeLabel())}${nv}</span>${pill}</div>
-    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pst}" aria-label="Seções totalizadas"><i style="width:${pst}%"></i></div>
-    <div class="meta"><span><b>${pct(pst)}</b> das seções totalizadas (${fmt(int(d.s.st))} de ${fmt(int(d.s.ts))})</span>
-      <span>Totalizado em <b>${esc(d.meta.dt || '—')} ${esc(d.meta.ht || '')}</b></span>
-      <span>Arquivo gerado às ${esc(d.meta.hg || '—')}</span>
-      <span>${prox}</span>${CONN.ultimo ? `<span>via ${CONN.ultimo}</span>` : ''}</div>`;
+    <div class="lv-title"><h2>${esc(cargoNm)}</h2><span class="where">${esc(lvScopeLabel())}${nv}</span>${pill}</div>
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pst}" aria-label="Urnas apuradas"><i style="width:${pst}%"></i></div>
+    <p class="progress-label"><b>${pct(pst, 1)}</b> das urnas apuradas <span class="muted">(${fmt(int(d.s.st))} de ${fmt(int(d.s.ts))})</span></p>`;
+  lvStatus();
+}
+function lvStatus() {
+  const d = LV.data, fim = d?.meta.and === 'f';
+  const partes = [];
+  if (d?.meta.ht) partes.push(`Números do TSE de <b>${esc(d.meta.dt || '')} às ${esc(d.meta.ht)}</b>`);
+  if (LV.amostra) partes.push('Exemplo gravado: não se atualiza');
+  else if (fim) partes.push('Contagem encerrada');
+  else if (LV.paused) partes.push('Atualização pausada');
+  else if (LV.next) partes.push(`Próxima atualização em <b id="lv-countdown">${Math.max(0, Math.ceil((LV.next - Date.now()) / 1000))} s</b>`);
+  $('#lv-status').innerHTML = partes.join(' · ');
+  $('#lv-pause').hidden = LV.amostra || fim || !LV.next || !d;
+  $('#lv-pause').textContent = LV.paused ? 'Continuar atualizando' : 'Pausar';
+  $('#lv-now').hidden = LV.amostra;
 }
 
 function lvRender() {
   lvHead();
-  const d = LV.data;
-  const st = $('#lv-stats');
+  const d = LV.data, st = $('#lv-stats');
+  $('#lv-body').hidden = !d;
   if (!d) { st.innerHTML = ''; $('#lv-list').innerHTML = ''; $('#lv-part').innerHTML = ''; return; }
   const E = d.e, V = d.v;
   const cards = [
-    ['Eleitorado', fmt(int(E.te)), 'aptos a votar'],
-    ['Comparecimento', fmt(int(E.c)), pct(num(E.pcn ?? E.pc))],
-    ['Abstenção', fmt(int(E.a)), pct(num(E.pan ?? E.pa))],
-    ['Votos válidos', fmt(int(V.vv)), pct(num(V.pvvn ?? V.pvv))],
-    ['Brancos', fmt(int(V.vb)), pct(num(V.pvbn ?? V.pvb))],
-    ['Nulos', fmt(int(V.tvn)), pct(num(V.ptvnn ?? V.ptvn))],
+    ['Foram votar', fmt(int(E.c)), `${pct(num(E.pcn ?? E.pc), 1)} dos ${fmt(int(E.te))} eleitores`],
+    ['Não foram votar', fmt(int(E.a)), `${pct(num(E.pan ?? E.pa), 1)} dos eleitores`],
+    ['Votos válidos', fmt(int(V.vv)), `${pct(num(V.pvvn ?? V.pvv), 1)} dos votos · contam para o resultado`],
+    ['Brancos e nulos', fmt(int(V.vb) + int(V.tvn)), `${pct(num(V.pvbn ?? V.pvb) + num(V.ptvnn ?? V.ptvn), 1)} dos votos · não contam`],
   ];
-  if (int(V.vansj)) cards.push(['Anulados sub judice', fmt(int(V.vansj)), pct(num(V.pvansjn ?? V.pvansj))]);
+  if (int(V.vansj)) cards.push(['Votos anulados', fmt(int(V.vansj)), `${pct(num(V.pvansjn ?? V.pvansj), 1)} · candidatos com registro em julgamento`]);
   st.innerHTML = cards.map(([a, b, c]) => `<div class="stat"><span>${a}</span><b>${b}</b><small>${c}</small></div>`).join('');
   lvRenderList();
   lvRenderPart();
@@ -1423,8 +1485,7 @@ function lvRender() {
 }
 
 function lvRenderList() {
-  const d = LV.data;
-  const ul = $('#lv-list');
+  const d = LV.data, ul = $('#lv-list');
   if (!d) { ul.innerHTML = ''; return; }
   const q = norm($('#lv-q').value);
   const favOnly = $('#lv-favonly').checked;
@@ -1438,28 +1499,35 @@ function lvRenderList() {
   ul.innerHTML = rows.map(({ c, i }) => {
     const k = favKey(c.nm, c.n);
     const prev = LV.prev.get(c.sq);
-    const delta = prev != null && c.vap > prev ? `<span class="delta">+${fmt(c.vap - prev)}</span>` : '';
+    const delta = prev != null && c.vap > prev ? ` <span class="delta" title="Desde a última atualização">+${fmt(c.vap - prev)}</span>` : '';
     const anul = /anulad/i.test(c.dvt);
-    const extra = [c.sg, c.agr !== c.sg ? c.agr : '', c.vice.length ? 'Vice/suplentes: ' + c.vice.join(', ') : ''].filter(Boolean).join(' · ');
-    return `<li class="cand ${FAV.has(k) ? 'is-fav' : ''} ${anul ? 'is-out' : ''}">
-      <span class="pos">${i + 1}º</span>${urna(c.n)}
-      <div class="who"><b>${esc(c.nm)}</b><small>${esc(extra)}</small></div>
+    const chip = anul ? '<span class="chip bd">Votos anulados</span>' : situacao(c.st, c.e);
+    const grupo = c.agrTp === 'f' || c.agrTp === 'c' ? c.agr : '';
+    const vice = c.vice.length && !c.vice.every(v => /^s/i.test(v.tp)) ? 'Vice: ' + c.vice.map(v => v.nm).join(', ') : '';
+    const info = [c.sg, grupo, 'nº ' + c.n, vice].filter(Boolean).join(' · ');
+    return `<li class="cand${FAV.has(k) ? ' is-fav' : ''}${anul ? ' is-out' : ''}${i === 0 ? ' is-lead' : ''}">
+      <span class="pos">${i + 1}º</span>
+      <div class="who"><b>${esc(c.nm)}</b>${chip ? ' ' + chip : ''}<small>${esc(info)}</small></div>
       <div class="bar" aria-hidden="true"><i style="width:${(c.vap / max * 100).toFixed(2)}%"></i></div>
-      <div class="vv"><b>${fmt(c.vap)}</b><small>${pct(c.pvap)} ${delta}</small></div>
-      ${anul ? `<span class="chip bd">${esc(c.dvt)}</span>` : chipFor(c.st, c.e) || '<span></span>'}
-      <button class="star" type="button" data-fav="${esc(k)}" aria-pressed="${FAV.has(k)}" aria-label="Favoritar ${esc(c.nm)}">★</button></li>`;
+      <div class="vv"><b>${pct(c.pvap)}</b><small>${fmt(c.vap)} votos${delta}</small></div>
+      ${starBtn(k, c.nm)}</li>`;
   }).join('') + (total > lim ? `<li class="more"><button class="btn" type="button" id="lv-more">Mostrar todos os ${fmt(total)} candidatos</button></li>` : '');
   const more = $('#lv-more');
   if (more) more.onclick = () => { LV.showAll = true; lvRenderList(); };
-  if (!rows.length) ul.innerHTML = '<li class="empty">Nenhum candidato encontrado.</li>';
+  if (!rows.length) ul.innerHTML = `<li class="empty">${favOnly && !FAV.size ? 'Você ainda não marcou nenhum favorito. Toque na ★ ao lado de um candidato.' : 'Nenhum candidato encontrado.'}</li>`;
 }
 
 function lvRenderPart() {
   const d = LV.data, t = $('#lv-part');
   if (!d) { t.innerHTML = ''; return; }
   const temVag = d.grupos.some(g => g.vag > 0);
-  t.innerHTML = `<thead><tr><th>Partido / federação</th><th>Composição</th><th class="n">Candidatos</th><th class="n">Votos nominais</th><th class="n">Votos válidos</th>${temVag ? '<th class="n">Vagas</th>' : ''}</tr></thead><tbody>` +
-    d.grupos.map(g => `<tr><td><b>${esc(g.nm)}</b>${g.tp === 'f' ? '<span class="sub">Federação</span>' : g.tp === 'c' ? '<span class="sub">Coligação</span>' : ''}</td><td>${esc(g.com)}</td><td class="n">${fmt(g.qt)}</td><td class="n">${fmt(g.votos)}</td><td class="n">${fmt(g.validos || g.votos)}</td>${temVag ? `<td class="n"><b>${fmt(g.vag)}</b></td>` : ''}</tr>`).join('') + '</tbody>';
+  const vv = int(d.v.vv) || 1;
+  t.innerHTML = `<thead><tr><th>Partido ou federação</th><th class="n">Candidatos</th><th class="n">Votos</th><th class="n">% dos votos válidos</th>${temVag ? '<th class="n">Vagas conquistadas</th>' : ''}</tr></thead><tbody>` +
+    d.grupos.map(g => {
+      const tipo = g.tp === 'f' ? 'Federação' : g.tp === 'c' ? 'Coligação' : '';
+      const votos = g.validos || g.votos;
+      return `<tr><td><b>${esc(g.nm)}</b>${tipo ? `<span class="sub">${tipo}: ${esc(g.com)}</span>` : ''}</td><td class="n">${fmt(g.qt)}</td><td class="n">${fmt(votos)}</td><td class="n">${pct(votos / vv * 100, 1)}</td>${temVag ? `<td class="n"><b>${fmt(g.vag)}</b></td>` : ''}</tr>`;
+    }).join('') + '</tbody>';
 }
 
 function lvSetView(v) {
@@ -1474,7 +1542,7 @@ function lvSetView(v) {
 async function lvLoadMunicipios(manual) {
   if (LV.amostra || !LV.ele || LV.mun || LV.uf === 'br') return;
   const mus = LV.munList || [];
-  if (!mus.length) { $('#lv-mun-prog').textContent = 'Lista de municípios indisponível.'; return; }
+  if (!mus.length) { $('#lv-mun-prog').textContent = 'A lista de cidades não está disponível.'; return; }
   const btn = $('#lv-mun-load');
   btn.disabled = true;
   // 1) acompanhamento da UF: diz quais municípios mudaram desde a última leitura
@@ -1487,7 +1555,7 @@ async function lvLoadMunicipios(manual) {
     LV.munAb = novo;
   } catch { /* sem arquivo de acompanhamento: lê todos */ }
   let feitos = 0, falhas = 0;
-  const prog = () => { $('#lv-mun-prog').textContent = alvo.length ? `Atualizando ${fmt(feitos)} de ${fmt(alvo.length)} municípios…` : 'Nenhum município mudou desde a última leitura.'; };
+  const prog = () => { $('#lv-mun-prog').textContent = alvo.length ? `Carregando ${fmt(feitos)} de ${fmt(alvo.length)} cidades…` : 'Nenhuma cidade mudou desde a última leitura.'; };
   prog();
   const cargo = LV.cargo, ele = LV.ele, uf = LV.uf;
   await pool(alvo, 6, async m => {
@@ -1501,8 +1569,8 @@ async function lvLoadMunicipios(manual) {
   });
   LV.munLoaded = true;
   btn.disabled = false;
-  btn.textContent = 'Recarregar tudo';
-  $('#lv-mun-prog').textContent = `${fmt(LV.munRows.size)} municípios carregados${falhas ? ` · ${falhas} ainda sem arquivo` : ''}`;
+  btn.textContent = 'Carregar de novo';
+  $('#lv-mun-prog').textContent = `${fmt(LV.munRows.size)} cidades carregadas${falhas ? ` · ${falhas} ainda sem resultado` : ''}`;
   lvRenderMun();
 }
 
@@ -1516,38 +1584,39 @@ async function lvGeo(uf) {
 }
 
 async function lvRenderMun() {
-  const d = LV.data;
-  const sel = $('#lv-foco');
+  const d = LV.data, sel = $('#lv-foco');
   const fonte = d?.cands || [];
   if (!LV.foco && fonte[0]) LV.foco = fonte[0].sq;
-  sel.innerHTML = fonte.slice(0, 60).map(c => `<option value="${esc(c.sq)}">${esc(c.nm)} (${esc(c.n)})</option>`).join('');
+  sel.innerHTML = fonte.slice(0, 60).map(c => `<option value="${esc(c.sq)}">${esc(c.nm)} (nº ${esc(c.n)})</option>`).join('');
   sel.value = LV.foco;
+  const modoFoco = LV.colorMode === 'foco';
+  $('#lv-foco-wrap').hidden = !modoFoco;
   const rows = [...LV.munRows.values()].sort((a, b) => a.m.nm.localeCompare(b.m.nm));
   const pal = palette();
   const cor = new Map(fonte.slice(0, 8).map((c, i) => [c.sq, pal[i]]));
   const outro = cssVar('--muted');
-  $('#lv-mun-count').textContent = rows.length ? `${fmt(rows.length)} municípios` : 'Clique em “Carregar municípios” para ver o resultado de cada cidade do estado.';
+  const focoNm = fonte.find(c => c.sq === LV.foco)?.nm || 'candidato';
+  $('#lv-mun-count').textContent = rows.length ? `${fmt(rows.length)} cidades` : 'Clique em “Carregar as cidades” para ver quem está na frente em cada cidade do estado.';
+  const nomeCor = c => c ? `<span class="sw" style="background:${cor.get(c.sq) || outro}"></span>${esc(c.nm)} <span class="muted">${pct(c.pvap, 1)}</span>` : '—';
   const t = $('#lv-mun-table');
-  const focoNm = fonte.find(c => c.sq === LV.foco)?.nm || 'foco';
-  t.innerHTML = rows.length ? `<thead><tr><th>Município</th><th class="n">Seções</th><th>Líder</th><th class="n">% líder</th><th>2º colocado</th><th class="n">${esc(focoNm)}</th><th class="n">%</th></tr></thead><tbody>` + rows.map(r => {
+  t.innerHTML = rows.length ? `<thead><tr><th>Cidade</th><th class="n">Urnas apuradas</th><th>Em 1º lugar</th><th>Em 2º lugar</th>${modoFoco ? `<th class="n">${esc(focoNm)}</th>` : ''}</tr></thead><tbody>` + rows.map(r => {
     const f = r.by.get(LV.foco) || [0, 0];
-    const l = r.top[0], s = r.top[1];
-    return `<tr><td>${esc(r.m.nm)}</td><td class="n">${pct(r.pst, 1)}</td><td><span class="sw" style="background:${l && cor.get(l.sq) || outro}"></span>${l ? esc(l.nm) : '—'}</td><td class="n">${l ? pct(l.pvap) : '—'}</td><td>${s ? esc(s.nm) + ' <span class="muted">' + pct(s.pvap) + '</span>' : '—'}</td><td class="n">${fmt(f[0])}</td><td class="n">${pct(f[1])}</td></tr>`;
+    return `<tr><td><b>${esc(r.m.nm)}</b></td><td class="n">${pct(r.pst, 0)}</td><td>${nomeCor(r.top[0])}</td><td>${nomeCor(r.top[1])}</td>${modoFoco ? `<td class="n">${fmt(f[0])} <span class="muted">(${pct(f[1], 1)})</span></td>` : ''}</tr>`;
   }).join('') + '</tbody>' : '';
-  EXPORTS['lv-mun'] = () => ({ nome: 'municipios', head: ['Município', '% seções', 'Líder', '% líder', '2º', '% 2º', focoNm + ' votos', focoNm + ' %'],
+  EXPORTS['lv-mun'] = () => ({ nome: 'cidades', head: ['Cidade', '% urnas apuradas', '1º lugar', '% 1º', '2º lugar', '% 2º', focoNm + ' votos', focoNm + ' %'],
     rows: rows.map(r => { const f = r.by.get(LV.foco) || [0, 0]; return [r.m.nm, r.pst, r.top[0]?.nm || '', r.top[0]?.pvap || 0, r.top[1]?.nm || '', r.top[1]?.pvap || 0, f[0], f[1]]; }) });
 
   // legenda
   const lg = $('#lv-legend');
-  if (LV.colorMode === 'lider') lg.innerHTML = fonte.slice(0, 8).map((c, i) => `<span><span class="sw" style="background:${pal[i]}"></span>${esc(c.nm)}</span>`).join('') + `<span><span class="sw" style="background:${outro}"></span>outros</span>`;
-  else lg.innerHTML = `<span>Mais escuro = maior % de ${esc(focoNm)}</span>`;
+  if (!modoFoco) lg.innerHTML = fonte.slice(0, 8).map((c, i) => `<span><span class="sw" style="background:${pal[i]}"></span>${esc(c.nm)}</span>`).join('') + `<span><span class="sw" style="background:${outro}"></span>outros</span>`;
+  else lg.innerHTML = `<span>Quanto mais escura a cidade, maior a votação de ${esc(focoNm)}</span>`;
 
   const M = getMap('lv-map');
   if (!M) { $('#lv-map').hidden = true; return; }
   M.layer.clearLayers();
   if (!rows.length) return;
   const geo = await lvGeo(LV.uf);
-  if (!geo) { lg.innerHTML += ' · malha do IBGE indisponível'; return; }
+  if (!geo) { lg.innerHTML += '<span>O mapa do IBGE não carregou.</span>'; return; }
   const porIbge = new Map(rows.map(r => [String(r.m.cdi), r]));
   let maxF = 0;
   for (const r of rows) maxF = Math.max(maxF, (r.by.get(LV.foco) || [0, 0])[1]);
@@ -1556,26 +1625,27 @@ async function lvRenderMun() {
     style: f => {
       const r = porIbge.get(String(f.properties.codarea));
       if (!r) return { weight: .5, color: cssVar('--line'), fillOpacity: 0 };
-      if (LV.colorMode === 'lider') return { weight: .6, color: cssVar('--surface'), fillColor: cor.get(r.top[0]?.sq) || outro, fillOpacity: .85 };
+      if (!modoFoco) return { weight: .6, color: cssVar('--surface'), fillColor: cor.get(r.top[0]?.sq) || outro, fillOpacity: .85 };
       const f2 = (r.by.get(LV.foco) || [0, 0])[1];
       return { weight: .6, color: cssVar('--surface'), fillColor: acc, fillOpacity: .08 + .85 * (maxF ? f2 / maxF : 0) };
     },
     onEachFeature: (f, layer) => {
       const r = porIbge.get(String(f.properties.codarea));
-      if (r) layer.bindTooltip(`<b>${esc(r.m.nm)}</b><br>${r.top.map(c => esc(c.nm) + ': ' + pct(c.pvap)).join('<br>')}<br><small>${pct(r.pst, 1)} das seções</small>`, { sticky: true });
+      if (r) layer.bindTooltip(`<b>${esc(r.m.nm)}</b><br>${r.top.map((c, i) => `${i + 1}º ${esc(c.nm)}: ${pct(c.pvap, 1)}`).join('<br>')}<br><small>${pct(r.pst, 0)} das urnas apuradas</small>`, { sticky: true });
     },
   });
   M.layer.addLayer(gj);
   try { M.map.fitBounds(gj.getBounds(), { padding: [10, 10] }); } catch {}
 }
 
-/* ============================================================ HISTÓRICO (bairros) */
+/* ============================================================ VOTOS POR BAIRRO */
 const HI = {
-  ds: new Map(), key: '', doc: null, turno: 1, cargo: 0, E: null, cand: -1, nivel: 'bairro', drill: [],
+  ds: new Map(), key: '', doc: null, turno: 1, cargo: 0, E: null, cand: -1, candNome: '', nivel: 'bairro', drill: [], drillBase: 'bairro',
   sort: { k: null, dir: -1 }, pronto: false,
 };
+const GERAL_HI = 'Todos (quem venceu em cada lugar)';
 function dsKey(d) { return `${d.ano}|${d.uf}|${d.cd}|${d.origem}`; }
-function dsLabel(d) { return `${d.nm}${d.uf && d.uf !== '—' ? '/' + d.uf : ''} — ${d.ano}${d.origem === 'demo' ? ' (demonstração)' : d.origem === 'arquivo' ? ' (arquivo enviado)' : ''}`; }
+function dsLabel(d) { return `${titulo(d.nm)}${d.uf && d.uf !== '—' ? ' (' + d.uf + ')' : ''} — ${d.ano}${d.origem === 'arquivo' ? ' · enviado' : ''}`; }
 function addDs(d) { d.key = dsKey(d); HI.ds.set(d.key, d); return d; }
 async function carregarIndice() {
   try {
@@ -1598,7 +1668,7 @@ async function getDoc(key) {
   return d.doc;
 }
 function prepararDoc(doc) {
-  if (!doc || doc.versao !== 1 || !Array.isArray(doc.eleicoes)) throw new Error('Arquivo em formato desconhecido. Use os JSON gerados por scripts/build-historico.mjs.');
+  if (!doc || doc.versao !== 1 || !Array.isArray(doc.eleicoes)) throw new Error('Arquivo em formato desconhecido. Use os arquivos gerados por scripts/build-historico.mjs.');
   for (const E of doc.eleicoes) {
     const n = E.cand.length, tot = new Float64Array(n);
     for (let i = 0; i < E.v.length; i += 3) tot[E.v[i + 1]] += E.v[i + 2];
@@ -1613,70 +1683,62 @@ function dsOptions(sel, atual) {
   sel.innerHTML = lista.map(d => `<option value="${esc(d.key)}">${esc(dsLabel(d))}</option>`).join('');
   if (atual && HI.ds.has(atual)) sel.value = atual;
 }
-function contestOptions(doc, selTurno, selCargo, turno, cargo) {
-  const turnos = [...new Set(doc.eleicoes.map(e => e.turno))];
-  if (!turnos.includes(turno)) turno = turnos[0];
-  selTurno.innerHTML = turnos.map(t => `<option value="${t}">${t}º turno</option>`).join('');
-  selTurno.value = turno;
-  const cargos = doc.eleicoes.filter(e => e.turno === turno);
-  if (!cargos.some(e => e.cargo === cargo)) cargo = cargos[0]?.cargo;
-  selCargo.innerHTML = cargos.map(e => `<option value="${e.cargo}">${esc(e.ds)}</option>`).join('');
-  selCargo.value = cargo;
-  return { turno, cargo, E: cargos.find(e => e.cargo === cargo) };
+// Cargo e turno num só campo: "Prefeito — 1º turno"
+function contestOptions(doc, sel, turno, cargo) {
+  const varios = new Set(doc.eleicoes.map(e => e.turno)).size > 1;
+  sel.innerHTML = doc.eleicoes.map(e => `<option value="${e.turno}|${e.cargo}">${esc(e.ds)}${varios ? ` — ${e.turno}º turno` : ''}</option>`).join('');
+  const E = doc.eleicoes.find(e => e.turno === turno && e.cargo === cargo) || doc.eleicoes.find(e => e.cargo === cargo) || doc.eleicoes[0];
+  sel.value = E ? `${E.turno}|${E.cargo}` : '';
+  return { turno: E?.turno, cargo: E?.cargo, E };
+}
+function contestSel(sel) { const [t, c] = String(sel.value || '').split('|').map(Number); return { t, c }; }
+function candOptions(sel, E, geral) {
+  const opt = i => { const c = E.cand[i]; return `<option value="${i}">${esc(c.nm)}${c.sg ? ' — ' + esc(c.sg) : ''} (${fmt(E._tot[i])} votos)</option>`; };
+  const favs = E._rank.filter(i => FAV.has(favKey(E.cand[i].nm, E.cand[i].nr)));
+  sel.innerHTML = (geral ? `<option value="-1">${esc(geral)}</option>` : '') +
+    (favs.length ? `<optgroup label="★ Meus favoritos">${favs.map(opt).join('')}</optgroup>` : '') +
+    `<optgroup label="Do mais votado ao menos votado">${E._rank.map(opt).join('')}</optgroup>`;
 }
 
 HI.ensure = async function () {
   if (HI.pronto) return;
   HI.pronto = true;
   $('#hi-ds').onchange = e => hiSelectDs(e.target.value);
-  $('#hi-turno').onchange = e => { HI.turno = +e.target.value; hiContest(); };
-  $('#hi-cargo').onchange = e => { HI.cargo = +e.target.value; hiContest(); };
+  $('#hi-contest').onchange = e => { const { t, c } = contestSel(e.target); HI.turno = t; HI.cargo = c; hiContest(); };
+  $('#hi-cand').onchange = e => hiPick(+e.target.value);
   $$('#hi-nivel button').forEach(b => b.onclick = () => { HI.nivel = b.dataset.n; HI.drill = []; HI.sort.k = null; hiRender(); });
-  $('#hi-q').oninput = hiRenderCands;
-  $('#hi-favonly').onchange = hiRenderCands;
   const pref = [...HI.ds.values()].find(d => d.origem !== 'demo') || [...HI.ds.values()].find(d => d.origem === 'demo' && d.ano === 2024);
   dsOptions($('#hi-ds'), store.get('rv.hids') || pref?.key);
   await hiSelectDs($('#hi-ds').value);
 };
 async function hiSelectDs(key) {
   HI.key = key; store.set('rv.hids', key);
+  const av = $('#hi-avisos');
   try { HI.doc = await getDoc(key); }
-  catch (e) { $('#hi-avisos').hidden = false; $('#hi-avisos').className = 'banner err'; $('#hi-avisos').textContent = e.message; return; }
-  const av = HI.doc.avisos || [];
+  catch (e) { av.hidden = false; av.className = 'banner err'; av.textContent = e.message; return; }
+  const avisos = (HI.doc.avisos || []).filter(a => !/fict/i.test(a));
   const demo = HI.ds.get(key)?.origem === 'demo';
-  $('#hi-avisos').hidden = !av.length && !demo;
-  $('#hi-avisos').className = 'banner' + (demo ? ' info' : '');
-  $('#hi-avisos').innerHTML = (demo ? '<b>Modo demonstração.</b> Dados fictícios para mostrar a análise. Gere os dados reais do seu município na aba Dados. ' : '') + av.filter(a => !/fict/i.test(a)).map(esc).join(' ');
-  HI.drill = []; HI.cand = -1;
+  av.hidden = !avisos.length && !demo;
+  av.className = 'banner' + (demo ? ' info' : '');
+  av.innerHTML = (demo ? '<b>Esta é uma cidade de exemplo, com números inventados.</b> Para ver a sua cidade, adicione os dados dela na aba <a href="#dados">Ajuda</a>. ' : '') + avisos.map(esc).join(' ');
+  HI.drill = [];
   hiContest();
 }
 function hiContest() {
-  const r = contestOptions(HI.doc, $('#hi-turno'), $('#hi-cargo'), HI.turno, HI.cargo);
+  const r = contestOptions(HI.doc, $('#hi-contest'), HI.turno, HI.cargo);
   HI.turno = r.turno; HI.cargo = r.cargo; HI.E = r.E;
-  const nm = HI.candNome;
-  HI.cand = nm ? (HI.E.cand.findIndex(c => norm(c.nm) === nm)) : -1;
+  HI.cand = HI.candNome ? HI.E.cand.findIndex(c => norm(c.nm) === HI.candNome && c.tipo === 'c') : -1;
+  candOptions($('#hi-cand'), HI.E, GERAL_HI);
+  $('#hi-cand').value = String(HI.cand);
   HI.drill = []; HI.sort.k = null;
-  hiRenderCands();
   hiRender();
 }
-function hiRenderCands() {
-  const E = HI.E, ol = $('#hi-cands');
-  if (!E) { ol.innerHTML = ''; return; }
-  const q = norm($('#hi-q').value), fo = $('#hi-favonly').checked;
-  let idx = E._rank;
-  if (q) idx = idx.filter(i => norm(E.cand[i].nm + ' ' + E.cand[i].nr + ' ' + (E.cand[i].sg || '')).includes(q));
-  if (fo) idx = idx.filter(i => FAV.has(favKey(E.cand[i].nm, E.cand[i].nr)));
-  const geral = `<li><button type="button" data-i="-1" aria-pressed="${HI.cand === -1}"><span></span><span><b>Visão geral</b><small class="muted">quem venceu em cada ${HI.nivel === 'secao' ? 'seção' : HI.nivel}</small></span><span></span></button></li>`;
-  ol.innerHTML = geral + idx.slice(0, 400).map(i => {
-    const c = E.cand[i], k = favKey(c.nm, c.nr);
-    return `<li><button type="button" data-i="${i}" aria-pressed="${HI.cand === i}">${urna(c.nr)}<span><b>${FAV.has(k) ? '★ ' : ''}${esc(c.nm)}</b><small class="muted">${esc([c.sg, c.sit].filter(Boolean).join(' · '))}</small></span><small class="num">${fmt(E._tot[i])}</small></button></li>`;
-  }).join('');
-  $$('button', ol).forEach(b => b.onclick = () => {
-    HI.cand = +b.dataset.i;
-    HI.candNome = HI.cand >= 0 ? norm(E.cand[HI.cand].nm) : '';
-    HI.sort.k = null;
-    hiRenderCands(); hiRender();
-  });
+function hiPick(i) {
+  HI.cand = i;
+  HI.candNome = i >= 0 ? norm(HI.E.cand[i].nm) : '';
+  $('#hi-cand').value = String(i);
+  HI.sort.k = null;
+  hiRender();
 }
 
 // Agregação: soma votos por bairro / local / zona / seção
@@ -1694,10 +1756,10 @@ function agregar(doc, E, nivel, drill) {
   };
   const chave = si => {
     const [li, z, s] = doc.secoes[si], Lc = doc.locais[li];
-    if (nivel === 'bairro') return [Lc.bairro, Lc.bairro, ''];
-    if (nivel === 'local') return [String(li), Lc.nm, Lc.bairro + (Lc.end ? ' · ' + Lc.end : '')];
+    if (nivel === 'bairro') return [Lc.bairro, titulo(Lc.bairro), ''];
+    if (nivel === 'local') return [String(li), titulo(Lc.nm), titulo(Lc.bairro) + (Lc.end ? ' · ' + titulo(Lc.end) : '')];
     if (nivel === 'zona') return [String(z), 'Zona ' + z, ''];
-    return [String(si), `Zona ${z} · Seção ${s}`, Lc.nm + ' · ' + Lc.bairro];
+    return [String(si), `Seção ${s} (zona ${z})`, titulo(Lc.nm) + ' · ' + titulo(Lc.bairro)];
   };
   const cacheSec = new Map();
   for (let i = 0; i < E.v.length; i += 3) {
@@ -1728,24 +1790,30 @@ function rankEm(g, E, ci) {
   return r;
 }
 const NIVEL_NOME = { bairro: 'Bairro', local: 'Local de votação', zona: 'Zona', secao: 'Seção' };
+const NIVEL_PLURAL = { bairro: 'bairros', local: 'locais de votação', zona: 'zonas', secao: 'seções' };
 const PROXIMO = { bairro: 'local', local: 'secao', zona: 'local' };
 
 function hiRender() {
   const doc = HI.doc, E = HI.E;
   if (!doc || !E) return;
   $$('#hi-nivel button').forEach(b => b.setAttribute('aria-pressed', b.dataset.n === HI.nivel));
-  // trilha
+  const cidade = titulo(doc.municipio.nm);
+
+  // trilha: só aparece quando o usuário entra num bairro ou local
   const cr = $('#hi-crumbs');
-  cr.innerHTML = `<button type="button" data-d="0">${esc(doc.municipio.nm)}</button>` + HI.drill.map((d, i) => `<span>›</span><button type="button" data-d="${i + 1}">${esc(d.label)}</button>`).join('') + `<span>›</span><span>${NIVEL_NOME[HI.nivel]}s</span>`;
-  $$('button', cr).forEach(b => b.onclick = () => {
-    const n = +b.dataset.d;
-    const alvo = HI.drill[n - 1];
-    HI.drill = HI.drill.slice(0, n);
-    HI.nivel = n === 0 ? (HI.drillBase || 'bairro') : PROXIMO[alvo.nivel];
-    HI.sort.k = null;
-    hiRender();
-  });
-  if (!HI.drill.length) HI.drillBase = HI.nivel;
+  if (HI.drill.length) {
+    const ult = HI.drill.length - 1;
+    cr.hidden = false;
+    cr.innerHTML = `<button type="button" class="btn sm" data-d="${ult}">← Voltar</button><span>Você está vendo:</span><button type="button" class="linkbtn" data-d="0">${esc(cidade)}</button>` +
+      HI.drill.map((d, i) => `<span>›</span>${i === ult ? `<b>${esc(d.label)}</b>` : `<button type="button" class="linkbtn" data-d="${i + 1}">${esc(d.label)}</button>`}`).join('');
+    $$('button', cr).forEach(b => b.onclick = () => {
+      const n = +b.dataset.d;
+      HI.drill = HI.drill.slice(0, n);
+      HI.nivel = n === 0 ? HI.drillBase : PROXIMO[HI.drill[n - 1].nivel];
+      HI.sort.k = null;
+      hiRender();
+    });
+  } else { cr.hidden = true; cr.innerHTML = ''; HI.drillBase = HI.nivel; }
 
   const grupos = agregar(doc, E, HI.nivel, HI.drill);
   const ci = HI.cand;
@@ -1753,31 +1821,34 @@ function hiRender() {
   const pal = palette();
   const corCand = new Map(E._rank.slice(0, 8).map((i, k) => [i, pal[k]]));
   const outro = cssVar('--muted');
+  const contexto = `${E.ds}${new Set(doc.eleicoes.map(e => e.turno)).size > 1 ? ` (${HI.turno}º turno)` : ''} · ${cidade} · ${doc.ano}`;
+  const onde = HI.drill.length ? HI.drill[HI.drill.length - 1].label : '';
 
-  // resumo
+  // resumo em linguagem simples
   const sm = $('#hi-summary');
   if (c) {
-    const bairros = HI.drill.length ? grupos : agregar(doc, E, 'bairro', []);
+    const bairros = agregar(doc, E, 'bairro', []);
     const venceu = bairros.filter(g => g.w1 === ci && g.v[ci] > 0).length;
+    const sh = g => g.v[ci] / g.val;
     const comVoto = bairros.filter(g => g.val >= 30);
-    const melhor = comVoto.slice().sort((a, b) => b.v[ci] / b.val - a.v[ci] / a.val)[0];
-    const pior = comVoto.slice().sort((a, b) => a.v[ci] / a.val - b.v[ci] / b.val)[0];
+    const melhor = comVoto.slice().sort((a, b) => sh(b) - sh(a))[0];
+    const pior = comVoto.slice().sort((a, b) => sh(a) - sh(b))[0];
     const pos = E._rank.indexOf(ci) + 1;
-    sm.innerHTML = `<div class="panel" style="display:grid;gap:14px">
-      <div class="focus-head">${urna(c.nr)}<div><h2>${esc(c.nm)}</h2><span class="muted">${esc([c.sg, E.ds, HI.turno + 'º turno', doc.ano].filter(Boolean).join(' · '))}</span></div>${chipFor(c.sit)}</div>
-      <div class="stats">
-        <div class="stat"><span>Votos no município</span><b>${fmt(E._tot[ci])}</b><small>${pct(E._tot[ci] / E._val * 100)} dos válidos</small></div>
-        <div class="stat"><span>Posição</span><b>${pos}º</b><small>de ${fmt(E._rank.length)} candidatos</small></div>
-        <div class="stat"><span>Bairros vencidos</span><b>${fmt(venceu)}</b><small>de ${fmt(bairros.length)}</small></div>
-        <div class="stat"><span>Mais forte</span><b style="font-size:1.1rem">${melhor ? esc(melhor.label) : '—'}</b><small>${melhor ? pct(melhor.v[ci] / melhor.val * 100) + ' dos válidos' : ''}</small></div>
-        <div class="stat"><span>Mais fraco</span><b style="font-size:1.1rem">${pior ? esc(pior.label) : '—'}</b><small>${pior ? pct(pior.v[ci] / pior.val * 100) + ' dos válidos' : ''}</small></div>
-      </div></div>`;
+    const k = favKey(c.nm, c.nr);
+    sm.innerHTML = `<div class="summary">
+      <div class="sum-head"><div><h2>${esc(c.nm)} ${situacao(c.sit)}</h2><span class="muted">${esc([c.sg, 'nº ' + c.nr, contexto].filter(Boolean).join(' · '))}</span></div>${starBtn(k, c.nm)}</div>
+      <p class="lead">Teve <b>${fmt(E._tot[ci])} votos</b> (${pct(E._tot[ci] / E._val * 100, 1)} dos votos válidos) e ficou em <b>${pos}º lugar</b> na cidade. Venceu em <b>${fmt(venceu)} de ${plural(bairros.length, 'bairro', 'bairros')}</b>.${melhor && pior && melhor !== pior ? ` Foi melhor em <b>${esc(melhor.label)}</b> (${pct(sh(melhor) * 100, 1)} dos votos do bairro) e pior em <b>${esc(pior.label)}</b> (${pct(sh(pior) * 100, 1)}).` : ''}</p>
+    </div>`;
   } else {
     const top = E._rank.slice(0, 3);
     const vencidos = new Map();
     for (const g of grupos) vencidos.set(g.w1, (vencidos.get(g.w1) || 0) + 1);
-    sm.innerHTML = `<div class="stats">${top.map((i, k) => `<div class="stat"><span>${k + 1}º no município</span><b style="font-size:1.15rem">${esc(E.cand[i].nm)}</b><small>${fmt(E._tot[i])} votos · ${pct(E._tot[i] / E._val * 100)} · vence em ${fmt(vencidos.get(i) || 0)} ${HI.nivel === 'secao' ? 'seções' : NIVEL_NOME[HI.nivel].toLowerCase() + 's'}</small></div>`).join('')}
-      <div class="stat"><span>Votos válidos</span><b>${fmt(E._val)}</b><small>${fmt(doc.secoes.length)} seções · ${fmt(doc.locais.length)} locais</small></div></div>`;
+    const w = E.cand[top[0]];
+    sm.innerHTML = `<div class="summary">
+      <p class="lead"><b>${esc(contexto)}</b><br>${esc(w.nm)} foi o mais votado, com ${pct(E._tot[top[0]] / E._val * 100, 1)} dos votos válidos. No mapa e na tabela, as cores mostram quem venceu em cada ${NIVEL_NOME[HI.nivel].toLowerCase()}${onde ? ' de ' + esc(onde) : ''}. Toque num candidato abaixo para ver só os votos dele.</p>
+      <div class="stats">${top.map((i, k) => `<button type="button" class="stat" data-pick="${i}"><span><span class="sw" style="background:${corCand.get(i)}"></span>${k + 1}º lugar</span><b class="nm">${esc(E.cand[i].nm)}</b><small>${fmt(E._tot[i])} votos · ${pct(E._tot[i] / E._val * 100, 1)} · venceu em ${plural(vencidos.get(i) || 0, NIVEL_NOME[HI.nivel].toLowerCase(), NIVEL_PLURAL[HI.nivel])}</small></button>`).join('')}</div>
+    </div>`;
+    $$('[data-pick]', sm).forEach(b => b.onclick = () => hiPick(+b.dataset.pick));
   }
 
   // tabela
@@ -1786,18 +1857,15 @@ function hiRender() {
     const totC = E._tot[ci] || 1;
     linhas = grupos.map(g => {
       const v = g.v[ci], sh = g.val ? v / g.val * 100 : 0, rk = rankEm(g, E, ci), w = g.w1;
-      const gap = w === ci ? v - g.v[g.w2] : v - g.v[w];
+      const gap = w === ci ? v - (g.w2 != null ? g.v[g.w2] : 0) : g.v[w] - v;
       return { g, v, sh, ct: v / totC * 100, rk, w, gap };
     });
-    cols = [
-      ['label', NIVEL_NOME[HI.nivel], 0], ['v', 'Votos', 1], ['sh', '% dos válidos', 1], ['ct', '% do seu total', 1], ['rk', 'Posição', 1], ['w', 'Vencedor', 0], ['gap', 'Diferença', 1],
-    ];
-    if (!HI.sort.k) HI.sort = { k: 'v', dir: -1 };
+    cols = [['label', NIVEL_NOME[HI.nivel], 0], ['v', 'Votos', 1], ['sh', '% dos votos do lugar', 1], ['rk', 'Colocação', 1], ['w', 'Resultado', 0]];
   } else {
     linhas = grupos.map(g => ({ g, v: g.val, w: g.w1, s: g.w2, sh: g.val ? g.v[g.w1] / g.val * 100 : 0, sh2: g.val && g.w2 != null ? g.v[g.w2] / g.val * 100 : 0, mg: g.val && g.w2 != null ? (g.v[g.w1] - g.v[g.w2]) / g.val * 100 : 0, aptos: g.aptos }));
-    cols = [['label', NIVEL_NOME[HI.nivel], 0], ['v', 'Votos válidos', 1], ['w', 'Vencedor', 0], ['sh', '%', 1], ['s', '2º colocado', 0], ['sh2', '%', 1], ['mg', 'Margem', 1]];
-    if (!HI.sort.k) HI.sort = { k: 'v', dir: -1 };
+    cols = [['label', NIVEL_NOME[HI.nivel], 0], ['w', 'Quem venceu', 0], ['s', '2º lugar', 0], ['v', 'Votos válidos', 1]];
   }
+  if (!HI.sort.k) HI.sort = { k: 'v', dir: -1 };
   const { k, dir } = HI.sort;
   linhas.sort((a, b) => {
     const va = k === 'label' ? a.g.label : k === 'w' || k === 's' ? E.cand[a[k]]?.nm || '' : a[k];
@@ -1809,25 +1877,30 @@ function hiRender() {
   const podeDescer = !!PROXIMO[HI.nivel];
   const t = $('#hi-table');
   const nomeW = i => i == null ? '—' : `<span class="sw" style="background:${corCand.get(i) || outro}"></span>${esc(E.cand[i].nm)}`;
-  t.innerHTML = `<thead><tr>${cols.map(([ck, lbl, n]) => `<th class="sort ${n ? 'n' : ''}" data-k="${ck}" aria-sort="${k === ck ? (dir > 0 ? 'ascending' : 'descending') : 'none'}">${esc(lbl)}</th>`).join('')}</tr></thead><tbody>` +
+  const seta = podeDescer ? '<td class="go" aria-hidden="true">›</td>' : '';
+  t.innerHTML = `<thead><tr>${cols.map(([ck, lbl, n]) => `<th class="sort ${n ? 'n' : ''}" data-k="${ck}" aria-sort="${k === ck ? (dir > 0 ? 'ascending' : 'descending') : 'none'}">${esc(lbl)}</th>`).join('')}${podeDescer ? '<th></th>' : ''}</tr></thead><tbody>` +
     linhas.slice(0, lim).map(l => {
       const cls = podeDescer ? 'click' : '';
       const lab = `<td><b>${esc(l.g.label)}</b>${l.g.sub ? `<span class="sub">${esc(l.g.sub)}</span>` : ''}</td>`;
-      if (c) return `<tr class="${cls}" data-k="${esc(l.g.key)}">${lab}<td class="n"><b>${fmt(l.v)}</b></td><td class="n"><div class="mini"><span class="bar"><i style="width:${(l.sh / maxSh * 100).toFixed(1)}%"></i></span>${pct(l.sh, 1)}</div></td><td class="n">${pct(l.ct, 1)}</td><td class="n">${l.rk}º</td><td>${nomeW(l.w)}</td><td class="n">${l.w === HI.cand ? '<span class="chip ok">venceu por ' + fmt(l.gap) + '</span>' : sgn(l.gap)}</td></tr>`;
-      return `<tr class="${cls}" data-k="${esc(l.g.key)}">${lab}<td class="n">${fmt(l.v)}</td><td>${nomeW(l.w)}</td><td class="n">${pct(l.sh, 1)}</td><td>${l.s != null ? esc(E.cand[l.s].nm) : '—'}</td><td class="n">${pct(l.sh2, 1)}</td><td class="n">${pp(l.mg)}</td></tr>`;
+      if (c) {
+        const res = l.w === ci ? `<span class="chip ok">Venceu</span> por ${fmt(l.gap)} votos` : `Perdeu para ${nomeW(l.w)} por ${fmt(l.gap)}`;
+        return `<tr class="${cls}" data-k="${esc(l.g.key)}">${lab}<td class="n"><b>${fmt(l.v)}</b></td><td class="n"><div class="mini"><span class="bar"><i style="width:${(l.sh / maxSh * 100).toFixed(1)}%"></i></span>${pct(l.sh, 1)}</div></td><td class="n">${l.rk}º</td><td>${res}</td>${seta}</tr>`;
+      }
+      return `<tr class="${cls}" data-k="${esc(l.g.key)}">${lab}<td>${nomeW(l.w)} <span class="muted">${pct(l.sh, 1)}</span></td><td>${l.s != null ? esc(E.cand[l.s].nm) + ` <span class="muted">${pct(l.sh2, 1)}</span>` : '—'}</td><td class="n">${fmt(l.v)}</td>${seta}</tr>`;
     }).join('') + '</tbody>';
-  $('#hi-count').textContent = `${fmt(linhas.length)} ${HI.nivel === 'secao' ? 'seções' : NIVEL_NOME[HI.nivel].toLowerCase() + (HI.nivel === 'local' ? 'is' : 's')}${linhas.length > lim ? ` · exibindo ${lim} (exporte para ver todos)` : ''}${podeDescer ? ' · clique numa linha para detalhar' : ''}`;
-  $$('th.sort', t).forEach(th => th.onclick = () => { const ck = th.dataset.k; HI.sort = { k: ck, dir: HI.sort.k === ck ? -HI.sort.dir : (ck === 'label' ? 1 : -1) }; hiRender(); });
+  $('#hi-count').textContent = `${plural(linhas.length, NIVEL_NOME[HI.nivel].toLowerCase(), NIVEL_PLURAL[HI.nivel])}${linhas.length > lim ? ` · mostrando ${lim} (baixe a planilha para ver todos)` : ''}${podeDescer ? ' · clique numa linha para ver os detalhes' : ''}`;
+  $$('th.sort', t).forEach(th => th.onclick = () => { const ck = th.dataset.k; HI.sort = { k: ck, dir: HI.sort.k === ck ? -HI.sort.dir : (ck === 'label' || ck === 'w' || ck === 's' ? 1 : -1) }; hiRender(); });
   if (podeDescer) $$('tbody tr', t).forEach(tr => tr.onclick = () => {
     const g = grupos.find(x => x.key === tr.dataset.k);
     HI.drill.push({ nivel: HI.nivel, key: tr.dataset.k, label: g.label });
     HI.nivel = PROXIMO[HI.nivel]; HI.sort.k = null;
     hiRender();
+    $('#hi-crumbs').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   EXPORTS.hi = () => ({
     nome: `${doc.municipio.nm}-${doc.ano}-${E.ds}-${c ? c.nm : 'geral'}-${HI.nivel}`,
-    head: c ? [NIVEL_NOME[HI.nivel], 'Detalhe', 'Votos', '% dos válidos', '% do total do candidato', 'Posição', 'Vencedor', 'Diferença'] : [NIVEL_NOME[HI.nivel], 'Detalhe', 'Votos válidos', 'Vencedor', '%', '2º colocado', '%', 'Margem (p.p.)', 'Eleitores aptos'],
-    rows: linhas.map(l => c ? [l.g.label, l.g.sub, l.v, +l.sh.toFixed(2), +l.ct.toFixed(2), l.rk, E.cand[l.w]?.nm || '', l.gap]
+    head: c ? [NIVEL_NOME[HI.nivel], 'Detalhe', 'Votos', '% dos votos do lugar', '% do total do candidato', 'Colocação', 'Vencedor', 'Diferença para o vencedor ou 2º'] : [NIVEL_NOME[HI.nivel], 'Detalhe', 'Votos válidos', 'Vencedor', '%', '2º lugar', '%', 'Vantagem (pontos)', 'Eleitores aptos'],
+    rows: linhas.map(l => c ? [l.g.label, l.g.sub, l.v, +l.sh.toFixed(2), +l.ct.toFixed(2), l.rk, E.cand[l.w]?.nm || '', l.w === ci ? l.gap : -l.gap]
       : [l.g.label, l.g.sub, l.v, E.cand[l.w]?.nm || '', +l.sh.toFixed(2), l.s != null ? E.cand[l.s].nm : '', +l.sh2.toFixed(2), +l.mg.toFixed(2), l.aptos || '']),
   });
   hiMapa(doc, E, ci, corCand, outro);
@@ -1836,28 +1909,31 @@ function hiRender() {
 function hiMapa(doc, E, ci, corCand, outro) {
   const M = getMap('hi-map');
   const lg = $('#hi-legend');
-  if (!M) { $('#hi-map').hidden = true; lg.textContent = 'Mapa indisponível: a biblioteca de mapas não carregou nesta página.'; return; }
+  if (!M) { $('#hi-map').hidden = true; lg.textContent = 'O mapa não carregou nesta página.'; return; }
   M.layer.clearLayers();
   const locs = agregar(doc, E, 'local', HI.drill.filter(d => d.nivel !== 'secao'));
   const comCoord = locs.filter(g => { const Lc = doc.locais[+g.key]; return Lc.lat != null && Lc.lon != null; });
-  if (!comCoord.length) { lg.textContent = 'Os locais deste município não têm coordenadas no cadastro do TSE.'; return; }
+  if (!comCoord.length) { lg.textContent = 'Os locais de votação desta cidade não têm localização no cadastro do TSE.'; return; }
   const acc = cssVar('--accent');
   const base = ci >= 0 ? g => g.v[ci] : g => g.val;
   const maxV = Math.max(...comCoord.map(base), 1);
   const maxSh = ci >= 0 ? Math.max(...comCoord.map(g => g.val ? g.v[ci] / g.val : 0), 0.0001) : 1;
   for (const g of comCoord) {
     const Lc = doc.locais[+g.key];
-    const r = 4 + 18 * Math.sqrt(base(g) / maxV);
+    const r = 5 + 18 * Math.sqrt(base(g) / maxV);
     const sh = ci >= 0 && g.val ? g.v[ci] / g.val : 0;
     const style = ci >= 0
       ? { radius: r, color: acc, weight: 1, fillColor: acc, fillOpacity: .12 + .78 * (sh / maxSh) }
       : { radius: r, color: cssVar('--surface'), weight: 1, fillColor: corCand.get(g.w1) || outro, fillOpacity: .85 };
-    const tip = `<b>${esc(Lc.nm)}</b><br>${esc(Lc.bairro)}<br>` + (ci >= 0 ? `${esc(E.cand[ci].nm)}: <b>${fmt(g.v[ci])}</b> (${pct(sh * 100, 1)})` : `Vencedor: <b>${esc(E.cand[g.w1]?.nm || '—')}</b> · ${fmt(g.val)} válidos`);
+    const tip = `<b>${esc(titulo(Lc.nm))}</b><br>${esc(titulo(Lc.bairro))}<br>` + (ci >= 0 ? `${esc(E.cand[ci].nm)}: <b>${fmt(g.v[ci])} votos</b> (${pct(sh * 100, 1)})` : `Venceu: <b>${esc(E.cand[g.w1]?.nm || '—')}</b><br>${fmt(g.val)} votos válidos`);
     L.circleMarker([Lc.lat, Lc.lon], style).bindTooltip(tip).addTo(M.layer);
   }
   try { M.map.fitBounds(M.layer.getBounds(), { padding: [24, 24], maxZoom: 15 }); } catch {}
   const semCoord = locs.length - comCoord.length;
-  lg.innerHTML = (ci >= 0 ? `<span>Tamanho = votos de ${esc(E.cand[ci].nm)} · cor mais forte = maior % no local</span>` : E._rank.slice(0, 8).map(i => `<span><span class="sw" style="background:${corCand.get(i)}"></span>${esc(E.cand[i].nm)}</span>`).join('') + `<span>Tamanho = votos válidos</span>`) + (semCoord ? `<span>${semCoord} local(is) sem coordenadas</span>` : '');
+  lg.innerHTML = (ci >= 0
+    ? `<span>Cada círculo é um local de votação. Círculo maior = mais votos de ${esc(E.cand[ci].nm)}; cor mais forte = maior parte dos votos do local.</span>`
+    : E._rank.slice(0, 8).map(i => `<span><span class="sw" style="background:${corCand.get(i)}"></span>${esc(E.cand[i].nm)}</span>`).join('') + `<span>Cada círculo é um local de votação, na cor de quem venceu ali. Círculo maior = mais votos.</span>`) +
+    (semCoord ? `<span>${semCoord} local(is) sem localização no mapa</span>` : '');
 }
 
 /* ============================================================ COMPARAR */
@@ -1867,8 +1943,7 @@ CP.ensure = async function () {
     CP.pronto = true;
     for (const s of ['a', 'b']) {
       $(`#cp-${s}-ds`).onchange = () => cpLoad(s, true);
-      $(`#cp-${s}-turno`).onchange = () => cpContest(s);
-      $(`#cp-${s}-cargo`).onchange = () => cpContest(s);
+      $(`#cp-${s}-contest`).onchange = () => cpContest(s, false);
       $(`#cp-${s}-cand`).onchange = () => { CP[s].cand = +$(`#cp-${s}-cand`).value; cpRender(); };
     }
     $$('#cp-nivel button').forEach(b => b.onclick = () => { CP.nivel = b.dataset.n; $$('#cp-nivel button').forEach(x => x.setAttribute('aria-pressed', x === b)); cpRender(); });
@@ -1891,12 +1966,12 @@ async function cpLoad(s, sugerir) {
 }
 function cpContest(s, sugerir) {
   const S = CP[s], O = CP[s === 'a' ? 'b' : 'a'];
-  const turnoSel = +$(`#cp-${s}-turno`).value || (O.E?.turno ?? 1);
-  const cargoSel = +$(`#cp-${s}-cargo`).value || (O.E?.cargo ?? 0);
-  const r = contestOptions(S.doc, $(`#cp-${s}-turno`), $(`#cp-${s}-cargo`), sugerir && O.E ? O.E.turno : turnoSel, sugerir && O.E ? O.E.cargo : cargoSel);
+  const sel = $(`#cp-${s}-contest`);
+  const atual = sel.value ? contestSel(sel) : { t: O.E?.turno ?? 1, c: O.E?.cargo ?? 0 };
+  const r = contestOptions(S.doc, sel, sugerir && O.E ? O.E.turno : atual.t, sugerir && O.E ? O.E.cargo : atual.c);
   S.E = r.E;
   const E = S.E;
-  $(`#cp-${s}-cand`).innerHTML = E._rank.map(i => `<option value="${i}">${esc(E.cand[i].nm)} (${esc(E.cand[i].nr)}) · ${fmt(E._tot[i])}</option>`).join('');
+  candOptions($(`#cp-${s}-cand`), E, '');
   let alvo = E._rank[s === 'a' ? 0 : 1] ?? E._rank[0];
   if (sugerir && O.E && O.cand != null && O.doc !== S.doc) {
     const nm = norm(O.E.cand[O.cand]?.nm);
@@ -1911,8 +1986,9 @@ function cpRender() {
   const A = CP.a, B = CP.b;
   if (!A.E || !B.E || A.cand == null || B.cand == null) return;
   const ca = A.E.cand[A.cand], cb = B.E.cand[B.cand];
-  $('#cp-a-title').textContent = `${ca.nm} · ${A.doc.ano}`;
-  $('#cp-b-title').textContent = `${cb.nm} · ${B.doc.ano}`;
+  const nomeA = `${ca.nm} (${A.doc.ano})`, nomeB = `${cb.nm} (${B.doc.ano})`;
+  $('#cp-a-title').textContent = nomeA;
+  $('#cp-b-title').textContent = nomeB;
   const gA = agregar(A.doc, A.E, CP.nivel, []), gB = agregar(B.doc, B.E, CP.nivel, []);
   const chave = (doc, g) => CP.nivel === 'local' ? norm(doc.locais[+g.key].nm) : norm(g.label);
   const M = new Map();
@@ -1926,12 +2002,16 @@ function cpRender() {
   const ambos = rows.filter(r => r.ambos);
   const aFrente = ambos.filter(r => r.av > r.bv).length, bFrente = ambos.filter(r => r.bv > r.av).length;
   const totA = A.E._tot[A.cand], totB = B.E._tot[B.cand];
-  const nomeN = CP.nivel === 'bairro' ? 'bairros' : CP.nivel === 'local' ? 'locais' : 'zonas';
-  $('#cp-summary').innerHTML = `
-    <div class="stat"><span>A · ${esc(ca.nm)}</span><b>${fmt(totA)}</b><small>${pct(totA / A.E._val * 100)} dos válidos · ${A.doc.ano}</small></div>
-    <div class="stat"><span>B · ${esc(cb.nm)}</span><b>${fmt(totB)}</b><small>${pct(totB / B.E._val * 100)} dos válidos · ${B.doc.ano}</small></div>
-    <div class="stat"><span>Diferença (B − A)</span><b>${sgn(totB - totA)}</b><small>${totA ? pct((totB - totA) / totA * 100, 1) : '—'}</small></div>
-    <div class="stat"><span>Quem teve mais votos</span><b>A ${aFrente} · B ${bFrente}</b><small>em ${ambos.length} ${nomeN} presentes nos dois</small></div>`;
+  const dif = totB - totA, menor = Math.min(totA, totB);
+  const nomeN = NIVEL_PLURAL[CP.nivel];
+  const frase = dif === 0 ? 'Os dois tiveram o mesmo número de votos.'
+    : `<b>${esc(dif > 0 ? nomeB : nomeA)}</b> teve <b>${fmt(Math.abs(dif))} votos a mais</b>${menor ? ` (${pct(Math.abs(dif) / menor * 100, 1)} a mais)` : ''}.`;
+  $('#cp-summary').innerHTML = `<div class="summary">
+    <p class="lead">${frase} Nos ${fmt(ambos.length)} ${nomeN} que aparecem nas duas eleições, <b>A</b> teve mais votos em <b>${fmt(aFrente)}</b> e <b>B</b> em <b>${fmt(bFrente)}</b>.</p>
+    <div class="stats">
+      <div class="stat"><span><span class="tag sm a">A</span>${esc(nomeA)}</span><b>${fmt(totA)}</b><small>votos · ${pct(totA / A.E._val * 100, 1)} dos válidos</small></div>
+      <div class="stat"><span><span class="tag sm b">B</span>${esc(nomeB)}</span><b>${fmt(totB)}</b><small>votos · ${pct(totB / B.E._val * 100, 1)} dos válidos</small></div>
+    </div></div>`;
   const maxD = Math.max(...rows.map(r => Math.abs(r.dp ?? 0)), 0.1);
   const cA = cssVar('--c3'), cB = cssVar('--c2');
   const barra = r => {
@@ -1940,24 +2020,26 @@ function cpRender() {
     const pos = r.dp >= 0 ? `left:50%;width:${w}%;background:${cB}` : `left:${50 - w}%;width:${w}%;background:${cA}`;
     return `<div class="diverge" title="${pp(r.dp)}"><i style="${pos}"></i></div>`;
   };
-  $('#cp-table').innerHTML = `<thead><tr><th>${esc(NIVEL_NOME[CP.nivel])}</th><th class="n">A votos</th><th class="n">A %</th><th class="n">B votos</th><th class="n">B %</th><th class="n">B − A</th><th class="n">Variação</th><th>A ◂ ▸ B</th></tr></thead><tbody>` +
-    rows.map(r => `<tr><td><b>${esc(r.label)}</b>${r.ambos ? '' : `<span class="sub">só em ${r.av || !r.bv ? 'A' : 'B'}</span>`}</td><td class="n">${fmt(r.av)}</td><td class="n">${r.ash == null ? '—' : pct(r.ash, 1)}</td><td class="n">${fmt(r.bv)}</td><td class="n">${r.bsh == null ? '—' : pct(r.bsh, 1)}</td><td class="n"><b>${sgn(r.dv)}</b></td><td class="n">${r.dp == null ? '—' : pp(r.dp)}</td><td>${barra(r)}</td></tr>`).join('') + '</tbody>';
-  EXPORTS.cp = () => ({ nome: `comparativo-${ca.nm}-${A.doc.ano}-x-${cb.nm}-${B.doc.ano}`, head: [NIVEL_NOME[CP.nivel], 'A votos', 'A %', 'B votos', 'B %', 'B − A', 'Variação (p.p.)'],
+  const cel = (v, sh) => `${fmt(v)}${sh == null ? '' : ` <span class="muted">${pct(sh, 1)}</span>`}`;
+  $('#cp-count').textContent = `${fmt(rows.length)} ${nomeN} · da maior para a menor diferença`;
+  $('#cp-table').innerHTML = `<thead><tr><th>${esc(NIVEL_NOME[CP.nivel])}</th><th class="n">A</th><th class="n">B</th><th class="n">Diferença (B − A)</th><th>Mais forte: A ◂ ▸ B</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td><b>${esc(r.label)}</b>${r.ambos ? '' : `<span class="sub">só aparece em ${r.av || !r.bv ? 'A' : 'B'}</span>`}</td><td class="n">${cel(r.av, r.ash)}</td><td class="n">${cel(r.bv, r.bsh)}</td><td class="n"><b>${sgn(r.dv)}</b></td><td>${barra(r)}</td></tr>`).join('') + '</tbody>';
+  EXPORTS.cp = () => ({ nome: `comparativo-${ca.nm}-${A.doc.ano}-x-${cb.nm}-${B.doc.ano}`, head: [NIVEL_NOME[CP.nivel], 'A votos', 'A %', 'B votos', 'B %', 'B − A', 'Variação (pontos)'],
     rows: rows.map(r => [r.label, r.av, r.ash == null ? '' : +r.ash.toFixed(2), r.bv, r.bsh == null ? '' : +r.bsh.toFixed(2), r.dv, r.dp == null ? '' : +r.dp.toFixed(2)]) });
 }
 
-/* ============================================================ DADOS */
+/* ============================================================ AJUDA E DADOS */
 const DADOS = {
   render() {
     $$('#conn-via input').forEach(r => { r.checked = r.value === CONN.via; r.onchange = () => { CONN.via = r.value; CONN.direto = {}; store.set('rv.via', r.value); DADOS.status(); }; });
     DADOS.status();
     const lista = [...HI.ds.values()].sort((a, b) => a.nm.localeCompare(b.nm) || a.ano - b.ano);
-    $('#ds-table').innerHTML = `<thead><tr><th>Município</th><th class="n">Ano</th><th>Cargos</th><th>Origem</th></tr></thead><tbody>` +
-      lista.map(d => `<tr><td>${esc(d.nm)}${d.uf && d.uf !== '—' ? '/' + esc(d.uf) : ''}</td><td class="n">${d.ano}</td><td>${esc((d.cargos || (d.doc ? [...new Set(d.doc.eleicoes.map(e => e.ds))].map(ds => ({ ds })) : [])).map(c => c.ds).join(', ') || '—')}</td><td>${{ publicado: 'Publicado no site', demo: 'Demonstração', arquivo: 'Enviado nesta sessão' }[d.origem]}</td></tr>`).join('') + '</tbody>';
+    $('#ds-table').innerHTML = `<thead><tr><th>Cidade</th><th class="n">Ano</th><th>Cargos</th><th>Origem</th></tr></thead><tbody>` +
+      lista.map(d => `<tr><td>${esc(titulo(d.nm))}${d.uf && d.uf !== '—' ? ' (' + esc(d.uf) + ')' : ''}</td><td class="n">${d.ano}</td><td>${esc((d.cargos || (d.doc ? [...new Set(d.doc.eleicoes.map(e => e.ds))].map(ds => ({ ds })) : [])).map(c => c.ds).join(', ') || '—')}</td><td>${{ publicado: 'Publicado no site', demo: 'Exemplo (números inventados)', arquivo: 'Enviado neste navegador' }[d.origem]}</td></tr>`).join('') + '</tbody>';
   },
   status() {
-    const s = { auto: 'Modo automático', direto: 'Leitura direta', proxy: 'Via proxy' }[CONN.via];
-    $('#conn-status').textContent = s + (CONN.ultimo ? ` · última leitura foi ${CONN.ultimo === 'direto' ? 'direta' : 'pelo proxy'}` : '');
+    const s = { auto: 'Modo automático', direto: 'Leitura direta', proxy: 'Pelo servidor do site' }[CONN.via];
+    $('#conn-status').textContent = s + (CONN.ultimo ? ` · última leitura foi ${CONN.ultimo === 'direto' ? 'direta' : 'pelo servidor do site'}` : '');
   },
 };
 function initUpload() {
@@ -1972,7 +2054,7 @@ function initUpload() {
         store.set('rv.hids', d.key);
       } catch (e) { msgs.push('✖ ' + f.name + ': ' + e.message); }
     }
-    drop.innerHTML = msgs.map(esc).join('<br>') + '<br><small>Abra a aba Bairros para analisar.</small>';
+    drop.innerHTML = msgs.map(esc).join('<br>') + '<br><small>Abra a aba Votos por bairro para ver.</small>';
     HI.pronto = false; CP.pronto = false; CP.a = {}; CP.b = {};
     DADOS.render();
   };
@@ -1984,11 +2066,17 @@ function initUpload() {
   drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); ler([...e.dataTransfer.files]); };
 }
 
-/* ============================================================ exportação */
+/* ============================================================ favoritos e exportação */
+function onFavChange() {
+  lvRenderList();
+  if (HI.E) { candOptions($('#hi-cand'), HI.E, GERAL_HI); $('#hi-cand').value = String(HI.cand); hiRender(); }
+}
 const EXPORTS = {};
 document.addEventListener('click', async e => {
   const star = e.target.closest('[data-fav]');
-  if (star) { toggleFav(star.dataset.fav); lvRenderList(); return; }
+  if (star) { toggleFav(star.dataset.fav); onFavChange(); return; }
+  const go = e.target.closest('[data-amb-go]');
+  if (go) { lvSetAmb(go.dataset.ambGo); return; }
   const b = e.target.closest('[data-exp]');
   if (!b) return;
   const fn = EXPORTS[b.dataset.exp];
@@ -2007,7 +2095,7 @@ document.addEventListener('click', async e => {
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Dados');
       XLSX.writeFile(wb, arq + '.xlsx');
-    } catch { alert('Não foi possível gerar o Excel. Use CSV.'); }
+    } catch { alert('Não foi possível gerar o Excel. Tente o CSV.'); }
     b.disabled = false;
   }
 });
@@ -2026,6 +2114,5 @@ function baixar(blob, nome) {
   lvInit();
 })();
 </script>
-
 </body>
 </html>
