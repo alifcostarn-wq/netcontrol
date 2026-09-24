@@ -1,5 +1,32 @@
 # Changelog
 
+## [3.0.0] — 2026-09-24
+
+### Alterado — novo layout, simples e no formato de aplicativo
+Inspirado na organização do app Capivara Votos (sem usar marca, logo ou imagens dele): topo escuro, conteúdo em
+cartões brancos arredondados e barra de navegação fixa embaixo (Favoritos · Resultado · **Início** · Comparar · Ajuda).
+Funciona no celular e no computador (coluna central).
+
+- **Início:** cartão "Votação" com a cidade (toque para trocar), atalhos Candidatos · Bairros · Comparar · Mapa
+  e a lista de eleições (2026 ao vivo, 2024, 2022).
+- **Resultado:** filtros em faixas (Eleição, Cargo, Estado, Município), resumo com votantes, válidos, brancos e nulos,
+  busca e lista de candidatos com **foto oficial do TSE**, partido, situação (Eleito, 2º turno, Suplente, Não eleito),
+  votos, % e estrela de favorito.
+- **Candidato:** cartão da eleição e do candidato (toque para trocar), resumo "venceu em X de Y bairros / mais forte /
+  mais fraco" e abas **Zona · Bairro · Local · Seção · Mapa** com ranking de votos e % em cada lugar;
+  toque numa linha para abrir os locais do bairro e as seções do local.
+- **Comparativo:** até 3 candidatos lado a lado (toque para trocar), por bairro, local, zona ou seção;
+  cartões com "Vencedor" e barras coloridas; ordenar por maior % de cada candidato ou por mais votos.
+- **Favoritos:** candidatos marcados com votos, barra, % e situação; filtros Todos · Eleitos · Não eleitos;
+  toque para abrir o candidato.
+- **Eleições 2026:** mesma tela de Resultado, com a contagem ao vivo do TSE (urnas apuradas, próxima atualização)
+  e, no estado inteiro, ranking do candidato por município.
+- Fotos oficiais dos candidatos de 2024 (código da foto acrescentado aos dados: 7.041 de 7.079 candidatos do RN);
+  2022 mostra as iniciais (o TSE não publica mais o código das fotos de 2022).
+
+### Removido
+- Tabela de partidos e o comparativo entre anos diferentes (o comparativo agora é entre candidatos da mesma eleição).
+
 ## [2.2.1] — 2026-09-24
 
 ### Adicionado

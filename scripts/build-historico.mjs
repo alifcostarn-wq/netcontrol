@@ -263,6 +263,7 @@ async function completarCandidatos(doc, ano, uf, mun) {
         c.nm = r.c.nmu || c.nm;
         c.sg = r.sg || c.sg;
         c.sit = r.c.st || '';
+        if (r.c.sqcand) c.sq = String(r.c.sqcand); // foto oficial: resultados.tse.jus.br/.../fotos/<uf>/<sq>.jpeg
         if (/anulad/i.test(r.c.dvt || '')) c.anulado = true;
       }
       break;
