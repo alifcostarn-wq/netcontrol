@@ -2,7 +2,6 @@
 // Usado pelo Radar de Votos quando o navegador não consegue ler direto do TSE (CORS/bloqueio).
 const BASES = {
   oficial: 'https://resultados.tse.jus.br/oficial/',
-  simulado: 'https://resultados-sim.tse.jus.br/simulado/simulado2026/',
 };
 
 // Só caminhos de arquivos JSON do TSE: letras minúsculas, números, "/", "_", "-" e "."

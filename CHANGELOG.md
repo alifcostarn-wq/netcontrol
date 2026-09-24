@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.2.0] — 2026-09-24
+
+### Alterado — só dados reais em todo o sistema
+- **Removidos todos os dados fictícios:** a "Cidade fictícia" de exemplo (2020 e 2024), a amostra gravada da apuração
+  e o modo "Teste do TSE" (simulado com nomes inventados). O proxy `/api/tse` agora só lê o resultado oficial.
+- **Apuração ao vivo:** mostra o resultado **oficial** do TSE. Enquanto o de 2026 não sai (a partir das 17h de 4/10/2026),
+  a página abre no resultado oficial de 2024 — já em Rio Grande do Norte › Mossoró — com um botão para voltar a 2026.
+  A lista de eleições mostra só as eleições ordinárias (sem consultas populares e eleições suplementares).
+- **Votos por bairro e Comparar:** usam os **boletins de urna oficiais** de cada seção, publicados pelo TSE em
+  `resultados.tse.jus.br`, para **os 167 municípios do RN em 2022 e 2024** (presidente, governador, senador, deputados,
+  prefeito e vereador; votos de legenda, brancos, nulos, eleitores aptos e comparecimento de cada urna).
+  Conferido com o resultado oficial: em Mossoró 2024 os 5 candidatos a prefeito e os 212 a vereador batem voto a voto;
+  em Natal 2024 os dois turnos batem; e nos 167 municípios o total de votos para prefeito é igual ao comparecimento oficial.
+- O gerador lê tanto a versão em texto do boletim de urna quanto o boletim binário original (ASN.1) — em 2022 o TSE
+  deixou só o binário para 87 municípios do RN. Nos dois formatos a mesma urna dá exatamente os mesmos votos.
+- Situação oficial dos candidatos de 2024 (eleito, suplente…) vem do resultado oficial do TSE por município.
+- Escolha de dados em dois campos: **Cidade** e **Ano** (antes era um campo só).
+
+### Adicionado
+- `scripts/build-historico.mjs` (reescrito): gera os dados a partir dos boletins de urna do TSE, sem precisar de `npm install`.
+  Ex.: `node scripts/build-historico.mjs --uf RN --todos --anos 2022,2024`.
+- **Ajuda › Locais de votação:** carrega pelo navegador o cadastro oficial de locais do TSE
+  (`eleitorado_local_votacao_AAAA.zip`), com nome, bairro, endereço e coordenadas de cada local.
+  Esse arquivo só é liberado pelo TSE para conexões no Brasil, por isso é o navegador do usuário que o baixa.
+  Depois de carregado, aparecem os nomes dos locais, o agrupamento por bairro e o mapa; o botão
+  "Baixar arquivo para publicar" gera o arquivo para deixar os bairros visíveis a todos (`data/locais/`).
+- Enquanto os locais não são carregados, cada local aparece como "Local de votação nº …" e a página avisa como completar.
+
+### Removido
+- `data/demo/` (dados de exemplo), modo simulado e a função experimental `api/tse-locais.js`
+  (o TSE também bloqueia servidores em nuvem, mesmo no Brasil).
+
+### Técnico
+- Funções da Vercel passam a rodar em São Paulo (`gru1`).
+
 ## [2.1.0] — 2026-09-24
 
 ### Melhorado — layout mais simples e fácil de entender
