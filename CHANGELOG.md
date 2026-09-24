@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.1.0] — 2026-09-24
+
+### Adicionado — importar votos de 2020 (e 2018, 2016) pelo navegador
+- **Ajuda › Importar votos de outro ano:** escolha ano e estado, clique em "Carregar agora" ou baixe do TSE
+  (`votacao_secao_AAAA_UF.zip`, Portal de Dados Abertos) e solte o arquivo no quadro. O navegador lê o ZIP,
+  converte os votos de cada seção (candidatos, legenda, brancos e nulos) e cria um arquivo por município.
+  O TSE só libera esse download para conexões no Brasil — por isso a conversão é feita no seu navegador.
+- Os dados importados ficam guardados no navegador (IndexedDB) e já aparecem em **Eleições 2020**
+  (Resultado, Candidato, Comparar e Favoritos). Depois é possível carregar os locais de votação de 2020
+  (bairros e mapa) no quadro de locais.
+- **"Baixar arquivo para publicar"** gera `votos-uf-ano.json` (bem menor que o ZIP do TSE) para enviar na conversa;
+  `scripts/publicar-pacote.mjs` publica esse arquivo para todos.
+
+### Limitações de 2020 (do próprio arquivo do TSE)
+- Não traz eleitores aptos (o % de votantes aparece como "—") nem a situação final dos candidatos (eleito/suplente).
+- Fotos dos candidatos de 2020 não estão disponíveis (aparecem as iniciais).
+
 ## [3.0.0] — 2026-09-24
 
 ### Alterado — novo layout, simples e no formato de aplicativo

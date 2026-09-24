@@ -988,9 +988,11 @@ async function getDoc(ano, uf, cd) {
   if (!d) return null;
   if (!d.doc) {
     if (!d._p) d._p = (async () => {
-      const r = await fetch(d.src);
-      if (!r.ok) throw new Error('Não foi possível ler ' + d.src);
-      const doc = prepararDoc(await r.json());
+      let bruto;
+      if (d.idb) bruto = await IDB.get(d.idb);
+      else { const r = await fetch(d.src); if (!r.ok) throw new Error('Não foi possível ler ' + d.src); bruto = await r.json(); }
+      if (!bruto) throw new Error('Os dados importados não estão mais neste navegador. Importe de novo em Ajuda.');
+      const doc = prepararDoc(bruto);
       await aplicarLocais(doc);
       d.doc = doc;
       return doc;
@@ -1344,7 +1346,7 @@ function telaInicio(el) {
       <a href="#comparar"><span>${ICON.cmp}</span>Comparar</a>
       <a href="#candidato" data-nivel="mapa"><span>${ICON.map}</span>Mapa</a>
     </div></div>`;
-  const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna' };
+  const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
   el.innerHTML = `<div class="sec-title">Eleições</div>
     <div class="picks">
       <a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo em ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
@@ -1646,6 +1648,16 @@ function telaAjuda(el) {
       <li><b>Comparar</b> — coloque até três candidatos lado a lado e veja quem venceu em cada bairro ou local.</li>
       <li><b>Favoritos</b> — toque na estrela ao lado de um candidato para acompanhá-lo.</li></ol>
       <p class="muted"><b>Votos válidos</b> são os votos em candidatos e partidos (sem brancos e nulos). <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas. Em 2026 os números chegam ao vivo do TSE no dia da eleição.</p></div>
+    <div class="card" id="imp-panel"><h3>Importar votos de outro ano (2020, 2018, 2016)</h3>
+      <p>Os votos por urna de anos anteriores só estão no <b>Portal de Dados Abertos do TSE</b>, que só libera o download para conexões no Brasil. Por isso é o seu navegador que baixa e converte o arquivo.</p>
+      <div class="picks two"><label>Ano <select class="plain" id="imp-ano"><option>2020</option><option>2018</option><option>2016</option></select></label>
+        <label>Estado <select class="plain" id="imp-uf"></select></label></div>
+      <ol><li>Clique em <b>Carregar agora</b>. Se der erro, clique em <b>Baixar do TSE</b>, espere o download terminar e solte o arquivo no quadro abaixo.</li>
+        <li>Depois carregue também os <b>locais de votação</b> desse ano (quadro seguinte) para ver bairros e mapa.</li>
+        <li>Para todos verem, clique em <b>Baixar arquivo para publicar</b> e envie o arquivo aqui na conversa.</li></ol>
+      <div class="tools" style="justify-content:flex-start"><button class="btn sm" type="button" id="imp-auto">Carregar agora</button><a class="btn sm" id="imp-link" target="_blank" rel="noopener">Baixar do TSE</a></div>
+      <div class="drop" id="imp-drop" tabindex="0" role="button">Solte aqui o arquivo <code>votacao_secao_AAAA_UF.zip</code><br><small>ou clique para escolher</small></div>
+      <input type="file" id="imp-file" accept=".zip,application/zip" hidden><p id="imp-status" class="muted"></p><div id="imp-lista"></div></div>
     <div class="card" id="loc-panel"><h3>Locais de votação: nomes, bairros e mapa</h3>
       <p>Os votos de cada urna vêm dos <b>boletins de urna oficiais</b> do TSE. Os nomes, bairros, endereços e a posição no mapa dos locais vêm de outro arquivo oficial do TSE, que <b>só pode ser baixado por conexões no Brasil</b> — por isso quem carrega é o seu navegador.</p>
       <ol><li>Clique em <b>Carregar agora</b>. Se der erro, clique em <b>Baixar do TSE</b> e solte o arquivo baixado no quadro abaixo.</li><li>Para todos verem, clique em <b>Baixar arquivo para publicar</b> e envie o arquivo.</li></ol>
@@ -1669,6 +1681,7 @@ function telaAjuda(el) {
   $('#every').onchange = e => { LIVE.every = +e.target.value; store.set('rv.every', LIVE.every); };
   $$('#conn-via input').forEach(r => { r.checked = r.value === CONN.via; r.onchange = () => { CONN.via = r.value; CONN.direto = {}; store.set('rv.via', r.value); }; });
   LOC.init();
+  IMP.init();
   LOC.render();
 }
 
@@ -1772,6 +1785,207 @@ async function lerLocaisZip(blob, ufs, progresso) {
   }
   return res;
 }
+/* ============================================================ importação dos votos por seção (Portal de Dados Abertos do TSE) */
+const IDB = {
+  db: null,
+  async abrir() {
+    if (!this.db) this.db = await new Promise((ok, err) => { const r = indexedDB.open('radar-votos', 1); r.onupgradeneeded = () => r.result.createObjectStore('docs'); r.onsuccess = () => ok(r.result); r.onerror = () => err(r.error); });
+    return this.db;
+  },
+  async put(k, v) { const db = await this.abrir(); return new Promise((ok, err) => { const t = db.transaction('docs', 'readwrite'); t.objectStore('docs').put(v, k); t.oncomplete = () => ok(); t.onerror = () => err(t.error); }); },
+  async get(k) { try { const db = await this.abrir(); return await new Promise((ok, err) => { const r = db.transaction('docs').objectStore('docs').get(k); r.onsuccess = () => ok(r.result); r.onerror = () => err(r.error); }); } catch { return null; } },
+};
+const NOME_CARGO = { 1: 'Presidente', 3: 'Governador', 5: 'Senador', 6: 'Deputado Federal', 7: 'Deputado Estadual', 8: 'Deputado Distrital', 11: 'Prefeito', 13: 'Vereador' };
+const PROPORCIONAL = new Set([6, 7, 8, 13]);
+// sigla pelo número do partido (2016–2022)
+const PARTIDOS_NR = { 10: 'REPUBLICANOS', 11: 'PP', 12: 'PDT', 13: 'PT', 14: 'PTB', 15: 'MDB', 16: 'PSTU', 17: 'PSL', 18: 'REDE', 19: 'PODE', 20: 'PSC', 21: 'PCB', 22: 'PL', 23: 'CIDADANIA', 25: 'DEM', 27: 'DC', 28: 'PRTB', 29: 'PCO', 30: 'NOVO', 31: 'PHS', 33: 'PMN', 35: 'PMB', 36: 'PTC', 40: 'PSB', 43: 'PV', 44: 'PRP', 45: 'PSDB', 50: 'PSOL', 51: 'PATRIOTA', 54: 'PPL', 55: 'PSD', 65: 'PC do B', 70: 'AVANTE', 77: 'SOLIDARIEDADE', 80: 'UP', 90: 'PROS' };
+async function zipEntradas(blob) {
+  const u8 = async (a, b) => new Uint8Array(await blob.slice(a, b).arrayBuffer());
+  const dv = x => new DataView(x.buffer, x.byteOffset, x.byteLength);
+  const cauda = await u8(Math.max(0, blob.size - 65557), blob.size), c = dv(cauda);
+  let e = -1;
+  for (let i = cauda.length - 22; i >= 0; i--) if (c.getUint32(i, true) === 0x06054b50) { e = i; break; }
+  if (e < 0) throw new Error('o arquivo não é um ZIP.');
+  let total = c.getUint16(e + 10, true), cdTam = c.getUint32(e + 12, true), cdIni = c.getUint32(e + 16, true);
+  if ((cdIni === 0xffffffff || cdTam === 0xffffffff) && e >= 20 && c.getUint32(e - 20, true) === 0x07064b50) {
+    const off = Number(c.getBigUint64(e - 12, true));
+    const z = dv(await u8(off, off + 56));
+    total = Number(z.getBigUint64(32, true)); cdTam = Number(z.getBigUint64(40, true)); cdIni = Number(z.getBigUint64(48, true));
+  }
+  const cd = await u8(cdIni, cdIni + cdTam), d = dv(cd), ents = [];
+  for (let k = 0, p = 0; k < total && p + 46 <= cd.length; k++) {
+    if (d.getUint32(p, true) !== 0x02014b50) break;
+    const metodo = d.getUint16(p + 10, true);
+    let comp = d.getUint32(p + 20, true), orig = d.getUint32(p + 24, true), local = d.getUint32(p + 42, true);
+    const nL = d.getUint16(p + 28, true), xL = d.getUint16(p + 30, true), cL = d.getUint16(p + 32, true);
+    const nome = new TextDecoder('iso-8859-1').decode(cd.subarray(p + 46, p + 46 + nL));
+    let x = p + 46 + nL;
+    const fx = x + xL;
+    while (x + 4 <= fx) {
+      const id = d.getUint16(x, true), sz = d.getUint16(x + 2, true);
+      if (id === 1) { let q = x + 4; if (orig === 0xffffffff) { orig = Number(d.getBigUint64(q, true)); q += 8; } if (comp === 0xffffffff) { comp = Number(d.getBigUint64(q, true)); q += 8; } if (local === 0xffffffff) local = Number(d.getBigUint64(q, true)); }
+      x += 4 + sz;
+    }
+    ents.push({ nome, metodo, comp, orig, local });
+    p = fx + cL;
+  }
+  return ents;
+}
+async function zipLinhas(blob, ents, porLinha, progresso) {
+  const totalBytes = ents.reduce((s, x) => s + x.orig, 0) || 1;
+  let lidos = 0, ultimo = -1;
+  for (const ent of ents) {
+    const lh = new DataView(await blob.slice(ent.local, ent.local + 30).arrayBuffer());
+    const ini = ent.local + 30 + lh.getUint16(26, true) + lh.getUint16(28, true);
+    let fluxo = blob.slice(ini, ini + ent.comp).stream();
+    if (ent.metodo === 8) fluxo = fluxo.pipeThrough(new DecompressionStream('deflate-raw'));
+    const leitor = fluxo.pipeThrough(new TextDecoderStream('iso-8859-1')).getReader();
+    let resto = '', primeira = true;
+    for (;;) {
+      const { value, done } = await leitor.read();
+      if (done) break;
+      lidos += value.length;
+      const t = (resto + value).split('\n');
+      resto = t.pop();
+      for (const l of t) { if (l) porLinha(l.replace(/\r$/, ''), primeira); primeira = false; }
+      const pc = Math.min(99, Math.floor(lidos / totalBytes * 100));
+      if (pc !== ultimo) { ultimo = pc; progresso(pc); await new Promise(r => setTimeout(r)); }
+    }
+    if (resto) porLinha(resto.replace(/\r$/, ''), primeira);
+  }
+}
+// Converte "votacao_secao_AAAA_UF.zip" (uma linha por seção × votável) em um arquivo por município
+async function converterVotos(blob, ano, uf, progresso) {
+  const ents = (await zipEntradas(blob)).filter(e => /\.csv$/i.test(e.nome));
+  const alvo = ents.filter(e => e.nome.toUpperCase().endsWith('_' + uf + '.CSV'));
+  const usar = alvo.length ? alvo : ents.filter(e => !/_BRASIL\.csv$/i.test(e.nome)).slice(0, 1);
+  if (!usar.length) throw new Error('o ZIP não tem o arquivo CSV esperado do TSE.');
+  const muns = new Map();
+  let ix = null;
+  const fonte = `TSE — Portal de Dados Abertos (votacao_secao_${ano}_${uf}.zip)`;
+  await zipLinhas(blob, usar, l => {
+    const f = camposCsv(l);
+    if (!ix) {
+      ix = {}; f.forEach((h, i) => { ix[h] = i; });
+      for (const k of ['CD_MUNICIPIO', 'NR_ZONA', 'NR_SECAO', 'CD_CARGO', 'NR_VOTAVEL', 'QT_VOTOS']) if (ix[k] == null) throw new Error('o arquivo não tem as colunas esperadas (é o votacao_secao do TSE?).');
+      return;
+    }
+    if (ix.SG_UF != null && f[ix.SG_UF] !== uf) return;
+    const cargo = +f[ix.CD_CARGO];
+    if (!NOME_CARGO[cargo]) return;
+    const cd = String(f[ix.CD_MUNICIPIO]).padStart(5, '0'), turno = +f[ix.NR_TURNO] || 1, z = +f[ix.NR_ZONA], sc = +f[ix.NR_SECAO];
+    const n = ix.NR_LOCAL_VOTACAO != null ? (+f[ix.NR_LOCAL_VOTACAO] || 0) : 0;
+    const nr = String(+f[ix.NR_VOTAVEL]), q = +f[ix.QT_VOTOS] || 0;
+    let M = muns.get(cd);
+    if (!M) {
+      M = { doc: { versao: 1, ano: +ano, uf, municipio: { cd, nm: f[ix.NM_MUNICIPIO] || cd }, gerado_em: new Date().toISOString(), fonte, locais_completos: false, avisos: [], locais: [], secoes: [], eleicoes: [] }, L: new Map(), S: new Map(), E: new Map(), comp: new Map() };
+      muns.set(cd, M);
+    }
+    const D = M.doc;
+    let li = M.L.get(z + '|' + n);
+    if (li == null) { li = D.locais.length; M.L.set(z + '|' + n, li); D.locais.push({ z, n, nm: ix.NM_LOCAL_VOTACAO != null ? f[ix.NM_LOCAL_VOTACAO] || null : null, bairro: null, end: ix.DS_LOCAL_VOTACAO_ENDERECO != null ? f[ix.DS_LOCAL_VOTACAO_ENDERECO] || null : null, lat: null, lon: null }); }
+    let si = M.S.get(z + '|' + sc);
+    if (si == null) { si = D.secoes.length; M.S.set(z + '|' + sc, si); D.secoes.push([li, z, sc, 0, 0]); }
+    const ke = turno + '|' + cargo;
+    let E = M.E.get(ke);
+    if (!E) { E = { turno, cargo, ds: NOME_CARGO[cargo], cand: [], v: [], _i: new Map() }; M.E.set(ke, E); D.eleicoes.push(E); }
+    const tipo = nr === '95' ? 'b' : (nr === '96' || nr === '97' || nr === '98') ? 'n' : (PROPORCIONAL.has(cargo) && nr.length <= 2) ? 'l' : 'c';
+    const kc = tipo === 'b' || tipo === 'n' ? tipo : tipo + nr;
+    let ci = E._i.get(kc);
+    if (ci == null) {
+      ci = E.cand.length; E._i.set(kc, ci);
+      const sg = PARTIDOS_NR[+nr.slice(0, 2)] || '';
+      E.cand.push(tipo === 'c' ? { nr, nm: f[ix.NM_VOTAVEL] || 'Candidato nº ' + nr, sg, sit: '', tipo } : tipo === 'l' ? { nr, nm: 'Legenda ' + (sg || nr), sg, tipo } : { nr: tipo === 'b' ? '95' : '96', nm: tipo === 'b' ? 'Brancos' : 'Nulos', tipo });
+    }
+    if (q > 0) { E.v.push(si, ci, q); const kk = si + '|' + ke; M.comp.set(kk, (M.comp.get(kk) || 0) + q); }
+  }, progresso);
+  const docs = [];
+  for (const M of muns.values()) {
+    const D = M.doc;
+    for (const E of D.eleicoes) delete E._i;
+    D.eleicoes.sort((a, b) => a.turno - b.turno || a.cargo - b.cargo);
+    const e1 = D.eleicoes.find(e => e.turno === 1);
+    if (e1) D.secoes.forEach((s, si) => { s[4] = M.comp.get(si + '|' + e1.turno + '|' + e1.cargo) || 0; });
+    D.avisos.push('Importado do Portal de Dados Abertos do TSE. Este arquivo não traz o número de eleitores aptos nem a situação final dos candidatos (eleito/suplente).');
+    docs.push(D);
+  }
+  return docs;
+}
+const IMP = {
+  url: (ano, uf) => `https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_${ano}_${uf}.zip`,
+  lista: () => store.get('rv.hist.local', []),
+  registrar() {
+    for (const e of IMP.lista()) { const k = e.ano + '|' + e.uf + '|' + e.cd; if (!DS.has(k)) DS.set(k, { ...e, idb: k, origem: 'navegador' }); }
+  },
+  status(msg, kind) { const p = $('#imp-status'); if (!p) return; p.innerHTML = msg; p.className = kind === 'err' ? 'note err' : kind === 'ok' ? 'note info' : 'muted'; },
+  sel() { return { ano: +$('#imp-ano').value, uf: $('#imp-uf').value }; },
+  atualizarLink() { const { ano, uf } = IMP.sel(); const a = $('#imp-link'); if (a) a.href = IMP.url(ano, uf); },
+  async auto() {
+    const { ano, uf } = IMP.sel();
+    IMP.status(`Baixando os votos de ${ano} (${uf}) do TSE… Pode levar alguns minutos.`);
+    let blob;
+    try { const r = await fetch(IMP.url(ano, uf)); if (!r.ok) throw new Error(); blob = await r.blob(); }
+    catch { return IMP.status(`O navegador não conseguiu baixar direto do TSE. Clique em <b>Baixar do TSE</b>, espere o download terminar e solte o arquivo <code>votacao_secao_${ano}_${uf}.zip</code> no quadro.`, 'err'); }
+    await IMP.importar(blob, ano, uf);
+  },
+  async importar(blob, ano, uf) {
+    try {
+      const docs = await converterVotos(blob, ano, uf, pc => IMP.status(`Convertendo os votos de ${ano}… ${pc}%`));
+      if (!docs.length) return IMP.status('Não encontrei votos desse estado no arquivo.', 'err');
+      IMP.status('Guardando no navegador…');
+      const lista = IMP.lista().filter(e => !(e.ano === +ano && e.uf === uf));
+      for (const D of docs) {
+        const k = D.ano + '|' + uf + '|' + D.municipio.cd;
+        await IDB.put(k, D);
+        const meta = { ano: +ano, uf, cd: D.municipio.cd, nm: D.municipio.nm, secoes: D.secoes.length };
+        lista.push(meta);
+        if (!DS.has(k) || DS.get(k).idb) DS.set(k, { ...meta, idb: k, origem: 'navegador' });
+      }
+      store.set('rv.hist.local', lista);
+      CATALOGOS.delete(uf + '|' + ano);
+      const urnas = docs.reduce((s, D) => s + D.secoes.length, 0);
+      IMP.status(`Pronto: ${plural(docs.length, 'município', 'municípios')} e ${plural(urnas, 'urna', 'urnas')} de ${ano} importados neste navegador. Eles já aparecem em <b>Eleições ${ano}</b>. Para todos verem, clique em <b>Baixar arquivo para publicar</b> e envie o arquivo aqui na conversa.`, 'ok');
+      IMP.render(); LOC.render();
+    } catch (e) { IMP.status('Não foi possível ler o arquivo: ' + esc(e.message), 'err'); }
+  },
+  render() {
+    const el = $('#imp-lista');
+    if (!el) return;
+    const g = new Map();
+    for (const e of IMP.lista()) { const k = e.ano + '|' + e.uf; g.set(k, (g.get(k) || 0) + 1); }
+    el.innerHTML = [...g].map(([k, n]) => { const [ano, uf] = k.split('|'); return `<div class="row hl" style="margin-top:8px"><span class="txt"><b>${ano} · ${esc(uf)}</b><small>${fmt(n)} municípios neste navegador</small></span><button class="btn sm" type="button" data-imp-exp="${esc(k)}">Baixar arquivo para publicar</button></div>`; }).join('');
+  },
+  async exportar(k) {
+    const [ano, uf] = k.split('|');
+    IMP.status('Preparando o arquivo…');
+    const docs = [];
+    for (const e of IMP.lista()) if (String(e.ano) === ano && e.uf === uf) { const D = await IDB.get(e.ano + '|' + e.uf + '|' + e.cd); if (D) docs.push(D); }
+    baixar(new Blob([JSON.stringify({ versao: 1, tipo: 'pacote', ano: +ano, uf, gerado_em: new Date().toISOString(), docs })], { type: 'application/json' }), `votos-${uf.toLowerCase()}-${ano}.json`);
+    IMP.status(`Arquivo <code>votos-${uf.toLowerCase()}-${ano}.json</code> gerado com ${fmt(docs.length)} municípios. Envie aqui na conversa para publicar.`, 'ok');
+  },
+  init() {
+    const su = $('#imp-uf');
+    if (!su) return;
+    su.innerHTML = Object.entries(UFS).map(([k, v]) => `<option value="${k.toUpperCase()}"${k === 'rn' ? ' selected' : ''}>${esc(titulo(v[0]))}</option>`).join('');
+    $('#imp-ano').onchange = su.onchange = IMP.atualizarLink;
+    IMP.atualizarLink();
+    $('#imp-auto').onclick = () => IMP.auto();
+    const drop = $('#imp-drop'), file = $('#imp-file');
+    const ler = f => {
+      if (!f) return;
+      const m = f.name.match(/(20\d\d)_([A-Z]{2})/i);
+      const { ano, uf } = m ? { ano: +m[1], uf: m[2].toUpperCase() } : IMP.sel();
+      IMP.importar(f, ano, uf);
+    };
+    drop.onclick = () => file.click();
+    drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); file.click(); } };
+    file.onchange = () => ler(file.files[0]);
+    drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+    drop.ondragleave = () => drop.classList.remove('over');
+    drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); ler(e.dataTransfer.files[0]); };
+    IMP.render();
+  },
+};
 const LOC = {
   publicados: [],
   url: ano => `https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_${ano}.zip`,
@@ -1846,6 +2060,8 @@ document.addEventListener('click', async e => {
   if (an) { ST.ano = +an.dataset.ano; ST.turno = 1; ST.cargo = null; ST.candNr = null; ST.drill = []; salvar(); if (an.tagName === 'BUTTON') render(); return; }
   const la = e.target.closest('[data-loc-auto]');
   if (la) { LOC.auto(la.dataset.locAuto); return; }
+  const ie = e.target.closest('[data-imp-exp]');
+  if (ie) { IMP.exportar(ie.dataset.impExp); return; }
   const lx = e.target.closest('[data-loc-export]');
   if (lx) { LOC.exportar(lx.dataset.locExport); return; }
   const b = e.target.closest('[data-exp]');
@@ -1877,6 +2093,7 @@ function baixar(blob, nome) {
 (async function main() {
   $('#tela').innerHTML = '<div class="empty">Carregando…</div>';
   await carregarIndice();
+  IMP.registrar();
   if (!ST.ano || (!EH_LIVE() && !anosHist().includes(+ST.ano))) ST.ano = anosHist()[0] || 2026;
   render();
 })();
