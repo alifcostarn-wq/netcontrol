@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.1] — 2026-09-25
+
+### Alterado
+- **Mapa agora abre em satélite** (imagens Esri World Imagery), com nomes de ruas, bairros e cidades por cima.
+- Novo seletor no canto do mapa para trocar entre **Satélite** e **Mapa de ruas** (OpenStreetMap).
+- Círculos dos locais de votação com contorno branco e verde mais claro, para ficarem visíveis sobre a imagem
+  de satélite. A legenda foi atualizada.
+
 ## [3.4.0] — 2026-09-25
 
 ### Adicionado
