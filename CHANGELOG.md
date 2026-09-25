@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.3.0] — 2026-09-25
+
+### Adicionado — tela **Eleitorado** (eleitores aptos por zona, bairro, escola e seção)
+- Aberta pelo atalho **Eleitorado** no Início. Escolha município e ano e veja o total de eleitores aptos, zonas,
+  escolas (locais de votação), seções e média por seção; nos anos com boletim de urna, também comparecimento e abstenção.
+- Abas **Zona · Bairro · Escola · Seção**, com ranking, % do total, número de seções e escolas; toque para descer
+  (zona → escolas → seções). Busca e exportação para Excel/CSV.
+- Fonte: boletins de urna oficiais (2022 e 2024 — conferido: Mossoró 2024 soma 184.656 aptos, igual ao total oficial
+  do TSE) e o cadastro de locais de votação do TSE.
+- **Eleitorado de 2026:** a importação do cadastro de locais (Ajuda › Locais de votação) agora tem a linha 2026 e
+  guarda os eleitores aptos de cada seção — o eleitorado atual, por escola e seção.
+- **2020:** o arquivo de votos não traz os aptos; ao carregar o cadastro de locais de 2020 eles são completados.
+
 ## [3.2.0] — 2026-09-25
 
 ### Adicionado — aba **Eleitos** (cenário ao vivo de 2026)

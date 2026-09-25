@@ -1089,6 +1089,7 @@ async function aplicarLocais(doc) {
       const x = cat.locais[`${cd}|${L.z}|${L.n}`];
       if (x) [L.nm, L.bairro, L.end, L.lat, L.lon] = x;
     }
+    if (cat.aptos) for (const s of doc.secoes) if (!s[3]) s[3] = cat.aptos[`${cd}|${s[1]}|${s[2]}`] || 0;
   }
   doc._temNomes = doc.locais.some(L => L.nm);
   doc._temBairros = doc.locais.some(L => L.bairro);
@@ -1146,7 +1147,7 @@ const ST = {
   favFiltro: 'todos',
 };
 const salvar = () => { store.set('rv.ano', ST.ano); store.set('rv.turno', ST.turno); store.set('rv.cargo', ST.cargo); store.set('rv.cd', ST.cd); store.set('rv.luf', ST.luf); store.set('rv.lmun', ST.lmun); };
-const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'comparar', 'favoritos', 'ajuda'];
+const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'favoritos', 'ajuda'];
 const ALIAS = { aovivo: 'resultado', bairros: 'candidato', dados: 'ajuda' };
 function irPara(t) { if (location.hash === '#' + t) render(); else location.hash = '#' + t; }
 let NAV = 0;
@@ -1173,6 +1174,7 @@ async function render() {
     else if (t === 'candidato') await telaCandidato(el);
     else if (t === 'comparar') await telaComparar(el);
     else if (t === 'eleitos') await telaEleitos(el);
+    else if (t === 'eleitorado') await telaEleitorado(el);
     else if (t === 'favoritos') telaFavoritos(el);
     else telaAjuda(el);
   } catch (e) {
@@ -1393,7 +1395,7 @@ function telaInicio(el) {
       <a href="#resultado"><span>${ICON.user}</span>Candidatos</a>
       <a href="#candidato" data-nivel="bairro"><span>${ICON.bairro}</span>Bairros</a>
       <a href="#comparar"><span>${ICON.cmp}</span>Comparar</a>
-      <a href="#candidato" data-nivel="mapa"><span>${ICON.map}</span>Mapa</a>
+      <a href="#eleitorado"><span>${ICON.people}</span>Eleitorado</a>
     </div></div>`;
   const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
   el.innerHTML = `<div class="sec-title">Eleições</div>
@@ -1760,6 +1762,101 @@ async function telaEleitos(el) {
   corpo.innerHTML = (EL.modo === '2026' && !todosFinais ? `<p class="muted" style="text-align:center">Próxima atualização em <b id="el-cd">${LIVE.every} s</b></p>` : '') + ok.map(r => secaoEleitos(cenario(r.k, r.d))).join('');
 }
 
+/* ============================================================ tela: eleitorado (aptos por zona, bairro, escola e seção) */
+const EO = { ano: store.get('rv.eo.ano', null), nivel: 'zona', drill: [] };
+function anosEleitorado() {
+  const cad26 = store.get('rv.locais.RN|2026', null)?.aptos || LOC.publicados.some(x => x.uf === 'RN' && +x.ano === 2026);
+  return [...(cad26 ? [2026] : []), ...anosHist()];
+}
+async function baseEleitorado(ano, cd) {
+  const uf = 'RN';
+  if (DS.has(ano + '|' + uf + '|' + cd)) {
+    const doc = await getDoc(ano, uf, cd);
+    return { ano, cidade: titulo(doc.municipio.nm), fonte: 'Boletins de urna / TSE', temComp: ano !== 2026 && doc.secoes.some(s => s[4]),
+      linhas: doc.secoes.map(s => { const L = doc.locais[s[0]]; return { z: s[1], s: s[2], lk: L.z + '|' + L.n, nm: nomeLocal(L), bairro: L.bairro, end: L.end, aptos: s[3] || 0, comp: s[4] || 0 }; }) };
+  }
+  const cat = await catalogo(uf, ano);
+  if (!cat?.aptos) return null;
+  const linhas = [];
+  for (const [k, q] of Object.entries(cat.aptos)) {
+    const [c, z, sc] = k.split('|');
+    if (c !== cd) continue;
+    const n = cat.secoes?.[k];
+    const x = cat.locais[`${cd}|${z}|${n}`] || [];
+    linhas.push({ z: +z, s: +sc, lk: z + '|' + n, nm: x[0] ? titulo(x[0]) : `Local de votação nº ${n} (zona ${z})`, bairro: x[1] || null, end: x[2] || null, aptos: q, comp: 0 });
+  }
+  const nm = cidadesHist(anosHist()[0]).find(d => d.cd === cd)?.nm || cd;
+  return { ano, cidade: titulo(nm), fonte: 'Cadastro de locais de votação / TSE', temComp: false, linhas };
+}
+function agrEleitorado(linhas, nivel, drill) {
+  const f = linhas.filter(l => drill.every(d => (d.nivel === 'zona' ? String(l.z) === d.key : d.nivel === 'bairro' ? (l.bairro || '—') === d.key : l.lk === d.key)));
+  const g = new Map();
+  for (const l of f) {
+    const [k, label, sub] = nivel === 'zona' ? [String(l.z), 'Zona ' + l.z, '']
+      : nivel === 'bairro' ? [l.bairro || '—', l.bairro ? titulo(l.bairro) : 'Bairro não informado', '']
+      : nivel === 'escola' ? [l.lk, l.nm, [l.bairro && titulo(l.bairro), l.end && titulo(l.end), 'Zona ' + l.z].filter(Boolean).join(' · ')]
+      : [l.z + '|' + l.s, `Zona ${l.z} · Seção ${l.s}`, l.nm];
+    let x = g.get(k);
+    if (!x) g.set(k, x = { key: k, label, sub, aptos: 0, comp: 0, secoes: 0, locais: new Set() });
+    x.aptos += l.aptos; x.comp += l.comp; x.secoes++; x.locais.add(l.lk);
+  }
+  return [...g.values()].sort((a, b) => b.aptos - a.aptos);
+}
+async function telaEleitorado(el) {
+  topo('Eleitorado', 'RN');
+  const anos = anosEleitorado();
+  if (!anos.includes(EO.ano)) EO.ano = anos[0];
+  const cid = cidadesHist(anosHist()[0]);
+  const base = EO.ano ? await baseEleitorado(EO.ano, ST.cd) : null;
+  let html = `<div class="picks two">
+    ${pickRow('pin', 'Município', esc(titulo(cid.find(d => d.cd === ST.cd)?.nm || '')), `<select id="eo-mun" aria-label="Município">${cid.map(d => `<option value="${d.cd}"${d.cd === ST.cd ? ' selected' : ''}>${esc(titulo(d.nm))}</option>`).join('')}</select>`)}
+    ${pickRow('cal', 'Ano', String(EO.ano || '—'), `<select id="eo-ano" aria-label="Ano">${anos.map(a => `<option value="${a}"${a === EO.ano ? ' selected' : ''}>${a}${a === 2026 ? ' (cadastro atual)' : ''}</option>`).join('')}</select>`)}</div>`;
+  if (!anos.includes(2026)) html += `<div class="note info">Para ver o <b>eleitorado de 2026</b>, carregue o cadastro de locais de 2026 em <a href="#ajuda">Ajuda › Locais de votação</a> (linha 2026).</div>`;
+  if (!base || !base.linhas.length) { el.innerHTML = html + '<div class="empty">Sem dados de eleitorado para esta escolha.</div>'; ligarEO(el); return; }
+  const total = base.linhas.reduce((s, l) => s + l.aptos, 0);
+  if (!total) html += `<div class="note warn">O arquivo de votos de ${EO.ano} não traz o número de eleitores aptos. Carregue o cadastro de locais de ${EO.ano} em <a href="#ajuda">Ajuda</a> para completar.</div>`;
+  const comp = base.linhas.reduce((s, l) => s + l.comp, 0);
+  const nLoc = new Set(base.linhas.map(l => l.lk)).size, nZon = new Set(base.linhas.map(l => l.z)).size;
+  html += `<div class="card" style="gap:6px"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>${esc(base.cidade)} · ${EO.ano}</h3><small class="muted">${esc(base.fonte)}</small></div>
+    <div style="font-size:2rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums">${total ? fmt(total) : '—'} <small style="font-size:.95rem;color:var(--muted);font-weight:500">eleitores aptos</small></div>
+    <div class="resumo"><span>Zonas eleitorais</span><span>${fmt(nZon)}</span><span></span><span>Locais de votação (escolas)</span><span>${fmt(nLoc)}</span><span></span><span>Seções (urnas)</span><span>${fmt(base.linhas.length)}</span><span>${total ? fmt(total / base.linhas.length) + ' por seção' : ''}</span>
+    ${base.temComp && total ? `<span>Compareceram</span><span>${fmt(comp)}</span><span>${pct(comp / total * 100, 1)}</span><span>Abstenção</span><span>${fmt(total - comp)}</span><span>${pct((total - comp) / total * 100, 1)}</span>` : ''}</div></div>`;
+  const temB = base.linhas.some(l => l.bairro);
+  const niveis = [['zona', 'Zona'], ...(temB ? [['bairro', 'Bairro']] : []), ['escola', 'Escola'], ['secao', 'Seção']];
+  if (!niveis.some(n => n[0] === EO.nivel)) EO.nivel = 'zona';
+  html += `<div class="seg">${niveis.map(([k, t]) => `<button type="button" data-eon="${k}" aria-pressed="${EO.nivel === k}">${t}</button>`).join('')}</div>`;
+  if (EO.drill.length) html += `<div class="crumb"><button type="button" id="eo-subir">‹ Voltar</button><span class="muted">${EO.drill.map(d => esc(d.label)).join(' › ')}</span></div>`;
+  html += `<label class="search">${ICON.search}<input type="search" id="eo-busca" placeholder="Pesquisar" aria-label="Pesquisar"></label><ul class="rlist" id="eo-rk"></ul><div class="more" id="eo-mais"></div>
+    <div class="tools"><button class="btn sm" type="button" data-exp="eo" data-kind="xlsx">Baixar Excel</button><button class="btn sm" type="button" data-exp="eo" data-kind="csv">Baixar CSV</button></div>
+    <p class="foot">Nos anos com boletim de urna, seções agregadas aparecem somadas à seção principal. ${EO.ano === 2026 ? 'Cadastro de 2026 do TSE (eleitorado por local de votação).' : ''}</p>`;
+  el.innerHTML = html;
+  ligarEO(el);
+  const grupos = agrEleitorado(base.linhas, EO.nivel, EO.drill);
+  const tot = grupos.reduce((s, g) => s + g.aptos, 0) || 1;
+  const prox = { zona: 'escola', bairro: 'escola', escola: 'secao' }[EO.nivel];
+  let lim = 150;
+  const desenhar = () => {
+    const q = norm($('#eo-busca').value);
+    const l = q ? grupos.filter(g => norm(g.label + ' ' + g.sub).includes(q)) : grupos;
+    $('#eo-rk').innerHTML = l.slice(0, q ? l.length : lim).map((g, i) => `<li class="rrow${prox ? ' go' : ''}" data-k="${esc(g.key)}"><span class="p">${i + 1}</span>
+      <span class="nm"><b>${esc(g.label)}</b><small>${[g.sub, EO.nivel !== 'secao' ? `${plural(g.secoes, 'seção', 'seções')}${EO.nivel === 'zona' || EO.nivel === 'bairro' ? ' · ' + plural(g.locais.size, 'escola', 'escolas') : ''}` : '', base.temComp && g.aptos ? `compareceram ${pct(g.comp / g.aptos * 100, 1)}` : ''].filter(Boolean).map(esc).join(' · ')}</small></span>
+      <span class="v">${fmt(g.aptos)}</span><span class="pc">${pct(g.aptos / tot * 100)}</span><span class="ch">${prox ? '›' : ''}</span></li>`).join('') || '<li class="empty">Nada encontrado.</li>';
+    $('#eo-mais').innerHTML = !q && l.length > lim ? `<button class="btn" type="button" id="eo-todos">Ver todos (${fmt(l.length)})</button>` : '';
+    const b = $('#eo-todos'); if (b) b.onclick = () => { lim = Infinity; desenhar(); };
+    if (prox) $$('#eo-rk .rrow').forEach(r => r.onclick = () => { const g = grupos.find(x => x.key === r.dataset.k); EO.drill.push({ nivel: EO.nivel, key: g.key, label: g.label }); EO.nivel = prox; render(); });
+  };
+  desenhar();
+  $('#eo-busca').oninput = desenhar;
+  EXPORTS.eo = () => ({ nome: `eleitorado-${base.cidade}-${EO.ano}-${EO.nivel}`, head: [{ zona: 'Zona', bairro: 'Bairro', escola: 'Local de votação', secao: 'Seção' }[EO.nivel], 'Detalhe', 'Eleitores aptos', '% do total', 'Seções', ...(base.temComp ? ['Compareceram', '% comparecimento'] : [])],
+    rows: grupos.map(g => [g.label, g.sub, g.aptos, +(g.aptos / tot * 100).toFixed(2), g.secoes, ...(base.temComp ? [g.comp, g.aptos ? +(g.comp / g.aptos * 100).toFixed(2) : ''] : [])]) });
+}
+function ligarEO(el) {
+  const m = $('#eo-mun'); if (m) m.onchange = () => { ST.cd = m.value; salvar(); EO.drill = []; render(); };
+  const a = $('#eo-ano'); if (a) a.onchange = () => { EO.ano = +a.value; store.set('rv.eo.ano', EO.ano); EO.drill = []; render(); };
+  $$('[data-eon]', el).forEach(b => b.onclick = () => { EO.nivel = b.dataset.eon; EO.drill = []; ST.manterScroll = true; render(); });
+  const s = $('#eo-subir'); if (s) s.onclick = () => { const d = EO.drill.pop(); EO.nivel = d.nivel; ST.manterScroll = true; render(); };
+}
+
 /* ============================================================ tela: favoritos */
 function telaFavoritos(el) {
   topo('Meus favoritos', '');
@@ -1921,8 +2018,13 @@ async function lerLocaisZip(blob, ufs, progresso) {
       if (ix.NR_TURNO != null && f[ix.NR_TURNO] && f[ix.NR_TURNO] !== '1') return;
       const k = `${f[ix.CD_MUNICIPIO]}|${+f[ix.NR_ZONA]}|${+f[ix.NR_LOCAL_VOTACAO]}`;
       let m = res.get(uf);
-      if (!m) res.set(uf, m = { locais: {}, secoes: {} });
-      if (ix.NR_SECAO != null && f[ix.NR_SECAO]) m.secoes[`${f[ix.CD_MUNICIPIO]}|${+f[ix.NR_ZONA]}|${+f[ix.NR_SECAO]}`] = +f[ix.NR_LOCAL_VOTACAO];
+      if (!m) res.set(uf, m = { locais: {}, secoes: {}, aptos: {} });
+      if (ix.NR_SECAO != null && f[ix.NR_SECAO]) {
+        const ks = `${f[ix.CD_MUNICIPIO]}|${+f[ix.NR_ZONA]}|${+f[ix.NR_SECAO]}`;
+        m.secoes[ks] = +f[ix.NR_LOCAL_VOTACAO];
+        const qa = ix.QT_ELEITOR_SECAO != null ? f[ix.QT_ELEITOR_SECAO] : ix.QT_ELEITOR != null ? f[ix.QT_ELEITOR] : null;
+        if (qa != null && qa !== '') m.aptos[ks] = +qa || 0;
+      }
       if (!m.locais[k]) m.locais[k] = [f[ix.NM_LOCAL_VOTACAO] || null, f[ix.NM_BAIRRO] || null, f[ix.DS_ENDERECO] || null, coordCsv(f[ix.NR_LATITUDE]), coordCsv(f[ix.NR_LONGITUDE])];
     };
     for (;;) {
@@ -2145,7 +2247,7 @@ const LOC = {
   url: ano => `https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_${ano}.zip`,
   pares() {
     const m = new Map();
-    for (const d of DS.values()) if (/^[A-Z]{2}$/.test(d.uf)) m.set(d.uf + '|' + d.ano, { uf: d.uf, ano: +d.ano });
+    for (const d of DS.values()) if (/^[A-Z]{2}$/.test(d.uf)) { m.set(d.uf + '|' + d.ano, { uf: d.uf, ano: +d.ano }); m.set(d.uf + '|2026', { uf: d.uf, ano: 2026 }); }
     return [...m.values()].sort((a, b) => b.ano - a.ano || a.uf.localeCompare(b.uf));
   },
   render() {
@@ -2172,10 +2274,10 @@ const LOC = {
     try {
       const porUf = await lerLocaisZip(blob, ufs, pc => LOC.status(`Lendo o arquivo do TSE… ${pc}%`));
       let total = 0;
-      for (const [uf, { locais, secoes }] of porUf) {
+      for (const [uf, { locais, secoes, aptos }] of porUf) {
         const n = Object.keys(locais).length;
         total += n;
-        const cat = { versao: 2, ano: +ano, uf, fonte: LOC.url(ano), gerado_em: new Date().toISOString(), n, locais, secoes };
+        const cat = { versao: 2, ano: +ano, uf, fonte: LOC.url(ano), gerado_em: new Date().toISOString(), n, locais, secoes, aptos };
         store.set('rv.locais.' + uf + '|' + ano, cat);
         CATALOGOS.set(uf + '|' + ano, cat);
       }
