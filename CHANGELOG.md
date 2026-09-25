@@ -1,5 +1,29 @@
 # Changelog
 
+## [3.5.0] — 2026-09-25
+
+### Adicionado
+- **Versão Web (computador):**
+  - Menu lateral fixo com todas as telas: Início, Resultado, Eleitos 2026, Eleitorado, Comparar, Relatório,
+    Favoritos e Ajuda.
+  - Conteúdo em largura total (até 1.240 px).
+  - Lista de eleições em 2 colunas e atalhos em uma linha só.
+  - Cartões de Comparar, Relatório e Favoritos em várias colunas.
+  - Mapa maior.
+- **Versão Celular:** o layout de aplicativo de antes, com a barra de navegação embaixo.
+- **Escolha da versão** (Automática, Web ou Celular), no fim do menu lateral e na tela inicial:
+  - Na Automática, o computador abre na Web e o telefone abre no Celular.
+  - Escolher Web no telefone abre a tela completa de computador, como o "site para computador" do navegador.
+  - A escolha fica guardada no navegador.
+- **App no celular (PWA):**
+  - Dá para instalar o Radar de Votos na tela inicial do telefone ou do computador, com ícone próprio.
+  - O app abre em tela cheia, sem a barra do navegador.
+  - Botão **Instalar como app**. No iPhone, o botão mostra o passo a passo de Compartilhar › Adicionar à Tela
+    de Início.
+  - As telas já abertas continuam disponíveis sem internet, e com internet sempre carrega a versão mais nova.
+- Ícone do site na aba do navegador.
+- Explicação das versões e da instalação em Ajuda › Como usar.
+
 ## [3.4.3] — 2026-09-25
 
 ### Corrigido

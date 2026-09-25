@@ -1,0 +1,17 @@
+{
+  "name": "Radar de Votos",
+  "short_name": "Radar de Votos",
+  "description": "Votos oficiais do TSE por município, zona, bairro, local e seção, e apuração 2026 ao vivo.",
+  "lang": "pt-BR",
+  "start_url": "/#inicio",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0E2A1D",
+  "theme_color": "#0E2A1D",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Radar de Votos</title>
 <meta name="description" content="Votos oficiais do TSE por município, zona, bairro, local e seção, e apuração 2026 ao vivo.">
+<meta name="theme-color" content="#0E2A1D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Radar de Votos">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<script>
+// versão do sistema (Web ou Celular) aplicada antes de desenhar, para não piscar
+(function () {
+  var pref = 'auto'; try { pref = JSON.parse(localStorage.getItem('rv.modo')) || 'auto'; } catch (e) {}
+  var web = pref === 'web' || (pref === 'auto' && window.matchMedia('(min-width: 1024px)').matches);
+  document.documentElement.dataset.modo = web ? 'web' : 'cel';
+  if (pref === 'web' && Math.min(screen.width, window.innerWidth) < 1024) document.querySelector('meta[name=viewport]').setAttribute('content', 'width=1280');
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
@@ -843,6 +860,40 @@ select.plain{height:42px;width:100%;border:1px solid var(--line);background:var(
   .pcard,.card{break-inside:avoid}
 }
 
+/* ---------- versão Web (computador): menu lateral, conteúdo largo e cartões em colunas */
+.side{display:none}
+.modo{display:flex;gap:4px;background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:4px}
+.modo button{flex:1;border:0;background:transparent;color:var(--muted);font-size:.84rem;font-weight:600;padding:8px 6px;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.modo button svg{width:18px;height:18px}
+.modo button[aria-pressed="true"]{background:var(--green);color:#fff}
+html[data-modo="web"]{--maxw:1240px}
+html[data-modo="web"] body{padding-left:252px}
+html[data-modo="web"] .tabbar{display:none}
+html[data-modo="web"] .side{display:flex;flex-direction:column;gap:18px;position:fixed;left:0;top:0;bottom:0;width:252px;z-index:1600;padding:22px 14px;background:var(--hero-1);color:var(--hero-ink);overflow-y:auto;border-right:1px solid rgba(255,255,255,.06)}
+.side .brand{flex:none;padding:0 8px}
+.side nav{display:grid;gap:2px}
+.side nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--hero-muted);text-decoration:none;font-weight:600;font-size:.92rem}
+.side nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+.side nav a[aria-current="page"]{background:rgba(255,255,255,.13);color:#fff}
+.side .side-foot{margin-top:auto;display:grid;gap:8px}
+.side .side-foot small{color:var(--hero-muted);font-size:.74rem;padding:0 4px}
+.side .modo{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+.side .modo{display:grid;grid-template-columns:repeat(3,1fr)}
+.side .modo button{color:var(--hero-muted);flex-direction:column;gap:3px;font-size:.72rem;padding:7px 2px}
+.side .modo button[aria-pressed="true"]{background:var(--green);color:#fff}
+html[data-modo="web"] .hero{padding-bottom:70px}
+html[data-modo="web"] .hero .bar .brand{display:none}
+html[data-modo="web"] .hero .bar:has(.brand)::before{content:"Início";font-size:1.15rem;font-weight:600}
+html[data-modo="web"] .sheet{border-radius:28px 28px 0 0;margin-inline:18px}
+html[data-modo="web"] .sheet > .col{padding-bottom:48px;padding-inline:28px}
+html[data-modo="web"] .shortcuts{grid-template-columns:repeat(6,1fr)}
+html[data-modo="web"] #cards,html[data-modo="web"] #rel-cards,html[data-modo="web"] #rc-cards,html[data-modo="web"] #favs{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+html[data-modo="web"] .map{height:640px}
+html[data-modo="web"] .home-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+html[data-modo="web"] #busca, html[data-modo="web"] .clist{max-width:none}
+html[data-modo="web"] .only-cel{display:none!important}
+html[data-modo="cel"] .only-web{display:none!important}
+
 /* ---------- barra de navegação inferior */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:1500;background:var(--card-2);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
 .tabbar nav{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;height:64px}
@@ -870,6 +921,21 @@ select.plain{height:42px;width:100%;border:1px solid var(--line);background:var(
 </style>
 </head>
 <body>
+
+<aside class="side" aria-label="Menu">
+  <div class="brand"><span class="keypad" aria-hidden="true"><i></i><i></i><i></i></span><div><b>RADAR DE VOTOS</b><small>Votos oficiais do TSE</small></div></div>
+  <nav aria-label="Menu principal">
+    <a href="#inicio" data-tela="inicio"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg>Início</a>
+    <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
+    <a href="#eleitos" data-tela="eleitos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Eleitos 2026</a>
+    <a href="#eleitorado" data-tela="eleitorado"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M15.5 5.6a3.2 3.2 0 0 1 0 6M17 14.3c1.9.6 3.1 2.2 3.5 4.7"/></svg>Eleitorado</a>
+    <a href="#comparar" data-tela="comparar"><svg class="i" viewBox="0 0 24 24"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg>Comparar</a>
+    <a href="#relatorio" data-tela="relatorio"><svg class="i" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 17v-3M13 17v-5M16 17v-2"/></svg>Relatório</a>
+    <a href="#favoritos" data-tela="favoritos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Favoritos</a>
+    <a href="#ajuda" data-tela="ajuda"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4M12 16.8v.2"/></svg>Ajuda e dados</a>
+  </nav>
+  <div class="side-foot"><small>Versão do sistema</small><div class="modo" data-modo-box></div><button class="btn sm" type="button" data-instalar hidden>Instalar como app</button></div>
+</aside>
 
 <header class="hero">
   <div class="col">
@@ -1199,7 +1265,7 @@ async function render() {
   if (!TELAS.includes(t)) t = 'inicio';
   if (ST.tela !== t) zerarAba(ST.tela);
   ST.tela = t;
-  $$('.tabbar a').forEach(a => { const on = a.dataset.tela === t || ((t === 'candidato' || t === 'eleitos') && a.dataset.tela === 'resultado'); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  $$('.tabbar a, .side nav a').forEach(a => { const on = a.dataset.tela === t || ((t === 'candidato' || t === 'eleitos') && a.dataset.tela === 'resultado'); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   $('#hero-extra').innerHTML = '';
   const el = $('#tela');
   if (!ST.ano) ST.ano = anosHist()[0] || 2026;
@@ -1437,12 +1503,15 @@ function telaInicio(el) {
     </div></div>`;
   const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
   el.innerHTML = `<div class="sec-title">Eleições</div>
-    <div class="picks">
+    <div class="picks home-grid">
       <a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo em ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Eleitos 2026 — cenário ao vivo</b><small>Quem está eleito com os votos apurados até agora</small></span><span class="ico">${ICON.go}</span></a>
       ${anosHist().map(a => `<a class="row hl" href="#resultado" data-ano="${a}"><span class="ico">${ICON.people}</span><span class="txt"><b>Eleições ${a}</b><small>${esc(desc[a] || 'Votos por urna')}</small></span><span class="ico">${ICON.go}</span></a>`).join('')}
     </div>
+    <div class="card only-cel"><h3>Versão do sistema</h3><p class="muted">Escolha <b>Web</b> para a tela de computador (menu lateral e conteúdo largo) ou <b>Celular</b> para a tela de aplicativo. Na <b>Automática</b>, o sistema escolhe pelo tamanho da tela.</p>
+      <div class="modo" data-modo-box></div><button class="btn pri" type="button" data-instalar hidden>Instalar como app no celular</button></div>
     <p class="foot">Fonte: TSE — resultados oficiais, boletins de urna e cadastro de locais de votação. Ferramenta independente, sem vínculo com a Justiça Eleitoral.</p>`;
+  aplicarModo(); mostrarInstalar();
   const sel = $('select[data-home="cidade"]');
   sel.onchange = () => { ST.cd = sel.value; ST.candNr = null; ST.drill = []; ST.cmp = []; salvar(); render(); };
   $$('#hero-extra [data-nivel]').forEach(a => a.onclick = () => { ST.nivel = a.dataset.nivel; ST.drill = []; if (EH_LIVE()) ST.ano = anosHist()[0]; });
@@ -2254,6 +2323,7 @@ function telaAjuda(el) {
       <li><b>Resultado</b> — escolha a eleição, o cargo e o município. Aparece quem teve mais votos, com foto, partido e situação.</li>
       <li><b>Candidato</b> — toque num candidato para ver os votos dele por <b>zona, bairro, local de votação e seção</b>, e no mapa. Toque numa linha para abrir os detalhes.</li>
       <li><b>Comparar</b> — coloque até três candidatos lado a lado e veja quem venceu em cada bairro ou local.</li>
+      <li><b>Versão Web ou Celular</b> — no computador o sistema abre na versão <b>Web</b> (menu lateral e conteúdo largo); no telefone, na versão <b>Celular</b>. Troque em <b>Versão do sistema</b> (no menu lateral ou na tela inicial). Para ter o <b>app no celular</b>, toque em <b>Instalar como app</b> ou, no iPhone, em Compartilhar › Adicionar à Tela de Início.</li>
       <li><b>Relatório</b> — pesquise um candidato e veja todas as eleições que ele disputou na cidade, com votos, posição e crescimento por zona, bairro e local. No modo <b>Colégios eleitorais</b>, compare até quatro locais de votação lado a lado.</li>
       <li><b>Favoritos</b> — toque na estrela ao lado de um candidato para acompanhá-lo.</li></ol>
       <p class="muted"><b>Votos válidos</b> são os votos em candidatos e partidos (sem brancos e nulos). <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas. Em 2026 os números chegam ao vivo do TSE no dia da eleição.</p></div>
@@ -2704,8 +2774,44 @@ function baixar(blob, nome) {
 }
 
 /* ============================================================ início */
+/* ============================================================ versão do sistema (Web / Celular) e instalação como app */
+const MODOS = [['auto', 'Automática', '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M12 3.5a8.5 8.5 0 0 0 0 17"/></svg>'],
+  ['web', 'Web', '<svg class="i" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8.5 20h7M12 16.5V20"/></svg>'],
+  ['cel', 'Celular', '<svg class="i" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>']];
+const VIEWPORT_PADRAO = 'width=device-width,initial-scale=1,viewport-fit=cover';
+const mqWeb = window.matchMedia('(min-width: 1024px)');
+function aplicarModo() {
+  const pref = store.get('rv.modo', 'auto');
+  const web = pref === 'web' || (pref === 'auto' && mqWeb.matches);
+  const vp = pref === 'web' && Math.min(screen.width, window.innerWidth) < 1024 ? 'width=1280' : VIEWPORT_PADRAO;
+  const meta = $('meta[name=viewport]');
+  if (meta.getAttribute('content') !== vp) meta.setAttribute('content', vp);
+  document.documentElement.dataset.modo = web ? 'web' : 'cel';
+  $$('[data-modo-box]').forEach(box => box.innerHTML = MODOS.map(([k, t, ic]) => `<button type="button" data-modo="${k}" aria-pressed="${pref === k}" title="${k === 'auto' ? 'Web no computador, Celular no telefone' : 'Versão ' + t}">${ic}${t}</button>`).join(''));
+  if (MAPS.mapa) setTimeout(() => MAPS.mapa.map.invalidateSize(), 50);
+}
+mqWeb.addEventListener?.('change', aplicarModo);
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-modo]');
+  if (!b || !b.closest('[data-modo-box]')) return;
+  store.set('rv.modo', b.dataset.modo);
+  aplicarModo();
+});
+const APP = { prompt: null, instalado: window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true };
+const ehIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); APP.prompt = e; mostrarInstalar(); });
+window.addEventListener('appinstalled', () => { APP.instalado = true; APP.prompt = null; mostrarInstalar(); });
+function mostrarInstalar() { $$('[data-instalar]').forEach(b => b.hidden = APP.instalado || (!APP.prompt && !ehIOS)); }
+document.addEventListener('click', async e => {
+  if (!e.target.closest('[data-instalar]')) return;
+  if (APP.prompt) { APP.prompt.prompt(); try { await APP.prompt.userChoice; } catch {} APP.prompt = null; mostrarInstalar(); }
+  else if (ehIOS) alert('Para instalar no iPhone: toque em Compartilhar (quadrado com a seta) e depois em "Adicionar à Tela de Início".');
+});
+if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+
 (async function main() {
   $('#tela').innerHTML = '<div class="empty">Carregando…</div>';
+  aplicarModo();
   await carregarIndice();
   IMP.registrar();
   if (!ST.ano || (!EH_LIVE() && !anosHist().includes(+ST.ano))) ST.ano = anosHist()[0] || 2026;
