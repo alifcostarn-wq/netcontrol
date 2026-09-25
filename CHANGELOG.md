@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.2.0] — 2026-09-25
+
+### Adicionado — aba **Eleitos** (cenário ao vivo de 2026)
+- Nova tela **Eleitos**, aberta pelo Início ("Eleitos 2026 — cenário ao vivo") e pelo Resultado de 2026 ("Ver os eleitos").
+- Durante a apuração, monta sozinha quem está eleito com os votos apurados até o momento e atualiza junto com a
+  apuração (a cada 30 s, ajustável em Ajuda), para o estado escolhido:
+  - **Presidente e Governador:** quem passa de 50% dos válidos venceria no 1º turno; se ninguém passa, mostra o 2º turno.
+  - **Senador:** os mais votados, conforme o número de vagas.
+  - **Deputado Federal e Estadual/Distrital:** distribuição das vagas pela regra oficial — quociente eleitoral,
+    quociente partidário (candidatos com 10% do QE), sobras pela maior média (partidos com 80% do QE e candidatos com
+    20% do QE) e, se sobrar vaga, maior média entre todos (decisão do STF de 2024). Mostra vagas por partido/federação,
+    cada eleito ("Eleito por QP" / "Eleito por média"), empates e **quem está na disputa pela próxima vaga**.
+  - Ao fim da apuração, passa a mostrar o resultado oficial do TSE.
+- **Teste com 2024:** o mesmo cálculo aplicado ao resultado final de 2024 (prefeito e vereador), com conferência
+  contra o resultado oficial. Nos vereadores do RN, acertou todos os eleitos em 165 de 167 municípios
+  (nos outros: um empate de votos, que o TSE decide pela idade, e uma eleição sem eleitos oficiais).
+
 ## [3.1.1] — 2026-09-25
 
 ### Adicionado
