@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.1.1] — 2026-09-25
+
+### Adicionado
+- **Eleições 2020 do RN publicadas para todos:** 167 municípios, prefeito e vereador, 6.546 urnas, importados do
+  Portal de Dados Abertos do TSE (`votacao_secao_2020_RN.zip`) pela nova importação do site.
+  Conferido: Mossoró 2020 — Allyson (Solidariedade) 65.297 votos, Rosalba (PP) 59.034.
+- Os nomes e endereços dos locais já vêm no arquivo; bairros e mapa de 2020 aparecem depois de carregar o cadastro
+  de locais de 2020 (Ajuda › Locais de votação).
+
 ## [3.1.0] — 2026-09-24
 
 ### Adicionado — importar votos de 2020 (e 2018, 2016) pelo navegador
