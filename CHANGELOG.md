@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.4.3] — 2026-09-25
+
+### Corrigido
+- **As escolhas voltam ao zero ao sair da aba.** Antes, os candidatos escolhidos ficavam guardados mesmo depois de
+  sair e voltar ou recarregar a página. Agora, ao trocar de aba, volta ao começo:
+  - Relatório: candidatos, colégios escolhidos e buscas.
+  - Comparar: candidatos e ordenação.
+  - Resultado: busca.
+  - Candidato e Eleitorado: detalhamento por bairro, local ou seção.
+  - Favoritos: filtro.
+  - As seleções antigas do Relatório guardadas no navegador são apagadas.
+  - Continuam guardados só os favoritos (estrela), a cidade e a eleição escolhidas.
+- **Comparar:** escolher um candidato que já estava em outra posição agora troca os dois de lugar, em vez de
+  mostrar o mesmo candidato duas vezes.
+
 ## [3.4.2] — 2026-09-25
 
 ### Melhorado
