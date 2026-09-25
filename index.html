@@ -590,7 +590,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 :root{
   --bg:#EEF1EF; --sheet:#F7F8F7; --card:#FFFFFF; --card-2:#F2F4F3; --ink:#16211B; --muted:#6B7770; --line:#E3E7E4;
   --hero-1:#0E2A1D; --hero-2:#1F4D36; --hero-ink:#F1F6F3; --hero-muted:#A9C2B4;
-  --green:#15805A; --green-soft:#DDF1E7; --orange:#E3801B; --orange-soft:#FCEBD8; --red:#D2453F; --red-soft:#F8DEDC;
+  --green:#15805A; --green-soft:#DDF1E7; --orange:#E3801B; --orange-soft:#FCEBD8; --red:#D2453F; --red-soft:#F8DEDC; --blue:#2F6FD0;
   --gray-chip:#E4E7E5; --star:#F2B705;
   --font:"DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --r:16px; --maxw:760px;
@@ -600,7 +600,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   :root:not([data-theme="light"]){
     --bg:#0B110E; --sheet:#101814; --card:#16201B; --card-2:#1C2822; --ink:#E6EEEA; --muted:#94A69C; --line:#26332C;
     --hero-1:#06140D; --hero-2:#123524;
-    --green:#3CC08A; --green-soft:#153A2A; --orange:#F09A45; --orange-soft:#3A2715; --red:#EE7069; --red-soft:#3B1D1D;
+    --green:#3CC08A; --green-soft:#153A2A; --orange:#F09A45; --orange-soft:#3A2715; --red:#EE7069; --red-soft:#3B1D1D; --blue:#6EA2F0;
     --gray-chip:#26332C;
     color-scheme: dark;
   }
@@ -608,7 +608,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 :root[data-theme="dark"]{
   --bg:#0B110E; --sheet:#101814; --card:#16201B; --card-2:#1C2822; --ink:#E6EEEA; --muted:#94A69C; --line:#26332C;
   --hero-1:#06140D; --hero-2:#123524;
-  --green:#3CC08A; --green-soft:#153A2A; --orange:#F09A45; --orange-soft:#3A2715; --red:#EE7069; --red-soft:#3B1D1D;
+  --green:#3CC08A; --green-soft:#153A2A; --orange:#F09A45; --orange-soft:#3A2715; --red:#EE7069; --red-soft:#3B1D1D; --blue:#6EA2F0;
   --gray-chip:#26332C;
   color-scheme: dark;
 }
@@ -647,7 +647,7 @@ svg.i{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .vcard .pick-city small{display:block;color:var(--hero-muted);font-size:.85rem}
 .vcard .pick-city b{font-size:1.45rem;font-weight:600;letter-spacing:-.01em}
 .vcard .pick-city div{flex:1}
-.shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding-top:14px}
+.shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 8px;padding-top:14px}
 .shortcuts a{display:grid;justify-items:center;gap:6px;color:var(--hero-ink);text-decoration:none;font-size:.82rem}
 .shortcuts a span{width:50px;height:50px;border-radius:14px;background:#fff;color:var(--hero-1);display:grid;place-items:center}
 .shortcuts a:hover span{transform:translateY(-1px)}
@@ -820,6 +820,29 @@ details[open] > summary{margin-bottom:10px}
 select.plain{height:42px;width:100%;border:1px solid var(--line);background:var(--card-2);border-radius:10px;padding:0 10px}
 .foot{font-size:.78rem;color:var(--muted);text-align:center;padding:8px 10px 0;line-height:1.5}
 
+/* ---------- relatório */
+.rel-who{display:flex;align-items:center;gap:12px}
+.rel-who > div{flex:1;min-width:0}
+.rel-who h3{text-transform:uppercase;font-size:.98rem;overflow-wrap:anywhere}
+.rel-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rchip{display:inline-flex;align-items:center;gap:6px;background:var(--card-2);border:1px solid var(--line);border-radius:99px;padding:3px 4px 3px 10px;font-size:.8rem;font-weight:600}
+.rchip i{width:9px;height:9px;border-radius:50%;background:var(--k)}
+.rchip em{font-style:normal;font-size:.66rem;text-transform:uppercase;color:var(--orange);background:var(--orange-soft);padding:1px 5px;border-radius:5px}
+.rchip button{border:0;background:transparent;color:var(--muted);font-size:1rem;line-height:1;cursor:pointer;padding:2px 6px;border-radius:99px}
+.rchip button:hover{background:var(--gray-chip);color:var(--ink)}
+.cdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--k);margin-right:5px}
+.tscroll{overflow-x:auto;margin:0 -4px}
+.rtab td,.rtab th{white-space:nowrap;vertical-align:top}
+.rtab th.n{white-space:normal;min-width:110px}
+.rbars{display:grid;gap:8px}
+.up{color:var(--green);font-weight:600}
+.down{color:var(--red);font-weight:600}
+@media print{
+  .tabbar,.tools,.search,.seg,.ord,.more,#topbar .back,#rel-limpar,.rchip button,.picks,#rel-res,#rc-res{display:none!important}
+  body,.sheet{background:#fff!important}
+  .pcard,.card{break-inside:avoid}
+}
+
 /* ---------- barra de navegação inferior */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:1500;background:var(--card-2);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
 .tabbar nav{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;height:64px}
@@ -858,11 +881,11 @@ select.plain{height:42px;width:100%;border:1px solid var(--line);background:var(
 
 <footer class="tabbar">
   <nav aria-label="Navegação principal">
-    <a href="#favoritos" data-tela="favoritos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Favoritos</a>
     <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
-    <a href="#inicio" data-tela="inicio" class="center" aria-label="Início"><span><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg></span><em>Início</em></a>
     <a href="#comparar" data-tela="comparar"><svg class="i" viewBox="0 0 24 24"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg>Comparar</a>
-    <a href="#ajuda" data-tela="ajuda"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4M12 16.8v.2"/></svg>Ajuda</a>
+    <a href="#inicio" data-tela="inicio" class="center" aria-label="Início"><span><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg></span><em>Início</em></a>
+    <a href="#relatorio" data-tela="relatorio"><svg class="i" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 17v-3M13 17v-5M16 17v-2"/></svg>Relatório</a>
+    <a href="#favoritos" data-tela="favoritos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Favoritos</a>
   </nav>
 </footer>
 
@@ -913,6 +936,8 @@ const ICON = {
   star: '<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="none"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>',
   search: '<svg class="i" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg>',
   cal: '<svg class="i" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>',
+  doc: '<svg class="i" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 17v-3M13 17v-5M16 17v-2"/></svg>',
+  help: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4M12 16.8v.2"/></svg>',
   flag: '<svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>',
 };
 
@@ -1147,7 +1172,7 @@ const ST = {
   favFiltro: 'todos',
 };
 const salvar = () => { store.set('rv.ano', ST.ano); store.set('rv.turno', ST.turno); store.set('rv.cargo', ST.cargo); store.set('rv.cd', ST.cd); store.set('rv.luf', ST.luf); store.set('rv.lmun', ST.lmun); };
-const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'favoritos', 'ajuda'];
+const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'favoritos', 'ajuda'];
 const ALIAS = { aovivo: 'resultado', bairros: 'candidato', dados: 'ajuda' };
 function irPara(t) { if (location.hash === '#' + t) render(); else location.hash = '#' + t; }
 let NAV = 0;
@@ -1175,6 +1200,7 @@ async function render() {
     else if (t === 'comparar') await telaComparar(el);
     else if (t === 'eleitos') await telaEleitos(el);
     else if (t === 'eleitorado') await telaEleitorado(el);
+    else if (t === 'relatorio') await telaRelatorio(el);
     else if (t === 'favoritos') telaFavoritos(el);
     else telaAjuda(el);
   } catch (e) {
@@ -1394,8 +1420,10 @@ function telaInicio(el) {
     <div class="shortcuts">
       <a href="#resultado"><span>${ICON.user}</span>Candidatos</a>
       <a href="#candidato" data-nivel="bairro"><span>${ICON.bairro}</span>Bairros</a>
-      <a href="#comparar"><span>${ICON.cmp}</span>Comparar</a>
       <a href="#eleitorado"><span>${ICON.people}</span>Eleitorado</a>
+      <a href="#relatorio"><span>${ICON.doc}</span>Relatório</a>
+      <a href="#comparar"><span>${ICON.cmp}</span>Comparar</a>
+      <a href="#ajuda"><span>${ICON.help}</span>Ajuda e dados</a>
     </div></div>`;
   const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
   el.innerHTML = `<div class="sec-title">Eleições</div>
@@ -1857,6 +1885,316 @@ function ligarEO(el) {
   const s = $('#eo-subir'); if (s) s.onclick = () => { const d = EO.drill.pop(); EO.nivel = d.nivel; ST.manterScroll = true; render(); };
 }
 
+/* ============================================================ tela: relatório (candidato em várias eleições e colégios eleitorais) */
+const REL = { modo: store.get('rv.rel.modo', 'cand'), nivel: 'local', ord: 'ult', lim: 80, busca: '', colBusca: '',
+  cand: store.get('rv.rel.cand', { cd: '', ids: [], auto: [] }), col: store.get('rv.rel.col', { cd: '', ele: '', cargo: 0, locais: [] }) };
+const CORES_REL = ['--green', '--orange', '--red', '--blue'];
+const PALAVRAS_FRACAS = new Set(['DE', 'DA', 'DO', 'DAS', 'DOS', 'E']);
+const tokensNome = nm => norm(nm).split(' ').filter(w => w && !PALAVRAS_FRACAS.has(w));
+// mesmo candidato com nome de urna e nome completo: todas as palavras do nome menor aparecem no maior
+function nomesParecidos(a, b) {
+  const ta = tokensNome(a), tb = tokensNome(b);
+  const [cur, lon] = ta.length <= tb.length ? [ta, tb] : [tb, ta];
+  if (!cur.length || (cur.length === 1 && cur[0].length < 4)) return 0;
+  const s = new Set(lon);
+  if (!cur.every(w => s.has(w))) return 0;
+  return cur.length / lon.length;
+}
+async function docsCidade(cd) {
+  const out = [];
+  for (const a of anosHist().slice().sort((x, y) => x - y)) {
+    try { const d = await getDoc(a, 'RN', cd); if (d) out.push(d); } catch {}
+  }
+  return out;
+}
+const idCand = (ano, E, c) => `${ano}|${E.turno}|${E.cargo}|${c.nr}`;
+const nomeEleicao = x => `${x.ano}${x.turno > 1 ? ' (2º turno)' : ''} · ${x.ds}`;
+function candidaturas(docs) {
+  const out = [];
+  for (const doc of docs) for (const E of doc.eleicoes) E.cand.forEach((c, i) => {
+    if (c.tipo !== 'c') return;
+    const eleCd = doc.ano === 2024 ? (E.turno === 1 ? '619' : '620') : '';
+    out.push({ id: idCand(doc.ano, E, c), ano: doc.ano, turno: E.turno, cargo: E.cargo, ds: E.ds, nr: String(c.nr), nm: c.nm, sg: c.sg || '', sit: c.sit || '', anulado: !!c.anulado,
+      votos: E._tot[i], pct: E._val ? E._tot[i] / E._val * 100 : 0, pos: E._rank.indexOf(i) + 1, nCands: E._rank.length, doc, E, i,
+      foto: c.sq && eleCd ? P.foto('ele' + doc.ano, eleCd, doc.uf.toLowerCase(), c.sq) : '' });
+  });
+  return out;
+}
+// a partir de uma candidatura, acha a mesma pessoa nas outras eleições da cidade (uma por eleição/cargo)
+function agruparCandidato(base, todas) {
+  const ids = [base.id], auto = [];
+  const porEleicao = new Map();
+  for (const x of todas) {
+    if (x.ano === base.ano && x.cargo === base.cargo && x.turno === base.turno) continue;
+    const s = nomesParecidos(base.nm, x.nm);
+    if (!s) continue;
+    const k = x.ano + '|' + x.turno + '|' + x.cargo, atual = porEleicao.get(k);
+    if (!atual || s > atual.s || (s === atual.s && x.votos > atual.x.votos)) porEleicao.set(k, { s, x });
+  }
+  for (const { x } of porEleicao.values()) { ids.push(x.id); auto.push(x.id); }
+  return { ids, auto };
+}
+// chave de um lugar que vale entre eleições (zona + número do local, bairro ou zona)
+function chaveLugar(doc, g, nivel) {
+  if (nivel === 'local') { const L = doc.locais[g.li]; return L.z + '|' + L.n; }
+  if (nivel === 'bairro') return g.key === '—' ? '—' : norm(g.key);
+  return g.key;
+}
+async function telaRelatorio(el) {
+  topo('Relatório', 'RN');
+  const cid = cidadesHist(anosHist()[0]);
+  const nmCid = titulo(cid.find(d => d.cd === ST.cd)?.nm || '');
+  let html = `<div class="seg">${[['cand', 'Candidato nas eleições'], ['col', 'Colégios eleitorais']].map(([k, t]) => `<button type="button" data-rm="${k}" aria-pressed="${REL.modo === k}">${t}</button>`).join('')}</div>
+    <div class="picks">${pickRow('pin', 'Município', esc(nmCid), `<select id="rel-mun" aria-label="Município">${cid.map(d => `<option value="${d.cd}"${d.cd === ST.cd ? ' selected' : ''}>${esc(titulo(d.nm))}</option>`).join('')}</select>`)}</div>`;
+  el.innerHTML = html + '<div class="empty">Carregando as eleições da cidade…</div>';
+  const docs = await docsCidade(ST.cd);
+  if (ST.tela !== 'relatorio') return;
+  if (!docs.length) { el.innerHTML = html + '<div class="empty">Sem eleições publicadas para esta cidade.</div>'; ligarRel(el); return; }
+  if (REL.modo === 'col') return relColegios(el, html, docs, nmCid);
+  return relCandidato(el, html, docs, nmCid);
+}
+function ligarRel(el) {
+  $$('[data-rm]', el).forEach(b => b.onclick = () => { REL.modo = b.dataset.rm; store.set('rv.rel.modo', REL.modo); ST.manterScroll = true; render(); });
+  const m = $('#rel-mun', el);
+  if (m) m.onchange = () => { ST.cd = m.value; salvar(); render(); };
+  const p = $('#rel-print', el);
+  if (p) p.onclick = () => window.print();
+}
+function relCandidato(el, html, docs, nmCid) {
+  const todas = candidaturas(docs);
+  const byId = new Map(todas.map(x => [x.id, x]));
+  if (REL.cand.cd !== ST.cd) REL.cand = { cd: ST.cd, ids: [], auto: [] };
+  const sel = REL.cand.ids.map(id => byId.get(id)).filter(Boolean).sort((a, b) => a.ano - b.ano || a.turno - b.turno || a.cargo - b.cargo);
+  const guardar = () => store.set('rv.rel.cand', REL.cand);
+  html += `<label class="search">${ICON.search}<input type="search" id="rel-busca" placeholder="${sel.length ? 'Adicionar outra candidatura' : 'Nome, número ou partido do candidato'}" value="${esc(REL.busca)}" aria-label="Pesquisar candidato em todas as eleições"></label>
+    <ul class="rlist" id="rel-res" hidden></ul>`;
+  if (!sel.length) {
+    html += `<div class="note info">Pesquise um candidato. O relatório junta as eleições que ele disputou em ${esc(nmCid)} (${docs.map(d => d.ano).join(', ')}) e compara votos, posição e desempenho por zona, bairro e local de votação.</div>`;
+    el.innerHTML = html;
+    ligarRel(el); ligarBuscaRel(el, todas, sel, guardar);
+    return;
+  }
+  const ult = sel[sel.length - 1];
+  html += `<div class="card rel-head"><div class="rel-who">${avatar(sel.slice().reverse().find(x => x.foto)?.foto, ult.nm)}<div><h3>${esc(ult.nm)}</h3><small class="muted">${esc(nmCid)} · ${plural(sel.length, 'candidatura', 'candidaturas')}</small></div>
+      <button class="btn sm" type="button" id="rel-limpar">Novo relatório</button></div>
+    <div class="rel-chips">${sel.map((x, k) => `<span class="rchip" style="--k:var(${CORES_REL[k % 4]})"><i></i>${esc(nomeEleicao(x))} · ${esc(x.nr)}${REL.cand.auto.includes(x.id) ? ' <em title="Incluído pelo nome. Confira.">auto</em>' : ''}<button type="button" data-tirar="${esc(x.id)}" aria-label="Tirar ${esc(nomeEleicao(x))}">×</button></span>`).join('')}</div>
+    ${REL.cand.auto.length ? '<small class="muted">As candidaturas marcadas “auto” foram achadas pelo nome. Se alguma não for a mesma pessoa, toque no × para tirar.</small>' : ''}</div>`;
+  // tabela de desempenho eleição a eleição
+  html += `<div class="card"><h3>Desempenho em cada eleição</h3><div class="tscroll"><table class="rtab"><thead><tr><th>Eleição</th><th>Nº · Partido</th><th class="n">Votos</th><th class="n">% válidos</th><th class="n">Posição</th><th class="n">Variação</th><th>Situação</th></tr></thead><tbody>
+    ${sel.map((x, k) => { const a = sel[k - 1], d = a ? x.votos - a.votos : null;
+      return `<tr><td><b>${esc(nomeEleicao(x))}</b></td><td>${esc(x.nr)} · ${esc(x.sg)}</td><td class="n"><b>${fmt(x.votos)}</b></td><td class="n">${pct(x.pct)}</td><td class="n">${x.pos}º de ${fmt(x.nCands)}</td>
+        <td class="n">${d == null ? '—' : `<span class="${d >= 0 ? 'up' : 'down'}">${d >= 0 ? '+' : '−'}${fmt(Math.abs(d))}${a.votos ? ` (${d >= 0 ? '+' : '−'}${pct(Math.abs(d) / a.votos * 100, 1)})` : ''}</span>`}</td><td>${chipSit(x) || '—'}</td></tr>`; }).join('')}
+    </tbody></table></div>
+    <div class="rbars">${(() => { const mx = Math.max(...sel.map(x => x.votos), 1); return sel.map((x, k) => `<div class="brow" style="--k:var(${CORES_REL[k % 4]})"><span>${esc(nomeEleicao(x))}</span><span class="tr"><i style="width:${x.votos / mx * 100}%"></i></span><span class="q">${fmt(x.votos)}</span></div>`).join(''); })()}</div></div>`;
+  // por lugar
+  const temB = sel.some(x => x.doc._temBairros);
+  const niveis = [['zona', 'Zona'], ...(temB ? [['bairro', 'Bairro']] : []), ['local', 'Local de votação']];
+  if (!niveis.some(n => n[0] === REL.nivel)) REL.nivel = 'local';
+  const lugares = new Map();
+  sel.forEach((x, k) => {
+    for (const g of agregar(x.doc, x.E, REL.nivel, [])) {
+      const key = chaveLugar(x.doc, g, REL.nivel);
+      let r = lugares.get(key);
+      if (!r) lugares.set(key, r = { key, label: g.label, sub: g.sub, xs: sel.map(() => null) });
+      else if (!/^Local de votação nº/.test(g.label)) { r.label = g.label; if (g.sub) r.sub = g.sub; } // fica o nome mais recente
+      const cur = r.xs[k] || { v: 0, val: 0 };
+      cur.v += g.v[x.i]; cur.val += g.val; r.xs[k] = cur;
+    }
+  });
+  const linhas = [...lugares.values()].map(r => {
+    r.xs = r.xs.map(y => y && { v: y.v, sh: y.val ? y.v / y.val * 100 : 0 });
+    const u = r.xs[sel.length - 1], p = r.xs[sel.length - 2];
+    r.dif = u && p ? u.v - p.v : null;
+    return r;
+  });
+  const ords = [['ult', `Mais votos em ${ult.ano}`], ...(sel.length > 1 ? [['cresc', 'Maior crescimento'], ['queda', 'Maior queda']] : []), ['pct', `Maior % em ${ult.ano}`]];
+  if (!ords.some(o => o[0] === REL.ord)) REL.ord = 'ult';
+  html += `<div class="sec-title">Votos por lugar</div>
+    <div class="seg">${niveis.map(([k, t]) => `<button type="button" data-rn="${k}" aria-pressed="${REL.nivel === k}">${t}</button>`).join('')}</div>
+    <label class="search">${ICON.search}<input type="search" id="rel-busca-l" placeholder="Pesquisar lugar" aria-label="Pesquisar lugar"></label>
+    <div class="ord"><span>Ordenar por</span>${ords.map(([k, t]) => `<button type="button" data-ro="${k}" aria-pressed="${REL.ord === k}">${esc(t)}</button>`).join('')}</div>
+    <div id="rel-cards" style="display:grid;gap:10px"></div><div class="more" id="rel-mais"></div>
+    <div class="tools"><button class="btn sm" type="button" id="rel-print">Imprimir / PDF</button><button class="btn sm" type="button" data-exp="rel" data-kind="xlsx">Baixar Excel</button><button class="btn sm" type="button" data-exp="rel" data-kind="csv">Baixar CSV</button></div>
+    <p class="foot">Os locais de votação são ligados entre eleições pela zona e pelo número do local no TSE. A porcentagem é sobre os votos válidos do cargo em cada lugar.</p>`;
+  el.innerHTML = html;
+  ligarRel(el); ligarBuscaRel(el, todas, sel, guardar);
+  $('#rel-limpar').onclick = () => { REL.cand = { cd: ST.cd, ids: [], auto: [] }; REL.busca = ''; guardar(); render(); };
+  $$('[data-tirar]', el).forEach(b => b.onclick = () => { REL.cand.ids = REL.cand.ids.filter(i => i !== b.dataset.tirar); REL.cand.auto = REL.cand.auto.filter(i => i !== b.dataset.tirar); guardar(); ST.manterScroll = true; render(); });
+  $$('[data-rn]', el).forEach(b => b.onclick = () => { REL.nivel = b.dataset.rn; REL.lim = 80; ST.manterScroll = true; render(); });
+  $$('[data-ro]', el).forEach(b => b.onclick = () => { REL.ord = b.dataset.ro; ST.manterScroll = true; render(); });
+  const u = sel.length - 1;
+  const desenhar = () => {
+    const q = norm($('#rel-busca-l').value);
+    let l = q ? linhas.filter(r => norm(r.label + ' ' + r.sub).includes(q)) : linhas.slice();
+    const vu = r => r.xs[u]?.v ?? -1;
+    if (REL.ord === 'cresc') l.sort((a, b) => (b.dif ?? -Infinity) - (a.dif ?? -Infinity));
+    else if (REL.ord === 'queda') l.sort((a, b) => (a.dif ?? Infinity) - (b.dif ?? Infinity));
+    else if (REL.ord === 'pct') l.sort((a, b) => (b.xs[u]?.sh ?? -1) - (a.xs[u]?.sh ?? -1));
+    else l.sort((a, b) => vu(b) - vu(a));
+    const lim = q ? l.length : REL.lim;
+    $('#rel-cards').innerHTML = l.slice(0, lim).map(r => {
+      const mx = Math.max(...r.xs.map(y => y?.v || 0), 1);
+      return `<article class="pcard"><header><b>${esc(r.label)}</b>${r.dif != null ? `<small class="${r.dif >= 0 ? 'up' : 'down'}">${r.dif >= 0 ? '+' : '−'}${fmt(Math.abs(r.dif))}</small>` : ''}</header>${r.sub ? `<small class="muted">${esc(r.sub)}</small>` : ''}
+        ${sel.map((x, k) => { const y = r.xs[k]; return `<div class="brow" style="--k:var(${CORES_REL[k % 4]})"><span>${esc(x.ano + (x.turno > 1 ? ' 2ºT' : '') + ' ' + x.ds)} <em>${y ? pct(y.sh, 1) : ''}</em></span><span class="tr"><i style="width:${y ? y.v / mx * 100 : 0}%"></i></span><span class="q">${y ? fmt(y.v) : '—'}</span></div>`; }).join('')}</article>`;
+    }).join('') || '<div class="empty">Nada encontrado.</div>';
+    $('#rel-mais').innerHTML = !q && l.length > lim ? `<button class="btn" type="button" id="rel-todos">Ver mais (${fmt(l.length - lim)})</button>` : '';
+    const b = $('#rel-todos'); if (b) b.onclick = () => { REL.lim += 150; desenhar(); };
+  };
+  desenhar();
+  $('#rel-busca-l').oninput = desenhar;
+  EXPORTS.rel = () => ({ nome: `relatorio-${ult.nm}-${nmCid}-${REL.nivel}`,
+    head: [{ zona: 'Zona', bairro: 'Bairro', local: 'Local de votação' }[REL.nivel], 'Detalhe', ...sel.flatMap(x => [nomeEleicao(x) + ' votos', nomeEleicao(x) + ' %']), ...(sel.length > 1 ? ['Variação (votos) última x anterior'] : [])],
+    rows: linhas.sort((a, b) => (b.xs[u]?.v ?? -1) - (a.xs[u]?.v ?? -1)).map(r => [r.label, r.sub, ...r.xs.flatMap(y => y ? [y.v, +y.sh.toFixed(2)] : ['', '']), ...(sel.length > 1 ? [r.dif ?? ''] : [])]) });
+}
+function ligarBuscaRel(el, todas, sel, guardar) {
+  const inp = $('#rel-busca', el), ul = $('#rel-res', el);
+  const desenhar = () => {
+    const q = norm(REL.busca);
+    if (q.length < 2) { ul.hidden = true; ul.innerHTML = ''; return; }
+    const l = todas.filter(x => norm(x.nm + ' ' + x.nr + ' ' + x.sg).includes(q)).sort((a, b) => b.ano - a.ano || b.votos - a.votos).slice(0, 30);
+    ul.hidden = false;
+    ul.innerHTML = l.map(x => { const on = REL.cand.ids.includes(x.id); return `<li class="rrow go" data-add="${esc(x.id)}"><span class="p">${x.ano}</span>
+      <span class="nm"><b>${esc(x.nm)}</b><small>${esc(x.ds)}${x.turno > 1 ? ' · 2º turno' : ''} · ${esc(x.nr)} · ${esc(x.sg)}</small></span>
+      <span class="v">${fmt(x.votos)}</span><span class="pc">${on ? '✓' : '+'}</span><span class="ch"></span></li>`; }).join('') || '<li class="empty">Nenhum candidato encontrado.</li>';
+    $$('[data-add]', ul).forEach(r => r.onclick = () => {
+      const x = todas.find(y => y.id === r.dataset.add);
+      if (REL.cand.ids.includes(x.id)) { REL.cand.ids = REL.cand.ids.filter(i => i !== x.id); REL.cand.auto = REL.cand.auto.filter(i => i !== x.id); }
+      else if (!sel.length) { const g = agruparCandidato(x, todas); REL.cand.ids = g.ids; REL.cand.auto = g.auto; }
+      else REL.cand.ids.push(x.id);
+      REL.busca = ''; guardar(); render();
+    });
+  };
+  desenhar();
+  inp.oninput = () => { REL.busca = inp.value; desenhar(); };
+}
+// estatística de um colégio (conjunto de locais) numa eleição
+function statsColegio(doc, E, chaves) {
+  const secs = new Set();
+  doc.secoes.forEach((s, si) => { const L = doc.locais[s[0]]; if (chaves.has(L.z + '|' + L.n)) secs.add(si); });
+  let aptos = 0, comp = 0;
+  for (const si of secs) { aptos += doc.secoes[si][3] || 0; comp += doc.secoes[si][4] || 0; }
+  const v = new Float64Array(E ? E.cand.length : 0);
+  if (E) for (let i = 0; i < E.v.length; i += 3) if (secs.has(E.v[i])) v[E.v[i + 1]] += E.v[i + 2];
+  let val = 0, br = 0, nu = 0, tot = 0;
+  if (E) E.cand.forEach((c, i) => { tot += v[i]; if ((c.tipo === 'c' && !c.anulado) || c.tipo === 'l') val += v[i]; else if (c.tipo === 'b') br += v[i]; else if (c.tipo === 'n') nu += v[i]; });
+  return { secoes: secs.size, aptos, comp, v, val, br, nu, tot };
+}
+function relColegios(el, html, docs, nmCid) {
+  if (REL.col.cd !== ST.cd) REL.col = { cd: ST.cd, ele: '', cargo: 0, locais: null };
+  const guardar = () => store.set('rv.rel.col', REL.col);
+  const eles = docs.slice().reverse().flatMap(d => [...new Set(d.eleicoes.map(e => e.turno))].map(t => ({ v: d.ano + '|' + t, t: `Eleição ${d.ano} · ${t}º turno`, doc: d, turno: t })));
+  let ele = eles.find(e => e.v === REL.col.ele) || eles[0];
+  REL.col.ele = ele.v;
+  const doc = ele.doc, cargos = doc.eleicoes.filter(e => e.turno === ele.turno);
+  const E = cargos.find(e => e.cargo === REL.col.cargo) || cargos[0];
+  REL.col.cargo = E.cargo;
+  // catálogo de colégios da cidade em todas as eleições (chave zona|número)
+  const cat = new Map();
+  for (const d of docs) {
+    const n = new Map();
+    for (const s of d.secoes) { const L = d.locais[s[0]]; const k = L.z + '|' + L.n; n.set(k, (n.get(k) || 0) + 1); }
+    for (const [k, q] of n) {
+      const L = d.locais.find(x => x.z + '|' + x.n === k);
+      let c = cat.get(k);
+      if (!c) cat.set(k, c = { k, nm: nomeLocal(L), bairro: L.bairro, anos: [], secoes: 0 });
+      if (L.nm) { c.nm = nomeLocal(L); if (L.bairro) c.bairro = L.bairro; }
+      c.anos.push(d.ano);
+      if (d === doc) c.secoes = q;
+    }
+  }
+  if (Array.isArray(REL.col.locais)) REL.col.locais = REL.col.locais.filter(k => cat.has(k));
+  else REL.col.locais = [...cat.values()].filter(c => c.secoes).sort((a, b) => b.secoes - a.secoes).slice(0, 2).map(c => c.k);
+  guardar();
+  const sel = REL.col.locais.map(k => cat.get(k));
+  html += `<div class="picks two">
+    ${pickRow('cal', 'Eleição', esc(ele.t), `<select id="rc-ele" aria-label="Eleição">${eles.map(e => `<option value="${e.v}"${e.v === ele.v ? ' selected' : ''}>${esc(e.t)}</option>`).join('')}</select>`)}
+    ${pickRow('people', 'Cargo', esc(E.ds), `<select id="rc-cargo" aria-label="Cargo">${cargos.map(e => `<option value="${e.cargo}"${e.cargo === E.cargo ? ' selected' : ''}>${esc(e.ds)}</option>`).join('')}</select>`)}</div>
+    <div class="card"><h3>Colégios escolhidos <small class="muted">(até 4)</small></h3>
+    <div class="rel-chips">${sel.map((c, k) => `<span class="rchip" style="--k:var(${CORES_REL[k]})"><i></i>${esc(c.nm)}<button type="button" data-tirar-col="${esc(c.k)}" aria-label="Tirar ${esc(c.nm)}">×</button></span>`).join('') || '<small class="muted">Nenhum colégio escolhido.</small>'}</div>
+    <label class="search">${ICON.search}<input type="search" id="rc-busca" placeholder="Adicionar colégio (nome, bairro ou zona)" value="${esc(REL.colBusca)}" aria-label="Pesquisar colégio eleitoral"></label>
+    <ul class="rlist" id="rc-res" hidden></ul></div>`;
+  if (!doc._temNomes) html += `<div class="note info">Os nomes dos locais de ${doc.ano} ainda não foram carregados. Os colégios aparecem pelo número. <a href="#ajuda">Veja como carregar</a>.</div>`;
+  if (!sel.length) { el.innerHTML = html; ligarRel(el); ligarCol(el, cat, guardar); return; }
+  const st = sel.map(c => statsColegio(doc, E, new Set([c.k])));
+  const p = (a, b) => b ? pct(a / b * 100, 1) : '—';
+  const temAptos = st.some(s => s.aptos);
+  html += `<div class="sec-title">Resumo · ${esc(ele.t)} · ${esc(E.ds)}</div>
+    <div class="card"><div class="tscroll"><table class="rtab"><thead><tr><th></th>${sel.map((c, k) => `<th class="n"><span class="cdot" style="--k:var(${CORES_REL[k]})"></span>${esc(c.nm)}</th>`).join('')}</tr></thead><tbody>
+    <tr><td>Bairro</td>${sel.map(c => `<td class="n">${c.bairro ? esc(titulo(c.bairro)) : '—'}</td>`).join('')}</tr>
+    <tr><td>Seções (urnas)</td>${st.map(s => `<td class="n">${s.secoes ? fmt(s.secoes) : '—'}</td>`).join('')}</tr>
+    ${temAptos ? `<tr><td>Eleitores aptos</td>${st.map(s => `<td class="n"><b>${s.aptos ? fmt(s.aptos) : '—'}</b></td>`).join('')}</tr>
+    <tr><td>Compareceram</td>${st.map(s => `<td class="n">${s.aptos ? `${fmt(s.tot)} <small class="muted">${p(s.tot, s.aptos)}</small>` : fmt(s.tot)}</td>`).join('')}</tr>
+    <tr><td>Abstenção</td>${st.map(s => `<td class="n">${s.aptos ? `${fmt(s.aptos - s.tot)} <small class="muted">${p(s.aptos - s.tot, s.aptos)}</small>` : '—'}</td>`).join('')}</tr>` : `<tr><td>Votantes</td>${st.map(s => `<td class="n"><b>${fmt(s.tot)}</b></td>`).join('')}</tr>`}
+    <tr><td>Válidos</td>${st.map(s => `<td class="n">${fmt(s.val)} <small class="muted">${p(s.val, s.tot)}</small></td>`).join('')}</tr>
+    <tr><td>Brancos</td>${st.map(s => `<td class="n">${fmt(s.br)} <small class="muted">${p(s.br, s.tot)}</small></td>`).join('')}</tr>
+    <tr><td>Nulos</td>${st.map(s => `<td class="n">${fmt(s.nu)} <small class="muted">${p(s.nu, s.tot)}</small></td>`).join('')}</tr>
+    <tr><td>Mais votado</td>${st.map(s => { const i = E._rank.slice().sort((a, b) => s.v[b] - s.v[a])[0]; return `<td class="n">${s.tot && i != null ? esc(titulo(E.cand[i].nm)) : '—'}</td>`; }).join('')}</tr>
+    </tbody></table></div></div>`;
+  // candidatos lado a lado
+  const soma = E._rank.map(i => ({ i, t: st.reduce((a, s) => a + s.v[i], 0) })).filter(x => x.t > 0).sort((a, b) => b.t - a.t);
+  html += `<div class="sec-title">Candidatos nos colégios</div>
+    <label class="search">${ICON.search}<input type="search" id="rc-busca-c" placeholder="Pesquisar candidato" aria-label="Pesquisar candidato"></label>
+    <div id="rc-cards" style="display:grid;gap:10px"></div><div class="more" id="rc-mais"></div>`;
+  // evolução dos colégios nas eleições
+  const evo = docs.map(d => ({ d, xs: sel.map(c => statsColegio(d, null, new Set([c.k]))) }));
+  html += `<div class="sec-title">Evolução do eleitorado nos colégios</div>
+    <div class="card"><div class="tscroll"><table class="rtab"><thead><tr><th>Eleição</th>${sel.map((c, k) => `<th class="n"><span class="cdot" style="--k:var(${CORES_REL[k]})"></span>${esc(c.nm)}</th>`).join('')}</tr></thead><tbody>
+    ${evo.map(({ d, xs }) => `<tr><td><b>${d.ano}</b></td>${xs.map(s => `<td class="n">${s.secoes ? `${s.aptos ? fmt(s.aptos) + ' aptos' : '—'}<br><small class="muted">${plural(s.secoes, 'seção', 'seções')}${s.aptos && s.comp ? ' · compareceu ' + p(s.comp, s.aptos) : ''}</small>` : '<small class="muted">sem seções</small>'}</td>`).join('')}</tr>`).join('')}
+    </tbody></table></div></div>
+    <div class="tools"><button class="btn sm" type="button" id="rel-print">Imprimir / PDF</button><button class="btn sm" type="button" data-exp="relcol" data-kind="xlsx">Baixar Excel</button><button class="btn sm" type="button" data-exp="relcol" data-kind="csv">Baixar CSV</button></div>
+    <p class="foot">Colégio eleitoral = local de votação. Os colégios são ligados entre eleições pela zona e pelo número do local no TSE. A porcentagem de cada candidato é sobre os votos válidos do colégio.</p>`;
+  el.innerHTML = html;
+  ligarRel(el); ligarCol(el, cat, guardar);
+  let lim = 15;
+  const desenhar = () => {
+    const q = norm($('#rc-busca-c').value);
+    const l = q ? soma.filter(x => norm(E.cand[x.i].nm + ' ' + E.cand[x.i].nr + ' ' + E.cand[x.i].sg).includes(q)) : soma;
+    $('#rc-cards').innerHTML = l.slice(0, q ? l.length : lim).map(x => {
+      const c = E.cand[x.i];
+      return `<article class="pcard"><header><b>${esc(c.nm)}</b><small>${esc(c.nr)} · ${esc(c.sg || '')}</small></header>
+        ${sel.map((cl, k) => { const s = st[k], sh = s.val ? s.v[x.i] / s.val * 100 : 0; return `<div class="brow" style="--k:var(${CORES_REL[k]})"><span>${esc(cl.nm)} <em>${pct(sh, 1)}</em></span><span class="tr"><i style="width:${Math.min(100, sh)}%"></i></span><span class="q">${fmt(s.v[x.i])}</span></div>`; }).join('')}</article>`;
+    }).join('') || '<div class="empty">Nenhum voto nesses colégios.</div>';
+    $('#rc-mais').innerHTML = !q && l.length > lim ? `<button class="btn" type="button" id="rc-todos">Ver mais (${fmt(l.length - lim)})</button>` : '';
+    const b = $('#rc-todos'); if (b) b.onclick = () => { lim += 30; desenhar(); };
+  };
+  desenhar();
+  $('#rc-busca-c').oninput = desenhar;
+  EXPORTS.relcol = () => ({ nome: `colegios-${nmCid}-${doc.ano}-${ele.turno}turno-${E.ds}`,
+    head: ['Linha', ...sel.flatMap(c => [c.nm + ' votos', c.nm + ' %'])],
+    rows: [
+      ['Seções', ...st.flatMap(s => [s.secoes, ''])], ['Eleitores aptos', ...st.flatMap(s => [s.aptos || '', ''])],
+      ['Votantes', ...st.flatMap(s => [s.tot, s.aptos ? +(s.tot / s.aptos * 100).toFixed(2) : ''])], ['Válidos', ...st.flatMap(s => [s.val, s.tot ? +(s.val / s.tot * 100).toFixed(2) : ''])],
+      ['Brancos', ...st.flatMap(s => [s.br, s.tot ? +(s.br / s.tot * 100).toFixed(2) : ''])], ['Nulos', ...st.flatMap(s => [s.nu, s.tot ? +(s.nu / s.tot * 100).toFixed(2) : ''])],
+      ...soma.map(x => [`${E.cand[x.i].nm} (${E.cand[x.i].nr} · ${E.cand[x.i].sg || ''})`, ...st.flatMap(s => [s.v[x.i], s.val ? +(s.v[x.i] / s.val * 100).toFixed(2) : 0])]),
+    ] });
+}
+function ligarCol(el, cat, guardar) {
+  const e = $('#rc-ele', el); if (e) e.onchange = () => { REL.col.ele = e.value; guardar(); ST.manterScroll = true; render(); };
+  const c = $('#rc-cargo', el); if (c) c.onchange = () => { REL.col.cargo = +c.value; guardar(); ST.manterScroll = true; render(); };
+  $$('[data-tirar-col]', el).forEach(b => b.onclick = () => { REL.col.locais = REL.col.locais.filter(k => k !== b.dataset.tirarCol); guardar(); ST.manterScroll = true; render(); });
+  const inp = $('#rc-busca', el), ul = $('#rc-res', el);
+  const desenhar = () => {
+    const q = norm(REL.colBusca);
+    if (q.length < 2) { ul.hidden = true; ul.innerHTML = ''; return; }
+    const l = [...cat.values()].filter(x => norm(x.nm + ' ' + (x.bairro || '') + ' zona ' + x.k.split('|')[0]).includes(q)).sort((a, b) => b.secoes - a.secoes).slice(0, 30);
+    ul.hidden = false;
+    const cheio = REL.col.locais.filter(k => cat.has(k)).length >= 4;
+    ul.innerHTML = l.map(x => { const on = REL.col.locais.includes(x.k); return `<li class="rrow go" data-addc="${esc(x.k)}"><span class="p">Z${esc(x.k.split('|')[0])}</span>
+      <span class="nm"><b>${esc(x.nm)}</b><small>${[x.bairro && titulo(x.bairro), x.secoes ? plural(x.secoes, 'seção', 'seções') : 'sem seções nesta eleição', 'eleições ' + x.anos.join(', ')].filter(Boolean).map(esc).join(' · ')}</small></span>
+      <span class="v"></span><span class="pc">${on ? '✓' : cheio ? '' : '+'}</span><span class="ch"></span></li>`; }).join('') || '<li class="empty">Nenhum colégio encontrado.</li>';
+    $$('[data-addc]', ul).forEach(r => r.onclick = () => {
+      const k = r.dataset.addc;
+      const atuais = REL.col.locais.filter(x => cat.has(x));
+      if (atuais.includes(k)) REL.col.locais = atuais.filter(x => x !== k);
+      else if (atuais.length < 4) REL.col.locais = [...atuais, k];
+      else return;
+      REL.colBusca = ''; guardar(); ST.manterScroll = true; render();
+    });
+  };
+  desenhar();
+  inp.oninput = () => { REL.colBusca = inp.value; desenhar(); };
+}
+
 /* ============================================================ tela: favoritos */
 function telaFavoritos(el) {
   topo('Meus favoritos', '');
@@ -1897,6 +2235,7 @@ function telaAjuda(el) {
       <li><b>Resultado</b> — escolha a eleição, o cargo e o município. Aparece quem teve mais votos, com foto, partido e situação.</li>
       <li><b>Candidato</b> — toque num candidato para ver os votos dele por <b>zona, bairro, local de votação e seção</b>, e no mapa. Toque numa linha para abrir os detalhes.</li>
       <li><b>Comparar</b> — coloque até três candidatos lado a lado e veja quem venceu em cada bairro ou local.</li>
+      <li><b>Relatório</b> — pesquise um candidato e veja todas as eleições que ele disputou na cidade, com votos, posição e crescimento por zona, bairro e local. No modo <b>Colégios eleitorais</b>, compare até quatro locais de votação lado a lado.</li>
       <li><b>Favoritos</b> — toque na estrela ao lado de um candidato para acompanhá-lo.</li></ol>
       <p class="muted"><b>Votos válidos</b> são os votos em candidatos e partidos (sem brancos e nulos). <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas. Em 2026 os números chegam ao vivo do TSE no dia da eleição.</p></div>
     <div class="card" id="imp-panel"><h3>Importar votos de outro ano (2020, 2018, 2016)</h3>
