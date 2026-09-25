@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.2] — 2026-09-25
+
+### Melhorado
+- **Zoom do mapa com a rodinha do mouse:** girar a rodinha sobre o mapa aproxima ou afasta, centrado no ponto
+  onde está o cursor. O zoom anda em passos de meio nível, mais suave, e os botões + e − seguem o mesmo passo.
+
 ## [3.4.1] — 2026-09-25
 
 ### Alterado

@@ -1561,7 +1561,7 @@ function getMap(id) {
   const el = document.getElementById(id);
   if (MAPS[id]?.el === el) return MAPS[id];
   if (MAPS[id]) MAPS[id].map.remove();
-  const map = L.map(el, { preferCanvas: true, scrollWheelZoom: false });
+  const map = L.map(el, { preferCanvas: true, scrollWheelZoom: true, wheelPxPerZoomLevel: 90, zoomSnap: 0.5, zoomDelta: 0.5 }); // zoom com a rodinha do mouse
   // satélite (Esri World Imagery) com nomes de ruas e bairros por cima; dá para voltar ao mapa de ruas no canto
   const esri = s => `https://server.arcgisonline.com/ArcGIS/rest/services/${s}/MapServer/tile/{z}/{y}/{x}`;
   const satelite = L.layerGroup([
