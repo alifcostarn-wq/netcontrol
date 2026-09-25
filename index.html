@@ -1184,10 +1184,20 @@ function topo(titulo, badge, comVoltar = true) {
 }
 const nomeCidade = () => titulo(DS.get(ST.ano + '|' + ST.uf + '|' + ST.cd)?.nm || [...DS.values()].find(d => d.cd === ST.cd)?.nm || '');
 
+// ao sair de uma aba, as escolhas feitas nela (candidatos, colégios, buscas, detalhamentos) voltam ao zero
+function zerarAba(t) {
+  if (t === 'relatorio') Object.assign(REL, { nivel: 'local', ord: 'ult', lim: 80, busca: '', colBusca: '', cand: { cd: '', ids: [], auto: [] }, col: { cd: '', ele: '', cargo: 0, locais: null } });
+  else if (t === 'comparar') Object.assign(ST, { cmp: [], cmpNivel: 'bairro', cmpOrd: 0, cmpLim: 60 });
+  else if (t === 'resultado') Object.assign(ST, { busca: '', showAll: false });
+  else if (t === 'candidato') ST.drill = [];
+  else if (t === 'eleitorado') Object.assign(EO, { nivel: 'zona', drill: [] });
+  else if (t === 'favoritos') ST.favFiltro = 'todos';
+}
 async function render() {
   let t = location.hash.slice(1) || 'inicio';
   t = ALIAS[t] || t;
   if (!TELAS.includes(t)) t = 'inicio';
+  if (ST.tela !== t) zerarAba(ST.tela);
   ST.tela = t;
   $$('.tabbar a').forEach(a => { const on = a.dataset.tela === t || ((t === 'candidato' || t === 'eleitos') && a.dataset.tela === 'resultado'); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   $('#hero-extra').innerHTML = '';
@@ -1652,7 +1662,7 @@ async function telaComparar(el) {
   }
   el.innerHTML = html;
   ligarFiltros(el);
-  $$('select[data-slot]', el).forEach(s => s.onchange = () => { ST.cmp[+s.dataset.slot] = s.value; ST.manterScroll = true; render(); });
+  $$('select[data-slot]', el).forEach(s => s.onchange = () => { const k = +s.dataset.slot, j = ST.cmp.indexOf(s.value); if (j >= 0) ST.cmp[j] = ST.cmp[k]; ST.cmp[k] = s.value; ST.manterScroll = true; render(); });
   $$('[data-cn]', el).forEach(b => b.onclick = () => { ST.cmpNivel = b.dataset.cn; ST.cmpLim = 60; ST.manterScroll = true; render(); });
   $$('[data-ord]', el).forEach(b => b.onclick = () => { ST.cmpOrd = +b.dataset.ord; ST.manterScroll = true; render(); });
   if (!podeCards) return;
@@ -1895,7 +1905,8 @@ function ligarEO(el) {
 
 /* ============================================================ tela: relatório (candidato em várias eleições e colégios eleitorais) */
 const REL = { modo: store.get('rv.rel.modo', 'cand'), nivel: 'local', ord: 'ult', lim: 80, busca: '', colBusca: '',
-  cand: store.get('rv.rel.cand', { cd: '', ids: [], auto: [] }), col: store.get('rv.rel.col', { cd: '', ele: '', cargo: 0, locais: [] }) };
+  cand: { cd: '', ids: [], auto: [] }, col: { cd: '', ele: '', cargo: 0, locais: null } };
+try { localStorage.removeItem('rv.rel.cand'); localStorage.removeItem('rv.rel.col'); } catch {} // versões antigas guardavam a seleção
 const CORES_REL = ['--green', '--orange', '--red', '--blue'];
 const PALAVRAS_FRACAS = new Set(['DE', 'DA', 'DO', 'DAS', 'DOS', 'E']);
 const tokensNome = nm => norm(nm).split(' ').filter(w => w && !PALAVRAS_FRACAS.has(w));
@@ -1973,7 +1984,7 @@ function relCandidato(el, html, docs, nmCid) {
   const byId = new Map(todas.map(x => [x.id, x]));
   if (REL.cand.cd !== ST.cd) REL.cand = { cd: ST.cd, ids: [], auto: [] };
   const sel = REL.cand.ids.map(id => byId.get(id)).filter(Boolean).sort((a, b) => a.ano - b.ano || a.turno - b.turno || a.cargo - b.cargo);
-  const guardar = () => store.set('rv.rel.cand', REL.cand);
+  const guardar = () => {}; // a seleção vale só enquanto a aba está aberta
   html += `<label class="search">${ICON.search}<input type="search" id="rel-busca" placeholder="${sel.length ? 'Adicionar outra candidatura' : 'Nome, número ou partido do candidato'}" value="${esc(REL.busca)}" aria-label="Pesquisar candidato em todas as eleições"></label>
     <ul class="rlist" id="rel-res" hidden></ul>`;
   if (!sel.length) {
@@ -2089,7 +2100,7 @@ function statsColegio(doc, E, chaves) {
 }
 function relColegios(el, html, docs, nmCid) {
   if (REL.col.cd !== ST.cd) REL.col = { cd: ST.cd, ele: '', cargo: 0, locais: null };
-  const guardar = () => store.set('rv.rel.col', REL.col);
+  const guardar = () => {};
   const eles = docs.slice().reverse().flatMap(d => [...new Set(d.eleicoes.map(e => e.turno))].map(t => ({ v: d.ano + '|' + t, t: `Eleição ${d.ano} · ${t}º turno`, doc: d, turno: t })));
   let ele = eles.find(e => e.v === REL.col.ele) || eles[0];
   REL.col.ele = ele.v;
