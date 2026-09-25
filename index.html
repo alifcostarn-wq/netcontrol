@@ -1562,7 +1562,15 @@ function getMap(id) {
   if (MAPS[id]?.el === el) return MAPS[id];
   if (MAPS[id]) MAPS[id].map.remove();
   const map = L.map(el, { preferCanvas: true, scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
+  // satélite (Esri World Imagery) com nomes de ruas e bairros por cima; dá para voltar ao mapa de ruas no canto
+  const esri = s => `https://server.arcgisonline.com/ArcGIS/rest/services/${s}/MapServer/tile/{z}/{y}/{x}`;
+  const satelite = L.layerGroup([
+    L.tileLayer(esri('World_Imagery'), { maxZoom: 19, attribution: '© Esri, Maxar' }),
+    L.tileLayer(esri('Reference/World_Transportation'), { maxZoom: 19, opacity: .7 }),
+    L.tileLayer(esri('Reference/World_Boundaries_and_Places'), { maxZoom: 19 }),
+  ]).addTo(map);
+  const ruas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' });
+  L.control.layers({ 'Satélite': satelite, 'Mapa de ruas': ruas }, null, { position: 'topright', collapsed: false }).addTo(map);
   map.setView([-5.8, -36.6], 7);
   MAPS[id] = { el, map, layer: L.featureGroup().addTo(map) };
   return MAPS[id];
@@ -1571,15 +1579,15 @@ function mapaCandidato(doc, E, ci, c) {
   const M = getMap('mapa');
   if (!M) { $('#leg').textContent = 'O mapa não carregou.'; return; }
   const locs = agregar(doc, E, 'local', []).filter(g => { const L = doc.locais[g.li]; return L.lat != null && L.lon != null; });
-  const acc = cssVar('--green');
+  const acc = '#22C97F'; // verde claro, visível sobre a imagem de satélite
   const maxV = Math.max(...locs.map(g => g.v[ci]), 1), maxSh = Math.max(...locs.map(g => g.val ? g.v[ci] / g.val : 0), 0.0001);
   for (const g of locs) {
     const L0 = doc.locais[g.li], sh = g.val ? g.v[ci] / g.val : 0;
-    L.circleMarker([L0.lat, L0.lon], { radius: 4 + 18 * Math.sqrt(g.v[ci] / maxV), color: acc, weight: 1, fillColor: acc, fillOpacity: .12 + .78 * (sh / maxSh) })
+    L.circleMarker([L0.lat, L0.lon], { radius: 4 + 18 * Math.sqrt(g.v[ci] / maxV), color: '#fff', weight: 1.5, fillColor: acc, fillOpacity: .3 + .65 * (sh / maxSh) })
       .bindTooltip(`<b>${esc(nomeLocal(L0))}</b><br>${esc(L0.bairro ? titulo(L0.bairro) : '')}<br>${esc(c.nm)}: <b>${fmt(g.v[ci])} votos</b> (${pct(sh * 100, 1)})`).addTo(M.layer);
   }
   setTimeout(() => { M.map.invalidateSize(); try { M.map.fitBounds(M.layer.getBounds(), { padding: [24, 24], maxZoom: 15 }); } catch {} }, 30);
-  $('#leg').textContent = `Cada círculo é um local de votação. Maior = mais votos de ${c.nm}; mais escuro = maior fatia dos votos do local.`;
+  $('#leg').textContent = `Cada círculo é um local de votação. Maior = mais votos de ${c.nm}; cor mais forte = maior fatia dos votos do local. Troque entre satélite e mapa de ruas no canto do mapa.`;
 }
 // 2026 ao vivo, estado inteiro: ranking por município (lê o resultado de cada cidade)
 async function cidadesLive(m, c) {
