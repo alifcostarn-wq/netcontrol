@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.1] — 2026-09-25
+
+### Adicionado
+- **Eleitorado de 2026 do RN publicado** (`data/locais/rn-2026.json`), a partir do cadastro oficial de locais de
+  votação do TSE: 2.660.565 eleitores aptos, 8.336 seções e 1.585 locais de votação.
+  Mossoró: 187.519 aptos (Zona 33: 100.639; Zona 34: 86.880), 89 escolas e 569 seções.
+- Na tela **Eleitorado**, o ano **2026 (cadastro atual)** aparece para todos, por zona, bairro, escola e seção.
+
 ## [3.3.0] — 2026-09-25
 
 ### Adicionado — tela **Eleitorado** (eleitores aptos por zona, bairro, escola e seção)
