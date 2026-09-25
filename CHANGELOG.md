@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.4.0] — 2026-09-25
+
+### Adicionado
+- **Nova aba Relatório** (barra de baixo e atalho na tela inicial), com dois modos:
+  - **Candidato nas eleições:** pesquise um candidato e o relatório junta todas as eleições que ele disputou na
+    cidade (2020, 2022 e 2024, em qualquer cargo). As candidaturas com nome de urna ou nome completo são achadas
+    sozinhas e marcadas "auto" para conferência; dá para tirar ou adicionar outras. Mostra votos, % dos válidos,
+    posição, situação e variação de uma eleição para a outra, com barras, e os votos **por zona, bairro e local de
+    votação** em cada eleição, ordenados por mais votos, maior crescimento, maior queda ou maior %.
+  - **Colégios eleitorais:** escolha até 4 locais de votação e compare lado a lado, na eleição e cargo escolhidos:
+    seções, eleitores aptos, comparecimento, abstenção, válidos, brancos, nulos, mais votado e os votos de cada
+    candidato em cada colégio. Inclui a evolução do eleitorado de cada colégio em 2020, 2022 e 2024.
+  - Botões **Imprimir / PDF**, **Baixar Excel** e **Baixar CSV** nos dois modos.
+
+### Alterado
+- Barra de navegação: **Resultado, Comparar, Início, Relatório e Favoritos**. A **Ajuda** passou para os atalhos
+  da tela inicial ("Ajuda e dados"), que agora têm 6 botões.
+- Explicação da aba Relatório adicionada em Ajuda › Como usar.
+
 ## [3.3.1] — 2026-09-25
 
 ### Adicionado
