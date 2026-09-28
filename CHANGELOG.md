@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.6.0] — 2026-09-28
+
+### Adicionado
+- **Consulta de Candidaturas (DivulgaCand do TSE)**, na tela inicial e no menu lateral:
+  - **Lista de candidaturas** por eleição (2020, 2022, 2024 e 2026, quando o TSE publicar), cargo e município,
+    com foto, número, partido, situação do registro (deferido, indeferido…) e resultado.
+  - Busca por nome, número ou partido e filtro por situação.
+  - **Ficha do candidato:**
+    - Dados pessoais: nome completo, nascimento e idade, naturalidade, gênero, cor/raça, estado civil,
+      instrução e ocupação.
+    - Coligação ou federação, vice ou suplentes e CNPJ de campanha.
+    - **Bens declarados**, com o total.
+    - **Prestação de contas**: receitas, despesas e maiores doadores e fornecedores.
+    - **Certidões, propostas e documentos**, que abrem no site do TSE.
+    - Sites e redes sociais.
+    - **Eleições anteriores**.
+  - Na tela de um candidato, o botão **Ficha no DivulgaCand** abre direto a ficha dele.
+- Proxies de leitura `api/divulga` (São Paulo) e `api/divulga-us` (EUA). A consulta sai primeiro do navegador de
+  quem usa o site; se o TSE recusar, tenta pelos proxies e, em último caso, mostra o link do site oficial.
+- Ajuda › Como usar agora explica a nova tela.
+
 ## [3.5.0] — 2026-09-25
 
 ### Adicionado
