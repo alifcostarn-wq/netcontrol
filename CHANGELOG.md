@@ -1,5 +1,29 @@
 # Changelog
 
+## [3.6.1] — 2026-09-28
+
+### Corrigido
+- **Candidaturas: a eleição de 2026 agora aparece.** O TSE publica a eleição em andamento numa lista separada
+  ("eleição atual"), e o sistema só lia a lista das eleições anteriores. Agora lê as duas. A tela abre direto na
+  **campanha 2026**, no cargo de Governador.
+  - A leitura aceita outros formatos de resposta do TSE e ignora eleições suplementares.
+  - Se o TSE dividir 2026 em eleição federal e estadual, cada cargo usa a certa.
+  - Se ainda assim 2026 não vier, a tela avisa, mostra um botão "Tentar de novo" e mostra os detalhes do que o
+    TSE respondeu.
+- Links de certidões e propostas passam a abrir no endereço correto do TSE.
+- O nome do cargo do vice ou suplente agora aparece certo.
+
+### Melhorado
+- **Campanha — prestação de contas** agora aparece logo abaixo do nome do candidato, com:
+  - quadros de **Recebido**, **Gasto (contratado)**, **Pago** e **Limite de gastos**, e uma barra com quanto do
+    limite já foi usado;
+  - **De onde veio o dinheiro**: Fundo Especial (fundo eleitoral), Fundo Partidário, partidos, pessoas físicas e
+    jurídicas, recursos próprios, vaquinha, doações pela internet e origem não identificada;
+  - **Despesas**: pagas com cada fundo, financeiras e estimáveis;
+  - **Principais tipos de despesa**, **Maiores doadores** e **Maiores fornecedores**;
+  - data da última atualização e da última entrega (parcial ou final) das contas.
+- Limite de gastos do 1º turno nos dados do candidato.
+
 ## [3.6.0] — 2026-09-28
 
 ### Adicionado
