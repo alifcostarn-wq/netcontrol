@@ -931,6 +931,7 @@ html[data-modo="cel"] .only-web{display:none!important}
     <a href="#eleitorado" data-tela="eleitorado"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M15.5 5.6a3.2 3.2 0 0 1 0 6M17 14.3c1.9.6 3.1 2.2 3.5 4.7"/></svg>Eleitorado</a>
     <a href="#comparar" data-tela="comparar"><svg class="i" viewBox="0 0 24 24"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg>Comparar</a>
     <a href="#relatorio" data-tela="relatorio"><svg class="i" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 17v-3M13 17v-5M16 17v-2"/></svg>Relatório</a>
+    <a href="#candidaturas" data-tela="candidaturas"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="15" rx="2.5"/><circle cx="9.5" cy="10.5" r="2.2"/><path d="M6.5 16.5c.5-1.6 1.6-2.5 3-2.5s2.5.9 3 2.5M14.5 9.5h3M14.5 13h3"/></svg>Candidaturas (TSE)</a>
     <a href="#favoritos" data-tela="favoritos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Favoritos</a>
     <a href="#ajuda" data-tela="ajuda"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4M12 16.8v.2"/></svg>Ajuda e dados</a>
   </nav>
@@ -1238,7 +1239,7 @@ const ST = {
   favFiltro: 'todos',
 };
 const salvar = () => { store.set('rv.ano', ST.ano); store.set('rv.turno', ST.turno); store.set('rv.cargo', ST.cargo); store.set('rv.cd', ST.cd); store.set('rv.luf', ST.luf); store.set('rv.lmun', ST.lmun); };
-const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'favoritos', 'ajuda'];
+const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'favoritos', 'ajuda'];
 const ALIAS = { aovivo: 'resultado', bairros: 'candidato', dados: 'ajuda' };
 function irPara(t) { if (location.hash === '#' + t) render(); else location.hash = '#' + t; }
 let NAV = 0;
@@ -1258,6 +1259,7 @@ function zerarAba(t) {
   else if (t === 'candidato') ST.drill = [];
   else if (t === 'eleitorado') Object.assign(EO, { nivel: 'zona', drill: [] });
   else if (t === 'favoritos') ST.favFiltro = 'todos';
+  else if (t === 'candidaturas') Object.assign(CAND, { ano: null, cargo: null, busca: '', sel: null, lim: 60 });
 }
 async function render() {
   let t = location.hash.slice(1) || 'inicio';
@@ -1277,6 +1279,7 @@ async function render() {
     else if (t === 'eleitos') await telaEleitos(el);
     else if (t === 'eleitorado') await telaEleitorado(el);
     else if (t === 'relatorio') await telaRelatorio(el);
+    else if (t === 'candidaturas') await telaCandidaturas(el);
     else if (t === 'favoritos') telaFavoritos(el);
     else telaAjuda(el);
   } catch (e) {
@@ -1314,7 +1317,7 @@ async function modelo() {
   const ciclo = 'ele' + doc.ano, eleCd = doc.ano === 2024 ? (ST.turno === 1 ? '619' : '620') : '';
   const cands = E._rank.map(i => {
     const c = E.cand[i];
-    return { i, nr: String(c.nr), nm: c.nm, sg: c.sg, sit: c.sit || '', anulado: !!c.anulado, votos: tot[i], pct: E._val ? tot[i] / E._val * 100 : 0,
+    return { i, nr: String(c.nr), nm: c.nm, sg: c.sg, sit: c.sit || '', anulado: !!c.anulado, votos: tot[i], pct: E._val ? tot[i] / E._val * 100 : 0, sq: c.sq || '',
       foto: c.sq && eleCd ? P.foto(ciclo, eleCd, doc.uf.toLowerCase(), c.sq) : '' };
   });
   return {
@@ -1505,6 +1508,7 @@ function telaInicio(el) {
   el.innerHTML = `<div class="sec-title">Eleições</div>
     <div class="picks home-grid">
       <a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo em ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
+      <a class="row hl" href="#candidaturas"><span class="ico">${ICON.doc}</span><span class="txt"><b>Candidaturas — DivulgaCand (TSE)</b><small>Ficha do candidato: situação, bens, certidões e contas de campanha</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Eleitos 2026 — cenário ao vivo</b><small>Quem está eleito com os votos apurados até agora</small></span><span class="ico">${ICON.go}</span></a>
       ${anosHist().map(a => `<a class="row hl" href="#resultado" data-ano="${a}"><span class="ico">${ICON.people}</span><span class="txt"><b>Eleições ${a}</b><small>${esc(desc[a] || 'Votos por urna')}</small></span><span class="ico">${ICON.go}</span></a>`).join('')}
     </div>
@@ -1568,7 +1572,8 @@ async function telaCandidato(el) {
   let html = `<div class="ecard"><span class="ico">${ICON.people}</span><div class="txt"><b>${esc(eleT)}</b><small>${esc(m.cidade)}${m.uf ? ' · ' + esc(m.uf) : ''}</small></div><span class="chip ok">${esc(m.ds)}</span></div>
     <div class="ccard"><ul class="clist" style="border:0;border-radius:0"><li class="crow"><span class="rank">${pos + 1}</span>${avatar(c.foto, c.nm)}
       <div class="who"><b>${esc(c.nm)}</b><span class="meta">${esc(c.sg || '')} ${chipSit(c)}</span><span class="troca">Trocar candidato ▾</span></div>
-      <div class="nums"><b>${fmt(c.votos)}</b><small>${pct(c.pct)}</small></div>${starBtn(m, c)}${selCand}</li></ul><div class="facts" id="facts"></div></div>`;
+      <div class="nums"><b>${fmt(c.votos)}</b><small>${pct(c.pct)}</small></div>${starBtn(m, c)}${selCand}</li></ul><div class="facts" id="facts"></div></div>
+    <a class="row" href="#candidaturas" id="ir-dv"><span class="ico">${ICON.doc}</span><span class="txt"><b>Ficha no DivulgaCand (TSE)</b><small>Situação da candidatura, bens, certidões e contas de campanha</small></span><span class="ico">${ICON.go}</span></a>`;
   if (m.fonte === 'live') {
     html += notaLive(m);
     html += m.cd ? `<div class="note">Os votos de 2026 por bairro, local de votação e seção aparecem aqui depois que o TSE publicar os boletins de urna, após a eleição.</div>`
@@ -1628,6 +1633,8 @@ async function telaCandidato(el) {
 }
 function ligarCandidato(el, m) {
   ligarFiltros(el);
+  const dvl = $('#ir-dv');
+  if (dvl) dvl.onclick = () => { const c = m.cands.find(x => x.nr === ST.candNr); CAND.ano = m.ano; CAND.cargo = m.cargo; CAND.busca = c?.nm || ''; CAND.sel = c?.sq || null; };
   const t = $('#troca');
   if (t) t.onchange = () => { ST.candNr = t.value; ST.drill = []; render(); };
   $$('.seg [data-nivel]', el).forEach(b => b.onclick = () => { ST.nivel = b.dataset.nivel; ST.drill = []; ST.manterScroll = true; render(); });
@@ -2283,6 +2290,164 @@ function ligarCol(el, cat, guardar) {
   inp.oninput = () => { REL.colBusca = inp.value; desenhar(); };
 }
 
+/* ============================================================ tela: candidaturas (consulta ao DivulgaCandContas do TSE) */
+// A consulta sai do navegador de quem usa o site; se o navegador não conseguir, tenta pelo servidor do Radar de Votos.
+const DV = { base: 'https://divulgacandcontas.tse.jus.br/divulga/rest/', site: 'https://divulgacandcontas.tse.jus.br/divulga/', cache: new Map(), via: null };
+const CAND = { ano: null, cargo: null, busca: '', sel: null, lim: 60 };
+const DV_IDS = { 2020: '2030402020', 2022: '2040602022', 2024: '2045202024' }; // usados se a lista de eleições do TSE não vier
+const DV_CARGOS = { mun: [[11, 'Prefeito'], [13, 'Vereador']], ger: [[1, 'Presidente'], [3, 'Governador'], [5, 'Senador'], [6, 'Deputado Federal'], [7, 'Deputado Estadual']] };
+const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+const brl = v => (v == null || v === '' || !isFinite(+v)) ? '—' : BRL.format(+v);
+async function dv(p) {
+  if (DV.cache.has(p)) return DV.cache.get(p);
+  const pr = (async () => {
+    let erro;
+    const vias = ['direto', 'proxy', 'proxy-us'];
+    for (const via of DV.via ? [DV.via, ...vias.filter(v => v !== DV.via)] : vias) {
+      try {
+        const url = via === 'direto' ? DV.base + p : `/api/${via === 'proxy' ? 'divulga' : 'divulga-us'}?p=` + encodeURIComponent(p);
+        const r = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout ? AbortSignal.timeout(25000) : undefined });
+        if (r.status === 404) { const e = new Error('O TSE não tem esta informação.'); e.status = 404; throw e; }
+        if (!r.ok) { erro = new Error('O TSE respondeu ' + r.status); erro.status = r.status; continue; }
+        const j = await r.json();
+        DV.via = via;
+        return j;
+      } catch (e) { if (e.status === 404) throw e; erro = e; }
+    }
+    throw erro || new Error('Sem acesso ao TSE');
+  })();
+  DV.cache.set(p, pr);
+  pr.catch(() => DV.cache.delete(p));
+  return pr;
+}
+async function dvEleicoes() {
+  let lista = [];
+  try { lista = await dv('v1/eleicao/ordinarias'); } catch {}
+  const porAno = new Map();
+  for (const e of Array.isArray(lista) ? lista : []) {
+    const ano = +e.ano;
+    if (!ano || ano < 2020 || (e.turno && +e.turno !== 1)) continue;
+    if (!porAno.has(ano)) porAno.set(ano, String(e.id));
+  }
+  for (const [a, id] of Object.entries(DV_IDS)) if (!porAno.has(+a)) porAno.set(+a, id);
+  return [...porAno.entries()].sort((a, b) => b[0] - a[0]).map(([ano, id]) => ({ ano, id, mun: ano % 4 === 0 }));
+}
+const dvUE = (ele, cargo) => ele.mun ? ST.cd : cargo === 1 ? 'BR' : 'RN';
+const dvFoto = (ele, ue, id) => `${DV.base}arquivo/img/${ele.id}/${id}/${ue}`;
+function dvErro(e) {
+  const msg = e?.status ? `O TSE respondeu ${e.status}` : 'O TSE não respondeu à consulta';
+  return `<div class="note warn"><b>Não foi possível consultar o DivulgaCand agora.</b><br>${esc(msg)}. O site do TSE às vezes recusa consultas automáticas; tente de novo em instantes ou abra direto no site oficial.<br>
+    <a class="btn sm" href="${DV.site}" target="_blank" rel="noopener">Abrir o DivulgaCand no site do TSE ↗</a></div>`;
+}
+async function telaCandidaturas(el) {
+  topo('Candidaturas', 'TSE');
+  el.innerHTML = '<div class="empty">Consultando o DivulgaCand do TSE…</div>';
+  const eles = await dvEleicoes();
+  if (ST.tela !== 'candidaturas') return;
+  const ele = eles.find(e => e.ano === +CAND.ano) || eles.find(e => e.ano === +ST.ano) || eles[0];
+  CAND.ano = ele.ano;
+  const cargos = DV_CARGOS[ele.mun ? 'mun' : 'ger'];
+  if (!cargos.some(c => c[0] === CAND.cargo)) CAND.cargo = cargos[0][0];
+  const ue = dvUE(ele, CAND.cargo);
+  const cid = cidadesHist(anosHist()[0]);
+  const nmCid = titulo(cid.find(d => d.cd === ST.cd)?.nm || '');
+  let html = `<div class="note info">Dados oficiais do <b>DivulgaCandContas</b> do TSE: registro de candidatura, situação, dados pessoais, bens declarados, certidões, propostas e prestação de contas.</div>
+    <div class="picks two">
+      ${pickRow('cal', 'Eleição', String(ele.ano), `<select id="dv-ano" aria-label="Eleição">${eles.map(e => `<option value="${e.ano}"${e.ano === ele.ano ? ' selected' : ''}>Eleição ${e.ano}</option>`).join('')}</select>`)}
+      ${pickRow('people', 'Cargo', esc(cargos.find(c => c[0] === CAND.cargo)[1]), `<select id="dv-cargo" aria-label="Cargo">${cargos.map(([k, t]) => `<option value="${k}"${k === CAND.cargo ? ' selected' : ''}>${t}</option>`).join('')}</select>`)}</div>
+    ${ele.mun ? `<div class="picks">${pickRow('pin', 'Município', esc(nmCid), `<select id="dv-mun" aria-label="Município">${cid.map(d => `<option value="${d.cd}"${d.cd === ST.cd ? ' selected' : ''}>${esc(titulo(d.nm))}</option>`).join('')}</select>`)}</div>` : ''}`;
+  el.innerHTML = html + '<div class="empty">Carregando as candidaturas…</div>';
+  ligarDV(el);
+  let lista;
+  try { lista = await dv(`v1/candidatura/listar/${ele.ano}/${ue}/${ele.id}/${CAND.cargo}/candidatos`); }
+  catch (e) { if (ST.tela === 'candidaturas') { el.innerHTML = html + (e.status === 404 ? '<div class="empty">O TSE ainda não publicou candidaturas para esta escolha.</div>' : dvErro(e)); ligarDV(el); } return; }
+  if (ST.tela !== 'candidaturas') return;
+  const cands = (lista?.candidatos || []).slice().sort((a, b) => String(a.nomeUrna || '').localeCompare(String(b.nomeUrna || '')));
+  if (CAND.sel) {
+    const c = cands.find(x => String(x.id) === String(CAND.sel));
+    if (c) return dvFicha(el, html, ele, ue, c);
+    CAND.sel = null;
+  }
+  html += `<label class="search">${ICON.search}<input type="search" id="dv-busca" placeholder="Nome, número ou partido" value="${esc(CAND.busca)}" aria-label="Pesquisar candidatura"></label>
+    <div class="ord" id="dv-sit"></div>
+    <ul class="clist" id="dv-lista"></ul><div class="more" id="dv-mais"></div>
+    <p class="foot">Fonte: TSE — DivulgaCandContas (${plural(cands.length, 'candidatura', 'candidaturas')}). <a href="${DV.site}" target="_blank" rel="noopener">Abrir o site oficial ↗</a></p>`;
+  el.innerHTML = html;
+  ligarDV(el);
+  const sits = [...new Set(cands.map(c => c.descricaoSituacao).filter(Boolean))];
+  let filtroSit = '';
+  const desenhar = () => {
+    const q = norm(CAND.busca);
+    let l = cands.filter(c => !filtroSit || c.descricaoSituacao === filtroSit);
+    if (q) l = l.filter(c => norm(`${c.nomeUrna} ${c.nomeCompleto} ${c.numero} ${c.partido?.sigla || ''}`).includes(q));
+    $('#dv-sit').innerHTML = sits.length > 1 ? `<span>Situação</span><button type="button" data-sit="" aria-pressed="${!filtroSit}">Todas</button>${sits.map(s => `<button type="button" data-sit="${esc(s)}" aria-pressed="${filtroSit === s}">${esc(s)}</button>`).join('')}` : '';
+    $('#dv-sit').hidden = sits.length < 2;
+    $$('[data-sit]').forEach(b => b.onclick = () => { filtroSit = b.dataset.sit; desenhar(); });
+    const lim = q ? l.length : CAND.lim;
+    $('#dv-lista').innerHTML = l.slice(0, lim).map(c => `<li class="crow el" data-dv="${esc(c.id)}" style="cursor:pointer">${avatar(dvFoto(ele, ue, c.id), c.nomeUrna)}
+      <div class="who"><b>${esc(c.nomeUrna)}</b><span class="meta">${esc(c.numero)} · ${esc(c.partido?.sigla || '')} ${c.descricaoSituacao ? `<span class="chip${/deferido$/i.test(c.descricaoSituacao) && !/in/i.test(c.descricaoSituacao) ? ' ok' : ''}">${esc(c.descricaoSituacao)}</span>` : ''} ${c.descricaoTotalizacao ? chipSit({ sit: c.descricaoTotalizacao }) : ''}</span></div>
+      <div class="nums"><small>${esc(titulo(c.nomeCompleto || ''))}</small></div></li>`).join('') || '<li class="empty">Nenhuma candidatura encontrada.</li>';
+    $('#dv-mais').innerHTML = !q && l.length > lim ? `<button class="btn" type="button" id="dv-todos">Ver todas (${fmt(l.length)})</button>` : '';
+    const b = $('#dv-todos'); if (b) b.onclick = () => { CAND.lim = Infinity; desenhar(); };
+    $$('[data-dv]').forEach(r => r.onclick = () => { CAND.sel = r.dataset.dv; render(); });
+  };
+  desenhar();
+  $('#dv-busca').oninput = e => { CAND.busca = e.target.value; desenhar(); };
+}
+function ligarDV(el) {
+  const a = $('#dv-ano', el); if (a) a.onchange = () => { CAND.ano = +a.value; CAND.sel = null; ST.manterScroll = true; render(); };
+  const c = $('#dv-cargo', el); if (c) c.onchange = () => { CAND.cargo = +c.value; CAND.sel = null; ST.manterScroll = true; render(); };
+  const m = $('#dv-mun', el); if (m) m.onchange = () => { ST.cd = m.value; salvar(); CAND.sel = null; ST.manterScroll = true; render(); };
+}
+const rotulo = k => k.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, x => x.toUpperCase());
+async function dvFicha(el, html, ele, ue, resumo) {
+  html += `<div class="crumb"><button type="button" id="dv-voltar">‹ Voltar para a lista</button></div><div id="dv-ficha"><div class="empty">Carregando a ficha…</div></div>`;
+  el.innerHTML = html;
+  ligarDV(el);
+  $('#dv-voltar').onclick = () => { CAND.sel = null; render(); };
+  let c;
+  try { c = await dv(`v1/candidatura/buscar/${ele.ano}/${ue}/${ele.id}/candidato/${resumo.id}`); }
+  catch (e) { $('#dv-ficha').innerHTML = dvErro(e); return; }
+  if (ST.tela !== 'candidaturas') return;
+  const linha = (k, v) => v ? `<span>${esc(k)}</span><span>${esc(v)}</span><span></span>` : '';
+  const idade = c.dataDeNascimento ? Math.floor((Date.now() - new Date(c.dataDeNascimento)) / 31557600000) : null;
+  const nasc = c.dataDeNascimento ? new Date(c.dataDeNascimento).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) : '';
+  const bens = Array.isArray(c.bens) ? c.bens : [];
+  const totalBens = c.totalDeBens ?? bens.reduce((s, b) => s + (+b.valor || 0), 0);
+  const arqs = (Array.isArray(c.arquivos) ? c.arquivos : []).filter(a => a.url);
+  const sites = (Array.isArray(c.sites) ? c.sites : []).filter(Boolean);
+  const ant = Array.isArray(c.eleicoesAnteriores) ? c.eleicoesAnteriores : [];
+  const vices = Array.isArray(c.vices) ? c.vices : [];
+  $('#dv-ficha').innerHTML = `<div class="card rel-head"><div class="rel-who">${avatar(c.fotoUrl || dvFoto(ele, ue, resumo.id), c.nomeUrna, 'lg')}<div><h3>${esc(c.nomeUrna)} · ${esc(c.numero)}</h3>
+      <small class="muted">${esc(c.cargo?.nome || '')} · ${esc(c.partido?.sigla || '')}${c.partido?.nome ? ' — ' + esc(c.partido.nome) : ''} · Eleição ${ele.ano}</small>
+      <div class="rel-chips" style="margin-top:6px">${c.descricaoSituacao ? `<span class="chip">${esc(c.descricaoSituacao)}</span>` : ''}${c.descricaoTotalizacao ? chipSit({ sit: c.descricaoTotalizacao }) || `<span class="chip">${esc(c.descricaoTotalizacao)}</span>` : ''}</div></div></div></div>
+    <div class="card"><h3>Dados pessoais</h3><div class="resumo">
+      ${linha('Nome completo', titulo(c.nomeCompleto || ''))}${linha('Nascimento', nasc ? `${nasc}${idade ? ` (${idade} anos)` : ''}` : '')}
+      ${linha('Naturalidade', [titulo(c.nomeMunicipioNascimento || ''), c.sgUfNascimento].filter(Boolean).join(' / '))}${linha('Gênero', titulo(c.descricaoSexo || ''))}
+      ${linha('Cor/raça', titulo(c.descricaoCorRaca || ''))}${linha('Estado civil', titulo(c.descricaoEstadoCivil || ''))}
+      ${linha('Grau de instrução', titulo(c.grauInstrucao || ''))}${linha('Ocupação', titulo(c.ocupacao || ''))}
+      ${linha('Coligação / federação', [c.nomeColigacao, c.composicaoColigacao].filter(Boolean).join(' — '))}
+      ${linha('CNPJ de campanha', c.cnpjcampanha || '')}${vices.map(v => linha(v.nm_CARGO || v.cargo || 'Vice / suplente', titulo(v.nm_URNA || v.nomeUrna || v.nm_CANDIDATO || ''))).join('')}</div></div>
+    <div class="card"><h3>Bens declarados <small class="muted">${brl(totalBens)}</small></h3>${bens.length ? `<div class="tscroll"><table class="rtab"><thead><tr><th>Tipo</th><th>Descrição</th><th class="n">Valor</th></tr></thead><tbody>
+      ${bens.map(b => `<tr><td>${esc(b.descricaoDeTipoDeBem || '')}</td><td style="white-space:normal">${esc(b.descricao || '')}</td><td class="n">${brl(b.valor)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">Nenhum bem declarado.</p>'}</div>
+    <div class="card"><h3>Prestação de contas</h3><div id="dv-contas" class="muted">Carregando…</div></div>
+    ${arqs.length ? `<div class="card"><h3>Certidões, propostas e documentos</h3><div class="picks">${arqs.map(a => `<a class="row" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="ico">${ICON.doc}</span><span class="txt"><b>${esc(a.nome || a.tipo || 'Documento')}</b><small>${esc(a.tipo || '')}</small></span><span class="ico">↗</span></a>`).join('')}</div></div>` : ''}
+    ${sites.length ? `<div class="card"><h3>Sites e redes sociais</h3><div class="picks">${sites.map(s => `<a class="row" href="${esc(/^https?:/i.test(s) ? s : 'https://' + s)}" target="_blank" rel="noopener nofollow"><span class="txt"><b style="overflow-wrap:anywhere">${esc(s)}</b></span><span class="ico">↗</span></a>`).join('')}</div></div>` : ''}
+    ${ant.length ? `<div class="card"><h3>Eleições anteriores</h3><div class="tscroll"><table class="rtab"><thead><tr><th>Ano</th><th>Cargo</th><th>Nome de urna</th><th>Partido</th><th>Local</th><th>Resultado</th></tr></thead><tbody>
+      ${ant.map(x => `<tr><td>${esc(x.nrAno || x.ano || '')}</td><td>${esc(x.cargo || '')}</td><td>${esc(x.nomeUrna || '')}</td><td>${esc(x.partido || '')}</td><td>${esc(titulo(x.local || x.sgUe || ''))}</td><td>${esc(x.situacaoTotalizacao || '')}</td></tr>`).join('')}</tbody></table></div></div>` : ''}
+    <div class="tools"><a class="btn sm" href="${DV.site}" target="_blank" rel="noopener">Abrir o DivulgaCand no site do TSE ↗</a></div>`;
+  // contas de campanha
+  try {
+    const k = await dv(`v1/prestador/consulta/${ele.id}/${ele.ano}/${ue}/${CAND.cargo}/${c.partido?.numero ?? resumo.partido?.numero}/${c.numero}/${c.id}`);
+    const blocos = [['Receitas', k?.dadosConsolidados], ['Despesas', k?.despesas]].filter(([, o]) => o && typeof o === 'object');
+    const nums = o => Object.entries(o).filter(([, v]) => typeof v === 'number' || (typeof v === 'string' && /^\d+(\.\d+)?$/.test(v)));
+    const rank = (t, l) => Array.isArray(l) && l.length ? `<h3 style="margin-top:6px">${t}</h3><ul class="rlist">${l.slice(0, 10).map((x, i) => `<li class="rrow"><span class="p">${i + 1}</span><span class="nm"><b>${esc(x.nome || x.nomeDoador || x.nomeFornecedor || '')}</b></span><span class="v">${brl(x.valor)}</span><span class="pc"></span><span class="ch"></span></li>`).join('')}</ul>` : '';
+    const h = blocos.map(([t, o]) => `<b>${t}</b><div class="resumo">${nums(o).map(([kk, v]) => `<span>${esc(rotulo(kk))}</span><span>${brl(v)}</span><span></span>`).join('')}</div>`).join('') + rank('Maiores doadores', k?.rankingDoadores) + rank('Maiores fornecedores', k?.rankingFornecedores);
+    $('#dv-contas').innerHTML = h || 'O TSE ainda não publicou a prestação de contas deste candidato.';
+    $('#dv-contas').classList.toggle('muted', !h);
+  } catch (e) { $('#dv-contas').textContent = e.status === 404 ? 'O TSE ainda não publicou a prestação de contas deste candidato.' : 'Não foi possível carregar a prestação de contas agora.'; }
+}
+
 /* ============================================================ tela: favoritos */
 function telaFavoritos(el) {
   topo('Meus favoritos', '');
@@ -2324,6 +2489,7 @@ function telaAjuda(el) {
       <li><b>Candidato</b> — toque num candidato para ver os votos dele por <b>zona, bairro, local de votação e seção</b>, e no mapa. Toque numa linha para abrir os detalhes.</li>
       <li><b>Comparar</b> — coloque até três candidatos lado a lado e veja quem venceu em cada bairro ou local.</li>
       <li><b>Versão Web ou Celular</b> — no computador o sistema abre na versão <b>Web</b> (menu lateral e conteúdo largo); no telefone, na versão <b>Celular</b>. Troque em <b>Versão do sistema</b> (no menu lateral ou na tela inicial). Para ter o <b>app no celular</b>, toque em <b>Instalar como app</b> ou, no iPhone, em Compartilhar › Adicionar à Tela de Início.</li>
+      <li><b>Candidaturas (TSE)</b> — consulta ao DivulgaCandContas: lista de candidatos por eleição, cargo e município, e a ficha de cada um com situação do registro, dados pessoais, bens, certidões, propostas, eleições anteriores e prestação de contas. Na tela de um candidato, toque em <b>Ficha no DivulgaCand</b>.</li>
       <li><b>Relatório</b> — pesquise um candidato e veja todas as eleições que ele disputou na cidade, com votos, posição e crescimento por zona, bairro e local. No modo <b>Colégios eleitorais</b>, compare até quatro locais de votação lado a lado.</li>
       <li><b>Favoritos</b> — toque na estrela ao lado de um candidato para acompanhá-lo.</li></ol>
       <p class="muted"><b>Votos válidos</b> são os votos em candidatos e partidos (sem brancos e nulos). <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas. Em 2026 os números chegam ao vivo do TSE no dia da eleição.</p></div>
