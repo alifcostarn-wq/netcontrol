@@ -852,6 +852,25 @@ select.plain{height:42px;width:100%;border:1px solid var(--line);background:var(
 .rtab td,.rtab th{white-space:nowrap;vertical-align:top}
 .rtab th.n{white-space:normal;min-width:110px}
 .rbars{display:grid;gap:8px}
+.seg.big{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg.big button{display:grid;gap:2px;padding:12px 10px;font-size:.98rem;border-radius:12px}
+.seg.big button small{font-size:.74rem;font-weight:500;opacity:.85}
+.pt-grid{display:grid;gap:10px}
+.ptcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:8px}
+.ptcard.on{border-color:var(--green)}
+.pt-top{display:flex;align-items:center;gap:12px;border:0;background:transparent;padding:0;text-align:left;cursor:pointer;width:100%;color:inherit}
+.pt-nm{flex:1;min-width:0}
+.pt-nm b{display:block;font-size:1rem;text-transform:uppercase;overflow-wrap:anywhere}
+.pt-nm small{display:block;color:var(--muted);font-size:.78rem}
+.pt-v{text-align:right;line-height:1.2}
+.pt-v b{display:block;font-size:1.08rem;color:var(--green);font-variant-numeric:tabular-nums}
+.pt-v small{color:var(--muted);font-size:.8rem}
+.pt-vg{display:grid;justify-items:center;min-width:52px;padding:6px 8px;border-radius:12px;background:var(--card-2);border:1px solid var(--line);font-size:1.25rem;font-weight:700;line-height:1}
+.pt-vg small{font-size:.66rem;font-weight:600;color:var(--muted);margin-top:2px}
+.pt-vg.on{background:var(--green);border-color:var(--green);color:#fff}
+.pt-vg.on small{color:#fff}
+.ptcard .clist{margin-top:4px}
+html[data-modo="web"] .pt-grid{grid-template-columns:repeat(auto-fill,minmax(420px,1fr));align-items:start}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
 .kpis > div{background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .kpis small{display:block;color:var(--muted);font-size:.76rem}
@@ -943,6 +962,7 @@ html[data-modo="cel"] .only-web{display:none!important}
   <nav aria-label="Menu principal">
     <a href="#inicio" data-tela="inicio"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg>Início</a>
     <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
+    <a href="#partidos" data-tela="partidos"><svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>Apuração · Partidos</a>
     <a href="#eleitos" data-tela="eleitos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Eleitos 2026</a>
     <a href="#eleitorado" data-tela="eleitorado"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M15.5 5.6a3.2 3.2 0 0 1 0 6M17 14.3c1.9.6 3.1 2.2 3.5 4.7"/></svg>Eleitorado</a>
     <a href="#comparar" data-tela="comparar"><svg class="i" viewBox="0 0 24 24"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg>Comparar</a>
@@ -965,7 +985,7 @@ html[data-modo="cel"] .only-web{display:none!important}
 <footer class="tabbar">
   <nav aria-label="Navegação principal">
     <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
-    <a href="#comparar" data-tela="comparar"><svg class="i" viewBox="0 0 24 24"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg>Comparar</a>
+    <a href="#partidos" data-tela="partidos"><svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>Partidos</a>
     <a href="#inicio" data-tela="inicio" class="center" aria-label="Início"><span><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg></span><em>Início</em></a>
     <a href="#relatorio" data-tela="relatorio"><svg class="i" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 17v-3M13 17v-5M16 17v-2"/></svg>Relatório</a>
     <a href="#favoritos" data-tela="favoritos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Favoritos</a>
@@ -1064,7 +1084,7 @@ const P = {
 };
 // Eleições 2026 (códigos de produção do TSE): Presidente numa eleição, cargos estaduais em outra
 const ELE26 = { fed: { cd: '6257', ciclo: 'ele2026', t: '1' }, est: { cd: '6259', ciclo: 'ele2026', t: '1' } };
-const CARGOS26 = [{ cd: 1, ds: 'Presidente' }, { cd: 3, ds: 'Governador' }, { cd: 5, ds: 'Senador' }, { cd: 6, ds: 'Deputado Federal' }, { cd: 7, ds: 'Deputado Estadual' }, { cd: 8, ds: 'Deputado Distrital' }];
+const CARGOS26 = [{ cd: 1, ds: 'Presidente' }, { cd: 3, ds: 'Governador' }, { cd: 5, ds: 'Senador' }, { cd: 6, ds: 'Deputado Federal' }, { cd: 7, ds: 'Deputado Estadual' }]; // apuração só do RN
 const DIA_2026 = '04/10/2026';
 
 function parseEA20(j) {
@@ -1081,16 +1101,20 @@ function gruposEA20(cg) {
   return (cg.agr || []).map(a => {
     const nom = a.tvtn != null ? int(a.tvtn) : (a.par || []).reduce((s, p) => s + int(p.tvtn), 0);
     const leg = a.tvtl != null ? int(a.tvtl) : (a.par || []).reduce((s, p) => s + int(p.tvtl), 0);
-    return { n: a.n, sg: dec(a.tp === 'f' ? (a.com || a.nm) : (a.par?.[0]?.sg || a.nm)), votos: nom + leg,
-      cands: (a.par || []).flatMap(p => (p.cand || []).map(c => ({ sq: String(c.sqcand), nr: String(c.n), nm: dec(c.nmu || c.nm), sg: dec(p.sg), vap: int(c.vap), ok: !/anulad/i.test(c.dvt || ''), e: c.e === 's', st: dec(c.st) }))) };
+    return { n: a.n, sg: dec(a.tp === 'f' ? (a.com || a.nm) : (a.par?.[0]?.sg || a.nm)), nm: dec(a.nm || ''), tp: a.tp, votos: nom + leg, nom, leg,
+      pars: (a.par || []).map(p => ({ n: p.n, sg: dec(p.sg), nm: dec(p.nm || ''), nom: int(p.tvtn), leg: int(p.tvtl) })),
+      cands: (a.par || []).flatMap(p => (p.cand || []).map(c => ({ sq: String(c.sqcand), nr: String(c.n), nm: dec(c.nmu || c.nm), sg: dec(p.sg), vap: int(c.vap), ok: !/anulad/i.test(c.dvt || ''), e: c.e === 's', st: dec(c.st), nasc: c.dt || '' }))) };
   });
 }
+// "dd/mm/aaaa" -> aaaammdd (menor = mais velho; no empate de votos o TSE elege o mais velho)
+const nascNum = s => { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s || ''); return m ? +(m[3] + m[2] + m[1]) : 99999999; };
 // Distribuição das vagas proporcionais pela regra do TSE: quociente eleitoral (QE), quociente partidário
 // (candidatos com 10% do QE), sobras pela maior média (partidos com 80% do QE e candidatos com 20% do QE)
 // e, se ainda sobrar vaga, maior média entre todos (STF, 2024). Conferido com o resultado oficial de 2024 no RN.
 function projetarProporcional(grupos, validos, vagas) {
+  if (!(validos > 0)) return { QE: 0, eleitos: [], grupos: [], proximos: [], todos: [] }; // sem votos apurados não há projeção
   const r = validos / vagas, QE = Math.max(1, (r % 1) > 0.5 ? Math.ceil(r) : Math.floor(r));
-  const G = grupos.map(g => ({ ...g, lug: 0, fila: g.cands.filter(c => c.ok).sort((a, b) => b.vap - a.vap), usados: new Set() }));
+  const G = grupos.map(g => ({ ...g, lug: 0, fila: g.cands.filter(c => c.ok).sort((a, b) => b.vap - a.vap || nascNum(a.nasc) - nascNum(b.nasc)), usados: new Set() }));
   const eleitos = [];
   const eleger = (g, c, fase) => { g.lug++; g.usados.add(c.sq); eleitos.push({ ...c, grupo: g.sg, fase }); };
   for (const g of G) {
@@ -1114,7 +1138,7 @@ function projetarProporcional(grupos, validos, vagas) {
   // empate de votos entre o último eleito e o próximo do mesmo partido: o TSE desempata pela idade
   for (const g of G) for (const c of eleitos.filter(x => x.grupo === g.sg)) if (g.fila.some(x => !g.usados.has(x.sq) && x.vap === c.vap)) c.empate = true;
   const proximos = G.map(g => ({ g, c: g.fila.find(x => !g.usados.has(x.sq)), media: g.votos / (g.lug + 1) })).filter(x => x.c).sort((a, b) => b.media - a.media).slice(0, 3);
-  return { QE, eleitos, grupos: G.filter(g => g.lug).sort((a, b) => b.lug - a.lug || b.votos - a.votos), proximos };
+  return { QE, eleitos, grupos: G.filter(g => g.lug).sort((a, b) => b.lug - a.lug || b.votos - a.votos), proximos, todos: G };
 }
 
 /* ============================================================ dados publicados: votos por urna (boletins de urna oficiais) */
@@ -1249,13 +1273,13 @@ const ST = {
   ano: store.get('rv.ano', null), turno: store.get('rv.turno', 1), cargo: store.get('rv.cargo', null),
   uf: 'RN', cd: store.get('rv.cd', CIDADE_PADRAO),
   // 2026 ao vivo
-  luf: store.get('rv.luf', 'rn'), lmun: store.get('rv.lmun', ''),
+  luf: 'rn', lmun: store.get('rv.lmun', ''), // só RN
   candNr: null, nivel: 'bairro', drill: [], busca: '', showAll: false,
   cmp: [], cmpNivel: 'bairro', cmpOrd: 0, cmpLim: 60,
   favFiltro: 'todos',
 };
 const salvar = () => { store.set('rv.ano', ST.ano); store.set('rv.turno', ST.turno); store.set('rv.cargo', ST.cargo); store.set('rv.cd', ST.cd); store.set('rv.luf', ST.luf); store.set('rv.lmun', ST.lmun); };
-const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'favoritos', 'ajuda'];
+const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'partidos', 'favoritos', 'ajuda'];
 const ALIAS = { aovivo: 'resultado', bairros: 'candidato', dados: 'ajuda' };
 function irPara(t) { if (location.hash === '#' + t) render(); else location.hash = '#' + t; }
 let NAV = 0;
@@ -1275,6 +1299,7 @@ function zerarAba(t) {
   else if (t === 'candidato') ST.drill = [];
   else if (t === 'eleitorado') Object.assign(EO, { nivel: 'zona', drill: [] });
   else if (t === 'favoritos') ST.favFiltro = 'todos';
+  else if (t === 'partidos') Object.assign(PT, { mun: '', vista: 'partidos', ord: 'votos', busca: '', filtro: '', aberto: new Set(), lim: 80 });
   else if (t === 'candidaturas') Object.assign(CAND, { ano: null, cargo: null, busca: '', sel: null, lim: 60 });
 }
 async function render() {
@@ -1296,6 +1321,7 @@ async function render() {
     else if (t === 'eleitorado') await telaEleitorado(el);
     else if (t === 'relatorio') await telaRelatorio(el);
     else if (t === 'candidaturas') await telaCandidaturas(el);
+    else if (t === 'partidos') await telaPartidos(el);
     else if (t === 'favoritos') telaFavoritos(el);
     else telaAjuda(el);
   } catch (e) {
@@ -1349,14 +1375,12 @@ async function modeloLive() {
   ST.cargo = cargo;
   const ele = ele26(cargo);
   const cfg = await munCfg26(cargo);
-  let uf = cargo === 1 ? ST.luf : (ST.luf === 'br' ? 'rn' : ST.luf);
-  if (cargo === 8) uf = 'df';
-  if (cargo === 7 && uf === 'df') uf = 'rn';
+  const uf = 'rn'; // o app acompanha só o Rio Grande do Norte (presidente: votos dados no RN)
   ST.luf = uf;
   const mus = (cfg?.abr?.find(a => a.cd === uf)?.mu || []).map(m => ({ cd: m.cd, nm: titulo(dec(m.nm)), cdi: m.cdi })).sort((a, b) => a.nm.localeCompare(b.nm));
-  if (uf === 'br' || !mus.some(m => m.cd === ST.lmun)) ST.lmun = '';
+  if (!mus.some(m => m.cd === ST.lmun)) ST.lmun = '';
   const m = { fonte: 'live', ele, ano: 2026, turno: 1, cargo, ds: CARGOS26.find(c => c.cd === cargo).ds, uf: uf.toUpperCase(), cd: ST.lmun, mus, publicado: !!cfg,
-    cidade: ST.lmun ? mus.find(x => x.cd === ST.lmun)?.nm : (uf === 'br' ? 'Brasil' : titulo(UFS[uf]?.[0] || uf)), cargos: CARGOS26.filter(c => c.cd !== 8 || uf === 'df').filter(c => c.cd !== 7 || uf !== 'df'), turnos: [1] };
+    cidade: ST.lmun ? mus.find(x => x.cd === ST.lmun)?.nm : 'Rio Grande do Norte', cargos: CARGOS26, turnos: [1] };
   if (!cfg) return m;
   const key = P.res(ele, uf, ST.lmun, cargo);
   if (LIVE.key !== key || !LIVE.data || Date.now() >= LIVE.next) await atualizarLive(key);
@@ -1389,6 +1413,11 @@ setInterval(() => {
   if (ST.tela === 'eleitos' && document.visibilityState === 'visible') {
     if (EL.modo === '2026' && isFinite(EL.next) && Date.now() >= EL.next) { ST.manterScroll = true; render(); }
     else { const c = $('#el-cd'); if (c && isFinite(EL.next)) c.textContent = Math.max(0, Math.ceil((EL.next - Date.now()) / 1000)) + ' s'; }
+    return;
+  }
+  if (ST.tela === 'partidos' && document.visibilityState === 'visible') {
+    if (isFinite(PT.next) && Date.now() >= PT.next) { ST.manterScroll = true; render(); }
+    else { const c = $('#pt-cd'); if (c && isFinite(PT.next)) c.textContent = Math.max(0, Math.ceil((PT.next - Date.now()) / 1000)) + ' s'; }
     return;
   }
   if (!EH_LIVE() || !['resultado', 'candidato'].includes(ST.tela) || document.visibilityState !== 'visible') return;
@@ -1463,15 +1492,14 @@ function filtrosHtml(m) {
   const selC = `<select data-f="cargo" aria-label="Cargo">${(m.cargos || []).map(c => `<option value="${c.cd}"${c.cd === m.cargo ? ' selected' : ''}>${esc(c.ds)}</option>`).join('')}</select>`;
   let selU, selM;
   if (m.fonte === 'live') {
-    const ufs = (m.cargo === 1 ? [['br', 'Brasil (todo o país)']] : []).concat(Object.entries(UFS).map(([k, v]) => [k, titulo(v[0])]).sort((a, b) => a[1].localeCompare(b[1])));
-    selU = `<select data-f="uf" aria-label="Estado">${ufs.map(([k, v]) => `<option value="${k}"${k === ST.luf ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
-    selM = `<select data-f="mun" aria-label="Município"${ST.luf === 'br' ? ' disabled' : ''}><option value="">Todos os municípios</option>${(m.mus || []).map(x => `<option value="${x.cd}"${x.cd === ST.lmun ? ' selected' : ''}>${esc(x.nm)}</option>`).join('')}</select>`;
+    selU = `<select data-f="uf" aria-label="Estado"><option>Rio Grande do Norte</option></select>`;
+    selM = `<select data-f="mun" aria-label="Município"><option value="">Todos os municípios</option>${(m.mus || []).map(x => `<option value="${x.cd}"${x.cd === ST.lmun ? ' selected' : ''}>${esc(x.nm)}</option>`).join('')}</select>`;
   } else {
     selU = `<select data-f="uf" aria-label="Estado"><option>Rio Grande do Norte</option></select>`;
     selM = `<select data-f="mun" aria-label="Município">${cidadesHist(m.ano).map(d => `<option value="${d.cd}"${d.cd === m.cd ? ' selected' : ''}>${esc(titulo(d.nm))}</option>`).join('')}</select>`;
   }
   const eleT = eo.find(o => o.v === atual)?.t || `Eleição ${m.ano}`;
-  const ufT = m.fonte === 'live' ? (ST.luf === 'br' ? 'Brasil' : titulo(UFS[ST.luf]?.[0] || ST.luf)) : 'Rio Grande do Norte';
+  const ufT = 'Rio Grande do Norte';
   return `<div class="picks">
     ${pickRow('people', 'Eleição', esc(eleT), selE)}
     ${pickRow('people', 'Cargo', esc(m.ds || ''), selC)}
@@ -1485,7 +1513,6 @@ function ligarFiltros(el) {
     const v = s.value;
     if (s.dataset.f === 'ele') { const [a, t] = v.split('|').map(Number); ST.ano = a; ST.turno = t; }
     else if (s.dataset.f === 'cargo') ST.cargo = +v;
-    else if (s.dataset.f === 'uf') { if (EH_LIVE()) { ST.luf = v; ST.lmun = ''; } }
     else if (s.dataset.f === 'mun') { if (EH_LIVE()) ST.lmun = v; else ST.cd = v; }
     ST.candNr = null; ST.drill = []; ST.showAll = false; ST.cmp = [];
     salvar(); render();
@@ -1523,7 +1550,8 @@ function telaInicio(el) {
   const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
   el.innerHTML = `<div class="sec-title">Eleições</div>
     <div class="picks home-grid">
-      <a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo em ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
+      <a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo no RN · ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
+      <a class="row hl" href="#partidos"><span class="ico">${ICON.flag}</span><span class="txt"><b><span class="dot"></span>Apuração 2026 no RN — partidos</b><small>Deputado federal e estadual: votos de todos os partidos, vagas projetadas e candidatos</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#candidaturas"><span class="ico">${ICON.doc}</span><span class="txt"><b>Candidaturas — DivulgaCand (TSE)</b><small>Ficha do candidato: situação, bens, certidões e contas de campanha</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Eleitos 2026 — cenário ao vivo</b><small>Quem está eleito com os votos apurados até agora</small></span><span class="ico">${ICON.go}</span></a>
       ${anosHist().map(a => `<a class="row hl" href="#resultado" data-ano="${a}"><span class="ico">${ICON.people}</span><span class="txt"><b>Eleições ${a}</b><small>${esc(desc[a] || 'Votos por urna')}</small></span><span class="ico">${ICON.go}</span></a>`).join('')}
@@ -1545,6 +1573,7 @@ async function telaResultado(el) {
   if (!m) { topo('Eleições', ''); el.innerHTML = '<div class="empty">Ainda não há dados publicados.</div>'; return; }
   topo(`Eleições ${m.ano}`, m.uf);
   let html = filtrosHtml(m);
+  if (m.fonte === 'live' && [6, 7].includes(m.cargo)) html += `<a class="row hl" href="#partidos" id="ir-pt"><span class="ico">${ICON.flag}</span><span class="txt"><b>Ver por partido e federação</b><small>Votos de cada partido, vagas projetadas e todos os candidatos</small></span><span class="ico">${ICON.go}</span></a>`;
   if (m.fonte === 'live') html += `<a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Ver os eleitos</b><small>Cenário de quem está eleito com os votos apurados até agora</small></span><span class="ico">${ICON.go}</span></a>` + notaLive(m);
   if (m.cands) {
     html += resumoHtml(m);
@@ -1553,6 +1582,7 @@ async function telaResultado(el) {
   }
   el.innerHTML = html;
   ligarFiltros(el);
+  const irPt = $('#ir-pt'); if (irPt) irPt.onclick = () => { PT.cargo = m.cargo; PT.mun = ST.lmun || ''; PT.next = 0; };
   if (!m.cands) return;
   const desenhar = () => {
     const q = norm(ST.busca);
@@ -1805,8 +1835,7 @@ function cargosEleitos(uf) {
     const e = { cd: '619', ciclo: 'ele2024' };
     return [{ cargo: 11, ele: e, abr: 'rn', mun: ST.cd, foto: 'rn' }, { cargo: 13, ele: e, abr: 'rn', mun: ST.cd, foto: 'rn' }];
   }
-  return [{ cargo: 1, ele: ELE26.fed, abr: 'br', mun: '', foto: 'br' }, { cargo: 3, ele: ELE26.est, abr: uf, mun: '', foto: uf }, { cargo: 5, ele: ELE26.est, abr: uf, mun: '', foto: uf },
-    { cargo: 6, ele: ELE26.est, abr: uf, mun: '', foto: uf }, { cargo: uf === 'df' ? 8 : 7, ele: ELE26.est, abr: uf, mun: '', foto: uf }];
+  return [3, 5, 6, 7].map(cargo => ({ cargo, ele: ELE26.est, abr: 'rn', mun: '', foto: 'rn' })); // cargos disputados no RN
 }
 function vagasPadrao(cargo, uf) {
   const df = VAGAS_DF[uf] || 8;
@@ -1865,19 +1894,17 @@ function secaoEleitos(x) {
 }
 const NOME_CARGO26 = { 1: 'Presidente', 3: 'Governador', 5: 'Senador', 6: 'Deputado Federal', 7: 'Deputado Estadual', 8: 'Deputado Distrital', 11: 'Prefeito', 13: 'Vereador' };
 async function telaEleitos(el) {
-  const uf = ST.luf === 'br' ? 'rn' : ST.luf;
-  topo(EL.modo === '2024' ? 'Eleitos — teste com 2024' : 'Eleitos 2026', EL.modo === '2024' ? 'RN' : uf.toUpperCase());
-  const ufs = Object.entries(UFS).map(([k, v]) => [k, titulo(v[0])]).sort((a, b) => a[1].localeCompare(b[1]));
+  const uf = 'rn';
+  topo(EL.modo === '2024' ? 'Eleitos — teste com 2024' : 'Eleitos 2026', 'RN');
   const cid = cidadesHist(2024);
   let html = `<div class="seg"><button type="button" data-elmodo="2026" aria-pressed="${EL.modo === '2026'}">2026 ao vivo</button><button type="button" data-elmodo="2024" aria-pressed="${EL.modo === '2024'}">Teste com 2024</button></div>` +
     (EL.modo === '2026'
-      ? pickRow('flag', 'Estado', esc(titulo(UFS[uf]?.[0] || uf)), `<select id="el-uf" aria-label="Estado">${ufs.map(([k, v]) => `<option value="${k}"${k === uf ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`)
+      ? `<a class="row hl" href="#partidos"><span class="ico">${ICON.flag}</span><span class="txt"><b>Todos os partidos — deputado federal e estadual</b><small>Votos, vagas projetadas e candidatos de cada partido e federação</small></span><span class="ico">${ICON.go}</span></a>`
       : pickRow('pin', 'Município', esc(titulo(cid.find(d => d.cd === ST.cd)?.nm || '')), `<select id="el-mun" aria-label="Município">${cid.map(d => `<option value="${d.cd}"${d.cd === ST.cd ? ' selected' : ''}>${esc(titulo(d.nm))}</option>`).join('')}</select>`));
   html += `<div class="note info">${EL.modo === '2026' ? 'Cenário montado com os votos apurados até agora, pela regra oficial de distribuição de vagas (quociente eleitoral, quociente partidário e sobras). <b>Pode mudar até o fim da apuração.</b>' : 'Teste do cálculo com o resultado final de 2024 — o mesmo cálculo que será usado ao vivo em 2026. Nos vereadores de 2024 do RN, ele acertou todos os eleitos em 165 dos 167 municípios — nos outros dois houve um empate de votos (o TSE decide pela idade) e uma eleição sem eleitos oficiais.'}</div>`;
   html += `<div id="el-corpo" style="display:grid;gap:12px"><div class="empty">Carregando…</div></div>`;
   el.innerHTML = html;
   $$('[data-elmodo]', el).forEach(b => b.onclick = () => { EL.modo = b.dataset.elmodo; store.set('rv.el.modo', EL.modo); EL.next = 0; render(); });
-  const su = $('#el-uf'); if (su) su.onchange = () => { ST.luf = su.value; ST.lmun = ''; salvar(); EL.next = 0; render(); };
   const sm = $('#el-mun'); if (sm) sm.onchange = () => { ST.cd = sm.value; salvar(); render(); };
   const ks = cargosEleitos(uf);
   const res = await Promise.all(ks.map(async k => {
@@ -1889,7 +1916,7 @@ async function telaEleitos(el) {
   if (!ok.length) {
     const e = res[0]?.erro;
     corpo.innerHTML = e?.status === 404 || !e
-      ? `<div class="note warn"><b>O resultado de 2026 ainda não foi publicado.</b><br>No dia da eleição (${DIA_2026}), a partir das 17h, esta aba monta sozinha o cenário de quem está eleito para presidente, governador, senador e deputados, e atualiza a cada ${LIVE.every} segundos.<br><button class="btn sm" type="button" data-elmodo="2024">Ver como funciona com 2024</button></div>`
+      ? `<div class="note warn"><b>O resultado de 2026 ainda não foi publicado.</b><br>No dia da eleição (${DIA_2026}), a partir das 17h, esta aba monta sozinha o cenário de quem está eleito no RN para governador, senador e deputados, e atualiza a cada ${LIVE.every} segundos.<br><button class="btn sm" type="button" data-elmodo="2024">Ver como funciona com 2024</button></div>`
       : `<div class="note err"><b>Não foi possível buscar os dados no TSE agora.</b> ${esc(e.message)}</div>`;
     $$('[data-elmodo]', corpo).forEach(b => b.onclick = () => { EL.modo = '2024'; store.set('rv.el.modo', '2024'); render(); });
     EL.next = EL.modo === '2026' ? Date.now() + Math.max(LIVE.every, 180) * 1000 : Infinity;
@@ -1898,6 +1925,144 @@ async function telaEleitos(el) {
   const todosFinais = ok.every(r => r.d.meta.and === 'f');
   EL.next = EL.modo === '2026' && !todosFinais ? Date.now() + LIVE.every * 1000 : Infinity;
   corpo.innerHTML = (EL.modo === '2026' && !todosFinais ? `<p class="muted" style="text-align:center">Próxima atualização em <b id="el-cd">${LIVE.every} s</b></p>` : '') + ok.map(r => secaoEleitos(cenario(r.k, r.d))).join('');
+}
+
+/* ============================================================ tela: partidos (apuração 2026 no RN — deputado federal e estadual) */
+const PT = { cargo: store.get('rv.pt.cargo', 6), mun: '', vista: 'partidos', ord: 'votos', busca: '', filtro: '', aberto: new Set(), lim: 80,
+  key: '', data: null, prev: null, erro: null, next: 0, busy: false };
+async function ptCarregar() {
+  const key = P.res(ELE26.est, 'rn', PT.mun, PT.cargo);
+  if (PT.key === key && PT.data && Date.now() < PT.next) return;
+  if (PT.busy) return;
+  PT.busy = true;
+  try {
+    const d = parseEA20(await tse(key));
+    PT.prev = PT.key === key && PT.data ? new Map(PT.data.cands.map(c => [c.sq, c.vap])) : null;
+    PT.key = key; PT.data = d; PT.erro = null;
+    PT.next = d.meta.and === 'f' ? Infinity : Date.now() + LIVE.every * 1000;
+  } catch (e) {
+    if (PT.key !== key) PT.data = null;
+    PT.key = key; PT.erro = e;
+    PT.next = Date.now() + Math.max(LIVE.every, 120) * 1000;
+  } finally { PT.busy = false; }
+}
+// situação de cada candidato na projeção: eleito (QP ou média) e ordem de suplência dentro do partido/federação
+function ptSituacao(d, estadual) {
+  const vv = int(d.v.vv), vagas = d.nv || vagasPadrao(PT.cargo, 'rn');
+  const proj = estadual && vv > 0 ? projetarProporcional(d.grupos, vv, vagas) : null;
+  const fase = new Map((proj?.eleitos || []).map(e => [e.sq, e.fase === 'QP' ? 'Eleito por QP' : 'Eleito por média']));
+  const lug = new Map((proj?.todos || []).map(g => [g.n, g.lug]));
+  const sit = new Map();
+  if (proj) for (const g of d.grupos) {
+    let sup = 0;
+    for (const c of g.cands.filter(x => x.ok).sort((a, b) => b.vap - a.vap || nascNum(a.nasc) - nascNum(b.nasc))) sit.set(c.sq, fase.get(c.sq) || (c.vap > 0 ? `${++sup}º suplente` : ''));
+  }
+  return { vv, vagas, proj, QE: proj?.QE || 0, lug, sit };
+}
+const PT_CHIP = s => !s ? '' : `<span class="chip ${/^Eleito/.test(s) ? 'ok' : /suplente/.test(s) ? 'sup' : ''}">${esc(s)}</span>`;
+async function telaPartidos(el) {
+  const nomeCargo = PT.cargo === 7 ? 'Deputado Estadual' : 'Deputado Federal';
+  topo('Apuração 2026 · Partidos', 'RN');
+  if (!PT.data || !PT.key.includes(`-c${pad(PT.cargo, 4)}-`)) el.innerHTML = '<div class="empty">Buscando a apuração no TSE…</div>';
+  const cfg = await munCfg26(PT.cargo);
+  const mus = (cfg?.abr?.find(a => a.cd === 'rn')?.mu || []).map(m => ({ cd: m.cd, nm: titulo(dec(m.nm)) })).sort((a, b) => a.nm.localeCompare(b.nm));
+  if (PT.mun && !mus.some(m => m.cd === PT.mun)) PT.mun = '';
+  await ptCarregar();
+  if (ST.tela !== 'partidos') return;
+  const d = PT.key === P.res(ELE26.est, 'rn', PT.mun, PT.cargo) ? PT.data : null;
+  const estadual = !PT.mun; // a projeção de vagas só vale para o estado inteiro
+  const nmMun = PT.mun ? mus.find(m => m.cd === PT.mun)?.nm : 'Todo o RN';
+  let html = `<div class="seg big">${[[6, 'Deputado Federal'], [7, 'Deputado Estadual']].map(([k, t]) => `<button type="button" data-ptc="${k}" aria-pressed="${PT.cargo === k}">${t}<small>${k === 6 ? '8 vagas' : '24 vagas'}</small></button>`).join('')}</div>
+    <div class="picks">${pickRow('pin', 'Votação de', esc(nmMun), `<select id="pt-mun" aria-label="Município"><option value="">Todo o RN (com projeção de vagas)</option>${mus.map(m => `<option value="${m.cd}"${m.cd === PT.mun ? ' selected' : ''}>${esc(m.nm)}</option>`).join('')}</select>`)}</div>`;
+  if (!d) {
+    const e = PT.erro;
+    html += !cfg || e?.status === 404
+      ? `<div class="note warn"><b>A apuração de ${esc(nomeCargo)} ainda não foi publicada pelo TSE.</b><br>Esta tela se atualiza sozinha assim que os números saírem.</div>`
+      : `<div class="note err"><b>Não foi possível buscar a apuração no TSE agora.</b> ${esc(e?.message || '')} A página tenta de novo sozinha.</div>`;
+    el.innerHTML = html; ligarPT(el); return;
+  }
+  const S = ptSituacao(d, estadual);
+  const pst = num(d.s.pstn ?? d.s.pst), fim = d.meta.and === 'f';
+  const pill = fim ? '<span class="pill ok">Resultado final</span>' : int(d.s.st) ? '<span class="pill on">Contagem em andamento</span>' : '<span class="pill">Contagem ainda não começou</span>';
+  html += `<div class="live"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap">${pill}<span class="muted">${d.meta.ht ? `TSE: ${esc(d.meta.dt)} ${esc(d.meta.ht)}` : ''}</span></div>
+    <div class="progress"><i style="width:${pst}%"></i></div>
+    <div><b>${pct(pst, 2)}</b> das urnas apuradas <span class="muted">(${fmt(int(d.s.st))} de ${fmt(int(d.s.ts))})</span>${fim ? '' : ` · atualiza em <b id="pt-cd">${Math.max(0, Math.ceil((PT.next - Date.now()) / 1000))} s</b>`}</div></div>`;
+  const tot = int(d.v.tv) || (S.vv + int(d.v.vb) + int(d.v.tvn));
+  html += `<div class="resumo pt-res"><span>Votos válidos</span><span>${fmt(S.vv)}</span><span>${tot ? pct(S.vv / tot * 100) : '—'}</span>
+    <span>Nominais (no candidato)</span><span>${fmt(int(d.v.vnom))}</span><span>${S.vv ? pct(int(d.v.vnom) / S.vv * 100) : '—'}</span>
+    <span>Legenda (no partido)</span><span>${fmt(int(d.v.vl))}</span><span>${S.vv ? pct(int(d.v.vl) / S.vv * 100) : '—'}</span>
+    <span>Brancos</span><span>${fmt(int(d.v.vb))}</span><span>${tot ? pct(int(d.v.vb) / tot * 100) : '—'}</span>
+    <span>Nulos</span><span>${fmt(int(d.v.tvn))}</span><span>${tot ? pct(int(d.v.tvn) / tot * 100) : '—'}</span></div>`;
+  if (estadual) html += S.proj
+    ? `<div class="card"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline"><h3>Vagas projetadas · ${esc(nomeCargo)}</h3><small class="muted">${plural(S.vagas, 'vaga', 'vagas')} · quociente eleitoral <b>${fmt(S.QE)}</b> votos</small></div>
+        <div class="rel-chips">${S.proj.grupos.map(g => `<span class="rchip"><b>${esc(g.sg)}</b> ${g.lug}</span>`).join('')}</div>
+        <small class="muted">Cálculo pela regra oficial (quociente eleitoral, quociente partidário e sobras) com os votos apurados até agora. ${fim ? '' : '<b>Pode mudar até o fim da apuração.</b>'}</small></div>`
+    : `<div class="note info">A projeção de vagas aparece quando começarem a sair os votos.</div>`;
+  else html += `<div class="note info">Votação em <b>${esc(nmMun)}</b>. A projeção de vagas só é feita com os votos do estado inteiro — escolha "Todo o RN".</div>`;
+  html += `<div class="seg">${[['partidos', 'Partidos e federações'], ['candidatos', 'Todos os candidatos']].map(([k, t]) => `<button type="button" data-ptv="${k}" aria-pressed="${PT.vista === k}">${t}</button>`).join('')}</div>`;
+  const grupos = d.grupos.map(g => ({ ...g, pv: S.vv ? g.votos / S.vv * 100 : 0, lug: S.lug.get(g.n) || 0, qe: S.QE ? g.votos / S.QE : 0 }));
+  if (PT.vista === 'partidos') {
+    html += `<div class="ord"><span>Ordenar por</span>${[['votos', 'Mais votos'], ['vagas', 'Mais vagas'], ['nome', 'Nome']].map(([k, t]) => `<button type="button" data-pto="${k}" aria-pressed="${PT.ord === k}">${t}</button>`).join('')}</div>
+      <div id="pt-lista" class="pt-grid"></div>`;
+  } else {
+    html += `<div class="picks two">${pickRow('flag', 'Partido', esc(grupos.find(g => g.n === PT.filtro)?.sg || 'Todos os partidos'), `<select id="pt-filtro" aria-label="Partido"><option value="">Todos os partidos</option>${grupos.slice().sort((a, b) => a.sg.localeCompare(b.sg)).map(g => `<option value="${esc(g.n)}"${g.n === PT.filtro ? ' selected' : ''}>${esc(g.sg)}</option>`).join('')}</select>`)}
+      <label class="search">${ICON.search}<input type="search" id="pt-busca" placeholder="Nome ou número" value="${esc(PT.busca)}" aria-label="Pesquisar candidato"></label></div>
+      <ul class="clist" id="pt-cands"></ul><div class="more" id="pt-mais"></div>`;
+  }
+  html += `<div class="tools"><button class="btn sm" type="button" data-exp="ptp" data-kind="xlsx">Partidos (Excel)</button><button class="btn sm" type="button" data-exp="ptc" data-kind="xlsx">Candidatos (Excel)</button><button class="btn sm" type="button" data-exp="ptc" data-kind="csv">Candidatos (CSV)</button></div>
+    <p class="foot">Fonte: TSE — divulgação oficial de resultados (${esc(nomeCargo)}, RN). Federações contam como um partido só na divisão das vagas.</p>`;
+  el.innerHTML = html;
+  ligarPT(el);
+  const foto = c => P.foto(ELE26.est.ciclo, ELE26.est.cd, 'rn', c.sq);
+  const delta = c => { const a = PT.prev?.get(c.sq); return a != null && c.vap > a ? ` <span class="delta">+${fmt(c.vap - a)}</span>` : ''; };
+  const linhaCand = (c, pos, g) => `<li class="crow el"><span class="rank">${pos}</span>${avatar(foto(c), c.nm)}<div class="who"><b>${esc(c.nm)}</b><span class="meta">${esc(c.nr)} · ${esc(c.sg)}${g && g.sg !== c.sg ? ' · ' + esc(g.sg) : ''} ${PT_CHIP(S.sit.get(c.sq))}</span></div>
+    <div class="nums"><b>${fmt(c.vap)}</b><small>${S.vv ? pct(c.vap / S.vv * 100) : '—'}${delta(c)}</small></div></li>`;
+  if (PT.vista === 'partidos') {
+    const l = grupos.slice().sort((a, b) => PT.ord === 'nome' ? a.sg.localeCompare(b.sg) : PT.ord === 'vagas' ? (b.lug - a.lug || b.votos - a.votos) : (b.votos - a.votos || a.sg.localeCompare(b.sg)));
+    const mx = Math.max(...l.map(g => g.votos), 1);
+    $('#pt-lista').innerHTML = l.map(g => {
+      const aberto = PT.aberto.has(g.n);
+      const cs = g.cands.slice().sort((a, b) => b.vap - a.vap || nascNum(a.nasc) - nascNum(b.nasc));
+      const fed = g.tp === 'f';
+      const cl = !S.QE ? '' : g.votos >= S.QE ? 'Atingiu o quociente eleitoral' : g.votos >= 0.8 * S.QE ? 'Disputa as sobras (80% do QE)' : 'Abaixo de 80% do QE';
+      return `<article class="ptcard${aberto ? ' on' : ''}" data-pt="${esc(g.n)}">
+        <button type="button" class="pt-top" data-ptab="${esc(g.n)}" aria-expanded="${aberto}">
+          <span class="pt-nm"><b>${esc(g.sg)}</b><small>${esc(titulo(g.nm || ''))}${fed && !/federa/i.test(g.nm || '') ? ' · federação' : ''} · ${plural(cs.length, 'candidato', 'candidatos')}</small></span>
+          <span class="pt-v"><b>${fmt(g.votos)}</b><small>${pct(g.pv)}</small></span>
+          ${estadual && S.proj ? `<span class="pt-vg${g.lug ? ' on' : ''}">${g.lug}<small>${g.lug === 1 ? 'vaga' : 'vagas'}</small></span>` : ''}
+        </button>
+        <div class="brow" style="--k:var(--green)"><span>${S.QE ? `${g.qe.toLocaleString('pt-BR', { maximumFractionDigits: 2 })} QE` : 'Votos'}</span><span class="tr"><i style="width:${g.votos / mx * 100}%"></i></span><span class="q">${fmt(g.votos)}</span></div>
+        <small class="muted">Nominais ${fmt(g.nom)} · legenda ${fmt(g.leg)}${fed ? ` · ${g.pars.map(p => `${esc(p.sg)} ${fmt(p.nom + p.leg)}`).join(' · ')}` : ''}${cl ? ' · ' + cl : ''}</small>
+        ${aberto ? `<ul class="clist">${cs.map((c, i) => linhaCand(c, i + 1, null)).join('') || '<li class="empty">Sem candidatos.</li>'}</ul>` : ''}
+      </article>`;
+    }).join('') || '<div class="empty">Sem partidos.</div>';
+    $$('[data-ptab]', el).forEach(b => b.onclick = () => { const n = b.dataset.ptab; if (PT.aberto.has(n)) PT.aberto.delete(n); else PT.aberto.add(n); ST.manterScroll = true; render(); });
+  } else {
+    const gDe = new Map(grupos.flatMap(g => g.cands.map(c => [c.sq, g])));
+    const todos = grupos.flatMap(g => g.cands).sort((a, b) => b.vap - a.vap || nascNum(a.nasc) - nascNum(b.nasc));
+    const desenhar = () => {
+      const q = norm(PT.busca);
+      let l = PT.filtro ? todos.filter(c => gDe.get(c.sq)?.n === PT.filtro) : todos;
+      if (q) l = l.filter(c => norm(`${c.nm} ${c.nr} ${c.sg}`).includes(q));
+      const lim = q ? l.length : PT.lim;
+      $('#pt-cands').innerHTML = l.slice(0, lim).map(c => linhaCand(c, todos.indexOf(c) + 1, gDe.get(c.sq))).join('') || '<li class="empty">Nenhum candidato encontrado.</li>';
+      $('#pt-mais').innerHTML = !q && l.length > lim ? `<button class="btn" type="button" id="pt-todos">Ver todos (${fmt(l.length)})</button>` : '';
+      const b = $('#pt-todos'); if (b) b.onclick = () => { PT.lim = Infinity; desenhar(); };
+    };
+    desenhar();
+    $('#pt-busca').oninput = e => { PT.busca = e.target.value; desenhar(); };
+  }
+  EXPORTS.ptp = () => ({ nome: `apuracao-2026-rn-${nomeCargo}-partidos-${nmMun}`, head: ['Partido/federação', 'Nome', 'Votos (nominais + legenda)', '% dos válidos', 'Nominais', 'Legenda', ...(estadual ? ['Quocientes (votos ÷ QE)', 'Vagas projetadas'] : [])],
+    rows: grupos.slice().sort((a, b) => b.votos - a.votos).map(g => [g.sg, g.nm || '', g.votos, +g.pv.toFixed(2), g.nom, g.leg, ...(estadual ? [+g.qe.toFixed(3), g.lug] : [])]) });
+  EXPORTS.ptc = () => ({ nome: `apuracao-2026-rn-${nomeCargo}-candidatos-${nmMun}`, head: ['Posição', 'Candidato', 'Número', 'Partido', 'Federação', 'Votos', '% dos válidos', 'Situação projetada'],
+    rows: grupos.flatMap(g => g.cands.map(c => ({ c, g }))).sort((a, b) => b.c.vap - a.c.vap).map(({ c, g }, i) => [i + 1, c.nm, c.nr, c.sg, g.tp === 'f' ? g.sg : '', c.vap, S.vv ? +(c.vap / S.vv * 100).toFixed(2) : 0, S.sit.get(c.sq) || '']) });
+}
+function ligarPT(el) {
+  $$('[data-ptc]', el).forEach(b => b.onclick = () => { PT.cargo = +b.dataset.ptc; store.set('rv.pt.cargo', PT.cargo); PT.aberto = new Set(); PT.filtro = ''; PT.next = 0; ST.manterScroll = true; render(); });
+  $$('[data-ptv]', el).forEach(b => b.onclick = () => { PT.vista = b.dataset.ptv; ST.manterScroll = true; render(); });
+  $$('[data-pto]', el).forEach(b => b.onclick = () => { PT.ord = b.dataset.pto; ST.manterScroll = true; render(); });
+  const m = $('#pt-mun', el); if (m) m.onchange = () => { PT.mun = m.value; PT.next = 0; ST.manterScroll = true; render(); };
+  const f = $('#pt-filtro', el); if (f) f.onchange = () => { PT.filtro = f.value; PT.lim = 80; ST.manterScroll = true; render(); };
 }
 
 /* ============================================================ tela: eleitorado (aptos por zona, bairro, escola e seção) */
@@ -2557,7 +2722,7 @@ function telaFavoritos(el) {
       const f = favs()[a.dataset.abrir];
       if (!f) return;
       ST.ano = f.ano; ST.turno = f.turno; ST.cargo = f.cargo; ST.candNr = String(f.nr); ST.drill = [];
-      if (f.fonte === 'live') { ST.luf = f.luf || f.uf.toLowerCase(); ST.lmun = f.cd; } else ST.cd = f.cd;
+      if (f.fonte === 'live') { ST.luf = 'rn'; ST.lmun = f.cd; } else ST.cd = f.cd;
       salvar(); irPara('candidato');
     });
   };
@@ -2576,6 +2741,7 @@ function telaAjuda(el) {
       <li><b>Candidato</b> — toque num candidato para ver os votos dele por <b>zona, bairro, local de votação e seção</b>, e no mapa. Toque numa linha para abrir os detalhes.</li>
       <li><b>Comparar</b> — coloque até três candidatos lado a lado e veja quem venceu em cada bairro ou local.</li>
       <li><b>Versão Web ou Celular</b> — no computador o sistema abre na versão <b>Web</b> (menu lateral e conteúdo largo); no telefone, na versão <b>Celular</b>. Troque em <b>Versão do sistema</b> (no menu lateral ou na tela inicial). Para ter o <b>app no celular</b>, toque em <b>Instalar como app</b> ou, no iPhone, em Compartilhar › Adicionar à Tela de Início.</li>
+      <li><b>Partidos (apuração 2026 no RN)</b> — escolha <b>Deputado Federal</b> ou <b>Deputado Estadual</b> e veja todos os partidos e federações com votos, quociente e vagas projetadas. Toque num partido para ver todos os candidatos dele, ou use "Todos os candidatos" com o filtro por partido. Atualiza sozinho durante a apuração.</li>
       <li><b>Candidaturas (TSE)</b> — consulta ao DivulgaCandContas: lista de candidatos por eleição, cargo e município, e a ficha de cada um com situação do registro, dados pessoais, bens, certidões, propostas, eleições anteriores e prestação de contas. Na tela de um candidato, toque em <b>Ficha no DivulgaCand</b>.</li>
       <li><b>Relatório</b> — pesquise um candidato e veja todas as eleições que ele disputou na cidade, com votos, posição e crescimento por zona, bairro e local. No modo <b>Colégios eleitorais</b>, compare até quatro locais de votação lado a lado.</li>
       <li><b>Favoritos</b> — toque na estrela ao lado de um candidato para acompanhá-lo.</li></ol>
@@ -2903,7 +3069,7 @@ const IMP = {
   init() {
     const su = $('#imp-uf');
     if (!su) return;
-    su.innerHTML = Object.entries(UFS).map(([k, v]) => `<option value="${k.toUpperCase()}"${k === 'rn' ? ' selected' : ''}>${esc(titulo(v[0]))}</option>`).join('');
+    su.innerHTML = '<option value="RN" selected>Rio Grande do Norte</option>';
     $('#imp-ano').onchange = su.onchange = IMP.atualizarLink;
     IMP.atualizarLink();
     $('#imp-auto').onclick = () => IMP.auto();
