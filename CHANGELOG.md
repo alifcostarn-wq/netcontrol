@@ -1,5 +1,36 @@
 # Changelog
 
+## [3.7.0] — 2026-10-04
+
+### Adicionado
+- **Apuração 2026 no RN — Partidos** (nova tela; na barra de baixo, no menu lateral e na tela inicial):
+  - Escolha entre **Deputado Federal** (8 vagas) e **Deputado Estadual** (24 vagas).
+  - **Todos os partidos e federações** com votos totais (nominais + legenda), % dos válidos e quocientes
+    (votos ÷ QE). Cada um mostra se atingiu o quociente eleitoral, se disputa as sobras (80% do QE) ou se está
+    abaixo disso, além dos votos de cada partido dentro da federação.
+  - **Vagas projetadas** de cada partido pela regra oficial (quociente eleitoral, quociente partidário e
+    sobras), com o quociente eleitoral do momento.
+  - Ao tocar num partido, aparecem **todos os candidatos dele**, com votos, %, quanto ganhou desde a última
+    atualização e a situação projetada (eleito por QP, eleito por média ou 1º, 2º… suplente).
+  - Visão **Todos os candidatos**, com ranking geral, **filtro por partido** e busca por nome ou número.
+  - Votação do estado inteiro (com projeção de vagas) ou de **um município** do RN.
+  - Progresso da apuração (% das urnas), horário do TSE e **atualização automática** a cada 30 segundos.
+  - Botões para baixar partidos e candidatos em Excel e CSV.
+- Atalho **"Ver por partido e federação"** no Resultado ao vivo de deputados e no topo da tela Eleitos.
+
+### Alterado
+- **O app agora acompanha só o Rio Grande do Norte.** Saíram a escolha de outros estados e do Brasil inteiro e o
+  Deputado Distrital. O Presidente mostra os votos dados no RN, e a tela Eleitos mostra governador, senador e
+  deputados do RN.
+- Barra de navegação: **Partidos** entrou no lugar de Comparar, que continua nos atalhos da tela inicial e no
+  menu lateral.
+
+### Corrigido
+- **Empate de votos na projeção de deputados:** o desempate agora segue a regra do TSE, que elege o candidato
+  mais velho, usando a data de nascimento do arquivo oficial.
+- Sem votos apurados, a projeção de vagas não aponta mais eleitos por engano. Ela aparece quando começam a sair
+  os votos.
+
 ## [3.6.1] — 2026-09-28
 
 ### Corrigido
