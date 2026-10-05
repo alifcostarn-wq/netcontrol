@@ -1333,7 +1333,15 @@ async function render() {
 }
 
 /* ============================================================ modelo de resultado (mesmo formato para dados das urnas e TSE ao vivo) */
-const EH_LIVE = () => +ST.ano === 2026;
+const TEM_HIST26 = () => anosHist().includes(2026); // boletins de urna de 2026 já publicados no site
+const EH_LIVE = () => +ST.ano === 2026 && !TEM_HIST26();
+// foto oficial do candidato (resultados.tse.jus.br) a partir do sq gravado nos dados por urna
+function fotoHist(ano, turno, cargo, uf, sq) {
+  if (!sq) return '';
+  if (+ano === 2024) return P.foto('ele2024', turno === 1 ? '619' : '620', uf, sq);
+  if (+ano === 2026) return cargo === 1 ? P.foto('ele2026', '6257', 'br', sq) : P.foto('ele2026', '6259', uf, sq);
+  return '';
+}
 const LIVE = { munCfg: {}, data: null, key: '', erro: null, next: 0, every: store.get('rv.every', 30), busy: false, prev: new Map(), cidades: new Map(), cidadesKey: '' };
 const ele26 = cargo => (cargo === 1 ? ELE26.fed : ELE26.est);
 async function munCfg26(cargo) {
@@ -1356,11 +1364,10 @@ async function modelo() {
   const somaTipo = t => E.cand.reduce((s, c, i) => s + (c.tipo === t ? tot[i] : 0), 0);
   const aptos = doc.secoes.reduce((s, x) => s + (x[3] || 0), 0);
   const votantes = E._all, brancos = somaTipo('b'), nulos = somaTipo('n');
-  const ciclo = 'ele' + doc.ano, eleCd = doc.ano === 2024 ? (ST.turno === 1 ? '619' : '620') : '';
   const cands = E._rank.map(i => {
     const c = E.cand[i];
     return { i, nr: String(c.nr), nm: c.nm, sg: c.sg, sit: c.sit || '', anulado: !!c.anulado, votos: tot[i], pct: E._val ? tot[i] / E._val * 100 : 0, sq: c.sq || '',
-      foto: c.sq && eleCd ? P.foto(ciclo, eleCd, doc.uf.toLowerCase(), c.sq) : '' };
+      foto: fotoHist(doc.ano, ST.turno, E.cargo, doc.uf.toLowerCase(), c.sq) };
   });
   return {
     fonte: 'hist', doc, E, ano: doc.ano, turno: ST.turno, cargo: E.cargo, ds: E.ds, uf: doc.uf, cd: doc.municipio.cd, cidade: titulo(doc.municipio.nm),
@@ -1478,7 +1485,7 @@ function crowHtml(m, c, pos) {
     <div class="nums"><b>${fmt(c.votos)}</b><small>${pct(c.pct)}${c.delta ? ` <span class="delta">+${fmt(c.delta)}</span>` : ''}</small></div>${starBtn(m, c)}</li>`;
 }
 function eleicaoOpts() {
-  const out = [{ v: '2026|1', t: 'Eleição 2026 · 1º turno (ao vivo)' }];
+  const out = TEM_HIST26() ? [] : [{ v: '2026|1', t: 'Eleição 2026 · 1º turno (ao vivo)' }];
   for (const a of anosHist()) {
     const d = DS.get(a + '|' + ST.uf + '|' + ST.cd);
     const turnos = d?.doc ? [...new Set(d.doc.eleicoes.map(e => e.turno))] : (a === 2022 ? [1, 2] : [1]);
@@ -1547,13 +1554,13 @@ function telaInicio(el) {
       <a href="#comparar"><span>${ICON.cmp}</span>Comparar</a>
       <a href="#ajuda"><span>${ICON.help}</span>Ajuda e dados</a>
     </div></div>`;
-  const desc = { 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
+  const desc = { 2026: 'Presidente, governador, senador e deputados · votos por urna, bairros e locais', 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
   el.innerHTML = `<div class="sec-title">Eleições</div>
     <div class="picks home-grid">
-      <a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo no RN · ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
-      <a class="row hl" href="#partidos"><span class="ico">${ICON.flag}</span><span class="txt"><b><span class="dot"></span>Apuração 2026 no RN — partidos</b><small>Deputado federal e estadual: votos de todos os partidos, vagas projetadas e candidatos</small></span><span class="ico">${ICON.go}</span></a>
+      ${TEM_HIST26() ? '' : `<a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo no RN · ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>`}
+      <a class="row hl" href="#partidos"><span class="ico">${ICON.flag}</span><span class="txt"><b>${TEM_HIST26() ? '' : '<span class="dot"></span>'}Resultado 2026 no RN — partidos</b><small>Deputado federal e estadual: votos de todos os partidos, vagas projetadas e candidatos</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#candidaturas"><span class="ico">${ICON.doc}</span><span class="txt"><b>Candidaturas — DivulgaCand (TSE)</b><small>Ficha do candidato: situação, bens, certidões e contas de campanha</small></span><span class="ico">${ICON.go}</span></a>
-      <a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Eleitos 2026 — cenário ao vivo</b><small>Quem está eleito com os votos apurados até agora</small></span><span class="ico">${ICON.go}</span></a>
+      <a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Eleitos 2026 no RN</b><small>Governador, senadores e deputados pela regra oficial de vagas</small></span><span class="ico">${ICON.go}</span></a>
       ${anosHist().map(a => `<a class="row hl" href="#resultado" data-ano="${a}"><span class="ico">${ICON.people}</span><span class="txt"><b>Eleições ${a}</b><small>${esc(desc[a] || 'Votos por urna')}</small></span><span class="ico">${ICON.go}</span></a>`).join('')}
     </div>
     <div class="card only-cel"><h3>Versão do sistema</h3><p class="muted">Escolha <b>Web</b> para a tela de computador (menu lateral e conteúdo largo) ou <b>Celular</b> para a tela de aplicativo. Na <b>Automática</b>, o sistema escolhe pelo tamanho da tela.</p>
@@ -2069,13 +2076,13 @@ function ligarPT(el) {
 const EO = { ano: store.get('rv.eo.ano', null), nivel: 'zona', drill: [] };
 function anosEleitorado() {
   const cad26 = store.get('rv.locais.RN|2026', null)?.aptos || LOC.publicados.some(x => x.uf === 'RN' && +x.ano === 2026);
-  return [...(cad26 ? [2026] : []), ...anosHist()];
+  return [...new Set([...(cad26 ? [2026] : []), ...anosHist()])].sort((a, b) => b - a);
 }
 async function baseEleitorado(ano, cd) {
   const uf = 'RN';
   if (DS.has(ano + '|' + uf + '|' + cd)) {
     const doc = await getDoc(ano, uf, cd);
-    return { ano, cidade: titulo(doc.municipio.nm), fonte: 'Boletins de urna / TSE', temComp: ano !== 2026 && doc.secoes.some(s => s[4]),
+    return { ano, cidade: titulo(doc.municipio.nm), fonte: 'Boletins de urna / TSE', temComp: doc.secoes.some(s => s[4]),
       linhas: doc.secoes.map(s => { const L = doc.locais[s[0]]; return { z: s[1], s: s[2], lk: L.z + '|' + L.n, nm: nomeLocal(L), bairro: L.bairro, end: L.end, aptos: s[3] || 0, comp: s[4] || 0 }; }) };
   }
   const cat = await catalogo(uf, ano);
@@ -2174,6 +2181,7 @@ function nomesParecidos(a, b) {
   if (!cur.length || (cur.length === 1 && cur[0].length < 4)) return 0;
   const s = new Set(lon);
   if (!cur.every(w => s.has(w))) return 0;
+  if (cur.length === 1 && lon[0] !== cur[0]) return 0; // "ALLYSON" casa com "ALLYSON LEANDRO…", não com "CINTHIA DE ALLYSON"
   return cur.length / lon.length;
 }
 async function docsCidade(cd) {
@@ -2189,10 +2197,9 @@ function candidaturas(docs) {
   const out = [];
   for (const doc of docs) for (const E of doc.eleicoes) E.cand.forEach((c, i) => {
     if (c.tipo !== 'c') return;
-    const eleCd = doc.ano === 2024 ? (E.turno === 1 ? '619' : '620') : '';
     out.push({ id: idCand(doc.ano, E, c), ano: doc.ano, turno: E.turno, cargo: E.cargo, ds: E.ds, nr: String(c.nr), nm: c.nm, sg: c.sg || '', sit: c.sit || '', anulado: !!c.anulado,
       votos: E._tot[i], pct: E._val ? E._tot[i] / E._val * 100 : 0, pos: E._rank.indexOf(i) + 1, nCands: E._rank.length, doc, E, i,
-      foto: c.sq && eleCd ? P.foto('ele' + doc.ano, eleCd, doc.uf.toLowerCase(), c.sq) : '' });
+      foto: fotoHist(doc.ano, E.turno, E.cargo, doc.uf.toLowerCase(), c.sq) });
   });
   return out;
 }
@@ -2475,7 +2482,7 @@ function ligarCol(el, cat, guardar) {
 // A consulta sai do navegador de quem usa o site; se o navegador não conseguir, tenta pelo servidor do Radar de Votos.
 const DV = { base: 'https://divulgacandcontas.tse.jus.br/divulga/rest/', site: 'https://divulgacandcontas.tse.jus.br/divulga/', cache: new Map(), via: null, eleicoes: null, achadas: [] };
 const CAND = { ano: null, cargo: null, busca: '', sel: null, lim: 60 };
-const DV_IDS = { 2020: '2030402020', 2022: '2040602022', 2024: '2045202024' }; // usados se a lista de eleições do TSE não vier
+const DV_IDS = { 2020: '2030402020', 2022: '2040602022', 2024: '2045202024', 2026: '20322002026' }; // usados se a lista de eleições do TSE não vier
 const DV_CARGOS = { mun: [[11, 'Prefeito'], [13, 'Vereador']], ger: [[3, 'Governador'], [5, 'Senador'], [6, 'Deputado Federal'], [7, 'Deputado Estadual'], [1, 'Presidente']] };
 const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 const brl = v => (v == null || v === '' || !isFinite(+v)) ? '—' : BRL.format(+v);
@@ -2764,7 +2771,7 @@ function telaAjuda(el) {
       <input type="file" id="loc-file" accept=".zip,application/zip" hidden><p id="loc-status" class="muted"></p></div>
     <div class="card"><h3>Dados disponíveis</h3><table><thead><tr><th>Ano</th><th>Estado</th><th class="n">Cidades</th><th class="n">Urnas</th></tr></thead><tbody>
       ${[...grupos.values()].sort((a, b) => b.ano - a.ano).map(g => `<tr><td>${g.ano}</td><td>${esc(g.uf)}</td><td class="n">${fmt(g.c)}</td><td class="n">${fmt(g.s)}</td></tr>`).join('')}
-      <tr><td>2026</td><td>Todos</td><td class="n" colspan="2">ao vivo no dia da eleição</td></tr></tbody></table></div>
+      ${TEM_HIST26() ? '' : '<tr><td>2026</td><td>RN</td><td class="n" colspan="2">ao vivo no dia da eleição</td></tr>'}</tbody></table></div>
     <div class="card"><h3>Preferências</h3>
       <label>Atualizar a apuração ao vivo a cada <select class="plain" id="every"><option value="15">15 segundos</option><option value="30">30 segundos</option><option value="60">1 minuto</option><option value="120">2 minutos</option></select></label>
       <details><summary>Conexão com o TSE (avançado)</summary><div class="radios" id="conn-via">

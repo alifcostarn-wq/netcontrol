@@ -1,5 +1,37 @@
 # Changelog
 
+## [3.8.0] — 2026-10-05
+
+### Adicionado
+- **Eleições 2026 por urna em todo o RN**, como nos anos anteriores: os 167 municípios e as 8.336 seções foram
+  lidos dos boletins de urna oficiais do TSE.
+  - Presidente, governador, senador, deputado federal e deputado estadual, com votos por **zona, bairro, local de
+    votação (escola) e seção**, além do **mapa** com os locais.
+  - Nomes, bairros e endereços dos locais vêm do cadastro de 2026 já publicado.
+  - **Fotos oficiais** dos candidatos.
+  - 2026 entra em todas as análises: **Resultado, Candidato, Comparar, Relatório** (o candidato em todas as
+    eleições, agora com 2026) e **Eleitorado** (aptos e comparecimento por zona, bairro, escola e seção).
+- Gerador de dados (`scripts/build-historico.mjs`) preparado para 2026 (pleito 3220). Ele usa o boletim binário,
+  já que nem toda urna tem a versão em texto, e pega o nome e o partido de cada candidato no resultado oficial
+  do município.
+- Consulta de Candidaturas: incluído o código oficial da eleição de 2026 no DivulgaCand, para 2026 aparecer
+  mesmo se a lista do TSE não vier.
+
+### Conferido
+- Em **163 dos 167 municípios**, o total de votantes bate exatamente com o oficial do TSE. Em Mossoró foram
+  157.644 votantes, igual ao TSE.
+- Em **Touros, Macaíba, Maxaranguape e Porto do Mangue**, o TSE ainda não terminou a totalização e algumas urnas
+  ainda não foram publicadas. Esses municípios serão atualizados quando os boletins saírem.
+
+### Alterado
+- Com os dados por urna publicados, 2026 deixou de aparecer como "ao vivo" em Resultado e Comparar e passou a
+  funcionar igual aos outros anos. As telas Partidos e Eleitos continuam com o total do estado pelo resultado
+  oficial do TSE.
+
+### Corrigido
+- Relatório: ao juntar as eleições de um candidato pelo nome, um nome de uma palavra só ("ALLYSON") não casa
+  mais com nomes que só o contêm no meio ou no fim ("CINTHIA DE ALLYSON").
+
 ## [3.7.0] — 2026-10-04
 
 ### Adicionado

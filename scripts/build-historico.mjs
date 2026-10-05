@@ -17,6 +17,8 @@ const BASE = 'https://resultados.tse.jus.br/oficial';
 const ANOS = {
   2022: { ciclo: 'ele2022', nome: 'Eleições Gerais 2022', turnos: [{ t: 1, pl: '406', ele: ['544', '546'] }, { t: 2, pl: '407', ele: ['545', '547'] }], resultados: false },
   2024: { ciclo: 'ele2024', nome: 'Eleições Municipais 2024', turnos: [{ t: 1, pl: '452', ele: ['619'] }, { t: 2, pl: '453', ele: ['620'] }], resultados: true },
+  // 2026: presidente na eleição federal (6257/6258), demais cargos na estadual (6259/6260); 2º turno ainda sem urnas publicadas
+  2026: { ciclo: 'ele2026', nome: 'Eleições Gerais 2026', turnos: [{ t: 1, pl: '3220', ele: ['6257', '6259'] }], resultados: true, preferBin: true, eleDoCargo: (T, cargo) => T.ele[cargo === 1 ? 0 : 1] },
 };
 const CARGOS = { PRESIDENTE: 1, GOVERNADOR: 3, SENADOR: 5, 'DEPUTADO FEDERAL': 6, 'DEPUTADO ESTADUAL': 7, 'DEPUTADO DISTRITAL': 8, PREFEITO: 11, VEREADOR: 13 };
 const NOME_CARGO = { 1: 'Presidente', 3: 'Governador', 5: 'Senador', 6: 'Deputado Federal', 7: 'Deputado Estadual', 8: 'Deputado Distrital', 11: 'Prefeito', 13: 'Vereador' };
@@ -34,7 +36,7 @@ const anos = String(args.anos || '2024').split(',').map(s => s.trim()).filter(Bo
 const SAIDA = path.resolve(args.saida || 'data/historico');
 const CONC = Math.max(1, Math.min(16, +(args.concorrencia || 8)));
 if (!/^[a-z]{2}$/.test(UF) || (!args.todos && !args.mun && !args['mun-nome'])) {
-  console.error('Uso: node scripts/build-historico.mjs --uf RN (--mun 17590 | --mun-nome "MOSSORO" | --todos) [--anos 2022,2024]');
+  console.error('Uso: node scripts/build-historico.mjs --uf RN (--mun 17590 | --mun-nome "MOSSORO" | --todos) [--anos 2022,2024,2026]');
   process.exit(1);
 }
 for (const a of anos) if (!ANOS[a]) { console.error(`Ano ${a} não suportado. Anos disponíveis: ${Object.keys(ANOS).join(', ')}`); process.exit(1); }
@@ -250,7 +252,7 @@ async function completarCandidatos(doc, ano, uf, mun) {
     if (!A.resultados) continue;
     // situação oficial (eleito, suplente...) e partido pelo resultado do município
     const T = A.turnos.find(t => t.t === E.turno);
-    for (const ele of T.ele) {
+    for (const ele of A.eleDoCargo ? [A.eleDoCargo(T, E.cargo)] : T.ele) {
       const j = await baixar(`${BASE}/${A.ciclo}/${ele}/dados/${uf}/${uf}${mun.cd}-c${pad(E.cargo, 4)}-e${pad(ele, 6)}-u.json`);
       const cg = j?.carg?.[0];
       if (!cg) continue;
@@ -314,7 +316,7 @@ for (const ano of anos) {
       const arqs = h?.arq || (h?.nmarq || []).map(nm => ({ nm, tp: nm.split('.').pop() }));
       const img = arqs.find(a => /imgbu/.test(a.tp) || /imgbu/.test(a.nm));
       const bin = arqs.find(a => a.tp === 'bu' || /[.-]bu(\.dat)?$/.test(a.nm));
-      const arq = img || bin;
+      const arq = A.preferBin ? (bin || img) : (img || bin); // 2026: nem toda seção tem a versão em texto
       const buf = arq ? await baixar(`${dir}/${h.hash}/${arq.nm}`, 'bin') : null;
       if (!buf) { doc._semBU++; }
       else {
