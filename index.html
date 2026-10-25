@@ -1389,7 +1389,7 @@ function fotoHist(ano, turno, cargo, uf, sq) {
   if (+ano === 2026) { const e = ele26(cargo, turno); return P.foto('ele2026', e.cd, cargo === 1 ? 'br' : uf, sq); }
   return '';
 }
-const LIVE = { munCfg: {}, data: null, key: '', erro: null, next: 0, every: store.get('rv.every', 10), busy: false, prev: new Map(), cidades: new Map(), cidadesKey: '' };
+const LIVE = { munCfg: {}, data: null, key: '', erro: null, next: 0, every: store.get('rv.intervalo', 30) /* apuração ao vivo: atualiza a cada 30 s */, busy: false, prev: new Map(), cidades: new Map(), cidadesKey: '' };
 const ele26 = (cargo, turno = 1) => turno === 2 ? (cargo === 1 ? ELE26.fed2 : ELE26.est2) : (cargo === 1 ? ELE26.fed : ELE26.est);
 async function munCfg26(cargo, turno = 1) {
   const e = ele26(cargo, turno);
@@ -2102,7 +2102,7 @@ async function telaSegundoTurno(el) {
   const todosFinais = Object.values(T2.dados).length && Object.values(T2.dados).every(x => x.d.meta.and === 'f');
   const parado = !todosFinais && ultPub && Date.now() - ultPub > 10 * 60000;
   const cd = isFinite(T2.next) ? ` · próxima em <b id="t2-cd">${T2.busy ? 'atualizando…' : Math.max(0, Math.ceil((T2.next - Date.now()) / 1000)) + ' s'}</b>` : '';
-  const ctl = `<div class="t2-ctl"><label>Atualizar a cada <select id="t2-every" aria-label="Intervalo de atualização">${[5, 10, 15, 30, 60].map(v => `<option value="${v}"${v === LIVE.every ? ' selected' : ''}>${v < 60 ? v + ' s' : '1 min'}</option>`).join('')}</select></label><button class="btn sm" type="button" id="t2-agora">Atualizar agora</button></div>`;
+  const ctl = `<div class="t2-ctl"><span>Atualiza sozinho a cada ${LIVE.every} segundos</span><button class="btn sm" type="button" id="t2-agora">Atualizar agora</button></div>`;
   let html = parado
     ? `<div class="note warn"><b>O TSE não publica números novos desde ${horaLocal(ultPub).slice(0, 5)}.</b> O Radar confere a cada ${LIVE.every} segundos e mostra assim que o TSE divulgar.<br><small>Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small>${ctl}</div>`
     : `<div class="note info">2º turno em ${DIA_2026_T2}: <b>Governador do RN</b> e <b>Presidente</b>. Os números vêm do TSE, que divulga a partir das 17h (horário de Brasília).<br><small>${ultPub ? `Última publicação do TSE: ${horaLocal(ultPub).slice(0, 5)} · ` : ''}Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small>${ctl}</div>`;
@@ -2132,7 +2132,6 @@ async function telaSegundoTurno(el) {
   if (!T2.mun && T2.cid.aberto) t2Municipios(mus);
 }
 function ligarT2(el) {
-  const ev = $('#t2-every', el); if (ev) ev.onchange = () => { LIVE.every = +ev.value; store.set('rv.every', LIVE.every); T2.next = Math.min(T2.next, Date.now() + LIVE.every * 1000); ST.manterScroll = true; render(); };
   const ag = $('#t2-agora', el); if (ag) ag.onclick = () => { if (T2.busy) return; T2.next = 0; ag.disabled = true; ag.textContent = 'Atualizando…'; ST.manterScroll = true; render(); };
   const m = $('#t2-mun', el); if (m) m.onchange = () => { T2.mun = m.value; T2.next = 0; ST.manterScroll = true; render(); };
   const a = $('#t2-abrir', el); if (a) a.onclick = () => { T2.cid.aberto = true; ST.manterScroll = true; render(); };
@@ -3264,7 +3263,7 @@ function telaAjuda(el) {
       ${[...grupos.values()].sort((a, b) => b.ano - a.ano).map(g => `<tr><td>${g.ano}</td><td>${esc(g.uf)}</td><td class="n">${fmt(g.c)}</td><td class="n">${fmt(g.s)}</td></tr>`).join('')}
       ${TEM_HIST26() ? '' : '<tr><td>2026</td><td>RN</td><td class="n" colspan="2">ao vivo no dia da eleição</td></tr>'}</tbody></table></div>
     <div class="card"><h3>Preferências</h3>
-      <label>Atualizar a apuração ao vivo a cada <select class="plain" id="every"><option value="5">5 segundos</option><option value="10">10 segundos</option><option value="15">15 segundos</option><option value="30">30 segundos</option><option value="60">1 minuto</option></select></label>
+      <label>Atualizar a apuração ao vivo a cada <select class="plain" id="every"><option value="15">15 segundos</option><option value="30">30 segundos</option><option value="60">1 minuto</option><option value="120">2 minutos</option></select></label>
       <details><summary>Conexão com o TSE (avançado)</summary><div class="radios" id="conn-via">
         <label><input type="radio" name="via" value="auto"> <span><b>Automático</b> (recomendado)</span></label>
         <label><input type="radio" name="via" value="direto"> <span><b>Direto</b> — cada navegador lê do TSE</span></label>
@@ -3274,7 +3273,7 @@ function telaAjuda(el) {
       <pre>node scripts/build-historico.mjs --uf RN --todos --anos 2022,2024</pre></details>
     <p class="foot">Fonte: TSE — resultados oficiais, boletins de urna e cadastro de locais de votação. Ferramenta independente, sem vínculo com a Justiça Eleitoral. Confira os resultados oficiais em resultados.tse.jus.br.</p>`;
   $('#every').value = String(LIVE.every);
-  $('#every').onchange = e => { LIVE.every = +e.target.value; store.set('rv.every', LIVE.every); };
+  $('#every').onchange = e => { LIVE.every = +e.target.value; store.set('rv.intervalo', LIVE.every); };
   $$('#conn-via input').forEach(r => { r.checked = r.value === CONN.via; r.onchange = () => { CONN.via = r.value; CONN.direto = {}; store.set('rv.via', r.value); }; });
   LOC.init();
   IMP.init();

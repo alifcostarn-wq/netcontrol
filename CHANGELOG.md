@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.10.4] — 2026-10-25
+
+### Alterado
+- **Resultado ao vivo atualizado a cada 30 segundos.** O intervalo voltou a ser fixo em 30 segundos, para todos.
+  Aparelhos que tinham guardado outro intervalo também passam a usar 30 segundos.
+- Tela do 2º turno: saiu a escolha de intervalo. Ficou o aviso **"Atualiza sozinho a cada 30 segundos"**, a
+  contagem até a próxima atualização e o botão **"Atualizar agora"**.
+- Ajuda: as opções de intervalo voltaram a ser 15 s, 30 s (padrão), 1 min e 2 min.
+
 ## [3.10.3] — 2026-10-25
 
 ### Melhorado
