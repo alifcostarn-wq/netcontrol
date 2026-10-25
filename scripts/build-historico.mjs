@@ -17,8 +17,8 @@ const BASE = 'https://resultados.tse.jus.br/oficial';
 const ANOS = {
   2022: { ciclo: 'ele2022', nome: 'Eleições Gerais 2022', turnos: [{ t: 1, pl: '406', ele: ['544', '546'] }, { t: 2, pl: '407', ele: ['545', '547'] }], resultados: false },
   2024: { ciclo: 'ele2024', nome: 'Eleições Municipais 2024', turnos: [{ t: 1, pl: '452', ele: ['619'] }, { t: 2, pl: '453', ele: ['620'] }], resultados: true },
-  // 2026: presidente na eleição federal (6257/6258), demais cargos na estadual (6259/6260); 2º turno ainda sem urnas publicadas
-  2026: { ciclo: 'ele2026', nome: 'Eleições Gerais 2026', turnos: [{ t: 1, pl: '3220', ele: ['6257', '6259'] }], resultados: true, preferBin: true, eleDoCargo: (T, cargo) => T.ele[cargo === 1 ? 0 : 1] },
+  // 2026: presidente na eleição federal (6257; 2º turno 6258), demais cargos na estadual (6259; 2º turno 6260: governador)
+  2026: { ciclo: 'ele2026', nome: 'Eleições Gerais 2026', turnos: [{ t: 1, pl: '3220', ele: ['6257', '6259'] }, { t: 2, pl: '3221', ele: ['6258', '6260'] }], resultados: true, preferBin: true, eleDoCargo: (T, cargo) => T.ele[cargo === 1 ? 0 : 1] },
 };
 const CARGOS = { PRESIDENTE: 1, GOVERNADOR: 3, SENADOR: 5, 'DEPUTADO FEDERAL': 6, 'DEPUTADO ESTADUAL': 7, 'DEPUTADO DISTRITAL': 8, PREFEITO: 11, VEREADOR: 13 };
 const NOME_CARGO = { 1: 'Presidente', 3: 'Governador', 5: 'Senador', 6: 'Deputado Federal', 7: 'Deputado Estadual', 8: 'Deputado Distrital', 11: 'Prefeito', 13: 'Vereador' };
@@ -335,7 +335,7 @@ for (const ano of anos) {
     const arquivo = `${UF}-${cd}-${slug(doc.municipio.nm)}-${ano}.json`;
     fs.writeFileSync(path.join(SAIDA, arquivo), JSON.stringify(doc));
     indice.datasets = indice.datasets.filter(d => !(d.ano === +ano && d.uf === UF.toUpperCase() && d.cd === cd));
-    indice.datasets.push({ ano: +ano, uf: UF.toUpperCase(), cd, nm: doc.municipio.nm, arquivo, secoes: doc.secoes.length,
+    indice.datasets.push({ ano: +ano, uf: UF.toUpperCase(), cd, nm: doc.municipio.nm, arquivo, secoes: doc.secoes.length, turnos: [...new Set(doc.eleicoes.map(e => e.turno))].sort(),
       cargos: [...new Map(doc.eleicoes.map(e => [e.cargo, { cd: e.cargo, ds: e.ds }])).values()], gerado_em: doc.gerado_em });
     console.log(`✔ ${arquivo} — ${doc.secoes.length} seções, ${doc.locais.length} locais`);
   }
