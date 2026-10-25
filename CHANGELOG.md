@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.10.1] — 2026-10-25
+
+### Corrigido
+- **Atualização travada na apuração ao vivo ("próxima em 0 s").** Quando o TSE demorava a responder (site
+  sobrecarregado na noite da eleição), o pedido ficava esperando sem limite. Enquanto isso, a tela era
+  redesenhada a cada segundo sem trazer números novos, o que também impedia as fotos de carregar. Agora:
+  - **Prazo nos pedidos ao TSE:** 20 a 30 segundos. Se não vier resposta, o app desiste e tenta pelo servidor do
+    site ou na próxima rodada.
+  - **Sem redesenho em sequência:** enquanto uma leitura está em andamento, a tela não é montada de novo e o
+    contador mostra **"atualizando…"**.
+  - **Quando o TSE pede para ir mais devagar (erro 429):** o app espera alguns segundos, passa a usar o servidor
+    do site por 1 minuto e continua atualizando.
+  - Se o TSE não responder numa rodada, a tela **continua com os últimos números lidos** e avisa que vai tentar de
+    novo.
+  - Vale para **2º turno, Resultado ao vivo, Eleitos e Partidos**.
+- Leitura mais leve dos boletins de urna (zonas e seções) e da lista de 167 municípios: 3 pedidos por vez, com um
+  pequeno intervalo, para o TSE não bloquear o aparelho.
+
 ## [3.10.0] — 2026-10-25
 
 ### Adicionado
