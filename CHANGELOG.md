@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.10.3] — 2026-10-25
+
+### Melhorado
+- **Resultado ao vivo atualizado em segundos:**
+  - A apuração agora se atualiza **a cada 10 segundos** por padrão (antes, 30).
+  - Na própria tela do 2º turno dá para escolher **5, 10, 15 ou 30 segundos ou 1 minuto**. A escolha fica guardada
+    no aparelho e também vale para Resultado, Eleitos e Partidos.
+  - Botão **"Atualizar agora"** na tela do 2º turno e no Resultado ao vivo, para buscar na hora sem esperar a
+    contagem.
+  - Os boletins de urna (zonas e seções) conferem as urnas novas a cada 1 minuto (antes, 2).
+- Ajuda: as opções de intervalo passaram a ser 5 s, 10 s, 15 s, 30 s e 1 min.
+
+### Observação
+- O TSE guarda cada arquivo de resultado por até ~1 minuto no servidor dele. Por isso, um número novo pode levar
+  até cerca de 1 minuto para aparecer, mesmo com o app conferindo a cada poucos segundos.
+
 ## [3.10.2] — 2026-10-25
 
 ### Melhorado

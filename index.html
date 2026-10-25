@@ -872,6 +872,8 @@ html[data-modo="web"] .t2-grid{grid-template-columns:1fr 1fr;align-items:start}
 .t2-proj span{font-size:.76rem}
 .t2-br{font-size:.86rem;background:var(--card-2);border-radius:10px;padding:8px 12px}
 .t2-dot{display:inline-block;width:10px;height:10px;border-radius:50%}
+.t2-ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:.86rem}
+.t2-ctl select{height:32px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:0 6px;font:inherit}
 .t2-aviso{display:block;background:var(--orange-soft);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:.8rem}
 .seg.big{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .seg.big button{display:grid;gap:2px;padding:12px 10px;font-size:.98rem;border-radius:12px}
@@ -1387,7 +1389,7 @@ function fotoHist(ano, turno, cargo, uf, sq) {
   if (+ano === 2026) { const e = ele26(cargo, turno); return P.foto('ele2026', e.cd, cargo === 1 ? 'br' : uf, sq); }
   return '';
 }
-const LIVE = { munCfg: {}, data: null, key: '', erro: null, next: 0, every: store.get('rv.every', 30), busy: false, prev: new Map(), cidades: new Map(), cidadesKey: '' };
+const LIVE = { munCfg: {}, data: null, key: '', erro: null, next: 0, every: store.get('rv.every', 10), busy: false, prev: new Map(), cidades: new Map(), cidadesKey: '' };
 const ele26 = (cargo, turno = 1) => turno === 2 ? (cargo === 1 ? ELE26.fed2 : ELE26.est2) : (cargo === 1 ? ELE26.fed : ELE26.est);
 async function munCfg26(cargo, turno = 1) {
   const e = ele26(cargo, turno);
@@ -1582,7 +1584,7 @@ function notaLive(m) {
   const pill = g.fim ? '<span class="pill ok">Resultado final</span>' : g.st ? '<span class="pill on">Contagem em andamento</span>' : '<span class="pill">Contagem ainda não começou</span>';
   return `<div class="live"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center">${pill}<span class="muted">${g.pub ? `publicado pelo TSE às ${esc(g.pub.txt)}` : ''}</span></div>
     <div class="progress"><i style="width:${g.pst}%"></i></div>
-    <div><b>${pct(g.pst, 1)}</b> das urnas apuradas <span class="muted">(${fmt(g.st)} de ${fmt(g.ts)})</span>${g.fim ? '' : ` · próxima atualização em <b id="lv-cd">${Math.max(0, Math.ceil((LIVE.next - Date.now()) / 1000))} s</b>`}</div></div>`;
+    <div><b>${pct(g.pst, 1)}</b> das urnas apuradas <span class="muted">(${fmt(g.st)} de ${fmt(g.ts)})</span>${g.fim ? '' : ` · próxima atualização em <b id="lv-cd">${Math.max(0, Math.ceil((LIVE.next - Date.now()) / 1000))} s</b> <button class="btn sm" type="button" id="lv-agora" onclick="if(!LIVE.busy){LIVE.next=0;ST.manterScroll=true;render();}">Atualizar agora</button>`}</div></div>`;
 }
 
 /* ============================================================ tela: início */
@@ -2100,9 +2102,10 @@ async function telaSegundoTurno(el) {
   const todosFinais = Object.values(T2.dados).length && Object.values(T2.dados).every(x => x.d.meta.and === 'f');
   const parado = !todosFinais && ultPub && Date.now() - ultPub > 10 * 60000;
   const cd = isFinite(T2.next) ? ` · próxima em <b id="t2-cd">${T2.busy ? 'atualizando…' : Math.max(0, Math.ceil((T2.next - Date.now()) / 1000)) + ' s'}</b>` : '';
+  const ctl = `<div class="t2-ctl"><label>Atualizar a cada <select id="t2-every" aria-label="Intervalo de atualização">${[5, 10, 15, 30, 60].map(v => `<option value="${v}"${v === LIVE.every ? ' selected' : ''}>${v < 60 ? v + ' s' : '1 min'}</option>`).join('')}</select></label><button class="btn sm" type="button" id="t2-agora">Atualizar agora</button></div>`;
   let html = parado
-    ? `<div class="note warn"><b>O TSE não publica números novos desde ${horaLocal(ultPub).slice(0, 5)}.</b> O Radar confere a cada 30 segundos e mostra assim que o TSE divulgar.<br><small>Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small></div>`
-    : `<div class="note info">2º turno em ${DIA_2026_T2}: <b>Governador do RN</b> e <b>Presidente</b>. Os números vêm do TSE, que divulga a partir das 17h (horário de Brasília).<br><small>${ultPub ? `Última publicação do TSE: ${horaLocal(ultPub).slice(0, 5)} · ` : ''}Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small></div>`;
+    ? `<div class="note warn"><b>O TSE não publica números novos desde ${horaLocal(ultPub).slice(0, 5)}.</b> O Radar confere a cada ${LIVE.every} segundos e mostra assim que o TSE divulgar.<br><small>Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small>${ctl}</div>`
+    : `<div class="note info">2º turno em ${DIA_2026_T2}: <b>Governador do RN</b> e <b>Presidente</b>. Os números vêm do TSE, que divulga a partir das 17h (horário de Brasília).<br><small>${ultPub ? `Última publicação do TSE: ${horaLocal(ultPub).slice(0, 5)} · ` : ''}Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small>${ctl}</div>`;
   html += `<div class="picks">${pickRow('pin', 'Votação de', esc(T2.mun ? T2.nomeMun : 'Todo o RN'), `<select id="t2-mun" aria-label="Município"><option value="">Todo o RN</option>${mus.map(m => `<option value="${m.cd}"${m.cd === T2.mun ? ' selected' : ''}>${esc(m.nm)}</option>`).join('')}</select>`)}</div>`;
   if (!Object.keys(T2.dados).length) {
     html += T2.erro?.status === 404 || !cfg
@@ -2129,6 +2132,8 @@ async function telaSegundoTurno(el) {
   if (!T2.mun && T2.cid.aberto) t2Municipios(mus);
 }
 function ligarT2(el) {
+  const ev = $('#t2-every', el); if (ev) ev.onchange = () => { LIVE.every = +ev.value; store.set('rv.every', LIVE.every); T2.next = Math.min(T2.next, Date.now() + LIVE.every * 1000); ST.manterScroll = true; render(); };
+  const ag = $('#t2-agora', el); if (ag) ag.onclick = () => { if (T2.busy) return; T2.next = 0; ag.disabled = true; ag.textContent = 'Atualizando…'; ST.manterScroll = true; render(); };
   const m = $('#t2-mun', el); if (m) m.onchange = () => { T2.mun = m.value; T2.next = 0; ST.manterScroll = true; render(); };
   const a = $('#t2-abrir', el); if (a) a.onclick = () => { T2.cid.aberto = true; ST.manterScroll = true; render(); };
   $$('[data-t2c]', el).forEach(b => b.onclick = () => { T2.cid.cargo = +b.dataset.t2c; T2.cid.mapa = new Map(); T2.cid.t = 0; ST.manterScroll = true; render(); });
@@ -2297,7 +2302,7 @@ async function zsCarregar() {
   ZS.carregando = true;
   const mun = ZS.mun;
   try {
-    if (!ZS.cs || Date.now() - ZS.csT > 120000) { ZS.cs = await tse(`ele2026/arquivo-urna/${ZS_PL}/config/rn/rn-p${pad(ZS_PL, 6)}-cs.json`); ZS.csT = Date.now(); }
+    if (!ZS.cs || Date.now() - ZS.csT > 60000) { ZS.cs = await tse(`ele2026/arquivo-urna/${ZS_PL}/config/rn/rn-p${pad(ZS_PL, 6)}-cs.json`); ZS.csT = Date.now(); }
     const falta = zsSecoes().filter(x => x.ok && !ZS.bus.has(+x.z + '|' + +x.s));
     ZS.alvo = falta.length; ZS.feitas = 0; ZS.erro = null;
     zsDesenhar();
@@ -2415,7 +2420,7 @@ function ligarZS(el) {
   $$('[data-zso]', el).forEach(b => b.onclick = () => { ZS.ord = b.dataset.zso; ST.manterScroll = true; render(); });
   const bs = $('#zs-busca', el); if (bs) bs.oninput = () => { ZS.busca = bs.value; zsDesenhar(); };
   const t1 = $('#zs-t1', el); if (t1) t1.onclick = () => { ST.ano = 2026; ST.turno = 1; ST.cd = ZS.mun; ST.cargo = ZS.cargo; ST.candNr = null; ST.nivel = 'zona'; ST.drill = []; salvar(); };
-  if (ZS.aberto && T2.mun) { zsDesenhar(); if (!ZS.carregando && (!ZS.cs || Date.now() - ZS.csT > 120000 || ZS.lido !== ZS.mun)) { ZS.lido = ZS.mun; zsCarregar(); } }
+  if (ZS.aberto && T2.mun) { zsDesenhar(); if (!ZS.carregando && (!ZS.cs || Date.now() - ZS.csT > 60000 || ZS.lido !== ZS.mun)) { ZS.lido = ZS.mun; zsCarregar(); } }
 }
 
 /* ============================================================ tela: partidos (apuração 2026 no RN — deputado federal e estadual) */
@@ -3259,7 +3264,7 @@ function telaAjuda(el) {
       ${[...grupos.values()].sort((a, b) => b.ano - a.ano).map(g => `<tr><td>${g.ano}</td><td>${esc(g.uf)}</td><td class="n">${fmt(g.c)}</td><td class="n">${fmt(g.s)}</td></tr>`).join('')}
       ${TEM_HIST26() ? '' : '<tr><td>2026</td><td>RN</td><td class="n" colspan="2">ao vivo no dia da eleição</td></tr>'}</tbody></table></div>
     <div class="card"><h3>Preferências</h3>
-      <label>Atualizar a apuração ao vivo a cada <select class="plain" id="every"><option value="15">15 segundos</option><option value="30">30 segundos</option><option value="60">1 minuto</option><option value="120">2 minutos</option></select></label>
+      <label>Atualizar a apuração ao vivo a cada <select class="plain" id="every"><option value="5">5 segundos</option><option value="10">10 segundos</option><option value="15">15 segundos</option><option value="30">30 segundos</option><option value="60">1 minuto</option></select></label>
       <details><summary>Conexão com o TSE (avançado)</summary><div class="radios" id="conn-via">
         <label><input type="radio" name="via" value="auto"> <span><b>Automático</b> (recomendado)</span></label>
         <label><input type="radio" name="via" value="direto"> <span><b>Direto</b> — cada navegador lê do TSE</span></label>
