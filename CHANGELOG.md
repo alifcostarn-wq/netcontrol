@@ -1,5 +1,32 @@
 # Changelog
 
+## [3.10.0] — 2026-10-25
+
+### Adicionado
+- **Cidades do RN por zona, bairro, escola e seção no 2º turno, ao vivo.** Na tela 2º turno, escolha um município
+  (ou toque nele na lista "Resultado por município") e abra **"Ver por zona, escola e seção"**:
+  - O app lê os **boletins de urna oficiais** de cada seção da cidade assim que o TSE publica (urna por urna) e
+    soma por **zona eleitoral, bairro, escola (local de votação) e seção**.
+  - Para cada lugar: % e votos de cada candidato, quem lidera (bolinha na cor do candidato), urnas lidas de quantas
+    existem, comparecimento e o **resultado do 1º turno no mesmo lugar**, para comparar.
+  - **Governador** e **Presidente** na mesma tela, com contagem de quantas zonas, bairros, escolas ou seções cada
+    candidato está ganhando.
+  - Ordena por nome, maior % de cada candidato ou mais votos, e tem busca.
+  - Baixa em Excel e CSV.
+  - Busca as urnas novas sozinha a cada 2 minutos. As urnas já lidas ficam guardadas: voltar a uma cidade não
+    baixa tudo de novo.
+  - Atalho para ver o **1º turno da mesma cidade por zona e seção** (tela Candidato).
+- Leitor do boletim de urna binário dentro do app (o mesmo formato oficial usado no gerador de dados).
+
+### Melhorado
+- Na lista "Resultado por município" do 2º turno, cada cidade abre direto a análise por zona, escola e seção.
+- Quando o TSE recusa pedidos rápidos demais (erro 429), o app espera e tenta de novo, sem perder as urnas já
+  lidas. As urnas são lidas 3 por vez.
+
+### Conferido
+- Com os boletins do 1º turno, a leitura no app deu os mesmos percentuais por zona e por seção que os dados já
+  conferidos com o TSE (Mossoró e Angicos).
+
 ## [3.9.0] — 2026-10-25
 
 ### Adicionado
