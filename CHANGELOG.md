@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.10.2] — 2026-10-25
+
+### Melhorado
+- **Situação da divulgação do TSE visível na tela do 2º turno**, para saber se a demora é do TSE ou do app:
+  - **"Última publicação do TSE"** (horário em que o TSE gerou os números) e **"Última conferência"** (quando o
+    Radar foi buscar), sempre no horário de Brasília, com a contagem para a próxima conferência.
+  - Se o TSE passa mais de 10 minutos sem publicar números novos durante a apuração, aparece o aviso **"O TSE não
+    publica números novos desde hh:mm"**.
+  - Em cada cargo, a linha **"publicado pelo TSE às hh:mm"**. Enquanto o TSE não publicar a apuração daquele cargo
+    no RN (ou na cidade escolhida), aparece o aviso de que o arquivo oficial ainda é o de antes da eleição.
+- Resultado ao vivo: mostra **"publicado pelo TSE às hh:mm"** ao lado do progresso da apuração.
+
+### Conferido
+- Às 17h35 (horário de Brasília), os arquivos oficiais do TSE estavam parados desde 17h06–17h07. Isso valia
+  direto do TSE e também pelo servidor do site, com o cache (cópia guardada no servidor) desviado:
+  - Presidente no Brasil: 0,25% das urnas.
+  - Governador e Presidente no RN: arquivo de 13/10, ainda sem votos.
+  - Lista de urnas recebidas: 3 urnas no RN; nem São Paulo tinha urnas registradas.
+  - O app mostra exatamente o que o TSE publicou e atualiza sozinho quando o TSE voltar a divulgar.
+
 ## [3.10.1] — 2026-10-25
 
 ### Corrigido

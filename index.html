@@ -872,6 +872,7 @@ html[data-modo="web"] .t2-grid{grid-template-columns:1fr 1fr;align-items:start}
 .t2-proj span{font-size:.76rem}
 .t2-br{font-size:.86rem;background:var(--card-2);border-radius:10px;padding:8px 12px}
 .t2-dot{display:inline-block;width:10px;height:10px;border-radius:50%}
+.t2-aviso{display:block;background:var(--orange-soft);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:.8rem}
 .seg.big{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .seg.big button{display:grid;gap:2px;padding:12px 10px;font-size:.98rem;border-radius:12px}
 .seg.big button small{font-size:.74rem;font-weight:500;opacity:.85}
@@ -1130,7 +1131,7 @@ function parseEA20(j) {
     cands.push({ n: String(c.n), sq: String(c.sqcand), nm: dec(c.nmu || c.nm), sg: dec(p.sg), vap: int(c.vap), pvap: num(c.pvapn ?? c.pvap), seq: int(c.seq) || 9999, e: c.e === 's', st: dec(c.st), dvt: dec(c.dvt) });
   }
   cands.sort((a, b) => b.vap - a.vap || a.seq - b.seq);
-  return { cargo: { cd: +cg.cd, nm: dec(cg.nmn || cg.nmm || '') }, nv: int(cg.nv), grupos: gruposEA20(cg), cands, s: j.s || {}, e: j.e || {}, v: j.v || {}, meta: { dt: j.dt, ht: j.ht, and: j.and } };
+  return { cargo: { cd: +cg.cd, nm: dec(cg.nmn || cg.nmm || '') }, nv: int(cg.nv), grupos: gruposEA20(cg), cands, s: j.s || {}, e: j.e || {}, v: j.v || {}, meta: { dt: j.dt, ht: j.ht, and: j.and, dg: j.dg, hg: j.hg } };
 }
 // Partidos e federações do arquivo do TSE: votos (nominais + legenda) e candidatos
 function gruposEA20(cg) {
@@ -1443,7 +1444,7 @@ async function modeloLive() {
   const ufFoto = cargo === 1 ? 'br' : uf;
   m.d = d;
   m.resumo = { aptos: int(d.e.te), votantes: int(d.e.c), validos: int(d.v.vv), brancos: int(d.v.vb), nulos: int(d.v.tvn) };
-  m.progresso = { pst: num(d.s.pstn ?? d.s.pst), st: int(d.s.st), ts: int(d.s.ts), fim: d.meta.and === 'f', dt: d.meta.dt, ht: d.meta.ht };
+  m.progresso = { pst: num(d.s.pstn ?? d.s.pst), st: int(d.s.st), ts: int(d.s.ts), fim: d.meta.and === 'f', dt: d.meta.dt, ht: d.meta.ht, pub: idadeTSE(d.meta) };
   m.cands = d.cands.map((c, i) => ({ i, nr: c.n, nm: c.nm, sg: c.sg, sit: c.st, eleito: c.e, anulado: /anulad/i.test(c.dvt), votos: c.vap, pct: c.pvap,
     delta: LIVE.prev.has(c.sq) && c.vap > LIVE.prev.get(c.sq) ? c.vap - LIVE.prev.get(c.sq) : 0, sq: c.sq, foto: P.foto(ele.ciclo, ele.cd, ufFoto, c.sq) }));
   return m;
@@ -1579,7 +1580,7 @@ function notaLive(m) {
   const g = m.progresso;
   if (!g) return '';
   const pill = g.fim ? '<span class="pill ok">Resultado final</span>' : g.st ? '<span class="pill on">Contagem em andamento</span>' : '<span class="pill">Contagem ainda não começou</span>';
-  return `<div class="live"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center">${pill}<span class="muted">${g.ht ? `TSE: ${esc(g.dt)} ${esc(g.ht)}` : ''}</span></div>
+  return `<div class="live"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center">${pill}<span class="muted">${g.pub ? `publicado pelo TSE às ${esc(g.pub.txt)}` : ''}</span></div>
     <div class="progress"><i style="width:${g.pst}%"></i></div>
     <div><b>${pct(g.pst, 1)}</b> das urnas apuradas <span class="muted">(${fmt(g.st)} de ${fmt(g.ts)})</span>${g.fim ? '' : ` · próxima atualização em <b id="lv-cd">${Math.max(0, Math.ceil((LIVE.next - Date.now()) / 1000))} s</b>`}</div></div>`;
 }
@@ -2023,11 +2024,19 @@ async function t2Carregar() {
     }));
     try { T2.br = parseEA20(await tse(P.res(ELE26.fed2, 'br', '', 1))); } catch {}
     const ok = res.filter(Boolean);
-    if (ok.length) T2.erro = null;
+    if (ok.length) { T2.erro = null; T2.checado = Date.now(); }
     T2.falhou = !ok.length; // o TSE não respondeu agora: a tela continua com os últimos números lidos
     T2.next = ok.length && ok.every(d => d.meta.and === 'f') && (!T2.br || T2.br.meta.and === 'f') ? Infinity : Date.now() + (ok.length ? LIVE.every : Math.max(LIVE.every, 60)) * 1000;
   } finally { T2.busy = false; }
 }
+// quando o TSE gerou o arquivo (dg/hg, horário de Brasília) e há quantos minutos
+function idadeTSE(meta) {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(meta?.dg || ''), h = /^(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(meta?.hg || '');
+  if (!m || !h) return null;
+  const t = Date.UTC(+m[3], +m[2] - 1, +m[1], +h[1] + 3, +h[2], +(h[3] || 0)); // Brasília = UTC−3
+  return { t, min: (Date.now() - t) / 60000, txt: `${meta.hg.slice(0, 5)}${(Date.now() - t) / 3600000 > 12 ? ` de ${meta.dg}` : ''}` };
+}
+const horaLocal = t => new Date(t).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'America/Sao_Paulo' }); // horário de Brasília
 function t2Card(s) {
   const x = T2.dados[s.cargo];
   if (!x) return `<section class="card"><h3>${esc(s.nome)}</h3><div class="empty">Ainda sem dados do TSE.</div></section>`;
@@ -2041,7 +2050,8 @@ function t2Card(s) {
   const chip = c => fim ? (c.e ? '<span class="chip ok">Eleito</span>' : '<span class="chip">Não eleito</span>') : st && vv && c.sq === lider.sq ? '<span class="chip go">Lidera</span>' : '';
   let h = `<section class="card t2"><div class="t2-head"><h3>${esc(s.nome)}${T2.mun ? ` <small class="muted">· ${esc(T2.nomeMun || '')}</small>` : ''}</h3>${pill}</div>
     <div class="progress"><i style="width:${pst}%"></i></div>
-    <small class="muted"><b>${pct(pst, 2)}</b> das urnas apuradas (${fmt(st)} de ${fmt(int(d.s.ts))})${d.meta.ht ? ` · TSE ${esc(d.meta.dt)} ${esc(d.meta.ht)}` : ''}</small>
+    <small class="muted"><b>${pct(pst, 2)}</b> das urnas apuradas (${fmt(st)} de ${fmt(int(d.s.ts))})${(() => { const a = idadeTSE(d.meta); return a ? ` · publicado pelo TSE às <b>${esc(a.txt)}</b>` : ''; })()}</small>
+    ${(() => { const a = idadeTSE(d.meta); return a && a.min > 12 * 60 && !fim ? `<small class="t2-aviso">O TSE ainda não publicou números deste cargo ${T2.mun ? 'nesta cidade' : 'no RN'} — o arquivo oficial é de ${esc(d.meta.dg)}.</small>` : ''; })()}
     <div class="t2-duo">${dupla.map((c, i) => {
       const dl = prev?.get(c.sq), a1 = c1(c);
       return `<div class="t2-c${st && vv && c.sq === lider.sq ? ' lead' : ''}" style="--k:var(${T2_CORES[i]})">${avatar(foto(c), c.nm, 'xl')}
@@ -2084,8 +2094,16 @@ async function telaSegundoTurno(el) {
   if (!Object.keys(T2.dados).length) el.innerHTML = '<div class="empty">Buscando a apuração no TSE…</div>';
   await t2Carregar();
   if (ST.tela !== 'segundoturno') return;
-  let html = `<div class="note info">2º turno em ${DIA_2026_T2}: <b>Governador do RN</b> e <b>Presidente</b>. O TSE começa a divulgar os votos às 17h (horário de Brasília); esta tela se atualiza sozinha${isFinite(T2.next) ? ` — próxima em <b id="t2-cd">${Math.max(0, Math.ceil((T2.next - Date.now()) / 1000))} s</b>` : ''}.</div>
-    <div class="picks">${pickRow('pin', 'Votação de', esc(T2.mun ? T2.nomeMun : 'Todo o RN'), `<select id="t2-mun" aria-label="Município"><option value="">Todo o RN</option>${mus.map(m => `<option value="${m.cd}"${m.cd === T2.mun ? ' selected' : ''}>${esc(m.nm)}</option>`).join('')}</select>`)}</div>`;
+  // situação da divulgação: quando o TSE publicou pela última vez e quando o Radar conferiu
+  const pubs = [...Object.values(T2.dados).map(x => idadeTSE(x.d.meta)), T2.br && idadeTSE(T2.br.meta)].filter(a => a && a.min < 12 * 60);
+  const ultPub = pubs.length ? Math.max(...pubs.map(a => a.t)) : 0;
+  const todosFinais = Object.values(T2.dados).length && Object.values(T2.dados).every(x => x.d.meta.and === 'f');
+  const parado = !todosFinais && ultPub && Date.now() - ultPub > 10 * 60000;
+  const cd = isFinite(T2.next) ? ` · próxima em <b id="t2-cd">${T2.busy ? 'atualizando…' : Math.max(0, Math.ceil((T2.next - Date.now()) / 1000)) + ' s'}</b>` : '';
+  let html = parado
+    ? `<div class="note warn"><b>O TSE não publica números novos desde ${horaLocal(ultPub).slice(0, 5)}.</b> O Radar confere a cada 30 segundos e mostra assim que o TSE divulgar.<br><small>Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small></div>`
+    : `<div class="note info">2º turno em ${DIA_2026_T2}: <b>Governador do RN</b> e <b>Presidente</b>. Os números vêm do TSE, que divulga a partir das 17h (horário de Brasília).<br><small>${ultPub ? `Última publicação do TSE: ${horaLocal(ultPub).slice(0, 5)} · ` : ''}Última conferência: ${T2.checado ? horaLocal(T2.checado) : '—'}${cd}</small></div>`;
+  html += `<div class="picks">${pickRow('pin', 'Votação de', esc(T2.mun ? T2.nomeMun : 'Todo o RN'), `<select id="t2-mun" aria-label="Município"><option value="">Todo o RN</option>${mus.map(m => `<option value="${m.cd}"${m.cd === T2.mun ? ' selected' : ''}>${esc(m.nm)}</option>`).join('')}</select>`)}</div>`;
   if (!Object.keys(T2.dados).length) {
     html += T2.erro?.status === 404 || !cfg
       ? '<div class="note warn"><b>O TSE ainda não publicou a apuração do 2º turno.</b> A tela tenta de novo sozinha.</div>'
