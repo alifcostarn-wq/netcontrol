@@ -1,5 +1,39 @@
 # Changelog
 
+## [3.9.0] — 2026-10-25
+
+### Adicionado
+- **Apuração do 2º turno ao vivo** (nova tela "2º turno"; na barra de baixo, no menu lateral e no topo da tela
+  inicial):
+  - **Governador do RN** (Cadu de Lula × Allyson) e **Presidente** (Lula × Flávio Bolsonaro, votos no RN),
+    lado a lado.
+  - Para cada disputa:
+    - % de urnas apuradas e horário do TSE;
+    - foto, votos e % dos válidos de cada candidato, com quanto ganhou desde a última atualização;
+    - barra dividida, **diferença** em votos e em pontos e quem **lidera** (ou quem foi **eleito**, no resultado
+      final);
+    - **estimativa do que falta para virar**: o % dos votos válidos ainda não apurados que o 2º colocado
+      precisaria ter;
+    - comparecimento, abstenção, brancos e nulos;
+    - **comparação com o 1º turno**: votos e % de cada candidato no 1º turno.
+  - Presidente: linha com o **resultado nacional** (Brasil), para saber quem está ganhando no país.
+  - **Resultado por município**: quem lidera em cada uma das 167 cidades do RN, com % de urnas apuradas.
+    - Ordena por nome, maior % de cada candidato ou mais votos, e tem busca.
+    - Mostra quantas cidades cada candidato está ganhando.
+    - Baixa em Excel e CSV.
+  - Também dá para escolher um município e ver só a votação dele, com o 1º turno da cidade.
+  - Atualiza sozinha a cada 30 segundos. A lista de municípios se atualiza a cada 3 minutos.
+- **Resultado, Candidato e Comparar** ganham a opção "Eleição 2026 · 2º turno (ao vivo)", com Governador e
+  Presidente, ranking por município e favoritos.
+- **Eleitos 2026**: a disputa de governador no 2º turno aparece no topo (concorre, lidera, eleito). O resultado
+  do 1º turno continua logo abaixo.
+- Gerador de dados preparado para os boletins de urna do 2º turno (pleito 3221). Quando o TSE publicar os
+  boletins, o 2º turno também poderá ser visto por bairro, escola e seção, como o 1º.
+
+### Alterado
+- Barra de navegação: **2º turno** entrou no lugar de Partidos. A tela Partidos continua no menu lateral e na
+  tela inicial, agora chamada "Partidos (1º turno)".
+
 ## [3.8.0] — 2026-10-05
 
 ### Adicionado

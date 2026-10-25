@@ -852,6 +852,26 @@ select.plain{height:42px;width:100%;border:1px solid var(--line);background:var(
 .rtab td,.rtab th{white-space:nowrap;vertical-align:top}
 .rtab th.n{white-space:normal;min-width:110px}
 .rbars{display:grid;gap:8px}
+.t2-grid{display:grid;gap:12px}
+html[data-modo="web"] .t2-grid{grid-template-columns:1fr 1fr;align-items:start}
+.t2-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.t2-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.t2-c{display:grid;justify-items:center;text-align:center;gap:3px;padding:12px 8px;border-radius:14px;background:var(--card-2);border:2px solid transparent}
+.t2-c.lead{border-color:var(--k)}
+.t2-c > b{font-size:.95rem;text-transform:uppercase;line-height:1.2;overflow-wrap:anywhere}
+.t2-c > small{color:var(--muted);font-size:.78rem}
+.t2-c strong{font-size:1.7rem;font-weight:700;color:var(--k);font-variant-numeric:tabular-nums;line-height:1.1}
+.t2-c span{font-size:.86rem;font-variant-numeric:tabular-nums}
+.t2-c em.delta{font-style:normal}
+.av.xl{width:72px;height:72px;font-size:1.3rem}
+.t2-bar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:var(--gray-chip)}
+.t2-bar i{display:block;height:100%}
+.t2-bar.mini{height:6px;margin-top:5px}
+.t2-dif{margin:0;font-size:.92rem}
+.t2-proj{margin:0;font-size:.86rem}
+.t2-proj span{font-size:.76rem}
+.t2-br{font-size:.86rem;background:var(--card-2);border-radius:10px;padding:8px 12px}
+.t2-dot{display:inline-block;width:10px;height:10px;border-radius:50%}
 .seg.big{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .seg.big button{display:grid;gap:2px;padding:12px 10px;font-size:.98rem;border-radius:12px}
 .seg.big button small{font-size:.74rem;font-weight:500;opacity:.85}
@@ -962,7 +982,8 @@ html[data-modo="cel"] .only-web{display:none!important}
   <nav aria-label="Menu principal">
     <a href="#inicio" data-tela="inicio"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg>Início</a>
     <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
-    <a href="#partidos" data-tela="partidos"><svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>Apuração · Partidos</a>
+    <a href="#segundoturno" data-tela="segundoturno"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4.5"/><circle cx="16" cy="12" r="4.5"/></svg>Apuração · 2º turno</a>
+    <a href="#partidos" data-tela="partidos"><svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>Partidos (1º turno)</a>
     <a href="#eleitos" data-tela="eleitos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Eleitos 2026</a>
     <a href="#eleitorado" data-tela="eleitorado"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M15.5 5.6a3.2 3.2 0 0 1 0 6M17 14.3c1.9.6 3.1 2.2 3.5 4.7"/></svg>Eleitorado</a>
     <a href="#comparar" data-tela="comparar"><svg class="i" viewBox="0 0 24 24"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg>Comparar</a>
@@ -985,7 +1006,7 @@ html[data-modo="cel"] .only-web{display:none!important}
 <footer class="tabbar">
   <nav aria-label="Navegação principal">
     <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
-    <a href="#partidos" data-tela="partidos"><svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>Partidos</a>
+    <a href="#segundoturno" data-tela="segundoturno"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4.5"/><circle cx="16" cy="12" r="4.5"/></svg>2º turno</a>
     <a href="#inicio" data-tela="inicio" class="center" aria-label="Início"><span><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg></span><em>Início</em></a>
     <a href="#relatorio" data-tela="relatorio"><svg class="i" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 17v-3M13 17v-5M16 17v-2"/></svg>Relatório</a>
     <a href="#favoritos" data-tela="favoritos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Favoritos</a>
@@ -1083,9 +1104,11 @@ const P = {
   foto: (ciclo, ele, uf, sq) => `${BASES.oficial}${ciclo}/${ele}/fotos/${uf}/${sq}.jpeg`,
 };
 // Eleições 2026 (códigos de produção do TSE): Presidente numa eleição, cargos estaduais em outra
-const ELE26 = { fed: { cd: '6257', ciclo: 'ele2026', t: '1' }, est: { cd: '6259', ciclo: 'ele2026', t: '1' } };
+const ELE26 = { fed: { cd: '6257', ciclo: 'ele2026', t: '1' }, est: { cd: '6259', ciclo: 'ele2026', t: '1' },
+  fed2: { cd: '6258', ciclo: 'ele2026', t: '2' }, est2: { cd: '6260', ciclo: 'ele2026', t: '2' } }; // 2º turno: presidente e governador do RN
+const CARGOS26_T2 = [{ cd: 3, ds: 'Governador' }, { cd: 1, ds: 'Presidente' }];
 const CARGOS26 = [{ cd: 1, ds: 'Presidente' }, { cd: 3, ds: 'Governador' }, { cd: 5, ds: 'Senador' }, { cd: 6, ds: 'Deputado Federal' }, { cd: 7, ds: 'Deputado Estadual' }]; // apuração só do RN
-const DIA_2026 = '04/10/2026';
+const DIA_2026 = '04/10/2026', DIA_2026_T2 = '25/10/2026';
 
 function parseEA20(j) {
   const cg = (j.carg || [])[0] || {};
@@ -1279,7 +1302,7 @@ const ST = {
   favFiltro: 'todos',
 };
 const salvar = () => { store.set('rv.ano', ST.ano); store.set('rv.turno', ST.turno); store.set('rv.cargo', ST.cargo); store.set('rv.cd', ST.cd); store.set('rv.luf', ST.luf); store.set('rv.lmun', ST.lmun); };
-const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'partidos', 'favoritos', 'ajuda'];
+const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'partidos', 'segundoturno', 'favoritos', 'ajuda'];
 const ALIAS = { aovivo: 'resultado', bairros: 'candidato', dados: 'ajuda' };
 function irPara(t) { if (location.hash === '#' + t) render(); else location.hash = '#' + t; }
 let NAV = 0;
@@ -1299,6 +1322,7 @@ function zerarAba(t) {
   else if (t === 'candidato') ST.drill = [];
   else if (t === 'eleitorado') Object.assign(EO, { nivel: 'zona', drill: [] });
   else if (t === 'favoritos') ST.favFiltro = 'todos';
+  else if (t === 'segundoturno') Object.assign(T2.cid, { aberto: false, ord: 'nome', busca: '' });
   else if (t === 'partidos') Object.assign(PT, { mun: '', vista: 'partidos', ord: 'votos', busca: '', filtro: '', aberto: new Set(), lim: 80 });
   else if (t === 'candidaturas') Object.assign(CAND, { ano: null, cargo: null, busca: '', sel: null, lim: 60 });
 }
@@ -1322,6 +1346,7 @@ async function render() {
     else if (t === 'relatorio') await telaRelatorio(el);
     else if (t === 'candidaturas') await telaCandidaturas(el);
     else if (t === 'partidos') await telaPartidos(el);
+    else if (t === 'segundoturno') await telaSegundoTurno(el);
     else if (t === 'favoritos') telaFavoritos(el);
     else telaAjuda(el);
   } catch (e) {
@@ -1334,18 +1359,19 @@ async function render() {
 
 /* ============================================================ modelo de resultado (mesmo formato para dados das urnas e TSE ao vivo) */
 const TEM_HIST26 = () => anosHist().includes(2026); // boletins de urna de 2026 já publicados no site
-const EH_LIVE = () => +ST.ano === 2026 && !TEM_HIST26();
+const HIST26_T2 = () => [...DS.values()].some(d => +d.ano === 2026 && (d.turnos || []).includes(2)); // boletins do 2º turno publicados
+const EH_LIVE = () => +ST.ano === 2026 && (+ST.turno === 2 ? !HIST26_T2() : !TEM_HIST26());
 // foto oficial do candidato (resultados.tse.jus.br) a partir do sq gravado nos dados por urna
 function fotoHist(ano, turno, cargo, uf, sq) {
   if (!sq) return '';
   if (+ano === 2024) return P.foto('ele2024', turno === 1 ? '619' : '620', uf, sq);
-  if (+ano === 2026) return cargo === 1 ? P.foto('ele2026', '6257', 'br', sq) : P.foto('ele2026', '6259', uf, sq);
+  if (+ano === 2026) { const e = ele26(cargo, turno); return P.foto('ele2026', e.cd, cargo === 1 ? 'br' : uf, sq); }
   return '';
 }
 const LIVE = { munCfg: {}, data: null, key: '', erro: null, next: 0, every: store.get('rv.every', 30), busy: false, prev: new Map(), cidades: new Map(), cidadesKey: '' };
-const ele26 = cargo => (cargo === 1 ? ELE26.fed : ELE26.est);
-async function munCfg26(cargo) {
-  const e = ele26(cargo);
+const ele26 = (cargo, turno = 1) => turno === 2 ? (cargo === 1 ? ELE26.fed2 : ELE26.est2) : (cargo === 1 ? ELE26.fed : ELE26.est);
+async function munCfg26(cargo, turno = 1) {
+  const e = ele26(cargo, turno);
   if (!(e.cd in LIVE.munCfg)) { try { LIVE.munCfg[e.cd] = await tse(P.mun(e)); } catch { LIVE.munCfg[e.cd] = null; } }
   return LIVE.munCfg[e.cd];
 }
@@ -1378,16 +1404,18 @@ async function modelo() {
 }
 
 async function modeloLive() {
-  const cargo = CARGOS26.some(c => c.cd === ST.cargo) ? ST.cargo : 1;
-  ST.cargo = cargo;
-  const ele = ele26(cargo);
-  const cfg = await munCfg26(cargo);
+  const turno = +ST.turno === 2 ? 2 : 1;
+  const lista = turno === 2 ? CARGOS26_T2 : CARGOS26;
+  const cargo = lista.some(c => c.cd === ST.cargo) ? ST.cargo : lista[0].cd;
+  ST.cargo = cargo; ST.turno = turno;
+  const ele = ele26(cargo, turno);
+  const cfg = await munCfg26(cargo, turno);
   const uf = 'rn'; // o app acompanha só o Rio Grande do Norte (presidente: votos dados no RN)
   ST.luf = uf;
   const mus = (cfg?.abr?.find(a => a.cd === uf)?.mu || []).map(m => ({ cd: m.cd, nm: titulo(dec(m.nm)), cdi: m.cdi })).sort((a, b) => a.nm.localeCompare(b.nm));
   if (!mus.some(m => m.cd === ST.lmun)) ST.lmun = '';
-  const m = { fonte: 'live', ele, ano: 2026, turno: 1, cargo, ds: CARGOS26.find(c => c.cd === cargo).ds, uf: uf.toUpperCase(), cd: ST.lmun, mus, publicado: !!cfg,
-    cidade: ST.lmun ? mus.find(x => x.cd === ST.lmun)?.nm : 'Rio Grande do Norte', cargos: CARGOS26, turnos: [1] };
+  const m = { fonte: 'live', ele, ano: 2026, turno, cargo, ds: lista.find(c => c.cd === cargo).ds, uf: uf.toUpperCase(), cd: ST.lmun, mus, publicado: !!cfg,
+    cidade: ST.lmun ? mus.find(x => x.cd === ST.lmun)?.nm : 'Rio Grande do Norte', cargos: lista, turnos: [turno] };
   if (!cfg) return m;
   const key = P.res(ele, uf, ST.lmun, cargo);
   if (LIVE.key !== key || !LIVE.data || Date.now() >= LIVE.next) await atualizarLive(key);
@@ -1420,6 +1448,11 @@ setInterval(() => {
   if (ST.tela === 'eleitos' && document.visibilityState === 'visible') {
     if (EL.modo === '2026' && isFinite(EL.next) && Date.now() >= EL.next) { ST.manterScroll = true; render(); }
     else { const c = $('#el-cd'); if (c && isFinite(EL.next)) c.textContent = Math.max(0, Math.ceil((EL.next - Date.now()) / 1000)) + ' s'; }
+    return;
+  }
+  if (ST.tela === 'segundoturno' && document.visibilityState === 'visible') {
+    if (isFinite(T2.next) && Date.now() >= T2.next) { ST.manterScroll = true; render(); }
+    else { const c = $('#t2-cd'); if (c && isFinite(T2.next)) c.textContent = Math.max(0, Math.ceil((T2.next - Date.now()) / 1000)) + ' s'; }
     return;
   }
   if (ST.tela === 'partidos' && document.visibilityState === 'visible') {
@@ -1485,10 +1518,12 @@ function crowHtml(m, c, pos) {
     <div class="nums"><b>${fmt(c.votos)}</b><small>${pct(c.pct)}${c.delta ? ` <span class="delta">+${fmt(c.delta)}</span>` : ''}</small></div>${starBtn(m, c)}</li>`;
 }
 function eleicaoOpts() {
-  const out = TEM_HIST26() ? [] : [{ v: '2026|1', t: 'Eleição 2026 · 1º turno (ao vivo)' }];
+  const out = [];
+  if (!HIST26_T2()) out.push({ v: '2026|2', t: 'Eleição 2026 · 2º turno (ao vivo)' });
+  if (!TEM_HIST26()) out.push({ v: '2026|1', t: 'Eleição 2026 · 1º turno (ao vivo)' });
   for (const a of anosHist()) {
     const d = DS.get(a + '|' + ST.uf + '|' + ST.cd);
-    const turnos = d?.doc ? [...new Set(d.doc.eleicoes.map(e => e.turno))] : (a === 2022 ? [1, 2] : [1]);
+    const turnos = d?.doc ? [...new Set(d.doc.eleicoes.map(e => e.turno))] : (d?.turnos || (a === 2022 ? [1, 2] : [1]));
     for (const t of turnos) out.push({ v: a + '|' + t, t: `Eleição ${a} · ${t}º turno` });
   }
   return out;
@@ -1527,7 +1562,7 @@ function ligarFiltros(el) {
 }
 function notaLive(m) {
   if (!m.publicado || (!m.d && m.erro?.status === 404)) {
-    return `<div class="note warn"><b>O resultado de 2026 ainda não foi publicado.</b><br>O TSE libera os números no dia da eleição (${DIA_2026}), a partir das 17h (horário de Brasília). A partir daí esta tela mostra a contagem ao vivo e se atualiza sozinha.<br><button class="btn sm" type="button" data-ano="${anosHist()[0] || 2024}">Ver o resultado de ${anosHist()[0] || 2024}</button></div>`;
+    return `<div class="note warn"><b>O resultado de 2026${m.turno === 2 ? ' (2º turno)' : ''} ainda não foi publicado.</b><br>O TSE libera os números no dia da eleição (${m.turno === 2 ? DIA_2026_T2 : DIA_2026}), a partir das 17h (horário de Brasília). A partir daí esta tela mostra a contagem ao vivo e se atualiza sozinha.<br><button class="btn sm" type="button" data-ano="${anosHist()[0] || 2024}">Ver o resultado de ${anosHist()[0] || 2024}</button></div>`;
   }
   if (!m.d && m.erro) return `<div class="note err"><b>Não foi possível buscar os dados no TSE agora.</b> ${esc(m.erro.message)} A página tenta de novo sozinha.</div>`;
   const g = m.progresso;
@@ -1558,7 +1593,8 @@ function telaInicio(el) {
   el.innerHTML = `<div class="sec-title">Eleições</div>
     <div class="picks home-grid">
       ${TEM_HIST26() ? '' : `<a class="row hl" href="#resultado" data-ano="2026"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Eleições 2026</b><small>Apuração ao vivo no RN · ${DIA_2026}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>`}
-      <a class="row hl" href="#partidos"><span class="ico">${ICON.flag}</span><span class="txt"><b>${TEM_HIST26() ? '' : '<span class="dot"></span>'}Resultado 2026 no RN — partidos</b><small>Deputado federal e estadual: votos de todos os partidos, vagas projetadas e candidatos</small></span><span class="ico">${ICON.go}</span></a>
+      <a class="row hl" href="#segundoturno"><span class="ico">${ICON.people}</span><span class="txt"><b><span class="dot"></span>Apuração do 2º turno — ao vivo</b><small>Governador do RN e Presidente · ${DIA_2026_T2}, a partir das 17h</small></span><span class="ico">${ICON.go}</span></a>
+      <a class="row hl" href="#partidos"><span class="ico">${ICON.flag}</span><span class="txt"><b>Resultado 2026 no RN — partidos (1º turno)</b><small>Deputado federal e estadual: votos de todos os partidos, vagas projetadas e candidatos</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#candidaturas"><span class="ico">${ICON.doc}</span><span class="txt"><b>Candidaturas — DivulgaCand (TSE)</b><small>Ficha do candidato: situação, bens, certidões e contas de campanha</small></span><span class="ico">${ICON.go}</span></a>
       <a class="row hl" href="#eleitos"><span class="ico">${ICON.star}</span><span class="txt"><b>Eleitos 2026 no RN</b><small>Governador, senadores e deputados pela regra oficial de vagas</small></span><span class="ico">${ICON.go}</span></a>
       ${anosHist().map(a => `<a class="row hl" href="#resultado" data-ano="${a}"><span class="ico">${ICON.people}</span><span class="txt"><b>Eleições ${a}</b><small>${esc(desc[a] || 'Votos por urna')}</small></span><span class="ico">${ICON.go}</span></a>`).join('')}
@@ -1842,7 +1878,8 @@ function cargosEleitos(uf) {
     const e = { cd: '619', ciclo: 'ele2024' };
     return [{ cargo: 11, ele: e, abr: 'rn', mun: ST.cd, foto: 'rn' }, { cargo: 13, ele: e, abr: 'rn', mun: ST.cd, foto: 'rn' }];
   }
-  return [3, 5, 6, 7].map(cargo => ({ cargo, ele: ELE26.est, abr: 'rn', mun: '', foto: 'rn' })); // cargos disputados no RN
+  return [{ cargo: 3, ele: ELE26.est2, abr: 'rn', mun: '', foto: 'rn', t2: true }, // governador no 2º turno
+    ...[3, 5, 6, 7].map(cargo => ({ cargo, ele: ELE26.est, abr: 'rn', mun: '', foto: 'rn' }))]; // 1º turno no RN
 }
 function vagasPadrao(cargo, uf) {
   const df = VAGAS_DF[uf] || 8;
@@ -1865,6 +1902,12 @@ function cenarioBase(k, d) {
   const cand = c => ({ ...c, foto: P.foto(k.ele.ciclo, k.ele.cd, k.foto, c.sq) });
   const valid = d.cands.filter(c => !/anulad/i.test(c.dvt));
   const out = { k, d, final, pst: num(d.s.pstn ?? d.s.pst), vagas: d.nv || vagasPadrao(k.cargo, k.abr), lista: [], obs: '' };
+  if (k.t2) { // 2º turno: quem lidera agora; eleito só no resultado final
+    const [a, b] = valid, st = int(d.s.st);
+    out.lista = [a, b].filter(Boolean).map((c, i) => ({ ...cand(c), chip: final ? (c.e ? 'Eleito' : 'Não eleito') : st && int(d.v.vv) ? (i === 0 ? 'Lidera' : '2º lugar') : 'Concorre' }));
+    if (a && b && st && int(d.v.vv)) out.obs = `Diferença de ${fmt(a.vap - b.vap)} votos (${(a.pvap - b.pvap).toLocaleString('pt-BR', { maximumFractionDigits: 2 })} pontos).`;
+    return out;
+  }
   if (final && EL.modo !== '2024') {
     out.lista = d.cands.filter(c => c.e || /2.? ?turno/i.test(c.st)).map(c => ({ ...cand(c), chip: /2.? ?turno/i.test(c.st) ? '2º turno' : (c.st || 'Eleito') }));
     if ([6, 7, 8, 13].includes(k.cargo)) { const p = projetarProporcional(d.grupos, int(d.v.vv), out.vagas); out.QE = p.QE; out.grupos = p.grupos; }
@@ -1887,8 +1930,8 @@ function cenarioBase(k, d) {
   return out;
 }
 function secaoEleitos(x) {
-  const k = x.k, nome = NOME_CARGO26[k.cargo], lugar = k.abr === 'br' ? 'Brasil' : k.mun ? titulo(DS.get('2024|RN|' + k.mun)?.nm || '') : titulo(UFS[k.abr]?.[0] || k.abr);
-  const row = (c, extra = '') => `<li class="crow el">${avatar(c.foto, c.nm)}<div class="who"><b>${esc(c.nm)}</b><span class="meta">${esc(c.grupo && c.grupo !== c.sg ? c.sg + ' · ' + c.grupo : c.sg || '')} <span class="chip ${/empate/i.test(c.chip) ? 'sup' : /turno/i.test(c.chip) ? 'go' : 'ok'}">${esc(c.chip || '')}</span></span></div><div class="nums"><b>${fmt(c.vap)}</b><small>${pct(c.pvap)}</small></div>${extra}</li>`;
+  const k = x.k, nome = NOME_CARGO26[k.cargo] + (k.t2 ? ' · 2º turno' : k.ele?.t === '1' && k.cargo === 3 ? ' · 1º turno' : ''), lugar = k.abr === 'br' ? 'Brasil' : k.mun ? titulo(DS.get('2024|RN|' + k.mun)?.nm || '') : titulo(UFS[k.abr]?.[0] || k.abr);
+  const row = (c, extra = '') => `<li class="crow el">${avatar(c.foto, c.nm)}<div class="who"><b>${esc(c.nm)}</b><span class="meta">${esc(c.grupo && c.grupo !== c.sg ? c.sg + ' · ' + c.grupo : c.sg || '')} <span class="chip ${/empate/i.test(c.chip) ? 'sup' : /turno/i.test(c.chip) ? 'go' : /n[aã]o eleit|lugar|concorre/i.test(c.chip) ? '' : 'ok'}">${esc(c.chip || '')}</span></span></div><div class="nums"><b>${fmt(c.vap)}</b><small>${pct(c.pvap)}</small></div>${extra}</li>`;
   const tag = x.final ? '<span class="pill ok">Resultado final</span>' : x.pst ? `<span class="pill on">Cenário com ${pct(x.pst, 1)} das urnas</span>` : '<span class="pill">Contagem não começou</span>';
   let h = `<section class="card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><h3>${esc(nome)} · ${esc(lugar)}</h3>${tag}</div>
     <div class="progress"><i style="width:${x.pst}%"></i></div>`;
@@ -1932,6 +1975,167 @@ async function telaEleitos(el) {
   const todosFinais = ok.every(r => r.d.meta.and === 'f');
   EL.next = EL.modo === '2026' && !todosFinais ? Date.now() + LIVE.every * 1000 : Infinity;
   corpo.innerHTML = (EL.modo === '2026' && !todosFinais ? `<p class="muted" style="text-align:center">Próxima atualização em <b id="el-cd">${LIVE.every} s</b></p>` : '') + ok.map(r => secaoEleitos(cenario(r.k, r.d))).join('');
+}
+
+/* ============================================================ tela: 2º turno (apuração ao vivo no RN — governador e presidente) */
+const T2 = { mun: '', next: 0, busy: false, dados: {}, prev: {}, t1: {}, br: null, erro: null,
+  cid: { cargo: 3, aberto: false, ord: 'nome', busca: '', mapa: new Map(), t: 0, carregando: false } };
+const T2_CARGOS = [
+  { cargo: 3, nome: 'Governador do RN', ele: () => ELE26.est2, ele1: () => ELE26.est, foto: 'rn' },
+  { cargo: 1, nome: 'Presidente — votos no RN', ele: () => ELE26.fed2, ele1: () => ELE26.fed, foto: 'br' },
+];
+const T2_CORES = ['--green', '--orange'];
+// os dois candidatos em ordem fixa (pelo número), para as cores não trocarem quando a liderança muda
+const t2Dupla = d => d.cands.slice().sort((a, b) => +a.n - +b.n).slice(0, 2);
+async function t2Carregar() {
+  if (T2.busy || Date.now() < T2.next) return;
+  T2.busy = true;
+  try {
+    const res = await Promise.all(T2_CARGOS.map(async s => {
+      const key = P.res(s.ele(), 'rn', T2.mun, s.cargo);
+      try {
+        const d = parseEA20(await tse(key));
+        const ant = T2.dados[s.cargo];
+        T2.prev[s.cargo] = ant && ant.key === key ? new Map(ant.d.cands.map(c => [c.sq, c.vap])) : null;
+        T2.dados[s.cargo] = { key, d };
+        // 1º turno da mesma área (resultado final, lido uma vez só)
+        const k1 = P.res(s.ele1(), 'rn', T2.mun, s.cargo);
+        if (!(k1 in T2.t1)) { try { T2.t1[k1] = parseEA20(await tse(k1)); } catch { T2.t1[k1] = null; } }
+        return d;
+      } catch (e) { if (T2.dados[s.cargo]?.key !== key) delete T2.dados[s.cargo]; T2.erro = e; return null; }
+    }));
+    try { T2.br = parseEA20(await tse(P.res(ELE26.fed2, 'br', '', 1))); } catch {}
+    const ok = res.filter(Boolean);
+    if (ok.length) T2.erro = null;
+    T2.next = ok.length && ok.every(d => d.meta.and === 'f') && (!T2.br || T2.br.meta.and === 'f') ? Infinity : Date.now() + (ok.length ? LIVE.every : Math.max(LIVE.every, 120)) * 1000;
+  } finally { T2.busy = false; }
+}
+function t2Card(s) {
+  const x = T2.dados[s.cargo];
+  if (!x) return `<section class="card"><h3>${esc(s.nome)}</h3><div class="empty">Ainda sem dados do TSE.</div></section>`;
+  const d = x.d, pst = num(d.s.pstn ?? d.s.pst), st = int(d.s.st), fim = d.meta.and === 'f', vv = int(d.v.vv);
+  const dupla = t2Dupla(d), lider = d.cands[0];
+  const pill = fim ? '<span class="pill ok">Resultado final</span>' : st ? '<span class="pill on">Contagem em andamento</span>' : '<span class="pill">Contagem ainda não começou</span>';
+  const prev = T2.prev[s.cargo];
+  const d1 = T2.t1[P.res(s.ele1(), 'rn', T2.mun, s.cargo)];
+  const c1 = c => d1?.cands.find(y => y.sq === c.sq) || d1?.cands.find(y => y.n === c.n);
+  const foto = c => P.foto(s.ele().ciclo, s.ele().cd, s.foto, c.sq);
+  const chip = c => fim ? (c.e ? '<span class="chip ok">Eleito</span>' : '<span class="chip">Não eleito</span>') : st && vv && c.sq === lider.sq ? '<span class="chip go">Lidera</span>' : '';
+  let h = `<section class="card t2"><div class="t2-head"><h3>${esc(s.nome)}${T2.mun ? ` <small class="muted">· ${esc(T2.nomeMun || '')}</small>` : ''}</h3>${pill}</div>
+    <div class="progress"><i style="width:${pst}%"></i></div>
+    <small class="muted"><b>${pct(pst, 2)}</b> das urnas apuradas (${fmt(st)} de ${fmt(int(d.s.ts))})${d.meta.ht ? ` · TSE ${esc(d.meta.dt)} ${esc(d.meta.ht)}` : ''}</small>
+    <div class="t2-duo">${dupla.map((c, i) => {
+      const dl = prev?.get(c.sq), a1 = c1(c);
+      return `<div class="t2-c${st && vv && c.sq === lider.sq ? ' lead' : ''}" style="--k:var(${T2_CORES[i]})">${avatar(foto(c), c.nm, 'xl')}
+        <b>${esc(c.nm)}</b><small>${esc(c.sg)} · ${esc(c.n)}</small>
+        <strong>${vv ? pct(c.pvap, 2) : '—'}</strong><span>${fmt(c.vap)} votos${dl != null && c.vap > dl ? ` <em class="delta">+${fmt(c.vap - dl)}</em>` : ''}</span>
+        ${chip(c)}${a1 ? `<small class="muted">1º turno: ${fmt(a1.vap)} (${pct(a1.pvap, 1)})</small>` : ''}</div>`;
+    }).join('')}</div>`;
+  if (dupla.length === 2) {
+    const [a, b] = dupla, pa = vv ? a.vap / vv * 100 : 50;
+    h += `<div class="t2-bar" role="img" aria-label="${esc(a.nm)} ${pct(pa, 1)}, ${esc(b.nm)} ${pct(100 - pa, 1)}"><i style="width:${pa}%;background:var(${T2_CORES[0]})"></i><i style="width:${100 - pa}%;background:var(${T2_CORES[1]})"></i></div>`;
+    if (st && vv) {
+      const [L, S] = d.cands;
+      h += `<p class="t2-dif">Diferença: <b>${fmt(L.vap - S.vap)}</b> votos (${(L.pvap - S.pvap).toLocaleString('pt-BR', { maximumFractionDigits: 2 })} pontos) a favor de <b>${esc(L.nm)}</b></p>`;
+      if (!fim && pst > 0 && pst < 100) {
+        const R = vv / (pst / 100) - vv; // votos válidos que ainda faltam, se as urnas restantes forem parecidas com as já apuradas
+        const precisa = R > 0 ? (L.vap - S.vap + R) / (2 * R) * 100 : Infinity;
+        h += `<p class="muted t2-proj">${precisa > 100 ? `Estimativa: mesmo com todos os votos que faltam apurar, ${esc(S.nm)} não alcançaria ${esc(L.nm)}.` : `Estimativa: para virar, ${esc(S.nm)} precisaria de <b>${pct(precisa, 1)}</b> dos votos válidos que faltam apurar.`} <span>(supõe que as urnas que faltam votem como as já apuradas)</span></p>`;
+      }
+    }
+  }
+  const te = int(d.e.te), c = int(d.e.c);
+  h += `<div class="resumo"><span>Comparecimento</span><span>${fmt(c)}</span><span>${te ? pct(c / te * 100, 1) : '—'}</span>
+    <span>Abstenção</span><span>${fmt(int(d.e.a))}</span><span>${te ? pct(int(d.e.a) / te * 100, 1) : '—'}</span>
+    <span>Válidos</span><span>${fmt(vv)}</span><span>${c ? pct(vv / c * 100, 1) : '—'}</span>
+    <span>Brancos</span><span>${fmt(int(d.v.vb))}</span><span>${c ? pct(int(d.v.vb) / c * 100, 1) : '—'}</span>
+    <span>Nulos</span><span>${fmt(int(d.v.tvn))}</span><span>${c ? pct(int(d.v.tvn) / c * 100, 1) : '—'}</span></div>`;
+  if (s.cargo === 1 && T2.br) {
+    const b = T2.br, bd = t2Dupla(b), bpst = num(b.s.pstn ?? b.s.pst), bvv = int(b.v.vv);
+    h += `<div class="t2-br"><b>Brasil (resultado nacional)</b> · ${pct(bpst, 1)} das urnas: ${bd.map(c => `${esc(c.nm)} <b>${bvv ? pct(c.pvap, 2) : '—'}</b>`).join(' × ')}${b.meta.and === 'f' ? ` · <b>${esc(b.cands.find(c => c.e)?.nm || '')}</b> eleito` : ''}</div>`;
+  }
+  return h + '</section>';
+}
+async function telaSegundoTurno(el) {
+  topo('Apuração · 2º turno', 'RN');
+  const cfg = await munCfg26(3, 2);
+  const mus = (cfg?.abr?.find(a => a.cd === 'rn')?.mu || []).map(m => ({ cd: m.cd, nm: titulo(dec(m.nm)) })).sort((a, b) => a.nm.localeCompare(b.nm));
+  if (T2.mun && !mus.some(m => m.cd === T2.mun)) T2.mun = '';
+  T2.nomeMun = T2.mun ? mus.find(m => m.cd === T2.mun)?.nm : '';
+  if (!Object.keys(T2.dados).length) el.innerHTML = '<div class="empty">Buscando a apuração no TSE…</div>';
+  await t2Carregar();
+  if (ST.tela !== 'segundoturno') return;
+  let html = `<div class="note info">2º turno em ${DIA_2026_T2}: <b>Governador do RN</b> e <b>Presidente</b>. O TSE começa a divulgar os votos às 17h (horário de Brasília); esta tela se atualiza sozinha${isFinite(T2.next) ? ` — próxima em <b id="t2-cd">${Math.max(0, Math.ceil((T2.next - Date.now()) / 1000))} s</b>` : ''}.</div>
+    <div class="picks">${pickRow('pin', 'Votação de', esc(T2.mun ? T2.nomeMun : 'Todo o RN'), `<select id="t2-mun" aria-label="Município"><option value="">Todo o RN</option>${mus.map(m => `<option value="${m.cd}"${m.cd === T2.mun ? ' selected' : ''}>${esc(m.nm)}</option>`).join('')}</select>`)}</div>`;
+  if (!Object.keys(T2.dados).length) {
+    html += T2.erro?.status === 404 || !cfg
+      ? '<div class="note warn"><b>O TSE ainda não publicou a apuração do 2º turno.</b> A tela tenta de novo sozinha.</div>'
+      : `<div class="note err"><b>Não foi possível buscar a apuração no TSE agora.</b> ${esc(T2.erro?.message || '')} A página tenta de novo sozinha.</div>`;
+    el.innerHTML = html; ligarT2(el); return;
+  }
+  html += `<div class="t2-grid">${T2_CARGOS.map(t2Card).join('')}</div>`;
+  if (!T2.mun) {
+    const C = T2.cid;
+    html += `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h3>Resultado por município</h3>
+        <div class="seg">${T2_CARGOS.map(s => `<button type="button" data-t2c="${s.cargo}" aria-pressed="${C.cargo === s.cargo}">${s.cargo === 3 ? 'Governador' : 'Presidente'}</button>`).join('')}</div></div>
+      ${C.aberto ? `<div class="ord" id="t2-ord"></div><label class="search">${ICON.search}<input type="search" id="t2-busca" placeholder="Pesquisar município" value="${esc(C.busca)}" aria-label="Pesquisar município"></label>
+        <small class="muted" id="t2-prog"></small><ul class="rlist" id="t2-mus"></ul>
+        <div class="tools"><button class="btn sm" type="button" data-exp="t2" data-kind="xlsx">Baixar Excel</button><button class="btn sm" type="button" data-exp="t2" data-kind="csv">Baixar CSV</button></div>`
+      : `<p class="muted">Quem lidera em cada uma das 167 cidades do RN, com o % de urnas apuradas.</p><button class="btn" type="button" id="t2-abrir">Ver os 167 municípios</button>`}</div>`;
+  }
+  html += `<p class="foot">Fonte: TSE — divulgação oficial de resultados (2º turno: eleições ${ELE26.est2.cd} e ${ELE26.fed2.cd}). Percentuais sobre os votos válidos.</p>`;
+  el.innerHTML = html;
+  ligarT2(el);
+  if (!T2.mun && T2.cid.aberto) t2Municipios(mus);
+}
+function ligarT2(el) {
+  const m = $('#t2-mun', el); if (m) m.onchange = () => { T2.mun = m.value; T2.next = 0; ST.manterScroll = true; render(); };
+  const a = $('#t2-abrir', el); if (a) a.onclick = () => { T2.cid.aberto = true; ST.manterScroll = true; render(); };
+  $$('[data-t2c]', el).forEach(b => b.onclick = () => { T2.cid.cargo = +b.dataset.t2c; T2.cid.mapa = new Map(); T2.cid.t = 0; ST.manterScroll = true; render(); });
+}
+async function t2Municipios(mus) {
+  const C = T2.cid, s = T2_CARGOS.find(x => x.cargo === C.cargo), ele = s.ele();
+  const ref = T2.dados[C.cargo]?.d, dupla = ref ? t2Dupla(ref) : [];
+  const desenhar = () => {
+    const ul = $('#t2-mus'); if (!ul) return;
+    const nm = i => esc(dupla[i]?.nm || '');
+    $('#t2-ord').innerHTML = `<span>Ordenar por</span>${[['nome', 'Nome'], ['a', 'Maior % ' + (dupla[0]?.nm || '')], ['b', 'Maior % ' + (dupla[1]?.nm || '')], ['votos', 'Mais votos']].map(([k, t]) => `<button type="button" data-t2o="${k}" aria-pressed="${C.ord === k}">${esc(titulo(t))}</button>`).join('')}`;
+    $$('[data-t2o]').forEach(b => b.onclick = () => { C.ord = b.dataset.t2o; desenhar(); });
+    const q = norm(C.busca);
+    let l = mus.map(m => ({ m, r: C.mapa.get(m.cd) })).filter(x => !q || norm(x.m.nm).includes(q));
+    const sh = (x, i) => x.r?.vv ? x.r.v[i] / x.r.vv * 100 : -1;
+    l.sort((x, y) => C.ord === 'a' ? sh(y, 0) - sh(x, 0) : C.ord === 'b' ? sh(y, 1) - sh(x, 1) : C.ord === 'votos' ? (y.r?.vv || 0) - (x.r?.vv || 0) : x.m.nm.localeCompare(y.m.nm));
+    ul.innerHTML = l.map(({ m, r }) => {
+      if (!r) return `<li class="rrow"><span class="p"></span><span class="nm"><b>${esc(m.nm)}</b><small>carregando…</small></span><span class="v"></span><span class="pc"></span><span class="ch"></span></li>`;
+      const a = r.vv ? r.v[0] / r.vv * 100 : 0, b = r.vv ? r.v[1] / r.vv * 100 : 0, li = r.vv ? (a >= b ? 0 : 1) : -1;
+      return `<li class="rrow t2-mu"><span class="p"><i class="t2-dot" style="background:${li < 0 ? 'var(--gray-chip)' : `var(${T2_CORES[li]})`}"></i></span>
+        <span class="nm"><b>${esc(m.nm)}</b><small>${pct(r.pst, 1)} das urnas · ${fmt(r.vv)} válidos</small><span class="t2-bar mini"><i style="width:${r.vv ? a : 50}%;background:var(${T2_CORES[0]})"></i><i style="width:${r.vv ? b : 50}%;background:var(${T2_CORES[1]})"></i></span></span>
+        <span class="v" style="color:var(${T2_CORES[0]})">${r.vv ? pct(a, 1) : '—'}</span><span class="pc" style="color:var(${T2_CORES[1]})">${r.vv ? pct(b, 1) : '—'}</span><span class="ch"></span></li>`;
+    }).join('');
+    const lid = [0, 1].map(i => [...C.mapa.values()].filter(r => r.vv && (i === 0 ? r.v[0] >= r.v[1] : r.v[1] > r.v[0])).length);
+    const prog = $('#t2-prog');
+    if (prog && dupla.length === 2 && C.mapa.size) prog.innerHTML = `${nm(0)} lidera em <b>${fmt(lid[0])}</b> e ${nm(1)} em <b>${fmt(lid[1])}</b> municípios${C.carregando ? ' · atualizando…' : ''}`;
+  };
+  const bi = $('#t2-busca'); if (bi) bi.oninput = () => { C.busca = bi.value; desenhar(); };
+  desenhar();
+  EXPORTS.t2 = () => ({ nome: `segundo-turno-2026-rn-${s.cargo === 3 ? 'governador' : 'presidente'}-municipios`, head: ['Município', '% urnas apuradas', 'Votos válidos', ...dupla.flatMap(c => [c.nm + ' votos', c.nm + ' %'])],
+    rows: mus.map(m => { const r = C.mapa.get(m.cd); return [m.nm, r ? +r.pst.toFixed(2) : '', r?.vv ?? '', ...dupla.flatMap((c, i) => r ? [r.v[i], r.vv ? +(r.v[i] / r.vv * 100).toFixed(2) : 0] : ['', ''])]; }) });
+  // relê as cidades no máximo a cada 3 minutos, só com esta lista aberta
+  if (C.carregando || (C.mapa.size && Date.now() - C.t < 180000)) return;
+  C.carregando = true;
+  let feitos = 0;
+  try {
+    await pool(mus, 6, async m => {
+      try {
+        const d = parseEA20(await tse(P.res(ele, 'rn', m.cd, C.cargo)));
+        const v = dupla.map(c => d.cands.find(y => y.sq === c.sq || y.n === c.n)?.vap || 0);
+        C.mapa.set(m.cd, { pst: num(d.s.pstn ?? d.s.pst), vv: int(d.v.vv), v });
+      } catch {}
+      if (++feitos % 25 === 0 && ST.tela === 'segundoturno') desenhar();
+    });
+    C.t = Date.now();
+  } finally { C.carregando = false; }
+  if (ST.tela === 'segundoturno') desenhar();
 }
 
 /* ============================================================ tela: partidos (apuração 2026 no RN — deputado federal e estadual) */
@@ -2748,6 +2952,7 @@ function telaAjuda(el) {
       <li><b>Candidato</b> — toque num candidato para ver os votos dele por <b>zona, bairro, local de votação e seção</b>, e no mapa. Toque numa linha para abrir os detalhes.</li>
       <li><b>Comparar</b> — coloque até três candidatos lado a lado e veja quem venceu em cada bairro ou local.</li>
       <li><b>Versão Web ou Celular</b> — no computador o sistema abre na versão <b>Web</b> (menu lateral e conteúdo largo); no telefone, na versão <b>Celular</b>. Troque em <b>Versão do sistema</b> (no menu lateral ou na tela inicial). Para ter o <b>app no celular</b>, toque em <b>Instalar como app</b> ou, no iPhone, em Compartilhar › Adicionar à Tela de Início.</li>
+      <li><b>2º turno (apuração ao vivo)</b> — Governador do RN e Presidente lado a lado: % de urnas apuradas, votos e % de cada um, diferença, estimativa do que falta para virar, comparação com o 1º turno e quem lidera em cada um dos 167 municípios. Escolha um município para ver só a votação dele. Atualiza sozinho a cada 30 segundos.</li>
       <li><b>Partidos (apuração 2026 no RN)</b> — escolha <b>Deputado Federal</b> ou <b>Deputado Estadual</b> e veja todos os partidos e federações com votos, quociente e vagas projetadas. Toque num partido para ver todos os candidatos dele, ou use "Todos os candidatos" com o filtro por partido. Atualiza sozinho durante a apuração.</li>
       <li><b>Candidaturas (TSE)</b> — consulta ao DivulgaCandContas: lista de candidatos por eleição, cargo e município, e a ficha de cada um com situação do registro, dados pessoais, bens, certidões, propostas, eleições anteriores e prestação de contas. Na tela de um candidato, toque em <b>Ficha no DivulgaCand</b>.</li>
       <li><b>Relatório</b> — pesquise um candidato e veja todas as eleições que ele disputou na cidade, com votos, posição e crescimento por zona, bairro e local. No modo <b>Colégios eleitorais</b>, compare até quatro locais de votação lado a lado.</li>
@@ -3167,7 +3372,7 @@ document.addEventListener('click', async e => {
   const cr = e.target.closest('.clist .crow[data-cand]');
   if (cr && ST.tela === 'resultado') { ST.candNr = cr.dataset.cand; ST.drill = []; irPara('candidato'); return; }
   const an = e.target.closest('[data-ano]');
-  if (an) { ST.ano = +an.dataset.ano; ST.turno = 1; ST.cargo = null; ST.candNr = null; ST.drill = []; salvar(); if (an.tagName === 'BUTTON') render(); return; }
+  if (an) { ST.ano = +an.dataset.ano; ST.turno = +(an.dataset.turno || 1); ST.cargo = null; ST.candNr = null; ST.drill = []; salvar(); if (an.tagName === 'BUTTON') render(); return; }
   const la = e.target.closest('[data-loc-auto]');
   if (la) { LOC.auto(la.dataset.locAuto); return; }
   const ie = e.target.closest('[data-imp-exp]');
