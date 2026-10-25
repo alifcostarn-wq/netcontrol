@@ -1070,29 +1070,42 @@ const BASES = { oficial: 'https://resultados.tse.jus.br/oficial/' };
 const CONN = { via: store.get('rv.via', 'auto'), direto: {}, ultimo: '' };
 function httpErr(status, p) { const e = new Error(status === 404 ? 'Arquivo ainda não publicado pelo TSE' : 'TSE respondeu ' + status); e.status = status; e.p = p; return e; }
 const NOTFOUND = new Map(); // evita repetir 404 (o TSE bloqueia IPs que geram muitos 404)
+// pedido com prazo: se o TSE não responder a tempo (noite de eleição, rede lenta), desiste e tenta de novo depois
+async function buscar(url, opts = {}, ms = 20000, ler = r => r) {
+  const ac = new AbortController(), t = setTimeout(() => ac.abort(), ms);
+  try { return await ler(await fetch(url, { ...opts, signal: ac.signal })); } finally { clearTimeout(t); }
+}
+// quando o TSE pede para ir mais devagar (429/503), todos os pedidos esperam um pouco antes de seguir
+let PAUSA_TSE = 0;
+const pausar = ms => new Promise(r => setTimeout(r, ms));
+function freioTSE(status) { if (status === 429 || status === 503) PAUSA_TSE = Math.max(PAUSA_TSE, Date.now() + 8000); }
 async function tse(p) {
   const nf = NOTFOUND.get(p);
   if (nf && Date.now() - nf < 60000) throw httpErr(404, p);
+  if (PAUSA_TSE > Date.now()) await pausar(PAUSA_TSE - Date.now());
   const direto = async () => {
-    let r;
-    try { r = await fetch(BASES.oficial + p, { cache: 'no-store' }); }
-    catch (e) { CONN.direto.oficial = false; throw e; }
+    let r, j;
+    try { [r, j] = await buscar(BASES.oficial + p, { cache: 'no-store' }, 20000, async r => [r, r.ok ? await r.json() : null]); }
+    catch (e) { if (e instanceof TypeError) CONN.direto.oficial = false; throw e; }
     if (r.status === 404) { NOTFOUND.set(p, Date.now()); throw httpErr(404, p); }
+    freioTSE(r.status);
+    if (r.status === 429 || r.status === 503) CONN.proxyAte = Date.now() + 60000; // o TSE limitou este aparelho: usa o servidor do site por 1 minuto
     if (!r.ok) throw httpErr(r.status, p);
-    const j = await r.json();
     CONN.direto.oficial = true; CONN.ultimo = 'direto';
     return j;
   };
   const proxy = async () => {
-    const r = await fetch('api/tse?amb=oficial&p=' + encodeURIComponent(p), { cache: 'no-store' });
-    if (!(r.headers.get('content-type') || '').includes('json')) throw new Error('proxy ausente');
+    const [r, j] = await buscar('api/tse?amb=oficial&p=' + encodeURIComponent(p), { cache: 'no-store' }, 25000, async r => {
+      if (!(r.headers.get('content-type') || '').includes('json')) throw new Error('proxy ausente');
+      return [r, r.ok ? await r.json() : null];
+    });
     if (r.status === 404) { NOTFOUND.set(p, Date.now()); throw httpErr(404, p); }
     if (!r.ok) throw httpErr(r.status, p);
     CONN.ultimo = 'proxy';
-    return await r.json();
+    return j;
   };
-  const ordem = CONN.via === 'direto' ? [direto] : CONN.via === 'proxy' ? [proxy] : CONN.direto.oficial === false ? [proxy, direto] : [direto, proxy];
-  for (const f of ordem) { try { return await f(); } catch (e) { if (e.status) throw e; } }
+  const ordem = CONN.via === 'direto' ? [direto] : CONN.via === 'proxy' ? [proxy] : CONN.direto.oficial === false || CONN.proxyAte > Date.now() ? [proxy, direto] : [direto, proxy];
+  for (const f of ordem) { try { return await f(); } catch (e) { if (e.status && e.status !== 429 && e.status !== 503) throw e; } } // 429/503: tenta pelo outro caminho
   const x = new Error('Não foi possível acessar o TSE agora.');
   x.offline = true;
   throw x;
@@ -1326,7 +1339,12 @@ function zerarAba(t) {
   else if (t === 'partidos') Object.assign(PT, { mun: '', vista: 'partidos', ord: 'votos', busca: '', filtro: '', aberto: new Set(), lim: 80 });
   else if (t === 'candidaturas') Object.assign(CAND, { ano: null, cargo: null, busca: '', sel: null, lim: 60 });
 }
+let RENDERIZANDO = false;
 async function render() {
+  RENDERIZANDO = true;
+  try { await montar(); } finally { RENDERIZANDO = false; }
+}
+async function montar() {
   let t = location.hash.slice(1) || 'inicio';
   t = ALIAS[t] || t;
   if (!TELAS.includes(t)) t = 'inicio';
@@ -1433,6 +1451,7 @@ async function modeloLive() {
 async function atualizarLive(key) {
   if (LIVE.busy) return;
   LIVE.busy = true;
+  LIVE.next = Date.now() + LIVE.every * 1000;
   try {
     const d = parseEA20(await tse(key));
     if (LIVE.key === key && LIVE.data) { LIVE.prev = new Map(LIVE.data.cands.map(c => [c.sq, c.vap])); } else LIVE.prev = new Map();
@@ -1444,26 +1463,18 @@ async function atualizarLive(key) {
     LIVE.next = Date.now() + Math.max(LIVE.every, 180) * 1000; // arquivo inexistente: espaça (o TSE bloqueia IPs com muitos 404)
   } finally { LIVE.busy = false; }
 }
+// contagem regressiva e atualização automática das telas ao vivo
+function tique(next, busy, sel) {
+  if (!RENDERIZANDO && !busy && isFinite(next) && Date.now() >= next) { ST.manterScroll = true; render(); return; }
+  const c = $(sel);
+  if (c && isFinite(next)) c.textContent = busy || RENDERIZANDO || Date.now() >= next ? 'atualizando…' : Math.ceil((next - Date.now()) / 1000) + ' s';
+}
 setInterval(() => {
-  if (ST.tela === 'eleitos' && document.visibilityState === 'visible') {
-    if (EL.modo === '2026' && isFinite(EL.next) && Date.now() >= EL.next) { ST.manterScroll = true; render(); }
-    else { const c = $('#el-cd'); if (c && isFinite(EL.next)) c.textContent = Math.max(0, Math.ceil((EL.next - Date.now()) / 1000)) + ' s'; }
-    return;
-  }
-  if (ST.tela === 'segundoturno' && document.visibilityState === 'visible') {
-    if (isFinite(T2.next) && Date.now() >= T2.next) { ST.manterScroll = true; render(); }
-    else { const c = $('#t2-cd'); if (c && isFinite(T2.next)) c.textContent = Math.max(0, Math.ceil((T2.next - Date.now()) / 1000)) + ' s'; }
-    return;
-  }
-  if (ST.tela === 'partidos' && document.visibilityState === 'visible') {
-    if (isFinite(PT.next) && Date.now() >= PT.next) { ST.manterScroll = true; render(); }
-    else { const c = $('#pt-cd'); if (c && isFinite(PT.next)) c.textContent = Math.max(0, Math.ceil((PT.next - Date.now()) / 1000)) + ' s'; }
-    return;
-  }
-  if (!EH_LIVE() || !['resultado', 'candidato'].includes(ST.tela) || document.visibilityState !== 'visible') return;
-  const el = $('#lv-cd');
-  if (LIVE.next !== Infinity && Date.now() >= LIVE.next) { ST.manterScroll = true; render(); }
-  else if (el && isFinite(LIVE.next)) el.textContent = Math.max(0, Math.ceil((LIVE.next - Date.now()) / 1000)) + ' s';
+  if (document.visibilityState !== 'visible') return;
+  if (ST.tela === 'eleitos') { if (EL.modo === '2026') tique(EL.next, EL.busy, '#el-cd'); return; }
+  if (ST.tela === 'segundoturno') return tique(T2.next, T2.busy, '#t2-cd');
+  if (ST.tela === 'partidos') return tique(PT.next, PT.busy, '#pt-cd');
+  if (EH_LIVE() && ['resultado', 'candidato'].includes(ST.tela)) tique(LIVE.next, LIVE.busy, '#lv-cd');
 }, 1000);
 
 /* ============================================================ peças visuais */
@@ -1957,9 +1968,14 @@ async function telaEleitos(el) {
   $$('[data-elmodo]', el).forEach(b => b.onclick = () => { EL.modo = b.dataset.elmodo; store.set('rv.el.modo', EL.modo); EL.next = 0; render(); });
   const sm = $('#el-mun'); if (sm) sm.onchange = () => { ST.cd = sm.value; salvar(); render(); };
   const ks = cargosEleitos(uf);
-  const res = await Promise.all(ks.map(async k => {
-    try { return { k, d: parseEA20(await tse(P.res(k.ele, k.abr, k.mun, k.cargo))) }; } catch (e) { return { k, erro: e }; }
-  }));
+  EL.busy = true;
+  if (EL.modo === '2026') EL.next = Date.now() + LIVE.every * 1000;
+  let res;
+  try {
+    res = await Promise.all(ks.map(async k => {
+      try { return { k, d: parseEA20(await tse(P.res(k.ele, k.abr, k.mun, k.cargo))) }; } catch (e) { return { k, erro: e }; }
+    }));
+  } finally { EL.busy = false; }
   const corpo = $('#el-corpo');
   if (!corpo) return;
   const ok = res.filter(r => r.d);
@@ -1990,6 +2006,7 @@ const t2Dupla = d => d.cands.slice().sort((a, b) => +a.n - +b.n).slice(0, 2);
 async function t2Carregar() {
   if (T2.busy || Date.now() < T2.next) return;
   T2.busy = true;
+  T2.next = Date.now() + LIVE.every * 1000;
   try {
     const res = await Promise.all(T2_CARGOS.map(async s => {
       const key = P.res(s.ele(), 'rn', T2.mun, s.cargo);
@@ -2007,7 +2024,8 @@ async function t2Carregar() {
     try { T2.br = parseEA20(await tse(P.res(ELE26.fed2, 'br', '', 1))); } catch {}
     const ok = res.filter(Boolean);
     if (ok.length) T2.erro = null;
-    T2.next = ok.length && ok.every(d => d.meta.and === 'f') && (!T2.br || T2.br.meta.and === 'f') ? Infinity : Date.now() + (ok.length ? LIVE.every : Math.max(LIVE.every, 120)) * 1000;
+    T2.falhou = !ok.length; // o TSE não respondeu agora: a tela continua com os últimos números lidos
+    T2.next = ok.length && ok.every(d => d.meta.and === 'f') && (!T2.br || T2.br.meta.and === 'f') ? Infinity : Date.now() + (ok.length ? LIVE.every : Math.max(LIVE.every, 60)) * 1000;
   } finally { T2.busy = false; }
 }
 function t2Card(s) {
@@ -2074,6 +2092,7 @@ async function telaSegundoTurno(el) {
       : `<div class="note err"><b>Não foi possível buscar a apuração no TSE agora.</b> ${esc(T2.erro?.message || '')} A página tenta de novo sozinha.</div>`;
     el.innerHTML = html; ligarT2(el); return;
   }
+  if (T2.falhou) html += `<div class="note warn" style="padding:8px 12px">O TSE não respondeu na última tentativa (site sobrecarregado). Mostrando os últimos números lidos; a tela tenta de novo sozinha.</div>`;
   html += `<div class="t2-grid">${T2_CARGOS.map(t2Card).join('')}</div>`;
   html += zsCardHtml();
   if (!T2.mun) {
@@ -2129,7 +2148,7 @@ async function t2Municipios(mus) {
   C.carregando = true;
   let feitos = 0;
   try {
-    await pool(mus, 6, async m => {
+    await pool(mus, 3, async m => {
       try {
         const d = parseEA20(await tse(P.res(ele, 'rn', m.cd, C.cargo)));
         const v = dupla.map(c => d.cands.find(y => y.sq === c.sq || y.n === c.n)?.vap || 0);
@@ -2230,11 +2249,11 @@ const espera = ms => new Promise(r => setTimeout(r, ms));
 // o TSE recusa pedidos rápidos demais (429): espera e tenta de novo, com pausa para todos os pedidos
 async function zsLer(z, s) {
   for (let t = 1; t <= 4; t++) {
-    if (ZS.pausa > Date.now()) await espera(ZS.pausa - Date.now());
-    try { return await zsLer1(z, s); }
+    if (PAUSA_TSE > Date.now()) await espera(PAUSA_TSE - Date.now());
+    try { const r = await zsLer1(z, s); await espera(150); return r; } // ritmo leve para não sobrecarregar o TSE
     catch (e) {
-      if (e.status !== 429 && e.status !== 503) throw e;
-      ZS.pausa = Math.max(ZS.pausa || 0, Date.now() + 5000 * t);
+      if (e.status !== 429 && e.status !== 503 && !(e.message || '').includes('acessar o TSE')) throw e;
+      PAUSA_TSE = Math.max(PAUSA_TSE, Date.now() + 5000 * t);
     }
   }
   return null;
@@ -2247,10 +2266,10 @@ async function zsLer1(z, s) {
   const arqs = h?.arq || (h?.nmarq || []).map(nm => ({ nm, tp: nm.split('.').pop() }));
   const bin = arqs.find(a => a.tp === 'bu' || /[.-]bu(\.dat)?$/.test(a.nm));
   if (!bin) return null;
-  const r = await fetch(`${BASES.oficial}${dir}/${h.hash}/${bin.nm}`);
-  if (r.status === 429 || r.status === 503) throw httpErr(r.status, dir);
-  if (!r.ok) return null;
-  const bu = lerBUbin(new Uint8Array(await r.arrayBuffer()));
+  const [st, buf] = await buscar(`${BASES.oficial}${dir}/${h.hash}/${bin.nm}`, {}, 30000, async r => [r.status, r.ok ? new Uint8Array(await r.arrayBuffer()) : null]);
+  if (st === 429 || st === 503) { freioTSE(st); throw httpErr(st, dir); }
+  if (!buf) return null;
+  const bu = lerBUbin(buf);
   const so = {};
   for (const c of bu.cargos) if (c.cd === 1 || c.cd === 3) so[c.cd] = { v: Object.fromEntries(c.cands.map(x => [x.nr, x.q])), b: c.brancos, n: c.nulos };
   return { z: +z, s: +s, local: bu.local, aptos: bu.aptos, comp: bu.comp, c: so };
@@ -2389,6 +2408,7 @@ async function ptCarregar() {
   if (PT.key === key && PT.data && Date.now() < PT.next) return;
   if (PT.busy) return;
   PT.busy = true;
+  PT.next = Date.now() + LIVE.every * 1000;
   try {
     const d = parseEA20(await tse(key));
     PT.prev = PT.key === key && PT.data ? new Map(PT.data.cands.map(c => [c.sq, c.vap])) : null;
