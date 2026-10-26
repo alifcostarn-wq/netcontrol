@@ -1,6 +1,6 @@
 // Radar de Votos — service worker: permite instalar como app e abrir o que já foi visto sem internet.
 // Sempre busca a versão nova na rede primeiro; o cache só é usado quando estiver offline.
-const CACHE = 'radar-votos-v1';
+const CACHE = 'radar-votos-v2';
 const BASE = ['/', '/manifest.webmanifest', '/icons/icon-192.png', '/icons/icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {

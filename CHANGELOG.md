@@ -1,5 +1,64 @@
 # Changelog
 
+## [3.11.0] — 2026-10-26
+
+### Implementado
+- **Eleições 2026 completas, 1º e 2º turno, como nos anos anteriores.** Os votos urna por urna dos 167
+  municípios do RN foram montados de novo a partir dos boletins de urna finais do TSE (8.115 urnas em cada turno):
+  - 1º turno: presidente, governador, senador, deputado federal e deputado estadual;
+  - 2º turno: presidente e governador.
+  - Em **Resultado**, **Candidato** (zona, bairro, local de votação, seção e mapa), **Comparar**, **Relatório** e
+    **Eleitorado**, basta escolher "Eleição 2026 · 1º turno" ou "Eleição 2026 · 2º turno".
+  - Conferido com o resultado oficial do TSE em cada município: **1.169 de 1.169 eleições iguais**. A conferência
+    cobriu os votos de cada candidato e a legenda de cada partido, além de válidos, brancos, nulos, anulados e
+    comparecimento.
+- **Nulo técnico.** Votos em números que ficaram fora da totalização (candidatura cancelada; por exemplo, governador
+  nº 50 e nº 29) aparecem marcados como **"Nulo técnico"**. Eles não entram mais nos votos válidos, como no TSE.
+
+### Alterado
+- **Eleitos 2026** mostra o resultado oficial final, com o quociente eleitoral e as vagas de cada partido:
+  - o governador eleito no 2º turno;
+  - os 2 senadores;
+  - os deputados federais e estaduais.
+  - Saíram o modo "Teste com 2024" e a atualização automática.
+- **Partidos 2026** (antes "Apuração 2026 · Partidos") mostra o resultado final:
+  - as vagas conquistadas;
+  - os eleitos oficiais (por QP ou por média);
+  - a **ordem dos suplentes** em cada partido ou federação.
+  - Saíram a contagem regressiva e os "+votos" da apuração.
+- **Tela inicial:**
+  - Saíram as linhas da apuração ao vivo. Eleições 2026 e 2022 indicam "1º e 2º turno".
+  - Eleitos, Partidos e Candidaturas aparecem depois dos anos.
+  - A linha "Eleitos 2026 no RN" ganhou o ícone que faltava.
+- **Menus:**
+  - Na barra de baixo (celular), "2º turno" virou **Comparar**.
+  - No menu lateral, saiu "Apuração · 2º turno" e "Partidos (1º turno)" virou "Partidos 2026".
+- O endereço antigo da apuração do 2º turno (`#segundoturno`) agora abre o **Resultado de 2026 · 2º turno**
+  (governador).
+- **Eleitorado:** 2026 vem dos boletins de urna, como os outros anos. Comparecimento e abstenção aparecem
+  identificados como do 1º turno.
+- **Ajuda:**
+  - Textos atualizados: 2026 com 1º e 2º turno, Eleitos e Partidos.
+  - A importação de votos ficou só para 2018 e 2016, porque 2020 a 2026 já estão publicados.
+
+### Removido (limpeza do sistema)
+- A tela de **apuração ao vivo do 2º turno**, com a leitura dos boletins de urna no navegador durante a apuração.
+- O modo **ao vivo** de Resultado, Candidato e Comparar: ranking de municípios, avisos e contagem até a próxima
+  atualização.
+- As **Preferências** da Ajuda (intervalo de atualização e conexão com o TSE). As preferências antigas guardadas
+  no aparelho são apagadas.
+- Os servidores intermediários do DivulgaCand (`api/divulga.js` e `api/divulga-us.js`), que o TSE bloqueava. A
+  consulta de candidaturas sai direto do navegador. Saiu também o aviso técnico de "campanha atual".
+- Código e estilos sem uso: o `index.html` caiu de 3.738 para 2.984 linhas (de 259 KB para 199 KB).
+
+### Melhorado
+- O servidor do site (`/api/tse`) guarda os arquivos de resultado por 1 hora, já que o resultado final não muda
+  mais.
+- No app instalado no celular, o cache foi renovado para a nova versão.
+- Script de geração (`scripts/build-historico.mjs`):
+  - espera e tenta de novo quando o TSE pede para ir mais devagar (429/503);
+  - marca os nulos técnicos.
+
 ## [3.10.4] — 2026-10-25
 
 ### Alterado

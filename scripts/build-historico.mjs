@@ -47,11 +47,18 @@ const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpp
 const slug = s => norm(s).toLowerCase().replace(/ /g, '-');
 const dorme = ms => new Promise(r => setTimeout(r, ms));
 let n404 = 0, nReq = 0, lim404 = 400;
+let pausaAte = 0; // o TSE pediu para ir mais devagar (429/503): todos os pedidos esperam
 async function baixar(url, tipo = 'json', tentativas = 4) {
   for (let t = 1; ; t++) {
     try {
+      if (pausaAte > Date.now()) await dorme(pausaAte - Date.now());
       nReq++;
       const r = await fetch(url, { headers: { Accept: '*/*' }, signal: AbortSignal.timeout(45000) });
+      if (r.status === 429 || r.status === 503) {
+        pausaAte = Math.max(pausaAte, Date.now() + 15000 * Math.min(t, 4));
+        if (t >= 10) throw new Error('HTTP ' + r.status);
+        continue; // espera a pausa e tenta de novo, sem contar como falha
+      }
       if (r.status === 404) {
         // o TSE bloqueia IPs que geram muitos 404: para antes disso
         if (++n404 > lim404) throw new Error('Muitos arquivos inexistentes; interrompido para não ser bloqueado pelo TSE.');
@@ -261,7 +268,7 @@ async function completarCandidatos(doc, ano, uf, mun) {
       for (const c of E.cand) {
         if (c.tipo !== 'c') continue;
         const r = porNr.get(String(c.nr));
-        if (!r) continue;
+        if (!r) { c.anulado = true; c.sit = 'Nulo técnico'; continue; } // número fora da totalização (candidatura cancelada): o TSE conta como nulo técnico
         c.nm = r.c.nmu || c.nm;
         c.sg = r.sg || c.sg;
         c.sit = r.c.st || '';
