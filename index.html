@@ -1900,7 +1900,7 @@ async function telaEleitorado(el) {
   if (EO.drill.length) html += `<div class="crumb"><button type="button" id="eo-subir">‹ Voltar</button><span class="muted">${EO.drill.map(d => esc(d.label)).join(' › ')}</span></div>`;
   html += `<label class="search">${ICON.search}<input type="search" id="eo-busca" placeholder="Pesquisar" aria-label="Pesquisar"></label><ul class="rlist" id="eo-rk"></ul><div class="more" id="eo-mais"></div>
     <div class="tools"><button class="btn sm" type="button" data-exp="eo" data-kind="xlsx">Baixar Excel</button><button class="btn sm" type="button" data-exp="eo" data-kind="csv">Baixar CSV</button></div>
-    <p class="foot">Nos anos com boletim de urna, seções agregadas aparecem somadas à seção principal. ${EO.ano === 2026 ? 'Cadastro de 2026 do TSE (eleitorado por local de votação).' : ''}</p>`;
+    <p class="foot">Seções agregadas aparecem somadas à seção principal.</p>`;
   el.innerHTML = html;
   ligarEO(el);
   const grupos = agrEleitorado(base.linhas, EO.nivel, EO.drill);
@@ -2122,7 +2122,9 @@ function statsColegio(doc, E, chaves) {
   if (E) for (let i = 0; i < E.v.length; i += 3) if (secs.has(E.v[i])) v[E.v[i + 1]] += E.v[i + 2];
   let val = 0, br = 0, nu = 0, tot = 0;
   if (E) E.cand.forEach((c, i) => { tot += v[i]; if ((c.tipo === 'c' && !c.anulado) || c.tipo === 'l') val += v[i]; else if (c.tipo === 'b') br += v[i]; else if (c.tipo === 'n') nu += v[i]; });
-  return { secoes: secs.size, aptos, comp, v, val, br, nu, tot };
+  // quem votou: no 1º turno vem do boletim de urna (em senador há 2 votos por eleitor quando são 2 vagas); no 2º turno, dos votos do próprio turno
+  const vot = E && E.turno > 1 ? tot : comp || tot;
+  return { secoes: secs.size, aptos, comp, vot, v, val, br, nu, tot };
 }
 function relColegios(el, html, docs, nmCid) {
   if (REL.col.cd !== ST.cd) REL.col = { cd: ST.cd, ele: '', cargo: 0, locais: null };
@@ -2168,8 +2170,8 @@ function relColegios(el, html, docs, nmCid) {
     <tr><td>Bairro</td>${sel.map(c => `<td class="n">${c.bairro ? esc(titulo(c.bairro)) : '—'}</td>`).join('')}</tr>
     <tr><td>Seções (urnas)</td>${st.map(s => `<td class="n">${s.secoes ? fmt(s.secoes) : '—'}</td>`).join('')}</tr>
     ${temAptos ? `<tr><td>Eleitores aptos</td>${st.map(s => `<td class="n"><b>${s.aptos ? fmt(s.aptos) : '—'}</b></td>`).join('')}</tr>
-    <tr><td>Compareceram</td>${st.map(s => `<td class="n">${s.aptos ? `${fmt(s.tot)} <small class="muted">${p(s.tot, s.aptos)}</small>` : fmt(s.tot)}</td>`).join('')}</tr>
-    <tr><td>Abstenção</td>${st.map(s => `<td class="n">${s.aptos ? `${fmt(s.aptos - s.tot)} <small class="muted">${p(s.aptos - s.tot, s.aptos)}</small>` : '—'}</td>`).join('')}</tr>` : `<tr><td>Votantes</td>${st.map(s => `<td class="n"><b>${fmt(s.tot)}</b></td>`).join('')}</tr>`}
+    <tr><td>Compareceram</td>${st.map(s => `<td class="n">${s.aptos ? `${fmt(s.vot)} <small class="muted">${p(s.vot, s.aptos)}</small>` : fmt(s.vot)}</td>`).join('')}</tr>
+    <tr><td>Abstenção</td>${st.map(s => `<td class="n">${s.aptos ? `${fmt(s.aptos - s.vot)} <small class="muted">${p(s.aptos - s.vot, s.aptos)}</small>` : '—'}</td>`).join('')}</tr>` : `<tr><td>Votantes</td>${st.map(s => `<td class="n"><b>${fmt(s.vot)}</b></td>`).join('')}</tr>`}
     <tr><td>Válidos</td>${st.map(s => `<td class="n">${fmt(s.val)} <small class="muted">${p(s.val, s.tot)}</small></td>`).join('')}</tr>
     <tr><td>Brancos</td>${st.map(s => `<td class="n">${fmt(s.br)} <small class="muted">${p(s.br, s.tot)}</small></td>`).join('')}</tr>
     <tr><td>Nulos</td>${st.map(s => `<td class="n">${fmt(s.nu)} <small class="muted">${p(s.nu, s.tot)}</small></td>`).join('')}</tr>
@@ -2180,11 +2182,12 @@ function relColegios(el, html, docs, nmCid) {
   html += `<div class="sec-title">Candidatos nos colégios</div>
     <label class="search">${ICON.search}<input type="search" id="rc-busca-c" placeholder="Pesquisar candidato" aria-label="Pesquisar candidato"></label>
     <div id="rc-cards" style="display:grid;gap:10px"></div><div class="more" id="rc-mais"></div>`;
-  // evolução dos colégios nas eleições
-  const evo = docs.map(d => ({ d, xs: sel.map(c => statsColegio(d, null, new Set([c.k]))) }));
+  // evolução dos colégios nas eleições, turno a turno (no 2º turno: eleitores aptos do 1º turno e comparecimento pelos votos do 2º turno)
+  const evo = docs.flatMap(d => [...new Set(d.eleicoes.map(e => e.turno))].sort((a, b) => a - b)
+    .map(t => ({ d, t, xs: sel.map(c => statsColegio(d, t > 1 ? d.eleicoes.find(e => e.turno === t) : null, new Set([c.k]))) })));
   html += `<div class="sec-title">Evolução do eleitorado nos colégios</div>
     <div class="card"><div class="tscroll"><table class="rtab"><thead><tr><th>Eleição</th>${sel.map((c, k) => `<th class="n"><span class="cdot" style="--k:var(${CORES_REL[k]})"></span>${esc(c.nm)}</th>`).join('')}</tr></thead><tbody>
-    ${evo.map(({ d, xs }) => `<tr><td><b>${d.ano}</b></td>${xs.map(s => `<td class="n">${s.secoes ? `${s.aptos ? fmt(s.aptos) + ' aptos' : '—'}<br><small class="muted">${plural(s.secoes, 'seção', 'seções')}${s.aptos && s.comp ? ' · compareceu ' + p(s.comp, s.aptos) : ''}</small>` : '<small class="muted">sem seções</small>'}</td>`).join('')}</tr>`).join('')}
+    ${evo.map(({ d, t, xs }) => `<tr><td><b>${d.ano}</b>${t > 1 ? ` · ${t}º turno` : ''}</td>${xs.map(s => `<td class="n">${s.secoes ? `${s.aptos ? fmt(s.aptos) + ' aptos' : '—'}<br><small class="muted">${plural(s.secoes, 'seção', 'seções')}${s.aptos && s.vot ? ' · compareceu ' + p(s.vot, s.aptos) : ''}</small>` : '<small class="muted">sem seções</small>'}</td>`).join('')}</tr>`).join('')}
     </tbody></table></div></div>
     <div class="tools"><button class="btn sm" type="button" id="rel-print">Imprimir / PDF</button><button class="btn sm" type="button" data-exp="relcol" data-kind="xlsx">Baixar Excel</button><button class="btn sm" type="button" data-exp="relcol" data-kind="csv">Baixar CSV</button></div>
     <p class="foot">Colégio eleitoral = local de votação. Os colégios são ligados entre eleições pela zona e pelo número do local no TSE. A porcentagem de cada candidato é sobre os votos válidos do colégio.</p>`;
