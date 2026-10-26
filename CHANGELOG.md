@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.11.1] — 2026-10-26
+
+### Implementado
+- **Relatório › Colégios eleitorais › Evolução do eleitorado nos colégios:** agora tem uma linha para o
+  **2º turno** (2022 e 2026). A linha mostra os eleitores aptos, que são os mesmos do 1º turno, e o **comparecimento
+  do 2º turno** em cada colégio. O cálculo usa os dados que já estão no sistema, sem buscar nada de novo no TSE.
+
+### Corrigido
+- **Relatório › Colégios eleitorais, cargo Senador 2026:** cada eleitor votou em 2 senadores, por isso
+  "Compareceram" aparecia dobrado e a abstenção ficava negativa. Agora vale o comparecimento do boletim de urna,
+  como nos outros cargos.
+- **Eleitorado:** o rodapé ainda dizia que 2026 vinha do cadastro do TSE. Na verdade, 2026 vem dos boletins de
+  urna, como os outros anos.
+
+### Observação
+- O 1º turno de 2026 que já estava no sistema não mudou em 159 das 167 cidades. Nas outras 8, faltavam urnas que o
+  TSE ainda não tinha publicado quando o 1º turno foi montado; agora elas estão completas. São Assú, Extremoz,
+  Macaíba, Maxaranguape, Porto do Mangue, Tenente Ananias, Tibau do Sul e Touros. Não é preciso buscar mais dados.
+
 ## [3.11.0] — 2026-10-26
 
 ### Implementado
