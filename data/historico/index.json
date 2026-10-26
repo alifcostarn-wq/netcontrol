@@ -77,6 +77,10 @@
    "nm": "ACARI",
    "arquivo": "rn-16012-acari-2026.json",
    "secoes": 29,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -99,7 +103,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -177,6 +181,10 @@
    "nm": "AFONSO BEZERRA",
    "arquivo": "rn-16055-afonso-bezerra-2026.json",
    "secoes": 33,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -199,7 +207,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -277,6 +285,10 @@
    "nm": "ÁGUA NOVA",
    "arquivo": "rn-16071-agua-nova-2026.json",
    "secoes": 11,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -299,7 +311,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -377,6 +389,10 @@
    "nm": "ALEXANDRIA",
    "arquivo": "rn-16098-alexandria-2026.json",
    "secoes": 41,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -399,7 +415,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -477,6 +493,10 @@
    "nm": "ALMINO AFONSO",
    "arquivo": "rn-16110-almino-afonso-2026.json",
    "secoes": 21,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -499,7 +519,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -577,6 +597,10 @@
    "nm": "ALTO DO RODRIGUES",
    "arquivo": "rn-16136-alto-do-rodrigues-2026.json",
    "secoes": 39,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -599,7 +623,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -677,6 +701,10 @@
    "nm": "ANGICOS",
    "arquivo": "rn-16152-angicos-2026.json",
    "secoes": 31,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -699,7 +727,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.167Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -777,6 +805,10 @@
    "nm": "ANTÔNIO MARTINS",
    "arquivo": "rn-16179-antonio-martins-2026.json",
    "secoes": 23,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -799,7 +831,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -877,6 +909,10 @@
    "nm": "APODI",
    "arquivo": "rn-16195-apodi-2026.json",
    "secoes": 91,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -899,7 +935,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -977,6 +1013,10 @@
    "nm": "AREIA BRANCA",
    "arquivo": "rn-16217-areia-branca-2026.json",
    "secoes": 75,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -999,7 +1039,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1077,6 +1117,10 @@
    "nm": "AREZ",
    "arquivo": "rn-16233-arez-2026.json",
    "secoes": 36,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1099,7 +1143,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1176,7 +1220,11 @@
    "cd": "16039",
    "nm": "ASSÚ",
    "arquivo": "rn-16039-assu-2026.json",
-   "secoes": 131,
+   "secoes": 133,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1199,7 +1247,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -1277,6 +1325,10 @@
    "nm": "BAÍA FORMOSA",
    "arquivo": "rn-16276-baia-formosa-2026.json",
    "secoes": 24,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1299,7 +1351,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1377,6 +1429,10 @@
    "nm": "BARAÚNA",
    "arquivo": "rn-30031-barauna-2026.json",
    "secoes": 63,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1399,7 +1455,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -1477,6 +1533,10 @@
    "nm": "BARCELONA",
    "arquivo": "rn-16292-barcelona-2026.json",
    "secoes": 14,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1499,7 +1559,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1577,6 +1637,10 @@
    "nm": "BENTO FERNANDES",
    "arquivo": "rn-16314-bento-fernandes-2026.json",
    "secoes": 19,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1599,7 +1663,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1677,6 +1741,10 @@
    "nm": "BOA SAÚDE",
    "arquivo": "rn-17035-boa-saude-2026.json",
    "secoes": 25,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1699,7 +1767,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1777,6 +1845,10 @@
    "nm": "BODÓ",
    "arquivo": "rn-16101-bodo-2026.json",
    "secoes": 11,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1799,7 +1871,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -1877,6 +1949,10 @@
    "nm": "BOM JESUS",
    "arquivo": "rn-16330-bom-jesus-2026.json",
    "secoes": 30,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1899,7 +1975,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -1977,6 +2053,10 @@
    "nm": "BREJINHO",
    "arquivo": "rn-16357-brejinho-2026.json",
    "secoes": 30,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -1999,7 +2079,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -2077,6 +2157,10 @@
    "nm": "CAIÇARA DO NORTE",
    "arquivo": "rn-16047-caicara-do-norte-2026.json",
    "secoes": 18,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2099,7 +2183,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -2177,6 +2261,10 @@
    "nm": "CAIÇARA DO RIO DO VENTO",
    "arquivo": "rn-16373-caicara-do-rio-do-vento-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2199,7 +2287,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -2277,6 +2365,10 @@
    "nm": "CAICÓ",
    "arquivo": "rn-16390-caico-2026.json",
    "secoes": 137,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2299,7 +2391,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -2377,6 +2469,10 @@
    "nm": "CAMPO GRANDE",
    "arquivo": "rn-16250-campo-grande-2026.json",
    "secoes": 32,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2399,7 +2495,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -2477,6 +2573,10 @@
    "nm": "CAMPO REDONDO",
    "arquivo": "rn-16411-campo-redondo-2026.json",
    "secoes": 26,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2499,7 +2599,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -2577,6 +2677,10 @@
    "nm": "CANGUARETAMA",
    "arquivo": "rn-16438-canguaretama-2026.json",
    "secoes": 88,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2599,7 +2703,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -2677,6 +2781,10 @@
    "nm": "CARAÚBAS",
    "arquivo": "rn-16454-caraubas-2026.json",
    "secoes": 63,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2699,7 +2807,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -2777,6 +2885,10 @@
    "nm": "CARNAÚBA DOS DANTAS",
    "arquivo": "rn-16470-carnauba-dos-dantas-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2799,7 +2911,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -2877,6 +2989,10 @@
    "nm": "CARNAUBAIS",
    "arquivo": "rn-16497-carnaubais-2026.json",
    "secoes": 27,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2899,7 +3015,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -2977,6 +3093,10 @@
    "nm": "CEARÁ-MIRIM",
    "arquivo": "rn-16519-ceara-mirim-2026.json",
    "secoes": 201,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -2999,7 +3119,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -3077,6 +3197,10 @@
    "nm": "CERRO CORÁ",
    "arquivo": "rn-16535-cerro-cora-2026.json",
    "secoes": 29,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3099,7 +3223,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -3177,6 +3301,10 @@
    "nm": "CORONEL EZEQUIEL",
    "arquivo": "rn-16551-coronel-ezequiel-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3199,7 +3327,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -3277,6 +3405,10 @@
    "nm": "CORONEL JOÃO PESSOA",
    "arquivo": "rn-16578-coronel-joao-pessoa-2026.json",
    "secoes": 15,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3299,7 +3431,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -3377,6 +3509,10 @@
    "nm": "CRUZETA",
    "arquivo": "rn-16594-cruzeta-2026.json",
    "secoes": 21,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3399,7 +3535,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -3477,6 +3613,10 @@
    "nm": "CURRAIS NOVOS",
    "arquivo": "rn-16616-currais-novos-2026.json",
    "secoes": 109,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3499,7 +3639,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.168Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -3577,6 +3717,10 @@
    "nm": "DOUTOR SEVERIANO",
    "arquivo": "rn-16632-doutor-severiano-2026.json",
    "secoes": 24,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3599,7 +3743,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -3677,6 +3821,10 @@
    "nm": "ENCANTO",
    "arquivo": "rn-16659-encanto-2026.json",
    "secoes": 15,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3699,7 +3847,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -3777,6 +3925,10 @@
    "nm": "EQUADOR",
    "arquivo": "rn-16675-equador-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3799,7 +3951,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.168Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -3877,6 +4029,10 @@
    "nm": "ESPÍRITO SANTO",
    "arquivo": "rn-16691-espirito-santo-2026.json",
    "secoes": 25,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3899,7 +4055,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -3976,7 +4132,11 @@
    "cd": "16713",
    "nm": "EXTREMOZ",
    "arquivo": "rn-16713-extremoz-2026.json",
-   "secoes": 115,
+   "secoes": 116,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -3999,7 +4159,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -4077,6 +4237,10 @@
    "nm": "FELIPE GUERRA",
    "arquivo": "rn-16730-felipe-guerra-2026.json",
    "secoes": 20,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4099,7 +4263,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -4177,6 +4341,10 @@
    "nm": "FERNANDO PEDROZA",
    "arquivo": "rn-16144-fernando-pedroza-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4199,7 +4367,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.166Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -4277,6 +4445,10 @@
    "nm": "FLORÂNIA",
    "arquivo": "rn-16756-florania-2026.json",
    "secoes": 29,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4299,7 +4471,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -4377,6 +4549,10 @@
    "nm": "FRANCISCO DANTAS",
    "arquivo": "rn-16772-francisco-dantas-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4399,7 +4575,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -4477,6 +4653,10 @@
    "nm": "FRUTUOSO GOMES",
    "arquivo": "rn-17515-frutuoso-gomes-2026.json",
    "secoes": 14,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4499,7 +4679,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -4577,6 +4757,10 @@
    "nm": "GALINHOS",
    "arquivo": "rn-16799-galinhos-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4599,7 +4783,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -4677,6 +4861,10 @@
    "nm": "GOIANINHA",
    "arquivo": "rn-16810-goianinha-2026.json",
    "secoes": 70,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4699,7 +4887,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -4777,6 +4965,10 @@
    "nm": "GOVERNADOR DIX-SEPT ROSADO",
    "arquivo": "rn-16837-governador-dix-sept-rosado-2026.json",
    "secoes": 39,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4799,7 +4991,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -4877,6 +5069,10 @@
    "nm": "GROSSOS",
    "arquivo": "rn-16853-grossos-2026.json",
    "secoes": 31,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4899,7 +5095,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -4977,6 +5173,10 @@
    "nm": "GUAMARÉ",
    "arquivo": "rn-16870-guamare-2026.json",
    "secoes": 45,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -4999,7 +5199,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -5077,6 +5277,10 @@
    "nm": "IELMO MARINHO",
    "arquivo": "rn-16896-ielmo-marinho-2026.json",
    "secoes": 40,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5099,7 +5303,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -5177,6 +5381,10 @@
    "nm": "IPANGUAÇU",
    "arquivo": "rn-16918-ipanguacu-2026.json",
    "secoes": 39,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5199,7 +5407,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -5277,6 +5485,10 @@
    "nm": "IPUEIRA",
    "arquivo": "rn-16934-ipueira-2026.json",
    "secoes": 7,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5299,7 +5511,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -5377,6 +5589,10 @@
    "nm": "ITAJÁ",
    "arquivo": "rn-16080-itaja-2026.json",
    "secoes": 21,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5399,7 +5615,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -5477,6 +5693,10 @@
    "nm": "ITAÚ",
    "arquivo": "rn-16950-itau-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5499,7 +5719,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -5577,6 +5797,10 @@
    "nm": "JAÇANÃ",
    "arquivo": "rn-16977-jacana-2026.json",
    "secoes": 20,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5599,7 +5823,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -5677,6 +5901,10 @@
    "nm": "JANDAÍRA",
    "arquivo": "rn-16993-jandaira-2026.json",
    "secoes": 19,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5699,7 +5927,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -5777,6 +6005,10 @@
    "nm": "JANDUÍS",
    "arquivo": "rn-17019-janduis-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5799,7 +6031,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -5877,6 +6109,10 @@
    "nm": "JAPI",
    "arquivo": "rn-17051-japi-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5899,7 +6135,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -5977,6 +6213,10 @@
    "nm": "JARDIM DE ANGICOS",
    "arquivo": "rn-17078-jardim-de-angicos-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -5999,7 +6239,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6077,6 +6317,10 @@
    "nm": "JARDIM DE PIRANHAS",
    "arquivo": "rn-17094-jardim-de-piranhas-2026.json",
    "secoes": 35,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6099,7 +6343,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6177,6 +6421,10 @@
    "nm": "JARDIM DO SERIDÓ",
    "arquivo": "rn-17116-jardim-do-serido-2026.json",
    "secoes": 34,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6199,7 +6447,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6277,6 +6525,10 @@
    "nm": "JOÃO CÂMARA",
    "arquivo": "rn-17132-joao-camara-2026.json",
    "secoes": 93,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6299,7 +6551,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -6377,6 +6629,10 @@
    "nm": "JOÃO DIAS",
    "arquivo": "rn-17159-joao-dias-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6399,7 +6655,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6477,6 +6733,10 @@
    "nm": "JOSÉ DA PENHA",
    "arquivo": "rn-17175-jose-da-penha-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6499,7 +6759,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6577,6 +6837,10 @@
    "nm": "JUCURUTU",
    "arquivo": "rn-17191-jucurutu-2026.json",
    "secoes": 59,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6599,7 +6863,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6677,6 +6941,10 @@
    "nm": "JUNDIÁ",
    "arquivo": "rn-16306-jundia-2026.json",
    "secoes": 15,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6699,7 +6967,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -6777,6 +7045,10 @@
    "nm": "LAGOA D'ANTA",
    "arquivo": "rn-17230-lagoa-d-anta-2026.json",
    "secoes": 19,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6799,7 +7071,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -6877,6 +7149,10 @@
    "nm": "LAGOA DE PEDRAS",
    "arquivo": "rn-17256-lagoa-de-pedras-2026.json",
    "secoes": 23,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6899,7 +7175,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -6977,6 +7253,10 @@
    "nm": "LAGOA DE VELHOS",
    "arquivo": "rn-17272-lagoa-de-velhos-2026.json",
    "secoes": 11,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -6999,7 +7279,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7077,6 +7357,10 @@
    "nm": "LAGOA NOVA",
    "arquivo": "rn-17299-lagoa-nova-2026.json",
    "secoes": 45,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7099,7 +7383,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -7177,6 +7461,10 @@
    "nm": "LAGOA SALGADA",
    "arquivo": "rn-17310-lagoa-salgada-2026.json",
    "secoes": 29,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7199,7 +7487,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7277,6 +7565,10 @@
    "nm": "LAJES",
    "arquivo": "rn-17337-lajes-2026.json",
    "secoes": 29,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7299,7 +7591,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7377,6 +7669,10 @@
    "nm": "LAJES PINTADAS",
    "arquivo": "rn-17353-lajes-pintadas-2026.json",
    "secoes": 19,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7399,7 +7695,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7477,6 +7773,10 @@
    "nm": "LUCRÉCIA",
    "arquivo": "rn-17370-lucrecia-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7499,7 +7799,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7577,6 +7877,10 @@
    "nm": "LUÍS GOMES",
    "arquivo": "rn-17396-luis-gomes-2026.json",
    "secoes": 27,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7599,7 +7903,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -7676,7 +7980,11 @@
    "cd": "17418",
    "nm": "MACAÍBA",
    "arquivo": "rn-17418-macaiba-2026.json",
-   "secoes": 151,
+   "secoes": 172,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7699,7 +8007,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T01:01:55.604Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7777,6 +8085,10 @@
    "nm": "MACAU",
    "arquivo": "rn-17434-macau-2026.json",
    "secoes": 78,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7799,7 +8111,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7877,6 +8189,10 @@
    "nm": "MAJOR SALES",
    "arquivo": "rn-16160-major-sales-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7899,7 +8215,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -7977,6 +8293,10 @@
    "nm": "MARCELINO VIEIRA",
    "arquivo": "rn-17450-marcelino-vieira-2026.json",
    "secoes": 22,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -7999,7 +8319,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -8077,6 +8397,10 @@
    "nm": "MARTINS",
    "arquivo": "rn-17477-martins-2026.json",
    "secoes": 25,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8099,7 +8423,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -8176,7 +8500,11 @@
    "cd": "17493",
    "nm": "MAXARANGUAPE",
    "arquivo": "rn-17493-maxaranguape-2026.json",
-   "secoes": 26,
+   "secoes": 32,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8199,7 +8527,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T01:02:26.871Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -8277,6 +8605,10 @@
    "nm": "MESSIAS TARGINO",
    "arquivo": "rn-17213-messias-targino-2026.json",
    "secoes": 18,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8299,7 +8631,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -8377,6 +8709,10 @@
    "nm": "MONTANHAS",
    "arquivo": "rn-17531-montanhas-2026.json",
    "secoes": 35,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8399,7 +8735,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -8477,6 +8813,10 @@
    "nm": "MONTE ALEGRE",
    "arquivo": "rn-17558-monte-alegre-2026.json",
    "secoes": 58,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8499,7 +8839,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -8577,6 +8917,10 @@
    "nm": "MONTE DAS GAMELEIRAS",
    "arquivo": "rn-17574-monte-das-gameleiras-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8599,7 +8943,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -8677,6 +9021,10 @@
    "nm": "MOSSORÓ",
    "arquivo": "rn-17590-mossoro-2026.json",
    "secoes": 564,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8699,7 +9047,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -8777,6 +9125,10 @@
    "nm": "NATAL",
    "arquivo": "rn-17612-natal-2026.json",
    "secoes": 1477,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8799,7 +9151,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -8877,6 +9229,10 @@
    "nm": "NÍSIA FLORESTA",
    "arquivo": "rn-17639-nisia-floresta-2026.json",
    "secoes": 74,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8899,7 +9255,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -8977,6 +9333,10 @@
    "nm": "NOVA CRUZ",
    "arquivo": "rn-17655-nova-cruz-2026.json",
    "secoes": 97,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -8999,7 +9359,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -9077,6 +9437,10 @@
    "nm": "OLHO D'ÁGUA DO BORGES",
    "arquivo": "rn-17671-olho-d-agua-do-borges-2026.json",
    "secoes": 18,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9099,7 +9463,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -9177,6 +9541,10 @@
    "nm": "OURO BRANCO",
    "arquivo": "rn-17698-ouro-branco-2026.json",
    "secoes": 14,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9199,7 +9567,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -9277,6 +9645,10 @@
    "nm": "PARANÁ",
    "arquivo": "rn-17710-parana-2026.json",
    "secoes": 14,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9299,7 +9671,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -9377,6 +9749,10 @@
    "nm": "PARAÚ",
    "arquivo": "rn-17736-parau-2026.json",
    "secoes": 19,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9399,7 +9775,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -9477,6 +9853,10 @@
    "nm": "PARAZINHO",
    "arquivo": "rn-17752-parazinho-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9499,7 +9879,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -9577,6 +9957,10 @@
    "nm": "PARELHAS",
    "arquivo": "rn-17779-parelhas-2026.json",
    "secoes": 57,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9599,7 +9983,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -9677,6 +10061,10 @@
    "nm": "PARNAMIRIM",
    "arquivo": "rn-17795-parnamirim-2026.json",
    "secoes": 427,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9699,7 +10087,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -9777,6 +10165,10 @@
    "nm": "PASSA E FICA",
    "arquivo": "rn-17817-passa-e-fica-2026.json",
    "secoes": 31,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9799,7 +10191,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -9877,6 +10269,10 @@
    "nm": "PASSAGEM",
    "arquivo": "rn-17833-passagem-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9899,7 +10295,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -9977,6 +10373,10 @@
    "nm": "PATU",
    "arquivo": "rn-17850-patu-2026.json",
    "secoes": 29,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -9999,7 +10399,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -10077,6 +10477,10 @@
    "nm": "PAU DOS FERROS",
    "arquivo": "rn-17876-pau-dos-ferros-2026.json",
    "secoes": 72,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10099,7 +10503,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -10177,6 +10581,10 @@
    "nm": "PEDRA GRANDE",
    "arquivo": "rn-17892-pedra-grande-2026.json",
    "secoes": 15,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10199,7 +10607,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -10277,6 +10685,10 @@
    "nm": "PEDRA PRETA",
    "arquivo": "rn-17914-pedra-preta-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10299,7 +10711,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -10377,6 +10789,10 @@
    "nm": "PEDRO AVELINO",
    "arquivo": "rn-17930-pedro-avelino-2026.json",
    "secoes": 22,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10399,7 +10815,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -10477,6 +10893,10 @@
    "nm": "PEDRO VELHO",
    "arquivo": "rn-17957-pedro-velho-2026.json",
    "secoes": 43,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10499,7 +10919,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -10577,6 +10997,10 @@
    "nm": "PENDÊNCIAS",
    "arquivo": "rn-17973-pendencias-2026.json",
    "secoes": 38,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10599,7 +11023,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -10677,6 +11101,10 @@
    "nm": "PILÕES",
    "arquivo": "rn-17990-piloes-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10699,7 +11127,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -10777,6 +11205,10 @@
    "nm": "POÇO BRANCO",
    "arquivo": "rn-18015-poco-branco-2026.json",
    "secoes": 43,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10799,7 +11231,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -10877,6 +11309,10 @@
    "nm": "PORTALEGRE",
    "arquivo": "rn-18031-portalegre-2026.json",
    "secoes": 20,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10899,7 +11335,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -10976,7 +11412,11 @@
    "cd": "16284",
    "nm": "PORTO DO MANGUE",
    "arquivo": "rn-16284-porto-do-mangue-2026.json",
-   "secoes": 14,
+   "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -10999,7 +11439,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -11077,6 +11517,10 @@
    "nm": "PUREZA",
    "arquivo": "rn-18074-pureza-2026.json",
    "secoes": 30,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11099,7 +11543,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -11177,6 +11621,10 @@
    "nm": "RAFAEL FERNANDES",
    "arquivo": "rn-18090-rafael-fernandes-2026.json",
    "secoes": 15,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11199,7 +11647,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -11277,6 +11725,10 @@
    "nm": "RAFAEL GODEIRO",
    "arquivo": "rn-18937-rafael-godeiro-2026.json",
    "secoes": 11,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11299,7 +11751,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -11377,6 +11829,10 @@
    "nm": "RIACHO DA CRUZ",
    "arquivo": "rn-18112-riacho-da-cruz-2026.json",
    "secoes": 9,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11399,7 +11855,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -11477,6 +11933,10 @@
    "nm": "RIACHO DE SANTANA",
    "arquivo": "rn-18139-riacho-de-santana-2026.json",
    "secoes": 11,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11499,7 +11959,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -11577,6 +12037,10 @@
    "nm": "RIACHUELO",
    "arquivo": "rn-18155-riachuelo-2026.json",
    "secoes": 21,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11599,7 +12063,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -11677,6 +12141,10 @@
    "nm": "RIO DO FOGO",
    "arquivo": "rn-16268-rio-do-fogo-2026.json",
    "secoes": 37,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11699,7 +12167,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -11777,6 +12245,10 @@
    "nm": "RODOLFO FERNANDES",
    "arquivo": "rn-18171-rodolfo-fernandes-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11799,7 +12271,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -11877,6 +12349,10 @@
    "nm": "RUY BARBOSA",
    "arquivo": "rn-18198-ruy-barbosa-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11899,7 +12375,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -11977,6 +12453,10 @@
    "nm": "SANTA CRUZ",
    "arquivo": "rn-18236-santa-cruz-2026.json",
    "secoes": 87,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -11999,7 +12479,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.172Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -12077,6 +12557,10 @@
    "nm": "SANTA MARIA",
    "arquivo": "rn-16241-santa-maria-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12099,7 +12583,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -12177,6 +12661,10 @@
    "nm": "SANTANA DO MATOS",
    "arquivo": "rn-18279-santana-do-matos-2026.json",
    "secoes": 38,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12199,7 +12687,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -12277,6 +12765,10 @@
    "nm": "SANTANA DO SERIDÓ",
    "arquivo": "rn-18252-santana-do-serido-2026.json",
    "secoes": 11,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12299,7 +12791,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T01:02:13.644Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -12377,6 +12869,10 @@
    "nm": "SANTO ANTÔNIO",
    "arquivo": "rn-18295-santo-antonio-2026.json",
    "secoes": 57,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12399,7 +12895,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -12477,6 +12973,10 @@
    "nm": "SÃO BENTO DO NORTE",
    "arquivo": "rn-18317-sao-bento-do-norte-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12499,7 +12999,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -12577,6 +13077,10 @@
    "nm": "SÃO BENTO DO TRAIRÍ",
    "arquivo": "rn-18333-sao-bento-do-trairi-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12599,7 +13103,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -12677,6 +13181,10 @@
    "nm": "SÃO FERNANDO",
    "arquivo": "rn-18350-sao-fernando-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12699,7 +13207,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -12777,6 +13285,10 @@
    "nm": "SÃO FRANCISCO DO OESTE",
    "arquivo": "rn-18210-sao-francisco-do-oeste-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12799,7 +13311,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -12877,6 +13389,10 @@
    "nm": "SÃO GONÇALO DO AMARANTE",
    "arquivo": "rn-18376-sao-goncalo-do-amarante-2026.json",
    "secoes": 239,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12899,7 +13415,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -12977,6 +13493,10 @@
    "nm": "SÃO JOÃO DO SABUGI",
    "arquivo": "rn-18392-sao-joao-do-sabugi-2026.json",
    "secoes": 18,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -12999,7 +13519,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13077,6 +13597,10 @@
    "nm": "SÃO JOSÉ DE MIPIBU",
    "arquivo": "rn-18414-sao-jose-de-mipibu-2026.json",
    "secoes": 112,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13099,7 +13623,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13177,6 +13701,10 @@
    "nm": "SÃO JOSÉ DO CAMPESTRE",
    "arquivo": "rn-18430-sao-jose-do-campestre-2026.json",
    "secoes": 32,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13199,7 +13727,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13277,6 +13805,10 @@
    "nm": "SÃO JOSÉ DO SERIDÓ",
    "arquivo": "rn-18457-sao-jose-do-serido-2026.json",
    "secoes": 13,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13299,7 +13831,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13377,6 +13909,10 @@
    "nm": "SÃO MIGUEL",
    "arquivo": "rn-18473-sao-miguel-2026.json",
    "secoes": 64,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13399,7 +13935,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13477,6 +14013,10 @@
    "nm": "SÃO MIGUEL DO GOSTOSO",
    "arquivo": "rn-16063-sao-miguel-do-gostoso-2026.json",
    "secoes": 32,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13499,7 +14039,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13577,6 +14117,10 @@
    "nm": "SÃO PAULO DO POTENGI",
    "arquivo": "rn-18490-sao-paulo-do-potengi-2026.json",
    "secoes": 44,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13599,7 +14143,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13677,6 +14221,10 @@
    "nm": "SÃO PEDRO",
    "arquivo": "rn-18511-sao-pedro-2026.json",
    "secoes": 21,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13699,7 +14247,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -13777,6 +14325,10 @@
    "nm": "SÃO RAFAEL",
    "arquivo": "rn-18538-sao-rafael-2026.json",
    "secoes": 24,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13799,7 +14351,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -13877,6 +14429,10 @@
    "nm": "SÃO TOMÉ",
    "arquivo": "rn-18554-sao-tome-2026.json",
    "secoes": 27,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13899,7 +14455,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -13977,6 +14533,10 @@
    "nm": "SÃO VICENTE",
    "arquivo": "rn-18570-sao-vicente-2026.json",
    "secoes": 20,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -13999,7 +14559,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -14077,6 +14637,10 @@
    "nm": "SENADOR ELÓI DE SOUZA",
    "arquivo": "rn-18597-senador-eloi-de-souza-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14099,7 +14663,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -14177,6 +14741,10 @@
    "nm": "SENADOR GEORGINO AVELINO",
    "arquivo": "rn-18619-senador-georgino-avelino-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14199,7 +14767,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -14277,6 +14845,10 @@
    "nm": "SERRA CAIADA",
    "arquivo": "rn-18058-serra-caiada-2026.json",
    "secoes": 25,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14299,7 +14871,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -14377,6 +14949,10 @@
    "nm": "SERRA DE SÃO BENTO",
    "arquivo": "rn-18635-serra-de-sao-bento-2026.json",
    "secoes": 18,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14399,7 +14975,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -14477,6 +15053,10 @@
    "nm": "SERRA DO MEL",
    "arquivo": "rn-16020-serra-do-mel-2026.json",
    "secoes": 45,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14499,7 +15079,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -14577,6 +15157,10 @@
    "nm": "SERRA NEGRA DO NORTE",
    "arquivo": "rn-18651-serra-negra-do-norte-2026.json",
    "secoes": 22,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14599,7 +15183,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -14677,6 +15261,10 @@
    "nm": "SERRINHA",
    "arquivo": "rn-18678-serrinha-2026.json",
    "secoes": 21,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14699,7 +15287,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -14777,6 +15365,10 @@
    "nm": "SERRINHA DOS PINTOS",
    "arquivo": "rn-16209-serrinha-dos-pintos-2026.json",
    "secoes": 15,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14799,7 +15391,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.171Z"
+   "gerado_em": "2026-10-26T03:37:09.564Z"
   },
   {
    "ano": 2020,
@@ -14877,6 +15469,10 @@
    "nm": "SEVERIANO MELO",
    "arquivo": "rn-18694-severiano-melo-2026.json",
    "secoes": 27,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14899,7 +15495,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -14977,6 +15573,10 @@
    "nm": "SÍTIO NOVO",
    "arquivo": "rn-18716-sitio-novo-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -14999,7 +15599,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15077,6 +15677,10 @@
    "nm": "TABOLEIRO GRANDE",
    "arquivo": "rn-18732-taboleiro-grande-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15099,7 +15703,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.173Z"
+   "gerado_em": "2026-10-26T03:37:09.567Z"
   },
   {
    "ano": 2020,
@@ -15177,6 +15781,10 @@
    "nm": "TAIPU",
    "arquivo": "rn-18759-taipu-2026.json",
    "secoes": 38,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15199,7 +15807,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15277,6 +15885,10 @@
    "nm": "TANGARÁ",
    "arquivo": "rn-18775-tangara-2026.json",
    "secoes": 39,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15299,7 +15911,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15376,7 +15988,11 @@
    "cd": "18791",
    "nm": "TENENTE ANANIAS",
    "arquivo": "rn-18791-tenente-ananias-2026.json",
-   "secoes": 25,
+   "secoes": 27,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15399,7 +16015,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15477,6 +16093,10 @@
    "nm": "TENENTE LAURENTINO CRUZ",
    "arquivo": "rn-16004-tenente-laurentino-cruz-2026.json",
    "secoes": 16,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15499,7 +16119,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15577,6 +16197,10 @@
    "nm": "TIBAU",
    "arquivo": "rn-16225-tibau-2026.json",
    "secoes": 26,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15599,7 +16223,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.168Z"
+   "gerado_em": "2026-10-26T03:37:09.562Z"
   },
   {
    "ano": 2020,
@@ -15676,7 +16300,11 @@
    "cd": "18813",
    "nm": "TIBAU DO SUL",
    "arquivo": "rn-18813-tibau-do-sul-2026.json",
-   "secoes": 41,
+   "secoes": 42,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15699,7 +16327,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15777,6 +16405,10 @@
    "nm": "TIMBAÚBA DOS BATISTAS",
    "arquivo": "rn-18830-timbauba-dos-batistas-2026.json",
    "secoes": 9,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15799,7 +16431,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15876,7 +16508,11 @@
    "cd": "18856",
    "nm": "TOUROS",
    "arquivo": "rn-18856-touros-2026.json",
-   "secoes": 84,
+   "secoes": 92,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15899,7 +16535,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T01:01:45.410Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -15977,6 +16613,10 @@
    "nm": "TRIUNFO POTIGUAR",
    "arquivo": "rn-16128-triunfo-potiguar-2026.json",
    "secoes": 17,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -15999,7 +16639,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16077,6 +16717,10 @@
    "nm": "UMARIZAL",
    "arquivo": "rn-18872-umarizal-2026.json",
    "secoes": 31,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16099,7 +16743,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16177,6 +16821,10 @@
    "nm": "UPANEMA",
    "arquivo": "rn-18899-upanema-2026.json",
    "secoes": 38,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16199,7 +16847,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16277,6 +16925,10 @@
    "nm": "VÁRZEA",
    "arquivo": "rn-18910-varzea-2026.json",
    "secoes": 26,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16299,7 +16951,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16377,6 +17029,10 @@
    "nm": "VENHA-VER",
    "arquivo": "rn-16187-venha-ver-2026.json",
    "secoes": 12,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16399,7 +17055,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16477,6 +17133,10 @@
    "nm": "VERA CRUZ",
    "arquivo": "rn-18953-vera-cruz-2026.json",
    "secoes": 33,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16499,7 +17159,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.170Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16577,6 +17237,10 @@
    "nm": "VIÇOSA",
    "arquivo": "rn-18970-vicosa-2026.json",
    "secoes": 6,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16599,7 +17263,7 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   },
   {
    "ano": 2020,
@@ -16677,6 +17341,10 @@
    "nm": "VILA FLOR",
    "arquivo": "rn-18996-vila-flor-2026.json",
    "secoes": 10,
+   "turnos": [
+    1,
+    2
+   ],
    "cargos": [
     {
      "cd": 1,
@@ -16699,10 +17367,10 @@
      "ds": "Deputado Estadual"
     }
    ],
-   "gerado_em": "2026-10-05T00:52:55.169Z"
+   "gerado_em": "2026-10-26T03:37:09.563Z"
   }
  ],
- "gerado_em": "2026-10-05T01:02:30.797Z",
+ "gerado_em": "2026-10-26T03:51:18.192Z",
  "locais": [
   {
    "uf": "RN",
