@@ -1,5 +1,46 @@
 # Changelog
 
+## [3.12.0] — 2026-10-27
+
+### Implementado
+- **Área da campanha, com login.** É um sistema privado da equipe dentro do Radar de Votos, aberto pelo menu
+  "Área da campanha" ou pela tela inicial. Tem estas partes:
+  - **Eleitores e apoiadores:** cadastro de eleitores, apoiadores, lideranças e voluntários. Guarda:
+    - telefone, município, bairro e local de votação (escolhendo a escola, zona e bairro são preenchidos sozinhos);
+    - o **voto de cada um** (certo, provável, indeciso, contrário) e quantos votos cada liderança traz;
+    - quem foi indicado por qual liderança, o responsável na equipe e a autorização da pessoa (LGPD).
+  - **Demandas:** pedidos e solicitações dos eleitores. Cada pedido tem área (saúde, iluminação, obras…),
+    prioridade, prazo, responsável, situação (aberta, em andamento, atendida, não atendida) e o retorno dado.
+    Pedidos com prazo vencido aparecem como atrasados.
+  - **Plano de ação:** tarefas da equipe por eixo (mobilização, comunicação, agenda, estrutura, jurídico,
+    finanças…), com responsável, prazo e situação.
+  - **Agenda:** reuniões, visitas, caminhadas, carreatas, comícios e eventos, com local e público esperado.
+  - **Metas de votos:** meta por município ou bairro. O progresso soma os votos certos e prováveis cadastrados.
+  - **Painel:** resumo da campanha, com:
+    - pessoas cadastradas, votos certos e prováveis e lideranças;
+    - demandas e ações pendentes ou atrasadas;
+    - votos por município e lideranças que mais trazem votos;
+    - próximos compromissos.
+  - **Equipe:** cada pessoa tem o próprio login. O administrador:
+    - adiciona pessoas, com senha provisória e mensagem pronta para enviar;
+    - cria senha nova para quem esqueceu e define quem é administrador;
+    - pode excluir a campanha com todos os dados.
+  - Todas as listas têm busca sem diferença de acentos ("joao" acha "João"), filtros e **planilhas Excel e CSV**.
+- **Segurança dos dados:**
+  - Os dados ficam num banco de dados no Brasil (Supabase, em São Paulo).
+  - Cada registro pertence a uma campanha, e só os membros dela leem e gravam. Essa regra é conferida no
+    próprio banco.
+  - Membros apagam só o que cadastraram; administradores apagam qualquer registro.
+  - A campanha é criada com um **código de acesso do administrador**, guardado cifrado.
+
+### Melhorado
+- **Planilhas:** a exportação pode buscar os dados na hora de gerar o arquivo. No CSV, um texto que começa com
+  =, +, - ou @ não vira fórmula no Excel.
+
+### Outros
+- A pasta `supabase/` guarda as migrações do banco e a função `equipe`, com explicação em `supabase/README.md`.
+  Ela não é publicada no site, assim como `scripts/`.
+
 ## [3.11.1] — 2026-10-26
 
 ### Implementado
