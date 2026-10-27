@@ -939,6 +939,71 @@ html[data-modo="web"] .only-cel{display:none!important}
   .picks.two{grid-template-columns:1fr}
   .map{height:320px}
 }
+/* ---------- área da campanha (privada, com login) */
+.cp-entrada{display:grid;gap:12px;max-width:520px;width:100%;margin:0 auto}
+.cp-entrada h3{display:flex;align-items:center;gap:8px}
+.cp-topo{grid-template-columns:minmax(0,1fr) auto;align-items:center}
+.cp-topo small{display:block;color:var(--muted);font-size:.78rem}
+.cp-topo b{display:block;font-size:1.06rem}
+.cp-topo .btn span{max-width:140px;overflow:hidden;text-overflow:ellipsis}
+.cp-troca{grid-column:1/-1}
+.cp-abas{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.cp-abas button{white-space:nowrap;font-size:.84rem;padding:7px 12px}
+.cp-corpo{display:grid;gap:12px}
+.cp-corpo .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:700px){.cp-corpo .kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.cp-barra{justify-content:flex-start;align-items:center}
+.sp{flex:1}
+.cp-filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.cp-filtros select{height:40px}
+.cp-conta{margin:0;font-size:.82rem;padding:0 4px}
+.cp-conta:empty{display:none}
+.plist{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pitem{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);cursor:pointer}
+.plist .pitem:first-child{border-top:0}
+.pitem:hover{background:var(--card-2)}
+.plist.leitura .pitem{cursor:default}
+.plist.leitura .pitem:hover{background:none}
+.pitem b{font-weight:600;overflow-wrap:anywhere}
+.pitem small{display:block;color:var(--muted);font-size:.8rem;overflow-wrap:anywhere}
+.pi-chips{display:flex;gap:4px;flex-wrap:wrap;margin:4px 0 2px}
+.pi-lado{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;font-size:.9rem;white-space:nowrap}
+.pi-lado small{display:block;font-weight:400;color:var(--muted);font-size:.76rem}
+.chip.prov{background:var(--green-soft);color:var(--green)}
+.atraso{color:var(--red)!important;font-weight:600}
+.cp-metas{display:grid;gap:10px}
+.cp-metas .pcard{cursor:pointer}
+.cp-metas .pcard:hover{border-color:#C9D1CC}
+dialog.dlg{border:0;border-radius:20px;padding:0;width:min(620px,calc(100vw - 24px));max-height:calc(100dvh - 32px);background:var(--card);color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+dialog.dlg::backdrop{background:rgba(6,20,13,.55)}
+.dlg form,.dlg .dlg-corpo{display:grid;gap:14px;padding:18px 18px 20px}
+.dlg header{display:flex;align-items:center;gap:10px}
+.dlg header h3{flex:1;margin:0;font-size:1.08rem}
+.dlg header .back{margin:0;color:var(--muted)}
+.dlg header .back:hover{background:var(--card-2)}
+.dlg .tools{align-items:center}
+.dlg .picks .btn{justify-content:center}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+.form .full{grid-column:1/-1}
+.campo{display:grid;gap:4px;font-size:.8rem;font-weight:600;color:var(--muted);align-content:start}
+.campo input,.campo select,.campo textarea{width:100%;height:42px;border:1px solid var(--line);background:var(--card-2);border-radius:10px;padding:0 10px;color:var(--ink);font:inherit;font-size:.95rem;font-weight:400}
+.campo textarea{height:auto;min-height:84px;padding:8px 10px;resize:vertical}
+.campo small{font-weight:400;font-size:.76rem}
+.campo.chk{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:500;font-size:.9rem}
+.campo.chk input{width:20px;height:20px;flex:none}
+.msg{margin:0;font-size:.88rem;color:var(--red);font-weight:600}
+.msg.ok{color:var(--green)}
+.btn.perigo{color:var(--red);border-color:var(--red-soft)}
+.btn.perigo:hover{background:var(--red-soft)}
+.cp-eu-info{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--card-2);border-radius:12px;padding:10px 12px}
+.cp-eu-info small{display:block}
+.cp-cred{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;margin:0;background:var(--card-2);border-radius:12px;padding:12px 14px}
+.cp-cred dt{color:var(--muted);font-size:.85rem}
+.cp-cred dd{margin:0;font-weight:700;overflow-wrap:anywhere}
+@media (max-width:560px){
+  .form{grid-template-columns:1fr}
+  dialog.dlg{width:100vw;max-width:100vw;margin:auto 0 0;border-radius:20px 20px 0 0;max-height:94dvh}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -948,6 +1013,7 @@ html[data-modo="web"] .only-cel{display:none!important}
   <div class="brand"><span class="keypad" aria-hidden="true"><i></i><i></i><i></i></span><div><b>RADAR DE VOTOS</b><small>Votos oficiais do TSE</small></div></div>
   <nav aria-label="Menu principal">
     <a href="#inicio" data-tela="inicio"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg>Início</a>
+    <a href="#campanha" data-tela="campanha"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5M12 14.5v2"/></svg>Área da campanha</a>
     <a href="#resultado" data-tela="resultado"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>Resultado</a>
     <a href="#partidos" data-tela="partidos"><svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>Partidos 2026</a>
     <a href="#eleitos" data-tela="eleitos"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Eleitos 2026</a>
@@ -1023,6 +1089,7 @@ const ICON = {
   help: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4M12 16.8v.2"/></svg>',
   flag: '<svg class="i" viewBox="0 0 24 24"><path d="M6 20.5V4.5M6 5h11l-2 3.5 2 3.5H6"/></svg>',
   eleito: '<svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>',
+  cadeado: '<svg class="i" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5M12 14.5v2"/></svg>',
 };
 
 /* ============================================================ acesso ao TSE (resultado oficial: eleitos e partidos de 2026) */
@@ -1264,7 +1331,7 @@ const ST = {
   favFiltro: 'todos',
 };
 const salvar = () => { store.set('rv.ano', ST.ano); store.set('rv.turno', ST.turno); store.set('rv.cargo', ST.cargo); store.set('rv.cd', ST.cd); };
-const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'partidos', 'favoritos', 'ajuda'];
+const TELAS = ['inicio', 'resultado', 'candidato', 'eleitos', 'eleitorado', 'comparar', 'relatorio', 'candidaturas', 'partidos', 'campanha', 'favoritos', 'ajuda'];
 const ALIAS = { aovivo: 'resultado', bairros: 'candidato', dados: 'ajuda' };
 function irPara(t) { if (location.hash === '#' + t) render(); else location.hash = '#' + t; }
 let NAV = 0;
@@ -1285,6 +1352,7 @@ function zerarAba(t) {
   else if (t === 'favoritos') ST.favFiltro = 'todos';
   else if (t === 'partidos') Object.assign(PT, { mun: '', vista: 'partidos', ord: 'votos', busca: '', filtro: '', aberto: new Set(), lim: 80 });
   else if (t === 'candidaturas') Object.assign(CAND, { ano: null, cargo: null, busca: '', sel: null, lim: 60 });
+  else if (t === 'campanha') { Object.assign(CP, { aba: 'painel', f: {}, lim: 100, entrada: 'entrar' }); const d = $('#cp-dlg'); if (d?.open) d.close(); }
 }
 let RENDERIZANDO = false;
 async function render() {
@@ -1315,6 +1383,7 @@ async function montar() {
     else if (t === 'relatorio') await telaRelatorio(el);
     else if (t === 'candidaturas') await telaCandidaturas(el);
     else if (t === 'partidos') await telaPartidos(el);
+    else if (t === 'campanha') await telaCampanha(el);
     else if (t === 'favoritos') telaFavoritos(el);
     else telaAjuda(el);
   } catch (e) {
@@ -1464,7 +1533,9 @@ function telaInicio(el) {
       <a href="#ajuda"><span>${ICON.help}</span>Ajuda e dados</a>
     </div></div>`;
   const desc = { 2026: 'Presidente, governador, senador e deputados · 1º e 2º turno · votos por urna, bairros e locais', 2024: 'Prefeito e vereador · votos por urna', 2022: 'Presidente, governador, senador e deputados · 1º e 2º turno · votos por urna', 2020: 'Prefeito e vereador · votos por urna', 2018: 'Presidente, governador, senador e deputados · votos por urna', 2016: 'Prefeito e vereador · votos por urna' };
-  el.innerHTML = `<div class="sec-title">Eleições</div>
+  el.innerHTML = `<div class="sec-title">Campanha</div>
+    <div class="picks"><a class="row hl" href="#campanha"><span class="ico">${ICON.cadeado}</span><span class="txt"><b>Área da campanha (com login)</b><small>Eleitores, apoiadores e possíveis votos, demandas, plano de ação, agenda e metas — só para a equipe</small></span><span class="ico">${ICON.go}</span></a></div>
+    <div class="sec-title">Eleições</div>
     <div class="picks home-grid">
       ${anosHist().map(a => `<a class="row hl" href="#resultado" data-ano="${a}"><span class="ico">${ICON.people}</span><span class="txt"><b>Eleições ${a}</b><small>${esc(desc[a] || 'Votos por urna')}</small></span><span class="ico">${ICON.go}</span></a>`).join('')}
       <a class="row hl" href="#eleitos"><span class="ico">${ICON.eleito}</span><span class="txt"><b>Eleitos 2026 no RN</b><small>Governador, senadores e deputados — resultado oficial do TSE</small></span><span class="ico">${ICON.go}</span></a>
@@ -2453,6 +2524,760 @@ async function dvFicha(el, html, ele, ue, resumo) {
   } catch (e) { box.textContent = e.status === 404 ? 'O TSE ainda não publicou a prestação de contas desta campanha.' : 'Não foi possível carregar a prestação de contas agora.'; }
 }
 
+/* ============================================================ área da campanha (privada, com login) */
+// Os dados da equipe ficam no Supabase (projeto radar-de-votos, em São Paulo). Cada registro pertence a uma campanha e as
+// regras do banco só deixam os membros dela ler e gravar; contas e equipe passam pela função "equipe" (supabase/).
+// A chave abaixo é a publicável, feita para ficar no site: quem protege os dados são as regras do banco.
+const CP = {
+  url: 'https://stnnlwsspqogykieaygh.supabase.co', chave: 'sb_publishable_JUjECWuv1_lWMiihVbWKwg_-Tk8qpXy',
+  lib: 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js',
+  sb: null, uid: null, campanhas: null, membros: null, membrosDe: '', camp: store.get('rv.cp.camp', ''),
+  aba: 'painel', entrada: 'entrar', f: {}, lim: 100,
+};
+const CP_ABAS = [['painel', 'Painel'], ['pessoas', 'Eleitores e apoiadores'], ['demandas', 'Demandas'], ['acoes', 'Plano de ação'], ['agenda', 'Agenda'], ['metas', 'Metas de votos'], ['equipe', 'Equipe']];
+const CP_TIPOS = [['eleitor', 'Eleitor'], ['apoiador', 'Apoiador'], ['lideranca', 'Liderança'], ['voluntario', 'Voluntário']];
+const CP_VOTOS = [['certo', 'Voto certo'], ['provavel', 'Voto provável'], ['indeciso', 'Indeciso'], ['contrario', 'Contrário'], ['indefinido', 'Não sabe']];
+const CP_CATEGORIAS = [['saude', 'Saúde'], ['educacao', 'Educação'], ['infraestrutura', 'Obras e infraestrutura'], ['iluminacao', 'Iluminação'], ['saneamento', 'Água e saneamento'], ['transporte', 'Transporte'],
+  ['assistencia', 'Assistência social'], ['emprego', 'Emprego e renda'], ['documentacao', 'Documentos'], ['seguranca', 'Segurança'], ['esporte_cultura', 'Esporte e cultura'], ['meio_ambiente', 'Meio ambiente'], ['outros', 'Outros']];
+const CP_PRIORIDADES = [['baixa', 'Baixa'], ['media', 'Média'], ['alta', 'Alta'], ['urgente', 'Urgente']];
+const CP_ST_DEMANDA = [['aberta', 'Aberta'], ['andamento', 'Em andamento'], ['atendida', 'Atendida'], ['nao_atendida', 'Não atendida']];
+const CP_EIXOS = [['mobilizacao', 'Mobilização'], ['comunicacao', 'Comunicação e redes'], ['agenda', 'Agenda e eventos'], ['estrutura', 'Estrutura e logística'],
+  ['juridico', 'Jurídico e prestação de contas'], ['financas', 'Finanças'], ['pesquisa', 'Pesquisa e estratégia'], ['outros', 'Outros']];
+const CP_ST_ACAO = [['a_fazer', 'A fazer'], ['andamento', 'Em andamento'], ['concluida', 'Concluída'], ['cancelada', 'Cancelada']];
+const CP_TIPOS_AGENDA = [['reuniao', 'Reunião'], ['visita', 'Visita'], ['caminhada', 'Caminhada'], ['carreata', 'Carreata'], ['comicio', 'Comício'], ['evento', 'Evento'], ['entrevista', 'Entrevista'], ['outro', 'Outro']];
+const CP_ST_AGENDA = [['agendado', 'Agendado'], ['realizado', 'Realizado'], ['cancelado', 'Cancelado']];
+const CP_CARGOS = ['Prefeito(a)', 'Vice-prefeito(a)', 'Vereador(a)', 'Deputado(a) estadual', 'Deputado(a) federal', 'Senador(a)', 'Governador(a)', 'Outro'].map(c => [c, c]);
+const CP_COR = { lideranca: 'go', certo: 'ok', provavel: 'prov', indeciso: 'sup', contrario: 'bad', aberta: 'sup', andamento: 'prov', atendida: 'ok', nao_atendida: 'bad',
+  concluida: 'ok', cancelada: 'bad', agendado: 'prov', realizado: 'ok', cancelado: 'bad', alta: 'sup', urgente: 'bad' };
+const cpRot = (lista, v) => (lista.find(x => x[0] === v) || [v, v || '—'])[1];
+const cpChip = (lista, v) => `<span class="chip ${CP_COR[v] || ''}">${esc(cpRot(lista, v))}</span>`;
+
+function carregarScript(src) {
+  return new Promise((ok, erro) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = ok; s.onerror = () => erro(new Error('Não foi possível carregar ' + src));
+    document.head.appendChild(s);
+  });
+}
+async function cpCliente() {
+  if (!CP.sb) {
+    if (!window.supabase?.createClient) await carregarScript(CP.lib);
+    CP.sb = window.supabase.createClient(CP.url, CP.chave, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false, storageKey: 'rv.cp.sessao' } });
+  }
+  return CP.sb;
+}
+function cpErro(e) {
+  const m = String(e?.message || e || ''), c = String(e?.code || '');
+  if (/invalid login credentials/i.test(m)) return 'E-mail ou senha incorretos.';
+  if (/jwt|refresh token|session/i.test(m)) return 'Sua sessão expirou. Entre de novo.';
+  if (c === '42501' || /row-level security|permission denied/i.test(m)) return 'Você não tem permissão para isso.';
+  if (c === '23505') return 'Já existe um registro igual a este.';
+  if (c === '23514') return 'Confira os dados: algum valor está fora do permitido.';
+  if (/failed to fetch|networkerror|load failed/i.test(m)) return 'Sem conexão com o servidor. Confira a internet e tente de novo.';
+  return m || 'Não foi possível concluir agora.';
+}
+async function cpQ(consulta) {
+  const r = await consulta;
+  if (r.error) throw new Error(cpErro(r.error));
+  return r;
+}
+// todas as páginas de uma consulta (o servidor entrega até 1.000 linhas por vez)
+async function cpTudo(consulta) {
+  const out = [];
+  for (let i = 0; ; i += 1000) {
+    const { data } = await cpQ(consulta().range(i, i + 999));
+    out.push(...data);
+    if (data.length < 1000) return out;
+  }
+}
+async function cpEquipe(acao, dados = {}) {
+  const { data } = await CP.sb.auth.getSession();
+  let r;
+  try {
+    r = await fetch(CP.url + '/functions/v1/equipe', { method: 'POST', body: JSON.stringify({ acao, ...dados }),
+      headers: { 'Content-Type': 'application/json', apikey: CP.chave, Authorization: 'Bearer ' + (data.session?.access_token || CP.chave) } });
+  } catch { throw new Error('Sem conexão com o servidor. Confira a internet e tente de novo.'); }
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.erro || 'Não foi possível concluir agora.');
+  return j;
+}
+const cpCodigo = s => String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+function cpSenhaProvisoria() {
+  const A = 'abcdefghjkmnpqrstuvwxyz23456789', b = crypto.getRandomValues(new Uint8Array(10));
+  return [...b].map(x => A[x % A.length]).join('').replace(/^(.{5})/, '$1-');
+}
+// a coluna "busca" do banco fica sem acentos e em minúsculas ("joao" acha "João")
+const cpLimpa = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[%*\\\s]+/g, ' ').trim().slice(0, 60);
+const cpHoje = () => new Date().toLocaleDateString('sv');
+const cpData = d => d ? new Date(String(d).length === 10 ? d + 'T12:00:00' : d).toLocaleDateString('pt-BR') : '';
+const cpAtrasada = x => ['aberta', 'andamento', 'a_fazer'].includes(x.status) && x.prazo && x.prazo < cpHoje();
+const cpPrazo = x => x.prazo ? `<span class="${cpAtrasada(x) ? 'atraso' : ''}">Prazo ${cpData(x.prazo)}${cpAtrasada(x) ? ' · atrasada' : ''}</span>` : '';
+function cpLocalInput(iso) {
+  if (!iso) return '';
+  const d = new Date(iso), p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+const cpMunicipios = () => cidadesHist(anosHist()[0]).map(d => [d.cd, titulo(d.nm)]);
+const cpCampanha = () => CP.campanhas?.find(c => c.id === CP.camp);
+const cpEu = () => CP.membros?.find(m => m.user_id === CP.uid);
+const cpAdmin = () => cpEu()?.papel === 'admin';
+const cpMembro = id => CP.membros?.find(m => m.user_id === id)?.nome || '';
+const cpOpMembros = () => (CP.membros || []).map(m => [m.user_id, m.nome]);
+function cpItem(id, tit, chips, linhas, lado = '') {
+  return `<li class="pitem" data-id="${esc(id)}"><div><b>${esc(tit)}</b>${chips ? `<span class="pi-chips">${chips}</span>` : ''}${linhas.filter(Boolean).map(l => `<small>${l}</small>`).join('')}</div>${lado ? `<div class="pi-lado">${lado}</div>` : ''}</li>`;
+}
+// bairros e locais de votação do município (cadastro do TSE), para sugerir no preenchimento
+async function cpLugares(cd) {
+  const anos = (LOC.publicados || []).filter(x => x.uf === 'RN').map(x => +x.ano);
+  const cat = cd && anos.length ? await catalogo('RN', Math.max(...anos)) : null;
+  const bairros = new Set(), locais = new Map();
+  for (const [k, x] of Object.entries(cat?.locais || {})) {
+    if (!k.startsWith(cd + '|')) continue;
+    if (x[1]) bairros.add(titulo(x[1]));
+    if (x[0]) locais.set(titulo(x[0]), { zona: +k.split('|')[1], bairro: x[1] ? titulo(x[1]) : '' });
+  }
+  return { bairros: [...bairros].sort((a, b) => a.localeCompare(b)), locais };
+}
+
+// campos: { k, rot, tipo (texto|tel|email|senha|num|data|datahora|area|sel|mun|chk), opcoes, vazio, obrig, dica, largo, lista, min, ph, auto }
+function cpCampo(c, v) {
+  const nm = esc(c.k), req = c.obrig ? ' required' : '', cls = 'campo' + (c.largo ? ' full' : '');
+  if (c.tipo === 'chk') return `<label class="${cls} chk"><input type="checkbox" name="${nm}"${v ? ' checked' : ''}><span>${esc(c.rot)}</span></label>`;
+  let inp;
+  if (c.tipo === 'area') inp = `<textarea name="${nm}" rows="3"${req}>${esc(v ?? '')}</textarea>`;
+  else if (c.tipo === 'sel' || c.tipo === 'mun') {
+    const ops = c.tipo === 'mun' ? cpMunicipios() : c.opcoes;
+    inp = `<select name="${nm}"${req}>${c.vazio != null ? `<option value="">${esc(c.vazio)}</option>` : ''}${ops.map(([k, t]) => `<option value="${esc(k)}"${String(v ?? '') === String(k) ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select>`;
+  } else {
+    const t = { num: 'number', data: 'date', datahora: 'datetime-local', tel: 'tel', email: 'email', senha: 'password' }[c.tipo] || 'text';
+    inp = `<input name="${nm}" type="${t}" value="${esc(c.tipo === 'datahora' ? cpLocalInput(v) : v ?? '')}"${c.lista ? ` list="${c.lista}"` : ''}${c.min != null ? ` min="${c.min}"` : ''}${c.ph ? ` placeholder="${esc(c.ph)}"` : ''} autocomplete="${c.auto || 'off'}"${t === 'number' ? ' inputmode="numeric"' : ''}${req}>`;
+  }
+  return `<label class="${cls}"><span>${esc(c.rot)}${c.obrig ? ' *' : ''}</span>${inp}${c.dica ? `<small>${esc(c.dica)}</small>` : ''}</label>`;
+}
+function cpLer(form, campos) {
+  const dados = {};
+  for (const c of campos) {
+    const i = form.elements[c.k];
+    if (!i) continue;
+    let v = c.tipo === 'chk' ? i.checked : c.tipo === 'senha' ? i.value : i.value.trim();
+    if (c.tipo !== 'chk' && v === '') v = null;
+    if (c.obrig && v == null) { i.focus(); throw new Error(`Preencha: ${c.rot}.`); }
+    if (v != null && c.tipo === 'num') {
+      v = Number(v);
+      if (!Number.isInteger(v) || (c.min != null && v < c.min)) { i.focus(); throw new Error(`Número inválido em: ${c.rot}.`); }
+    }
+    if (v != null && c.tipo === 'datahora') v = new Date(v).toISOString();
+    dados[c.k] = v;
+    if (c.tipo === 'mun') dados.municipio = v ? cpMunicipios().find(x => x[0] === v)?.[1] || null : null;
+  }
+  return dados;
+}
+function cpJanela() {
+  let d = $('#cp-dlg');
+  if (!d) { d = document.createElement('dialog'); d.id = 'cp-dlg'; d.className = 'dlg'; document.body.appendChild(d); }
+  return d;
+}
+// formulário numa janela; salvar() devolve false para manter a janela aberta
+function cpForm({ titulo: tit, campos, valores = {}, salvar, apagar, antes = '', extra = '', botao = 'Salvar', listas = {}, pronto }) {
+  const d = cpJanela(), dl = { 'cp-bairros': [], 'cp-locais': [], ...listas };
+  d.innerHTML = `<form novalidate><header><h3>${esc(tit)}</h3><button type="button" class="back" data-fechar aria-label="Fechar">✕</button></header>${antes}
+    <div class="form">${campos.map(c => cpCampo(c, valores[c.k])).join('')}</div>${extra}
+    <p class="msg" role="alert" hidden></p>
+    <div class="tools">${apagar ? '<button type="button" class="btn sm perigo" data-apagar>Apagar</button><span class="sp"></span>' : ''}<button type="button" class="btn" data-fechar>Fechar</button><button type="submit" class="btn pri">${esc(botao)}</button></div>
+    ${Object.entries(dl).map(([id, ops]) => `<datalist id="${id}">${ops.map(o => `<option value="${esc(o)}">`).join('')}</datalist>`).join('')}</form>`;
+  const form = $('form', d), msg = $('.msg', form);
+  const aviso = (t, ok) => { msg.textContent = t || ''; msg.className = 'msg' + (ok ? ' ok' : ''); msg.hidden = !t; };
+  $$('[data-fechar]', d).forEach(b => b.onclick = () => d.close());
+  const mun = form.elements.municipio_cd;
+  let lugares = { bairros: [], locais: new Map() };
+  const sugerir = async () => {
+    lugares = await cpLugares(mun.value).catch(() => lugares);
+    $('#cp-bairros', d).innerHTML = lugares.bairros.map(b => `<option value="${esc(b)}">`).join('');
+    $('#cp-locais', d).innerHTML = [...lugares.locais.keys()].map(b => `<option value="${esc(b)}">`).join('');
+  };
+  if (mun?.tagName === 'SELECT') { mun.addEventListener('change', sugerir); sugerir(); }
+  // escolhendo a escola na lista, completa zona e bairro
+  const loc = form.elements.local_votacao;
+  if (loc) loc.addEventListener('change', () => {
+    const x = lugares.locais.get(loc.value), z = form.elements.zona, b = form.elements.bairro;
+    if (!x) return;
+    if (z && !z.value) z.value = x.zona;
+    if (b && !b.value && x.bairro) b.value = x.bairro;
+  });
+  form.onsubmit = async e => {
+    e.preventDefault();
+    const bt = $('[type=submit]', form);
+    try {
+      const dados = cpLer(form, campos);
+      bt.disabled = true; aviso('');
+      if (await salvar(dados, { d, form, aviso }) !== false) { d.close(); ST.manterScroll = true; render(); }
+    } catch (er) { aviso(er.message || String(er)); }
+    finally { bt.disabled = false; }
+  };
+  const ap = $('[data-apagar]', d);
+  if (ap) ap.onclick = async () => {
+    if (!confirm('Apagar este registro? Não dá para desfazer.')) return;
+    try { await apagar(); d.close(); ST.manterScroll = true; render(); } catch (er) { aviso(er.message || String(er)); }
+  };
+  if (pronto) pronto(form);
+  if (!d.open) d.showModal();
+  return { d, form, aviso };
+}
+// janela só de leitura (resultado de uma ação); ao fechar, a tela é atualizada
+function cpMostrar(tit, html) {
+  const d = cpJanela();
+  d.innerHTML = `<div class="dlg-corpo"><header><h3>${esc(tit)}</h3><button type="button" class="back" data-fechar aria-label="Fechar">✕</button></header>${html}
+    <div class="tools"><button type="button" class="btn pri" data-fechar>OK</button></div></div>`;
+  $$('[data-fechar]', d).forEach(b => b.onclick = () => d.close());
+  d.addEventListener('close', () => { ST.manterScroll = true; render(); }, { once: true });
+  if (!d.open) d.showModal();
+  return d;
+}
+async function cpGravar(tabela, id, dados) {
+  await cpQ(id ? CP.sb.from(tabela).update(dados).eq('id', id) : CP.sb.from(tabela).insert({ ...dados, campanha_id: CP.camp }));
+}
+async function cpApagar(tabela, id) {
+  const { data } = await cpQ(CP.sb.from(tabela).delete().eq('id', id).select('id'));
+  if (!data.length) throw new Error('Só quem cadastrou ou um administrador pode apagar.');
+}
+// lista com filtros, busca, "ver mais" e planilha
+async function cpLista(box, { novo, busca, filtros, consulta, item, abrir, exp, vazio, rodape = '' }) {
+  box.innerHTML = `<div class="tools cp-barra"><button type="button" class="btn pri sm" data-cpnovo>${esc(novo)}</button><span class="sp"></span><button class="btn sm" type="button" data-exp="${exp}" data-kind="xlsx">Excel</button><button class="btn sm" type="button" data-exp="${exp}" data-kind="csv">CSV</button></div>
+    ${busca ? `<label class="search">${ICON.search}<input type="search" data-cpbusca placeholder="${esc(busca)}" value="${esc(CP.f.busca || '')}" aria-label="${esc(busca)}"></label>` : ''}
+    <div class="cp-filtros">${filtros.map(([k, rot, ops]) => `<select class="plain" data-cpf="${k}" aria-label="${esc(rot)}"><option value="">${esc(rot)}</option>${ops.map(([v, t]) => `<option value="${esc(v)}"${String(CP.f[k] ?? '') === String(v) ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select>`).join('')}</div>
+    <p class="muted cp-conta" data-cpconta></p><ul class="plist" data-cplista><li class="empty">Carregando…</li></ul><div class="more" data-cpmais></div>${rodape}`;
+  const lista = $('[data-cplista]', box), mais = $('[data-cpmais]', box), conta = $('[data-cpconta]', box);
+  let linhas = [], seq = 0, t;
+  const carregar = async () => {
+    const n = ++seq;
+    try {
+      const r = await cpQ(consulta().range(0, CP.lim - 1));
+      if (n !== seq) return;
+      linhas = r.data;
+      conta.textContent = r.count ? plural(r.count, 'registro', 'registros') + (r.count > linhas.length ? ` · mostrando ${fmt(linhas.length)}` : '') : '';
+      lista.innerHTML = linhas.map(item).join('') || `<li class="empty">${esc(vazio)}</li>`;
+      mais.innerHTML = r.count > linhas.length ? '<button class="btn" type="button">Ver mais</button>' : '';
+      const b = $('button', mais);
+      if (b) b.onclick = () => { CP.lim += 100; carregar(); };
+      $$('.pitem', lista).forEach(li => li.onclick = () => abrir(linhas.find(x => x.id === li.dataset.id)));
+    } catch (e) { if (n === seq) lista.innerHTML = `<li class="empty">${esc(e.message)}</li>`; }
+  };
+  $('[data-cpnovo]', box).onclick = () => abrir({});
+  $$('[data-cpf]', box).forEach(s => s.onchange = () => { CP.f[s.dataset.cpf] = s.value; CP.lim = 100; carregar(); });
+  const bi = $('[data-cpbusca]', box);
+  if (bi) bi.oninput = () => { clearTimeout(t); t = setTimeout(() => { CP.f.busca = bi.value; CP.lim = 100; carregar(); }, 350); };
+  await carregar();
+}
+
+async function telaCampanha(el) {
+  topo('Área da campanha', 'Privado');
+  if (!$('.cp-topo, .cp-entrada', el)) el.innerHTML = '<div class="empty">Carregando a área da campanha…</div>';
+  try {
+    const sb = await cpCliente();
+    const { data } = await sb.auth.getSession();
+    if (ST.tela !== 'campanha') return;
+    if (!data.session) { Object.assign(CP, { uid: null, campanhas: null, membros: null, membrosDe: '' }); return cpEntrada(el); }
+    CP.uid = data.session.user.id;
+    if (!CP.campanhas) CP.campanhas = (await cpQ(sb.from('campanhas').select('*').order('criado_em'))).data;
+    if (!CP.campanhas.length) {
+      el.innerHTML = `<div class="note warn"><b>Sua conta ainda não faz parte de nenhuma campanha.</b><br>Peça ao administrador da campanha para colocar você na equipe.</div>
+        <div class="tools"><button class="btn" type="button" id="cp-sair">Sair da conta</button></div>`;
+      $('#cp-sair').onclick = cpSair;
+      return;
+    }
+    if (!cpCampanha()) CP.camp = CP.campanhas[0].id;
+    store.set('rv.cp.camp', CP.camp);
+    if (CP.membrosDe !== CP.camp) {
+      CP.membros = (await cpQ(sb.from('membros').select('*').eq('campanha_id', CP.camp).order('nome'))).data;
+      CP.membrosDe = CP.camp;
+    }
+    if (ST.tela !== 'campanha') return;
+    await cpMontar(el);
+  } catch (e) {
+    el.innerHTML = `<div class="note err"><b>Não foi possível abrir a área da campanha.</b><br>${esc(e.message)}</div>
+      <div class="tools"><button class="btn" type="button" id="cp-de-novo">Tentar de novo</button>${CP.uid ? '<button class="btn" type="button" id="cp-sair">Sair da conta</button>' : ''}</div>`;
+    $('#cp-de-novo').onclick = () => { CP.campanhas = null; CP.membrosDe = ''; render(); };
+    const s = $('#cp-sair');
+    if (s) s.onclick = cpSair;
+  }
+}
+async function cpSair() {
+  try { await CP.sb?.auth.signOut(); } catch {}
+  Object.assign(CP, { uid: null, campanhas: null, membros: null, membrosDe: '', aba: 'painel', f: {}, entrada: 'entrar' });
+  const d = $('#cp-dlg');
+  if (d?.open) d.close();
+  render();
+}
+// monta fora da tela e troca de uma vez (sem piscar nem perder a rolagem)
+async function cpMontar(el) {
+  const c = cpCampanha(), eu = cpEu(), tmp = document.createElement('div');
+  tmp.innerHTML = `<div class="card cp-topo"><div><small>Campanha</small><b>${esc(c.nome)}</b><small>${[c.candidato, c.cargo, c.ano].filter(Boolean).map(esc).join(' · ') || 'Área privada da equipe'}</small></div>
+      <button type="button" class="btn sm" id="cp-eu" title="Minha conta">${ICON.user}<span>${esc(eu?.nome || 'Minha conta')}</span></button>
+      ${CP.campanhas.length > 1 ? `<select class="plain cp-troca" id="cp-camp" aria-label="Trocar de campanha">${CP.campanhas.map(x => `<option value="${esc(x.id)}"${x.id === CP.camp ? ' selected' : ''}>${esc(x.nome)}</option>`).join('')}</select>` : ''}</div>
+    <div class="seg cp-abas" role="tablist">${CP_ABAS.map(([k, t]) => `<button type="button" role="tab" data-cpa="${k}" aria-pressed="${CP.aba === k}">${t}</button>`).join('')}</div>
+    <div class="cp-corpo"></div>`;
+  $('#cp-eu', tmp).onclick = cpMinhaConta;
+  const sc = $('#cp-camp', tmp);
+  if (sc) sc.onchange = () => { CP.camp = sc.value; CP.membrosDe = ''; CP.f = {}; render(); };
+  $$('[data-cpa]', tmp).forEach(b => b.onclick = () => { CP.aba = b.dataset.cpa; CP.f = {}; CP.lim = 100; render(); });
+  const box = $('.cp-corpo', tmp);
+  const f = { pessoas: cpPessoas, demandas: cpDemandas, acoes: cpAcoes, agenda: cpAgenda, metas: cpMetas, equipe: cpEquipeTela }[CP.aba] || cpPainel;
+  try { await f(box); } catch (e) { box.innerHTML = `<div class="note err">${esc(e.message)}</div>`; }
+  if (ST.tela !== 'campanha') return;
+  el.replaceChildren(...tmp.childNodes);
+  const ativa = $('.cp-abas [aria-pressed="true"]', el); // no celular a barra de abas rola até a aba aberta
+  if (ativa) ativa.parentElement.scrollLeft = ativa.offsetLeft - ativa.parentElement.offsetLeft - 16;
+}
+
+// ---------- entrar, primeiro acesso e senha esquecida
+function cpEntrada(el, { email = '', msg = '' } = {}) {
+  const m = CP.entrada, anoEleicao = new Date().getFullYear() + (new Date().getFullYear() % 2 ? 1 : 2);
+  const campos = {
+    entrar: [{ k: 'email', rot: 'E-mail', tipo: 'email', obrig: true, largo: true, auto: 'username' },
+      { k: 'senha', rot: 'Senha', tipo: 'senha', obrig: true, largo: true, auto: 'current-password' }],
+    primeiro: [{ k: 'codigo', rot: 'Código de acesso do administrador', obrig: true, largo: true, ph: 'RV-XXXX-XXXX-XXXX-XXXX' },
+      { k: 'campanha', rot: 'Nome da campanha', obrig: true, largo: true, ph: 'Ex.: Fulano Vereador 2028' },
+      { k: 'candidato', rot: 'Candidato(a)' }, { k: 'cargo', rot: 'Cargo', tipo: 'sel', vazio: '—', opcoes: CP_CARGOS },
+      { k: 'ano', rot: 'Ano da eleição', tipo: 'num', min: 2020 }, { k: 'municipio_cd', rot: 'Município principal', tipo: 'mun', vazio: '—' },
+      { k: 'nome', rot: 'Seu nome', obrig: true, largo: true, auto: 'name' },
+      { k: 'email', rot: 'Seu e-mail (será o login)', tipo: 'email', obrig: true, largo: true, auto: 'username' },
+      { k: 'senha', rot: 'Crie uma senha', tipo: 'senha', obrig: true, auto: 'new-password', dica: 'Pelo menos 8 caracteres.' },
+      { k: 'senha2', rot: 'Repita a senha', tipo: 'senha', obrig: true, auto: 'new-password' }],
+    recuperar: [{ k: 'codigo', rot: 'Código de acesso do administrador', obrig: true, largo: true },
+      { k: 'email', rot: 'E-mail do administrador', tipo: 'email', obrig: true, largo: true, auto: 'username' },
+      { k: 'senha', rot: 'Nova senha', tipo: 'senha', obrig: true, auto: 'new-password', dica: 'Pelo menos 8 caracteres.' },
+      { k: 'senha2', rot: 'Repita a nova senha', tipo: 'senha', obrig: true, auto: 'new-password' }],
+  }[m];
+  const texto = {
+    entrar: '',
+    primeiro: '<p class="muted">Para criar a área da sua campanha, use o <b>código de acesso do administrador</b>. Você será o administrador e depois cadastra a equipe em <b>Equipe</b>.</p>',
+    recuperar: '<p class="muted"><b>Membro da equipe:</b> peça ao administrador para criar uma nova senha para você (em Equipe). <b>Administrador:</b> use o código de acesso para cadastrar uma nova senha.</p>',
+  }[m];
+  el.innerHTML = `<div class="cp-entrada">
+    <div class="card"><h3>${ICON.cadeado}Área da campanha</h3><p class="muted">Espaço privado da equipe: eleitores e apoiadores, possíveis votos, pedidos e demandas, plano de ação, agenda e metas. Só entra quem foi cadastrado na equipe.</p></div>
+    <div class="seg">${[['entrar', 'Entrar'], ['primeiro', 'Primeiro acesso'], ['recuperar', 'Esqueci a senha']].map(([k, t]) => `<button type="button" data-cpe="${k}" aria-pressed="${m === k}">${t}</button>`).join('')}</div>
+    <form class="card" novalidate>${texto}<div class="form">${campos.map(c => cpCampo(c, c.k === 'email' ? email : c.k === 'ano' ? anoEleicao : '')).join('')}</div>
+      <p class="msg" role="alert"${msg ? '' : ' hidden'}>${esc(msg)}</p>
+      <button type="submit" class="btn pri">${{ entrar: 'Entrar', primeiro: 'Criar a campanha e entrar', recuperar: 'Salvar a nova senha e entrar' }[m]}</button></form>
+    <p class="foot">Os dados ficam num banco de dados no Brasil (São Paulo), com acesso só para a equipe cadastrada.</p></div>`;
+  $$('[data-cpe]', el).forEach(b => b.onclick = () => { CP.entrada = b.dataset.cpe; cpEntrada(el); });
+  const form = $('form', el), aviso = $('.msg', form), bt = $('[type=submit]', form);
+  form.onsubmit = async e => {
+    e.preventDefault();
+    try {
+      const d = cpLer(form, campos);
+      if (m !== 'entrar') {
+        if (d.senha.length < 8) throw new Error('A senha precisa ter pelo menos 8 caracteres.');
+        if (d.senha !== d.senha2) throw new Error('As duas senhas não são iguais.');
+      }
+      bt.disabled = true; aviso.hidden = true;
+      let contaNova = true;
+      if (m === 'primeiro') {
+        const r = await cpEquipe('criar_campanha', { codigo: cpCodigo(d.codigo), nome: d.nome, email: d.email, senha: d.senha,
+          campanha: { nome: d.campanha, candidato: d.candidato, cargo: d.cargo, ano: d.ano, municipio_cd: d.municipio_cd } });
+        CP.camp = r.campanha_id; contaNova = r.conta_nova;
+      } else if (m === 'recuperar') await cpEquipe('recuperar_admin', { codigo: cpCodigo(d.codigo), email: d.email, senha: d.senha });
+      const { error } = await CP.sb.auth.signInWithPassword({ email: d.email, password: d.senha });
+      if (error && !contaNova) { CP.entrada = 'entrar'; return cpEntrada(el, { email: d.email, msg: 'A campanha foi criada. Como você já tinha conta, entre com a senha que você já usa.' }); }
+      if (error) throw new Error(cpErro(error));
+      Object.assign(CP, { campanhas: null, membrosDe: '', entrada: 'entrar', aba: 'painel' });
+      render();
+    } catch (er) { aviso.textContent = er.message; aviso.hidden = false; }
+    finally { bt.disabled = false; }
+  };
+}
+function cpMinhaConta() {
+  const eu = cpEu();
+  const { d } = cpForm({
+    titulo: 'Minha conta', botao: 'Trocar senha',
+    antes: `<div class="cp-eu-info"><div><b>${esc(eu?.nome || '')}</b><small class="muted">${esc(eu?.email || '')} · ${eu?.papel === 'admin' ? 'Administrador' : 'Membro'}</small></div><button type="button" class="btn sm" data-sair>Sair da conta</button></div>
+      <p class="muted">Para trocar a sua senha, digite a nova duas vezes.</p>`,
+    campos: [{ k: 'senha', rot: 'Nova senha', tipo: 'senha', auto: 'new-password', dica: 'Pelo menos 8 caracteres.' },
+      { k: 'senha2', rot: 'Repita a nova senha', tipo: 'senha', auto: 'new-password' }],
+    salvar: async (dd, { form, aviso }) => {
+      if (!dd.senha || dd.senha.length < 8) throw new Error('A nova senha precisa ter pelo menos 8 caracteres.');
+      if (dd.senha !== dd.senha2) throw new Error('As duas senhas não são iguais.');
+      const { error } = await CP.sb.auth.updateUser({ password: dd.senha });
+      if (error) throw new Error(/different from the old/i.test(error.message) ? 'A nova senha precisa ser diferente da atual.' : cpErro(error));
+      form.reset();
+      aviso('Senha trocada.', true);
+      return false;
+    },
+  });
+  $('[data-sair]', d).onclick = cpSair;
+}
+
+// ---------- painel
+async function cpPainel(box) {
+  const r = (await cpQ(CP.sb.rpc('resumo_campanha', { c: CP.camp }))).data;
+  const v = r.por_voto || {}, t = r.por_tipo || {}, dm = r.demandas || {}, ac = r.acoes || {};
+  const vt = k => v[k]?.votos || 0, ps = k => v[k]?.pessoas || 0, estim = vt('certo') + vt('provavel');
+  const kpi = (rot, val, sub = '') => `<div><small>${rot}</small><b>${val}</b>${sub ? `<small>${sub}</small>` : ''}</div>`;
+  const atraso = n => n ? `<span class="atraso">${plural(n, 'atrasada', 'atrasadas')}</span>` : '';
+  let h = `<div class="tools cp-barra"><button type="button" class="btn sm" data-cpn="pessoa">+ Pessoa</button><button type="button" class="btn sm" data-cpn="demanda">+ Demanda</button><button type="button" class="btn sm" data-cpn="acao">+ Ação</button><button type="button" class="btn sm" data-cpn="agenda">+ Compromisso</button></div>`;
+  if (!r.pessoas && !Object.keys(dm).length && !Object.keys(ac).length) h += `<div class="card"><h3>Comece por aqui</h3><ol>
+      <li><b>Equipe</b>: cadastre quem vai trabalhar na campanha (cada um com o seu login).</li>
+      <li><b>Eleitores e apoiadores</b>: cadastre lideranças, apoiadores e eleitores, com o voto de cada um (certo, provável, indeciso…).</li>
+      <li><b>Metas de votos</b>: defina quantos votos a campanha quer em cada município ou bairro.</li>
+      <li><b>Demandas</b>, <b>Plano de ação</b> e <b>Agenda</b>: registre os pedidos dos eleitores, as tarefas da equipe e os compromissos.</li></ol></div>`;
+  h += `<div class="kpis">${kpi('Pessoas cadastradas', fmt(r.pessoas))}${kpi('Votos certos', fmt(vt('certo')), plural(ps('certo'), 'pessoa', 'pessoas'))}${kpi('Votos prováveis', fmt(vt('provavel')), plural(ps('provavel'), 'pessoa', 'pessoas'))}
+      ${kpi('Indecisos', fmt(ps('indeciso')), 'pessoas')}${kpi('Lideranças', fmt(t.lideranca || 0))}${kpi('Apoiadores e voluntários', fmt((t.apoiador || 0) + (t.voluntario || 0)))}
+      ${kpi('Demandas abertas', fmt((dm.aberta || 0) + (dm.andamento || 0)), atraso(r.demandas_atrasadas) || plural(dm.atendida || 0, 'atendida', 'atendidas'))}
+      ${kpi('Ações pendentes', fmt((ac.a_fazer || 0) + (ac.andamento || 0)), atraso(r.acoes_atrasadas) || plural(ac.concluida || 0, 'concluída', 'concluídas'))}</div>`;
+  if (r.metas) h += `<div class="card"><h3>Meta de votos</h3><div class="uso"><span>Votos certos e prováveis: <b>${fmt(estim)}</b> de <b>${fmt(r.metas)}</b> (${pct(estim / r.metas * 100, 1)})</span><span class="tr"><i style="width:${Math.min(100, estim / r.metas * 100)}%;background:var(--green)"></i></span></div>
+    <small class="muted">Soma das metas dos municípios (veja em Metas de votos).</small></div>`;
+  const mx = Math.max(1, ...r.municipios.map(m => m.votos));
+  if (r.municipios.length) h += `<div class="card"><h3>Votos por município</h3><div class="rbars">${r.municipios.slice(0, 12).map(m => `<div class="brow" style="--k:var(--green)"><span>${esc(m.municipio || '—')}</span><span class="tr"><i style="width:${m.votos / mx * 100}%"></i></span><span class="q">${fmt(m.votos)}</span></div>`).join('')}</div>
+    <small class="muted">Votos certos e prováveis das pessoas cadastradas em cada município.</small></div>`;
+  if (r.liderancas.length) h += `<div class="card"><h3>Lideranças com mais votos indicados</h3><ul class="plist" data-de="pessoas">${r.liderancas.map(l => cpItem(l.id, l.nome, '', [esc([plural(l.pessoas, 'pessoa indicada', 'pessoas indicadas'), l.municipio].filter(Boolean).join(' · '))], `${fmt(l.votos)}<small>${l.votos === 1 ? 'voto' : 'votos'}</small>`)).join('')}</ul></div>`;
+  h += `<div class="card"><h3>Próximos compromissos</h3>${r.proximos.length ? `<ul class="plist" data-de="agenda">${r.proximos.map(g => cpItem(g.id, g.titulo, cpChip(CP_TIPOS_AGENDA, g.tipo), [esc([g.local, g.municipio].filter(Boolean).join(' · '))], cpDia(g.inicio))).join('')}</ul>` : '<p class="muted">Nenhum compromisso marcado.</p>'}</div>`;
+  box.innerHTML = h;
+  $$('[data-cpn]', box).forEach(b => b.onclick = () => ({ pessoa: cpFormPessoa, demanda: cpFormDemanda, acao: cpFormAcao, agenda: cpFormAgenda })[b.dataset.cpn]({}));
+  $$('[data-de] .pitem', box).forEach(li => li.onclick = async () => {
+    const tab = li.closest('[data-de]').dataset.de;
+    try {
+      const { data } = await cpQ(CP.sb.from(tab).select('*').eq('id', li.dataset.id).single());
+      (tab === 'pessoas' ? cpFormPessoa : cpFormAgenda)(data);
+    } catch (e) { alert(e.message); }
+  });
+}
+function cpDia(iso) {
+  const d = new Date(iso);
+  return `${esc(d.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' }))}<small>${esc(d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }))}</small>`;
+}
+
+// ---------- eleitores e apoiadores
+const cpLiderancas = async () => (await cpQ(CP.sb.from('pessoas').select('id,nome,municipio').eq('campanha_id', CP.camp).eq('tipo', 'lideranca').order('nome').limit(1000))).data;
+function cpConsultaPessoas() {
+  const f = CP.f, b = cpLimpa(f.busca);
+  let q = CP.sb.from('pessoas').select('*', { count: 'exact' }).eq('campanha_id', CP.camp);
+  if (f.tipo) q = q.eq('tipo', f.tipo);
+  if (f.voto) q = q.eq('voto', f.voto);
+  if (f.mun) q = q.eq('municipio_cd', f.mun);
+  if (f.lid) q = q.eq('lideranca_id', f.lid);
+  if (b) q = q.ilike('busca', `%${b}%`);
+  return q.order('nome');
+}
+async function cpPessoas(box) {
+  const lids = await cpLiderancas(), nomeLid = new Map(lids.map(l => [l.id, l.nome]));
+  EXPORTS.cpPessoas = async () => ({ nome: `pessoas-${cpCampanha().nome}`,
+    head: ['Nome', 'Telefone', 'E-mail', 'Tipo', 'Voto', 'Votos que traz', 'Indicado por', 'Município', 'Bairro', 'Endereço', 'Local de votação', 'Zona', 'Seção', 'Responsável', 'Autorizou (LGPD)', 'Observações', 'Cadastrado em'],
+    rows: (await cpTudo(cpConsultaPessoas)).map(p => [p.nome, p.telefone || '', p.email || '', cpRot(CP_TIPOS, p.tipo), cpRot(CP_VOTOS, p.voto), p.votos_estimados, nomeLid.get(p.lideranca_id) || '',
+      p.municipio || '', p.bairro || '', p.endereco || '', p.local_votacao || '', p.zona || '', p.secao || '', cpMembro(p.responsavel_id), p.consentimento ? 'Sim' : 'Não', p.observacoes || '', cpData(p.criado_em)]) });
+  await cpLista(box, {
+    novo: '+ Nova pessoa', busca: 'Nome, telefone, bairro ou local de votação', exp: 'cpPessoas', vazio: 'Nenhuma pessoa cadastrada com esses filtros.',
+    filtros: [['tipo', 'Todos os tipos', CP_TIPOS], ['voto', 'Todos os votos', CP_VOTOS], ['mun', 'Todos os municípios', cpMunicipios()],
+      ...(lids.length ? [['lid', 'Todas as lideranças', lids.map(l => [l.id, l.nome])]] : [])],
+    consulta: cpConsultaPessoas,
+    item: p => cpItem(p.id, p.nome, cpChip(CP_TIPOS, p.tipo) + cpChip(CP_VOTOS, p.voto) + (p.consentimento ? '' : '<span class="chip sup">Sem autorização</span>'),
+      [esc([p.telefone, p.bairro, p.municipio].filter(Boolean).join(' · ')), nomeLid.has(p.lideranca_id) ? 'Indicado por ' + esc(nomeLid.get(p.lideranca_id)) : '',
+        p.responsavel_id ? 'Responsável: ' + esc(cpMembro(p.responsavel_id)) : ''],
+      p.votos_estimados !== 1 ? `${fmt(p.votos_estimados)}<small>votos</small>` : ''),
+    abrir: cpFormPessoa,
+    rodape: '<p class="foot">Guarde só dados de quem autorizou (LGPD) e use-os apenas para a campanha. Para lideranças, "votos que traz" é quantos votos ela consegue, contando ela mesma.</p>',
+  });
+}
+async function cpFormPessoa(p = {}) {
+  const lids = await cpLiderancas(); // sempre a lista atual (inclui quem acabou de ser cadastrado)
+  cpForm({
+    titulo: p.id ? 'Editar pessoa' : 'Nova pessoa',
+    valores: { tipo: 'eleitor', voto: 'indefinido', votos_estimados: 1, municipio_cd: CP.f.mun || cpCampanha()?.municipio_cd || '', ...p },
+    campos: [
+      { k: 'nome', rot: 'Nome', obrig: true, largo: true },
+      { k: 'telefone', rot: 'Telefone / WhatsApp', tipo: 'tel', auto: 'off' }, { k: 'email', rot: 'E-mail', tipo: 'email' },
+      { k: 'tipo', rot: 'Tipo', tipo: 'sel', opcoes: CP_TIPOS }, { k: 'voto', rot: 'Voto', tipo: 'sel', opcoes: CP_VOTOS },
+      { k: 'votos_estimados', rot: 'Votos que traz', tipo: 'num', min: 0, dica: 'Contando a própria pessoa.' },
+      { k: 'lideranca_id', rot: 'Indicado por (liderança)', tipo: 'sel', vazio: 'Ninguém', opcoes: lids.filter(l => l.id !== p.id).map(l => [l.id, l.nome + (l.municipio ? ' · ' + l.municipio : '')]) },
+      { k: 'municipio_cd', rot: 'Município', tipo: 'mun', vazio: '—' }, { k: 'bairro', rot: 'Bairro', lista: 'cp-bairros' },
+      { k: 'endereco', rot: 'Endereço', largo: true },
+      { k: 'local_votacao', rot: 'Local de votação', lista: 'cp-locais', largo: true, dica: 'Escolha a escola na lista para completar zona e bairro.' },
+      { k: 'zona', rot: 'Zona', tipo: 'num', min: 1 }, { k: 'secao', rot: 'Seção', tipo: 'num', min: 1 },
+      { k: 'responsavel_id', rot: 'Responsável na equipe', tipo: 'sel', vazio: 'Ninguém', opcoes: cpOpMembros() },
+      { k: 'observacoes', rot: 'Observações', tipo: 'area', largo: true },
+      { k: 'consentimento', rot: 'A pessoa autorizou guardar estes dados (LGPD)', tipo: 'chk', largo: true },
+    ],
+    salvar: d => cpGravar('pessoas', p.id, d),
+    apagar: p.id ? () => cpApagar('pessoas', p.id) : null,
+  });
+}
+
+// ---------- demandas (pedidos de eleitores)
+function cpConsultaDemandas() {
+  const f = CP.f, b = cpLimpa(f.busca), st = f.status || 'abertas';
+  let q = CP.sb.from('demandas').select('*', { count: 'exact' }).eq('campanha_id', CP.camp);
+  if (st === 'abertas') q = q.in('status', ['aberta', 'andamento']);
+  else if (st !== 'todas') q = q.eq('status', st);
+  if (f.categoria) q = q.eq('categoria', f.categoria);
+  if (f.prioridade) q = q.eq('prioridade', f.prioridade);
+  if (f.mun) q = q.eq('municipio_cd', f.mun);
+  if (b) q = q.ilike('busca', `%${b}%`);
+  return q.order('prazo', { ascending: true, nullsFirst: false }).order('criado_em', { ascending: false });
+}
+async function cpDemandas(box) {
+  EXPORTS.cpDemandas = async () => ({ nome: `demandas-${cpCampanha().nome}`,
+    head: ['Pedido', 'Quem pediu', 'Telefone', 'Área', 'Prioridade', 'Situação', 'Prazo', 'Município', 'Bairro', 'Responsável', 'Detalhes', 'O que foi feito', 'Concluída em', 'Registrada em'],
+    rows: (await cpTudo(cpConsultaDemandas)).map(x => [x.titulo, x.solicitante || '', x.telefone || '', cpRot(CP_CATEGORIAS, x.categoria), cpRot(CP_PRIORIDADES, x.prioridade), cpRot(CP_ST_DEMANDA, x.status),
+      cpData(x.prazo), x.municipio || '', x.bairro || '', cpMembro(x.responsavel_id), x.descricao || '', x.resultado || '', cpData(x.concluida_em), cpData(x.criado_em)]) });
+  await cpLista(box, {
+    novo: '+ Nova demanda', busca: 'Pedido, quem pediu ou bairro', exp: 'cpDemandas', vazio: 'Nenhuma demanda com esses filtros.',
+    filtros: [['status', 'Abertas e em andamento', [...CP_ST_DEMANDA, ['todas', 'Todas']]], ['categoria', 'Todas as áreas', CP_CATEGORIAS],
+      ['prioridade', 'Todas as prioridades', CP_PRIORIDADES], ['mun', 'Todos os municípios', cpMunicipios()]],
+    consulta: cpConsultaDemandas,
+    item: x => cpItem(x.id, x.titulo, cpChip(CP_ST_DEMANDA, x.status) + (['alta', 'urgente'].includes(x.prioridade) ? cpChip(CP_PRIORIDADES, x.prioridade) : '') + cpChip(CP_CATEGORIAS, x.categoria),
+      [esc([x.solicitante, x.telefone, x.bairro, x.municipio].filter(Boolean).join(' · ')), cpPrazo(x), x.responsavel_id ? 'Responsável: ' + esc(cpMembro(x.responsavel_id)) : '']),
+    abrir: cpFormDemanda,
+    rodape: '<p class="foot">Registre os pedidos, acompanhe e dê retorno a quem pediu. O atendimento nunca pode ser trocado por voto (Lei 9.504/97, art. 41-A).</p>',
+  });
+}
+async function cpFormDemanda(x = {}) {
+  const pessoas = (await cpQ(CP.sb.from('pessoas').select('id,nome,telefone,municipio_cd,bairro').eq('campanha_id', CP.camp).order('nome').limit(1000))).data;
+  cpForm({
+    titulo: x.id ? 'Editar demanda' : 'Nova demanda',
+    valores: { categoria: 'outros', prioridade: 'media', status: 'aberta', municipio_cd: cpCampanha()?.municipio_cd || '', ...x },
+    listas: { 'cp-pessoas': pessoas.map(p => p.nome) },
+    campos: [
+      { k: 'titulo', rot: 'Pedido ou demanda', obrig: true, largo: true, ph: 'Ex.: conserto da iluminação da rua' },
+      { k: 'solicitante', rot: 'Quem pediu', lista: 'cp-pessoas', dica: 'Escolha alguém já cadastrado ou digite o nome.' }, { k: 'telefone', rot: 'Telefone', tipo: 'tel' },
+      { k: 'categoria', rot: 'Área', tipo: 'sel', opcoes: CP_CATEGORIAS }, { k: 'prioridade', rot: 'Prioridade', tipo: 'sel', opcoes: CP_PRIORIDADES },
+      { k: 'status', rot: 'Situação', tipo: 'sel', opcoes: CP_ST_DEMANDA }, { k: 'prazo', rot: 'Prazo', tipo: 'data' },
+      { k: 'municipio_cd', rot: 'Município', tipo: 'mun', vazio: '—' }, { k: 'bairro', rot: 'Bairro', lista: 'cp-bairros' },
+      { k: 'responsavel_id', rot: 'Responsável na equipe', tipo: 'sel', vazio: 'Ninguém', opcoes: cpOpMembros() }, { k: 'concluida_em', rot: 'Concluída em', tipo: 'data' },
+      { k: 'descricao', rot: 'Detalhes', tipo: 'area', largo: true }, { k: 'resultado', rot: 'O que foi feito / retorno dado', tipo: 'area', largo: true },
+    ],
+    pronto: form => form.elements.solicitante.addEventListener('change', () => {
+      const p = pessoas.find(y => y.nome === form.elements.solicitante.value), el = form.elements;
+      if (!p) return;
+      if (!el.telefone.value && p.telefone) el.telefone.value = p.telefone;
+      if (!el.bairro.value && p.bairro) el.bairro.value = p.bairro;
+    }),
+    salvar: d => {
+      const p = pessoas.find(y => y.nome === d.solicitante);
+      d.pessoa_id = p?.id || null;
+      if (['atendida', 'nao_atendida'].includes(d.status) && !d.concluida_em) d.concluida_em = cpHoje();
+      return cpGravar('demandas', x.id, d);
+    },
+    apagar: x.id ? () => cpApagar('demandas', x.id) : null,
+  });
+}
+
+// ---------- plano de ação
+function cpConsultaAcoes() {
+  const f = CP.f, b = cpLimpa(f.busca), st = f.status || 'pendentes';
+  let q = CP.sb.from('acoes').select('*', { count: 'exact' }).eq('campanha_id', CP.camp);
+  if (st === 'pendentes') q = q.in('status', ['a_fazer', 'andamento']);
+  else if (st !== 'todas') q = q.eq('status', st);
+  if (f.eixo) q = q.eq('eixo', f.eixo);
+  if (f.resp) q = q.eq('responsavel_id', f.resp);
+  if (b) q = q.ilike('busca', `%${b}%`);
+  return q.order('prazo', { ascending: true, nullsFirst: false }).order('criado_em');
+}
+async function cpAcoes(box) {
+  EXPORTS.cpAcoes = async () => ({ nome: `plano-de-acao-${cpCampanha().nome}`,
+    head: ['Ação', 'Eixo', 'Situação', 'Responsável', 'Prazo', 'Município', 'Bairro', 'Detalhes', 'Criada em'],
+    rows: (await cpTudo(cpConsultaAcoes)).map(x => [x.titulo, cpRot(CP_EIXOS, x.eixo), cpRot(CP_ST_ACAO, x.status), cpMembro(x.responsavel_id), cpData(x.prazo), x.municipio || '', x.bairro || '', x.descricao || '', cpData(x.criado_em)]) });
+  await cpLista(box, {
+    novo: '+ Nova ação', busca: 'Ação, detalhe ou bairro', exp: 'cpAcoes', vazio: 'Nenhuma ação com esses filtros.',
+    filtros: [['status', 'A fazer e em andamento', [...CP_ST_ACAO, ['todas', 'Todas']]], ['eixo', 'Todos os eixos', CP_EIXOS], ['resp', 'Todos os responsáveis', cpOpMembros()]],
+    consulta: cpConsultaAcoes,
+    item: x => cpItem(x.id, x.titulo, cpChip(CP_ST_ACAO, x.status) + cpChip(CP_EIXOS, x.eixo),
+      [x.responsavel_id ? 'Responsável: ' + esc(cpMembro(x.responsavel_id)) : '', cpPrazo(x), esc([x.bairro, x.municipio].filter(Boolean).join(' · '))]),
+    abrir: cpFormAcao,
+  });
+}
+function cpFormAcao(x = {}) {
+  cpForm({
+    titulo: x.id ? 'Editar ação' : 'Nova ação do plano',
+    valores: { eixo: 'mobilizacao', status: 'a_fazer', responsavel_id: x.id ? x.responsavel_id : CP.uid, ...x },
+    campos: [
+      { k: 'titulo', rot: 'O que fazer', obrig: true, largo: true, ph: 'Ex.: reunião com as lideranças do bairro' },
+      { k: 'eixo', rot: 'Eixo', tipo: 'sel', opcoes: CP_EIXOS }, { k: 'status', rot: 'Situação', tipo: 'sel', opcoes: CP_ST_ACAO },
+      { k: 'responsavel_id', rot: 'Responsável', tipo: 'sel', vazio: 'Ninguém', opcoes: cpOpMembros() }, { k: 'prazo', rot: 'Prazo', tipo: 'data' },
+      { k: 'municipio_cd', rot: 'Município', tipo: 'mun', vazio: '—' }, { k: 'bairro', rot: 'Bairro', lista: 'cp-bairros' },
+      { k: 'descricao', rot: 'Detalhes', tipo: 'area', largo: true },
+    ],
+    salvar: d => cpGravar('acoes', x.id, d),
+    apagar: x.id ? () => cpApagar('acoes', x.id) : null,
+  });
+}
+
+// ---------- agenda
+function cpConsultaAgenda() {
+  const f = CP.f, b = cpLimpa(f.busca), quando = f.quando || 'proximos', corte = new Date(Date.now() - 3 * 3600e3).toISOString();
+  let q = CP.sb.from('agenda').select('*', { count: 'exact' }).eq('campanha_id', CP.camp);
+  if (f.tipo) q = q.eq('tipo', f.tipo);
+  if (f.mun) q = q.eq('municipio_cd', f.mun);
+  if (b) q = q.ilike('busca', `%${b}%`);
+  if (quando === 'proximos') return q.gte('inicio', corte).order('inicio');
+  if (quando === 'anteriores') q = q.lt('inicio', corte);
+  return q.order('inicio', { ascending: false });
+}
+async function cpAgenda(box) {
+  EXPORTS.cpAgenda = async () => ({ nome: `agenda-${cpCampanha().nome}`,
+    head: ['Compromisso', 'Tipo', 'Situação', 'Início', 'Fim', 'Local', 'Município', 'Bairro', 'Responsável', 'Público esperado', 'Observações'],
+    rows: (await cpTudo(cpConsultaAgenda)).map(g => [g.titulo, cpRot(CP_TIPOS_AGENDA, g.tipo), cpRot(CP_ST_AGENDA, g.status), new Date(g.inicio).toLocaleString('pt-BR'), g.fim ? new Date(g.fim).toLocaleString('pt-BR') : '',
+      g.local || '', g.municipio || '', g.bairro || '', cpMembro(g.responsavel_id), g.publico_estimado ?? '', g.observacoes || '']) });
+  await cpLista(box, {
+    novo: '+ Novo compromisso', busca: 'Compromisso, local ou bairro', exp: 'cpAgenda', vazio: 'Nenhum compromisso com esses filtros.',
+    filtros: [['quando', 'Próximos', [['anteriores', 'Anteriores'], ['todos', 'Todos']]], ['tipo', 'Todos os tipos', CP_TIPOS_AGENDA], ['mun', 'Todos os municípios', cpMunicipios()]],
+    consulta: cpConsultaAgenda,
+    item: g => cpItem(g.id, g.titulo, cpChip(CP_TIPOS_AGENDA, g.tipo) + (g.status !== 'agendado' ? cpChip(CP_ST_AGENDA, g.status) : ''),
+      [esc([g.local, g.bairro, g.municipio].filter(Boolean).join(' · ')), g.responsavel_id ? 'Responsável: ' + esc(cpMembro(g.responsavel_id)) : '',
+        g.publico_estimado ? `Público esperado: ${fmt(g.publico_estimado)}` : ''], cpDia(g.inicio)),
+    abrir: cpFormAgenda,
+  });
+}
+function cpFormAgenda(g = {}) {
+  cpForm({
+    titulo: g.id ? 'Editar compromisso' : 'Novo compromisso',
+    valores: { tipo: 'reuniao', status: 'agendado', municipio_cd: cpCampanha()?.municipio_cd || '', responsavel_id: g.id ? g.responsavel_id : CP.uid, ...g },
+    campos: [
+      { k: 'titulo', rot: 'Compromisso', obrig: true, largo: true, ph: 'Ex.: caminhada no bairro' },
+      { k: 'tipo', rot: 'Tipo', tipo: 'sel', opcoes: CP_TIPOS_AGENDA }, { k: 'status', rot: 'Situação', tipo: 'sel', opcoes: CP_ST_AGENDA },
+      { k: 'inicio', rot: 'Começa', tipo: 'datahora', obrig: true }, { k: 'fim', rot: 'Termina', tipo: 'datahora' },
+      { k: 'local', rot: 'Local', lista: 'cp-locais', largo: true },
+      { k: 'municipio_cd', rot: 'Município', tipo: 'mun', vazio: '—' }, { k: 'bairro', rot: 'Bairro', lista: 'cp-bairros' },
+      { k: 'responsavel_id', rot: 'Responsável', tipo: 'sel', vazio: 'Ninguém', opcoes: cpOpMembros() }, { k: 'publico_estimado', rot: 'Público esperado', tipo: 'num', min: 0 },
+      { k: 'observacoes', rot: 'Observações', tipo: 'area', largo: true },
+    ],
+    salvar: d => {
+      if (d.fim && d.fim < d.inicio) throw new Error('O fim não pode ser antes do começo.');
+      return cpGravar('agenda', g.id, d);
+    },
+    apagar: g.id ? () => cpApagar('agenda', g.id) : null,
+  });
+}
+
+// ---------- metas de votos
+async function cpMetas(box) {
+  const ms = (await cpQ(CP.sb.rpc('progresso_metas', { c: CP.camp }))).data;
+  const tot = m => +m.certos + +m.provaveis, perc = (n, m) => m.meta_votos ? n / m.meta_votos * 100 : 0;
+  EXPORTS.cpMetas = () => ({ nome: `metas-${cpCampanha().nome}`,
+    head: ['Município', 'Bairro', 'Meta de votos', 'Votos certos', 'Votos prováveis', 'Certos + prováveis', '% da meta', 'Pessoas cadastradas', 'Observações'],
+    rows: ms.map(m => [m.municipio, m.bairro || '(município inteiro)', m.meta_votos, +m.certos, +m.provaveis, tot(m), +perc(tot(m), m).toFixed(1), +m.pessoas, m.observacoes || '']) });
+  box.innerHTML = `<div class="tools cp-barra"><button type="button" class="btn pri sm" data-cpnovo>+ Nova meta</button><span class="sp"></span><button class="btn sm" type="button" data-exp="cpMetas" data-kind="xlsx">Excel</button><button class="btn sm" type="button" data-exp="cpMetas" data-kind="csv">CSV</button></div>
+    <div class="note info">Defina quantos votos a campanha quer em cada município (ou bairro). O progresso soma os votos certos e prováveis das pessoas cadastradas em <b>Eleitores e apoiadores</b>.</div>
+    <div class="cp-metas">${ms.map(m => `<article class="pcard" data-id="${esc(m.id)}" tabindex="0"><header><b>${esc(m.municipio)}${m.bairro ? ' · ' + esc(m.bairro) : ''}</b><small>Meta <b>${fmt(m.meta_votos)}</b></small></header>
+        <div class="brow" style="--k:var(--green)"><span>Certos</span><span class="tr"><i style="width:${Math.min(100, perc(+m.certos, m))}%"></i></span><span class="q">${fmt(+m.certos)}</span></div>
+        <div class="brow" style="--k:var(--orange)"><span>Prováveis</span><span class="tr"><i style="width:${Math.min(100, perc(+m.provaveis, m))}%"></i></span><span class="q">${fmt(+m.provaveis)}</span></div>
+        <small class="muted"><b>${pct(perc(tot(m), m), 0)}</b> da meta · ${plural(+m.pessoas, 'pessoa cadastrada', 'pessoas cadastradas')}${m.observacoes ? ' · ' + esc(m.observacoes) : ''}</small></article>`).join('') || '<div class="empty">Nenhuma meta definida ainda.</div>'}</div>`;
+  $('[data-cpnovo]', box).onclick = () => cpFormMeta({});
+  $$('.pcard[data-id]', box).forEach(a => a.onclick = () => cpFormMeta(ms.find(m => m.id === a.dataset.id)));
+}
+function cpFormMeta(m = {}) {
+  cpForm({
+    titulo: m.id ? 'Editar meta' : 'Nova meta de votos',
+    valores: { municipio_cd: cpCampanha()?.municipio_cd || '', ...m },
+    campos: [
+      { k: 'municipio_cd', rot: 'Município', tipo: 'mun', obrig: true, vazio: '—' },
+      { k: 'bairro', rot: 'Bairro', lista: 'cp-bairros', dica: 'Deixe vazio para a meta do município inteiro.' },
+      { k: 'meta_votos', rot: 'Meta de votos', tipo: 'num', min: 0, obrig: true },
+      { k: 'observacoes', rot: 'Observações', tipo: 'area', largo: true },
+    ],
+    salvar: d => cpGravar('metas', m.id, { municipio_cd: d.municipio_cd, municipio: d.municipio, bairro: d.bairro || '', meta_votos: d.meta_votos, observacoes: d.observacoes }),
+    apagar: m.id ? () => cpApagar('metas', m.id) : null,
+  });
+}
+
+// ---------- equipe
+async function cpEquipeTela(box) {
+  const adm = cpAdmin();
+  box.innerHTML = `${adm ? '<div class="tools cp-barra"><button type="button" class="btn pri sm" id="cp-add">+ Adicionar à equipe</button><button type="button" class="btn sm" id="cp-dados">Dados da campanha</button></div>' : ''}
+    <ul class="plist${adm ? '' : ' leitura'}">${CP.membros.map(m => cpItem(m.user_id, m.nome + (m.user_id === CP.uid ? ' (você)' : ''), `<span class="chip ${m.papel === 'admin' ? 'ok' : ''}">${m.papel === 'admin' ? 'Administrador' : 'Membro'}</span>`, [esc(m.email)])).join('')}</ul>
+    <div class="note info">${adm ? 'Para colocar alguém na equipe, toque em <b>+ Adicionar à equipe</b>: o sistema cria a conta com uma senha provisória, que você passa para a pessoa. Toque num membro para criar outra senha, mudar o papel ou tirar da equipe.<br>' : ''}
+      <b>Administradores</b> cuidam da equipe e podem apagar qualquer registro. <b>Membros</b> cadastram e editam, e apagam só o que eles mesmos criaram.</div>
+    ${adm ? `<details class="card"><summary>Excluir a campanha</summary><p class="muted">Apaga para sempre a campanha e tudo o que foi cadastrado nela: pessoas, demandas, plano de ação, agenda, metas e equipe. As contas que não estiverem em outra campanha também são apagadas.</p>
+      <div><button type="button" class="btn sm perigo" id="cp-excluir">Excluir a campanha…</button></div></details>` : ''}`;
+  if (!adm) return;
+  $('#cp-add', box).onclick = cpFormMembro;
+  $('#cp-dados', box).onclick = cpFormCampanha;
+  $('#cp-excluir', box).onclick = cpExcluirCampanha;
+  $$('.pitem', box).forEach(li => li.onclick = () => cpMenuMembro(CP.membros.find(m => m.user_id === li.dataset.id)));
+}
+// dados para a pessoa entrar, com mensagem pronta para copiar
+function cpCredenciais(nome, email, senha) {
+  const site = location.origin + '/#campanha', c = cpCampanha();
+  const msg = `Olá, ${nome}! Você está na equipe da campanha ${c.nome} no Radar de Votos.\nEntre em ${site}\nE-mail: ${email}\nSenha provisória: ${senha}\nDepois de entrar, troque a senha em "Minha conta".`;
+  return `<dl class="cp-cred"><dt>Endereço</dt><dd>${esc(site)}</dd><dt>E-mail</dt><dd>${esc(email)}</dd><dt>Senha</dt><dd>${esc(senha)}</dd></dl>
+    <p class="muted">Envie esses dados só para a pessoa (por exemplo, no WhatsApp dela). Ela pode trocar a senha em <b>Minha conta</b>.</p>
+    <div class="tools" style="justify-content:flex-start"><button type="button" class="btn sm" data-copiar="${esc(msg)}">Copiar mensagem</button></div>`;
+}
+function cpLigarCopiar(d) {
+  $$('[data-copiar]', d).forEach(b => b.onclick = async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copiar); b.textContent = 'Copiado!'; } catch { b.textContent = 'Não deu para copiar'; }
+  });
+}
+function cpFormMembro() {
+  cpForm({
+    titulo: 'Adicionar à equipe', botao: 'Adicionar',
+    valores: { senha: cpSenhaProvisoria(), papel: 'membro' },
+    campos: [
+      { k: 'nome', rot: 'Nome', obrig: true, largo: true }, { k: 'email', rot: 'E-mail (será o login)', tipo: 'email', obrig: true, largo: true },
+      { k: 'senha', rot: 'Senha provisória', obrig: true, dica: 'Pelo menos 8 caracteres.' },
+      { k: 'papel', rot: 'Papel', tipo: 'sel', opcoes: [['membro', 'Membro'], ['admin', 'Administrador']] },
+    ],
+    salvar: async d => {
+      if (d.senha.length < 8) throw new Error('A senha precisa ter pelo menos 8 caracteres.');
+      const r = await cpEquipe('adicionar_membro', { campanha_id: CP.camp, ...d });
+      CP.membrosDe = '';
+      cpLigarCopiar(cpMostrar('Pessoa adicionada à equipe', r.conta_nova ? cpCredenciais(d.nome, d.email, d.senha)
+        : `<p>${esc(d.nome)} já tinha conta no Radar de Votos e entra com a senha que já usa, no mesmo endereço: <b>${esc(location.origin)}/#campanha</b>.</p>`));
+      return false;
+    },
+  });
+}
+function cpMenuMembro(m) {
+  const eu = m.user_id === CP.uid;
+  const d = cpMostrar(m.nome, `<p class="muted">${esc(m.email)} · ${m.papel === 'admin' ? 'Administrador' : 'Membro'}</p>
+    <div class="picks"><button type="button" class="btn" data-ma="senha">Criar nova senha provisória</button>
+      <button type="button" class="btn" data-ma="papel">${m.papel === 'admin' ? 'Tornar membro' : 'Tornar administrador'}</button>
+      <button type="button" class="btn perigo" data-ma="remover">${eu ? 'Sair da equipe' : 'Tirar da equipe'}</button></div>
+    <p class="msg" role="alert" hidden></p>`);
+  const msg = $('.msg', d), base = { campanha_id: CP.camp, user_id: m.user_id };
+  $$('[data-ma]', d).forEach(b => b.onclick = async () => {
+    const a = b.dataset.ma;
+    if (a === 'remover' && !confirm(eu ? 'Sair da equipe desta campanha?' : `Tirar ${m.nome} da equipe? A pessoa perde o acesso.`)) return;
+    try {
+      if (a === 'senha') {
+        const senha = cpSenhaProvisoria();
+        await cpEquipe('redefinir_senha', { ...base, senha });
+        $('.dlg-corpo', d).innerHTML = `<header><h3>Nova senha de ${esc(m.nome)}</h3><button type="button" class="back" data-fechar aria-label="Fechar">✕</button></header>${cpCredenciais(m.nome, m.email, senha)}<div class="tools"><button type="button" class="btn pri" data-fechar>OK</button></div>`;
+        $$('[data-fechar]', d).forEach(x => x.onclick = () => d.close());
+        cpLigarCopiar(d);
+        return;
+      }
+      if (a === 'papel') await cpEquipe('mudar_papel', { ...base, papel: m.papel === 'admin' ? 'membro' : 'admin' });
+      if (a === 'remover') { await cpEquipe('remover_membro', base); if (eu) { d.close(); return cpSair(); } }
+      CP.membrosDe = '';
+      d.close();
+    } catch (er) { msg.textContent = er.message; msg.hidden = false; }
+  });
+}
+function cpFormCampanha() {
+  const c = cpCampanha();
+  cpForm({
+    titulo: 'Dados da campanha', valores: c,
+    campos: [
+      { k: 'nome', rot: 'Nome da campanha', obrig: true, largo: true }, { k: 'candidato', rot: 'Candidato(a)' },
+      { k: 'cargo', rot: 'Cargo', tipo: 'sel', vazio: '—', opcoes: CP_CARGOS }, { k: 'ano', rot: 'Ano da eleição', tipo: 'num', min: 2020 },
+      { k: 'municipio_cd', rot: 'Município principal', tipo: 'mun', vazio: '—' },
+    ],
+    salvar: async d => {
+      await cpQ(CP.sb.from('campanhas').update({ nome: d.nome, candidato: d.candidato, cargo: d.cargo, ano: d.ano, municipio_cd: d.municipio_cd }).eq('id', c.id));
+      CP.campanhas = null;
+    },
+  });
+}
+async function cpExcluirCampanha() {
+  const c = cpCampanha();
+  const nome = prompt(`Para excluir para sempre, digite o nome da campanha:\n${c.nome}`);
+  if (nome == null) return;
+  try { await cpEquipe('excluir_campanha', { campanha_id: c.id, confirmacao: nome }); }
+  catch (e) { alert(e.message); return; }
+  if (CP.campanhas.length <= 1) return cpSair();
+  Object.assign(CP, { campanhas: null, membrosDe: '', camp: '', aba: 'painel' });
+  render();
+}
+
 /* ============================================================ tela: favoritos */
 function telaFavoritos(el) {
   topo('Meus favoritos', '');
@@ -2497,10 +3322,16 @@ function telaAjuda(el) {
       <li><b>Eleições 2026</b> — o 1º e o 2º turno estão em <b>Resultado</b>, <b>Candidato</b>, <b>Comparar</b>, <b>Relatório</b> e <b>Eleitorado</b>, como nos outros anos: escolha "Eleição 2026 · 1º turno" ou "Eleição 2026 · 2º turno" e veja os votos por zona, bairro, local de votação, seção e no mapa.</li>
       <li><b>Eleitos 2026</b> — governador (eleito no 2º turno), senadores e deputados federais e estaduais do RN, pelo resultado oficial do TSE.</li>
       <li><b>Partidos 2026</b> — escolha <b>Deputado Federal</b> ou <b>Deputado Estadual</b> e veja todos os partidos e federações com votos, quociente eleitoral e vagas conquistadas. Toque num partido para ver os candidatos dele (eleitos e ordem dos suplentes), ou use "Todos os candidatos" com o filtro por partido.</li>
+      <li><b>Área da campanha (com login)</b> — espaço privado da equipe: cadastro de eleitores, apoiadores e lideranças com o voto de cada um (certo, provável, indeciso), pedidos e demandas dos eleitores, plano de ação, agenda e metas de votos por município e bairro. Cada pessoa da equipe tem o seu login; o administrador cadastra a equipe em <b>Equipe</b>.</li>
       <li><b>Candidaturas (TSE)</b> — consulta ao DivulgaCandContas: lista de candidatos por eleição, cargo e município, e a ficha de cada um com situação do registro, dados pessoais, bens, certidões, propostas, eleições anteriores e prestação de contas. Na tela de um candidato, toque em <b>Ficha no DivulgaCand</b>.</li>
       <li><b>Relatório</b> — pesquise um candidato e veja todas as eleições que ele disputou na cidade, com votos, posição e crescimento por zona, bairro e local. No modo <b>Colégios eleitorais</b>, compare até quatro locais de votação lado a lado.</li>
       <li><b>Favoritos</b> — toque na estrela ao lado de um candidato para acompanhá-lo.</li></ol>
       <p class="muted"><b>Votos válidos</b> são os votos em candidatos e partidos (sem brancos e nulos). <b>Seção</b> é uma urna. <b>Local de votação</b> é a escola ou prédio onde ficam as urnas.</p></div>
+    <div class="card"><h3>Área da campanha: acesso e dados pessoais</h3>
+      <p>Os dados da área da campanha ficam num banco de dados no Brasil (São Paulo) e só a equipe cadastrada consegue ver. Cada pessoa entra com o próprio e-mail e senha.</p>
+      <ol><li><b>Primeiro acesso:</b> quem tem o código de acesso do administrador cria a campanha e vira administrador.</li>
+        <li><b>Equipe:</b> o administrador adiciona as pessoas; o sistema cria a conta com uma senha provisória, e cada uma troca a sua em <b>Minha conta</b>. Se alguém esquecer a senha, o administrador cria outra.</li>
+        <li><b>LGPD:</b> cadastre só quem autorizou (marque "A pessoa autorizou" no cadastro) e apague os dados de quem pedir. O administrador pode baixar tudo em planilha e, em <b>Equipe</b>, excluir a campanha com todos os dados.</li></ol></div>
     <div class="card" id="imp-panel"><h3>Importar votos de outro ano (2018, 2016)</h3>
       <p>Os votos por urna de anos anteriores só estão no <b>Portal de Dados Abertos do TSE</b>, que só libera o download para conexões no Brasil. Por isso é o seu navegador que baixa e converte o arquivo.</p>
       <div class="picks two"><label>Ano <select class="plain" id="imp-ano"><option>2018</option><option>2016</option></select></label>
@@ -2914,15 +3745,21 @@ document.addEventListener('click', async e => {
   if (lx) { LOC.exportar(lx.dataset.locExport); return; }
   const b = e.target.closest('[data-exp]');
   if (!b || !EXPORTS[b.dataset.exp]) return;
-  const { nome, head, rows } = EXPORTS[b.dataset.exp]();
+  let dados;
+  b.disabled = true;
+  try { dados = await EXPORTS[b.dataset.exp](); }
+  catch (er) { alert('Não foi possível gerar a planilha: ' + er.message); return; }
+  finally { b.disabled = false; }
+  const { nome, head, rows } = dados;
   const arq = norm(nome).toLowerCase().replace(/ /g, '-').slice(0, 90) || 'radar-votos';
   if (b.dataset.kind === 'csv') {
-    const cel = v => typeof v === 'number' ? String(v).replace('.', ',') : '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    // texto que começa com = + - @ vira texto no Excel (não é lido como fórmula)
+    const cel = v => typeof v === 'number' ? String(v).replace('.', ',') : '"' + String(v ?? '').replace(/^[=+\-@\t\r]/, "'$&").replace(/"/g, '""') + '"';
     baixar(new Blob(['﻿' + [head, ...rows].map(r => r.map(cel).join(';')).join('\r\n')], { type: 'text/csv;charset=utf-8' }), arq + '.csv');
   } else {
     b.disabled = true;
     try {
-      if (!window.XLSX) await new Promise((ok, err) => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'; s.onload = ok; s.onerror = err; document.head.appendChild(s); });
+      if (!window.XLSX) await carregarScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([head, ...rows]), 'Dados');
       XLSX.writeFile(wb, arq + '.xlsx');
